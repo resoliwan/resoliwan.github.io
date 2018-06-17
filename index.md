@@ -46,6 +46,7 @@ read any of the other things, such as
 [how to test your site locally](pages/local_test.html).
 
 - [Overview](pages/overview.html)
+- [Softmax](pages/sotfmax.html)
 - [Making an independent website](pages/independent_site.html)
 - [Making a personal site](pages/user_site.html)
 - [Making a site for a project](pages/project_site.html)
