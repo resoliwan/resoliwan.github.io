@@ -7,7 +7,7 @@ description: simple ml
 
 # Content
 - [Softmax](pages/softmax.html)
+- [Linear regerssion](pages/liner_regerssion.html)
 
 ---
 
-The source for this minimal tutorial is [on github](https://github.com/kbroman/simple_site).
