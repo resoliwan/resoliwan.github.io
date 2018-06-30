@@ -45,7 +45,7 @@ def huber_loss(y, y_hat, delta):
         return delta * diff - 0.5 * delta**2
 
 
-def huber_loass(y, y_hat, delta=1.0):
+def huber_loss(y, y_hat, delta=1.0):
     residual = tf.abs(y - y_hat)
     def square_f(): return 0.5 * tf.square(residual)
     def abs_f(): return delta * residual - 0.5 * tf.square(delta)

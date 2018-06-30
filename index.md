@@ -7,7 +7,8 @@ description: simple ml
 
 # Content
 - [Softmax](pages/softmax.html)
-- [Linear regerssion](pages/liner_regerssion.html)
+- [Linear regression](pages/liner_regression.html)
+- [Huber Loss](pages/huber_loss.html)
 
 ---
 
