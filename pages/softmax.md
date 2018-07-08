@@ -36,3 +36,5 @@ def softmax(x):
     np.exp(x) / np.sum(np.exp(x))
 ```
 
+# Tag
+- softmax

@@ -35,7 +35,7 @@ Tonga	3.911	72.150658537
 \\( cost(\theta) = \sum_{i=0}^{M}loss(x^{(i)})\\)
 
 # Code
-# Place holder 사용가장 기본폼.
+### Use Place holder. 
 ```python
 import pandas as pd
 import numpy as np
@@ -77,9 +77,44 @@ x_max = df[input_label].max()
 plt.plot([x_min, x_max], [W_out * x_min + b_out, W_out * x_max + b_out])
 plt.show()
 ```
+### Use dataset
+```python
+import pandas as pd
+import numpy as np
+import tensorflow as tf
+import matplotlib.pyplot as plt
 
+df = pd.read_csv('./examples/data/birth_life_2010.txt', delimiter='\t')
+df.describe()
+dataset = tf.data.Dataset.from_tensor_slices((df['Birthrate'], df['Lifeexpectancy']))
+iterator = dataset.make_initializable_iterator()
+X, y = iterator.get_next()
 
+# with tf.Session() as sess:
+#     sess.run(iterator.initializer)
+#     sess.run(iterator.get_next())
 
-# From
-[stanford-tensorflow-tutorials](https://gitter.im/stanford-tensorflow-tutorials)
+W = tf.get_variable('weights', initializer=tf.constant(0.0, dtype=tf.float64))
+b = tf.get_variable('bias', initializer=tf.constant(0.0, dtype=tf.float64))
+y_hat = W * X + b
+loss = tf.square(y - y_hat)
+optimizer = tf.train.GradientDescentOptimizer(learning_rate=1e-3).minimize(loss)
+
+with tf.Session() as sess:
+    sess.run(tf.global_variables_initializer())
+    for epoch in range(100):
+        sess.run(iterator.initializer)
+        cost = 0
+        try:
+            while True:
+                _, out_loss = sess.run([optimizer, loss])
+                cost += out_loss
+        except:
+            pass
+        out_W, out_b = sess.run([W, b])
+        print('epoch %d out_W %f out_b %f cost %f' % (epoch, out_W, out_b, cost))
+```
+
+# Resource
+- [stanford-tensorflow-tutorials](https://gitter.im/stanford-tensorflow-tutorials)
 
