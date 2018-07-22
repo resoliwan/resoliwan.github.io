@@ -1,35 +1,55 @@
-# Dataset
-Abstract object for data feeding.
+# Goal
+- Provide data abstraction.
 
-# Iterator
-```python
+- tf.Data.Dataset
+  - Represent sequence of elements.
+  - Creating from source.(tf.Tensor)
+  - Creating from tf.dataset using Transformation.
+
+- tf.data.Iterator
+  - Provide main way to extract data from Dataset
+
+# Sample data
+```
+l,d0,d1,d2,d3,d4
+0,1,2,3,4
+1,11,12,13,14
+2,21,22,23,24
+
+```
+
+```
 import pandas as pd
-import numpy as np
 import tensorflow as tf
-import matplotlib.pyplot as plt
-import sys
+import numpy as np
 
-df = pd.read_csv('./examples/data/birth_life_2010.txt', delimiter='\t')
+df = pd.read_csv('./data/test.csv')
 df.describe()
-dataset = tf.data.Dataset.from_tensor_slices((df['Birthrate'], df['Lifeexpectancy']))
 
-one_iterator = dataset.make_one_shot_iterator()
-with tf.Session() as sess:
-    for i in range(100):
-        sess.run(one_iterator.get_next())
+dm = df.as_matrix()
+y = dm[:, 0]
+x = dm[:, 1:]
 
+max = np.max(dm[:, 0]) + 1
+onehot_y = np.eye(max)[dm[:, 0]]
+
+dataset = tf.data.Dataset.from_tensor_slices((x, onehot_y))
 iterator = dataset.make_initializable_iterator()
+X, y = iterator.get_next()
+
 with tf.Session() as sess:
-    for i in range(2):
+    for e in range(3):
         sess.run(iterator.initializer)
-        try: 
+        try:
             while True:
-                sess.run(iterator.get_next())
+                X_out, y_out = sess.run([X, y])
+                print('X_out', X_out)
+                print('y_out', y_out)
         except tf.errors.OutOfRangeError:
-            print("Unexpected error:", sys.exc_info()[0])
-            print('error')
+            print('OutOfRangeError')
             pass
 ```
+
 
 # Tag
 - tensorflow

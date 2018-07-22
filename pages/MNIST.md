@@ -14,6 +14,7 @@ label,pixel0,...,pixel783
 - Load data
   - make X to (784, m)
   - make y to (10, m) using one hot encoder.
+  - run session and check feed
 - Create model
   - define forward model.
   - define optimize model.
@@ -29,7 +30,7 @@ label,pixel0,...,pixel783
 - X: (784, m), W (1, 784), b (1, 1)
 
 #### Loss
-\\( H_{p}(q) = \sum_{x} q(x) *\log_{2} \frac{1}{\log p(x)} \\)
+\\( H_{q}(p) = \sum_{x} q(x) *\log_{2} \frac{1}{\log p(x)} \\)
 - Cross-Entroy: Average length of message from q(x) using code for p(x)
 
 #### Cost
@@ -38,5 +39,3 @@ label,pixel0,...,pixel783
 # Resource
 - [Information theory](http://colah.github.io/posts/2015-09-Visual-Information)
 - [stanford-tensorflow-tutorials](https://gitter.im/stanford-tensorflow-tutorials)
-
-
