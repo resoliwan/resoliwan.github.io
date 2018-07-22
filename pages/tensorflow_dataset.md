@@ -33,7 +33,7 @@ x = dm[:, 1:]
 max = np.max(dm[:, 0]) + 1
 onehot_y = np.eye(max)[dm[:, 0]]
 
-dataset = tf.data.Dataset.from_tensor_slices((x, onehot_y))
+dataset = tf.data.Dataset.from_tensor_slices(({'x': x, 'onehot_y': onehot_y}))
 iterator = dataset.make_initializable_iterator()
 X, y = iterator.get_next()
 
