@@ -7,11 +7,11 @@
         
         
         
-        <link rel="shortcut icon" href="/img/favicon.ico">
-        <title>Leonadro's home</title>
-        <link href="/css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="/css/font-awesome.min.css" rel="stylesheet">
-        <link href="/css/base.css" rel="stylesheet">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>tenserflow data - Leonadro's home</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <script src="/js/jquery-1.10.2.min.js" defer></script>
-        <script src="/js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
@@ -39,7 +39,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/.">Leonadro's home</a>
+                    <a class="navbar-brand" href="../..">Leonadro's home</a>
                 </div>
 
                 <!-- Expanded navigation -->
@@ -47,30 +47,30 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li >
-                                <a href="/.">README.md</a>
+                                <a href="../..">README.md</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">ML <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="/ML/MNIST/">MNIST</a>
+    <a href="../MNIST/">MNIST</a>
 </li>
                                     
 <li >
-    <a href="/ML/huber_loss/">Huber loss</a>
+    <a href="../huber_loss/">Huber loss</a>
 </li>
                                     
 <li >
-    <a href="/ML/linear_regression/">Linear regression</a>
+    <a href="../linear_regression/">Linear regression</a>
 </li>
                                     
 <li >
-    <a href="/ML/softmax/">Softmax</a>
+    <a href="../softmax/">Softmax</a>
 </li>
                                     
-<li >
-    <a href="/ML/tensorflow_dataset/">tenserflow data</a>
+<li class="active">
+    <a href="./">tenserflow data</a>
 </li>
                                 </ul>
                             </li>
@@ -79,7 +79,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="/idea/launcher/">Luncher App</a>
+    <a href="../../idea/launcher/">Luncher App</a>
 </li>
                                 </ul>
                             </li>
@@ -88,7 +88,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="/mkdocs/usage/">HowTo</a>
+    <a href="../../mkdocs/usage/">HowTo</a>
 </li>
                                 </ul>
                             </li>
@@ -100,21 +100,96 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li >
+                                <a rel="next" href="../softmax/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../../idea/launcher/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#tenserflow-data">tenserflow data</a></li>
+        <li class="main "><a href="#goal">Goal</a></li>
+        <li class="main "><a href="#sample-data">Sample data</a></li>
+        <li class="main "><a href="#tag">Tag</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
 
-    <div class="row-fluid">
-      <div id="main-content" class="span12">
-        <h1 id="404-page-not-found" style="text-align: center">404</h1>
-        <p style="text-align: center"><strong>Page not found</strong></p>
-      </div>
-    </div>
+<h1 id="tenserflow-data">tenserflow data</h1>
+<h1 id="goal">Goal</h1>
+<ul>
+<li>
+<p>Provide data abstraction.</p>
+</li>
+<li>
+<p>tf.Data.Dataset</p>
+</li>
+<li>Represent sequence of elements.</li>
+<li>Creating from source.(tf.Tensor)</li>
+<li>
+<p>Creating from tf.dataset using Transformation.</p>
+</li>
+<li>
+<p>tf.data.Iterator</p>
+</li>
+<li>Provide main way to extract data from Dataset</li>
+</ul>
+<h1 id="sample-data">Sample data</h1>
+<pre><code>l,d0,d1,d2,d3,d4
+0,1,2,3,4
+1,11,12,13,14
+2,21,22,23,24
 
+</code></pre>
 
+<pre><code>import pandas as pd
+import tensorflow as tf
+import numpy as np
+
+df = pd.read_csv('./data/test.csv')
+df.describe()
+
+dm = df.as_matrix()
+y = dm[:, 0]
+x = dm[:, 1:]
+
+max = np.max(dm[:, 0]) + 1
+onehot_y = np.eye(max)[dm[:, 0]]
+
+dataset = tf.data.Dataset.from_tensor_slices((x, onehot_y))
+iterator = dataset.make_initializable_iterator()
+X, y = iterator.get_next()
+
+with tf.Session() as sess:
+    for e in range(3):
+        sess.run(iterator.initializer)
+        try:
+            while True:
+                X_out, y_out = sess.run([X, y])
+                print('X_out', X_out)
+                print('y_out', y_out)
+        except tf.errors.OutOfRangeError:
+            print('OutOfRangeError')
+            pass
+</code></pre>
+
+<h1 id="tag">Tag</h1>
+<ul>
+<li>tensorflow</li>
+<li>dataset</li>
+<li>iterator</li>
+</ul></div>
         </div>
 
         <footer class="col-md-12">
@@ -122,12 +197,12 @@
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "/",
+            var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="/js/base.js" defer></script>
+        <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-        <script src="/search/main.js" defer></script>
+        <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
     <div class="modal-dialog">

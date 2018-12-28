@@ -7,11 +7,11 @@
         
         
         
-        <link rel="shortcut icon" href="/img/favicon.ico">
-        <title>Leonadro's home</title>
-        <link href="/css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="/css/font-awesome.min.css" rel="stylesheet">
-        <link href="/css/base.css" rel="stylesheet">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Huber loss - Leonadro's home</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <script src="/js/jquery-1.10.2.min.js" defer></script>
-        <script src="/js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
@@ -39,7 +39,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/.">Leonadro's home</a>
+                    <a class="navbar-brand" href="../..">Leonadro's home</a>
                 </div>
 
                 <!-- Expanded navigation -->
@@ -47,30 +47,30 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li >
-                                <a href="/.">README.md</a>
+                                <a href="../..">README.md</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">ML <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="/ML/MNIST/">MNIST</a>
+    <a href="../MNIST/">MNIST</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">Huber loss</a>
 </li>
                                     
 <li >
-    <a href="/ML/huber_loss/">Huber loss</a>
+    <a href="../linear_regression/">Linear regression</a>
 </li>
                                     
 <li >
-    <a href="/ML/linear_regression/">Linear regression</a>
+    <a href="../softmax/">Softmax</a>
 </li>
                                     
 <li >
-    <a href="/ML/softmax/">Softmax</a>
-</li>
-                                    
-<li >
-    <a href="/ML/tensorflow_dataset/">tenserflow data</a>
+    <a href="../tensorflow_dataset/">tenserflow data</a>
 </li>
                                 </ul>
                             </li>
@@ -79,7 +79,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="/idea/launcher/">Luncher App</a>
+    <a href="../../idea/launcher/">Luncher App</a>
 </li>
                                 </ul>
                             </li>
@@ -88,7 +88,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="/mkdocs/usage/">HowTo</a>
+    <a href="../../mkdocs/usage/">HowTo</a>
 </li>
                                 </ul>
                             </li>
@@ -100,21 +100,92 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li >
+                                <a rel="next" href="../MNIST/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../linear_regression/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#huber-loss">Huber loss</a></li>
+        <li class="main "><a href="#goal">Goal</a></li>
+        <li class="main "><a href="#how-to">How to</a></li>
+            <li><a href="#idea">IDEA</a></li>
+            <li><a href="#huber-loss_1">Huber loss</a></li>
+        <li class="main "><a href="#graph">Graph</a></li>
+        <li class="main "><a href="#code">Code</a></li>
+        <li class="main "><a href="#tag">Tag</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
 
-    <div class="row-fluid">
-      <div id="main-content" class="span12">
-        <h1 id="404-page-not-found" style="text-align: center">404</h1>
-        <p style="text-align: center"><strong>Page not found</strong></p>
-      </div>
-    </div>
+<h1 id="huber-loss">Huber loss</h1>
+<h1 id="goal">Goal</h1>
+<p>Want less sensitive function to the outliers than the square error loss.</p>
+<h1 id="how-to">How to</h1>
+<ul>
+<li>Use square function for small value.</li>
+<li>Use absolute function for large value.</li>
+</ul>
+<h3 id="idea">IDEA</h3>
+<p>\(
+f(a) =
+\begin{cases}
+a^2                     &amp; \text{for }|a| \leq 1, \\
+|a|                     &amp; \text{ otherwise}
+\end{cases}
+\)</p>
+<h3 id="huber-loss_1">Huber loss</h3>
+<p>\(
+L_{\delta}(a) =
+\begin{cases}
+\frac{1}{2}a^2                     &amp; \text{for }|a| \leq \delta, \\
+\delta (|a| - \frac{1}{2} \delta), &amp; \text{ otherwise}
+\end{cases}
+\)</p>
+<h1 id="graph">Graph</h1>
+<p><img alt="img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Huber_loss.svg/720px-Huber_loss.svg.png" />
+- Huber loss is green (\( \delta = 1 \))
+- squared error loss is blue</p>
+<h1 id="code">Code</h1>
+<pre><code class="python">import tensorflow as tf
+import pandas as pd
+import numpy as np
+import math
 
 
+def huber_loss(y, y_hat, delta):
+    diff = math.abs(y - y_hat)
+    if diff &lt; delta:
+        return 0.5 * diff**2
+    else:
+        return delta * diff - 0.5 * delta**2
+
+
+def huber_loss(y, y_hat, delta=1.0):
+    residual = tf.abs(y - y_hat)
+    def square_f(): return 0.5 * tf.square(residual)
+    def abs_f(): return delta * residual - 0.5 * tf.square(delta)
+    return tf.cond(residual &lt; delta, square_f, abs_f)
+</code></pre>
+
+<h1 id="tag">Tag</h1>
+<ul>
+<li>loss function</li>
+<li>ml</li>
+<li>huber loss</li>
+</ul></div>
         </div>
 
         <footer class="col-md-12">
@@ -122,12 +193,12 @@
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "/",
+            var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="/js/base.js" defer></script>
+        <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-        <script src="/search/main.js" defer></script>
+        <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
     <div class="modal-dialog">

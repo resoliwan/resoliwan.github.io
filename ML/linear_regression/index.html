@@ -7,11 +7,11 @@
         
         
         
-        <link rel="shortcut icon" href="/img/favicon.ico">
-        <title>Leonadro's home</title>
-        <link href="/css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="/css/font-awesome.min.css" rel="stylesheet">
-        <link href="/css/base.css" rel="stylesheet">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Linear regression - Leonadro's home</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <script src="/js/jquery-1.10.2.min.js" defer></script>
-        <script src="/js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
@@ -39,7 +39,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/.">Leonadro's home</a>
+                    <a class="navbar-brand" href="../..">Leonadro's home</a>
                 </div>
 
                 <!-- Expanded navigation -->
@@ -47,30 +47,30 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li >
-                                <a href="/.">README.md</a>
+                                <a href="../..">README.md</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">ML <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="/ML/MNIST/">MNIST</a>
+    <a href="../MNIST/">MNIST</a>
 </li>
                                     
 <li >
-    <a href="/ML/huber_loss/">Huber loss</a>
+    <a href="../huber_loss/">Huber loss</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">Linear regression</a>
 </li>
                                     
 <li >
-    <a href="/ML/linear_regression/">Linear regression</a>
+    <a href="../softmax/">Softmax</a>
 </li>
                                     
 <li >
-    <a href="/ML/softmax/">Softmax</a>
-</li>
-                                    
-<li >
-    <a href="/ML/tensorflow_dataset/">tenserflow data</a>
+    <a href="../tensorflow_dataset/">tenserflow data</a>
 </li>
                                 </ul>
                             </li>
@@ -79,7 +79,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="/idea/launcher/">Luncher App</a>
+    <a href="../../idea/launcher/">Luncher App</a>
 </li>
                                 </ul>
                             </li>
@@ -88,7 +88,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="/mkdocs/usage/">HowTo</a>
+    <a href="../../mkdocs/usage/">HowTo</a>
 </li>
                                 </ul>
                             </li>
@@ -100,21 +100,159 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li >
+                                <a rel="next" href="../huber_loss/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../softmax/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#linear-regression">Linear regression</a></li>
+        <li class="main "><a href="#goal">Goal</a></li>
+        <li class="main "><a href="#data">Data</a></li>
+        <li class="main "><a href="#plan">Plan</a></li>
+        <li class="main "><a href="#model">Model</a></li>
+        <li class="main "><a href="#code">Code</a></li>
+            <li><a href="#use-place-holder">Use Place holder.</a></li>
+            <li><a href="#use-dataset">Use dataset</a></li>
+        <li class="main "><a href="#resource">Resource</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
 
-    <div class="row-fluid">
-      <div id="main-content" class="span12">
-        <h1 id="404-page-not-found" style="text-align: center">404</h1>
-        <p style="text-align: center"><strong>Page not found</strong></p>
-      </div>
-    </div>
+<h1 id="linear-regression">Linear regression</h1>
+<h1 id="goal">Goal</h1>
+<p>Make linear model to predict y value.</p>
+<h1 id="data">Data</h1>
+<ul>
+<li>x: birth_rate</li>
+<li>y: life_expectancy</li>
+<li>M: 190</li>
+</ul>
+<pre><code>Country Birth_rate  Life_expectancy
+Vietnam 1.822   74.828243902
+Vanuatu 3.869   70.819487805
+Tonga   3.911   72.150658537
+</code></pre>
+
+<h1 id="plan">Plan</h1>
+<ul>
+<li>Load data</li>
+<li>define input and target.</li>
+<li>Create model</li>
+<li>define forward model</li>
+<li>define optimize model<ul>
+<li>define loss function.</li>
+</ul>
+</li>
+<li>Train data</li>
+<li>Optimize loss function.</li>
+<li>Measure performance.</li>
+<li>predict data.</li>
+<li>Get measure cost.</li>
+</ul>
+<h1 id="model">Model</h1>
+<ul>
+<li>Linear regression.</li>
+</ul>
+<p>\( f(x) = w * X + b\)</p>
+<p>\( loss = (y - \hat y)^2\)</p>
+<p>\( cost(\theta) = \sum_{i=0}^{M}loss(x^{(i)})\)</p>
+<h1 id="code">Code</h1>
+<h3 id="use-place-holder">Use Place holder.</h3>
+<pre><code class="python">import pandas as pd
+import numpy as np
+import tensorflow as tf
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('./examples/data/birth_life_2010.txt', delimiter='\t')
+df.describe()
+df.shape[0]
+input_label = 'Birthrate'
+target_label = 'Lifeexpectancy'
+
+X = tf.placeholder(tf.float32, name='X')
+y = tf.placeholder(tf.float32, name='y')
+W = tf.get_variable('w', initializer=tf.constant(0.0))
+b = tf.get_variable('b', initializer=tf.constant(0.0))
+init_variables = tf.global_variables_initializer()
+
+y_hat = tf.multiply(W, X) + b
+loss = tf.sqrt((y - y_hat)**2)
+optimizer = tf.train.GradientDescentOptimizer(learning_rate=1e-2).minimize(loss)
+
+with tf.Session() as sess:
+    sess.run(init_variables)
+    writer = tf.summary.FileWriter('./graphs/linear_reg2', sess.graph)
+    for batch in range(100):
+        cost = 0
+        for i in range(df.shape[0]):
+            _, loss_out = sess.run([optimizer, loss], feed_dict={X: df[input_label][i], y: df[target_label][i]})
+            cost += loss_out
+        W_out, b_out = sess.run([W, b])
+        print(W_out, b_out, cost)
+    writer.close()
 
 
+plt.scatter(df[input_label], df[target_label])
+x_min = df[input_label].min()
+x_max = df[input_label].max()
+plt.plot([x_min, x_max], [W_out * x_min + b_out, W_out * x_max + b_out])
+plt.show()
+</code></pre>
+
+<h3 id="use-dataset">Use dataset</h3>
+<pre><code class="python">import pandas as pd
+import numpy as np
+import tensorflow as tf
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('./examples/data/birth_life_2010.txt', delimiter='\t')
+df.describe()
+dataset = tf.data.Dataset.from_tensor_slices((df['Birthrate'], df['Lifeexpectancy']))
+iterator = dataset.make_initializable_iterator()
+X, y = iterator.get_next()
+
+# with tf.Session() as sess:
+#     sess.run(iterator.initializer)
+#     sess.run(iterator.get_next())
+
+W = tf.get_variable('weights', initializer=tf.constant(0.0, dtype=tf.float64))
+b = tf.get_variable('bias', initializer=tf.constant(0.0, dtype=tf.float64))
+y_hat = W * X + b
+loss = tf.square(y - y_hat)
+optimizer = tf.train.GradientDescentOptimizer(learning_rate=1e-3).minimize(loss)
+
+with tf.Session() as sess:
+    sess.run(tf.global_variables_initializer())
+    for epoch in range(100):
+        sess.run(iterator.initializer)
+        cost = 0
+        try:
+            while True:
+                _, out_loss = sess.run([optimizer, loss])
+                cost += out_loss
+        except:
+            pass
+        out_W, out_b = sess.run([W, b])
+        print('epoch %d out_W %f out_b %f cost %f' % (epoch, out_W, out_b, cost))
+</code></pre>
+
+<h1 id="resource">Resource</h1>
+<ul>
+<li><a href="https://gitter.im/stanford-tensorflow-tutorials">stanford-tensorflow-tutorials</a></li>
+</ul></div>
         </div>
 
         <footer class="col-md-12">
@@ -122,12 +260,12 @@
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "/",
+            var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="/js/base.js" defer></script>
+        <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-        <script src="/search/main.js" defer></script>
+        <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
     <div class="modal-dialog">

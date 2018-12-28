@@ -7,11 +7,11 @@
         
         
         
-        <link rel="shortcut icon" href="/img/favicon.ico">
-        <title>Leonadro's home</title>
-        <link href="/css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="/css/font-awesome.min.css" rel="stylesheet">
-        <link href="/css/base.css" rel="stylesheet">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Softmax - Leonadro's home</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <script src="/js/jquery-1.10.2.min.js" defer></script>
-        <script src="/js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap-3.0.3.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
@@ -39,7 +39,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/.">Leonadro's home</a>
+                    <a class="navbar-brand" href="../..">Leonadro's home</a>
                 </div>
 
                 <!-- Expanded navigation -->
@@ -47,30 +47,30 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li >
-                                <a href="/.">README.md</a>
+                                <a href="../..">README.md</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">ML <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="/ML/MNIST/">MNIST</a>
+    <a href="../MNIST/">MNIST</a>
 </li>
                                     
 <li >
-    <a href="/ML/huber_loss/">Huber loss</a>
+    <a href="../huber_loss/">Huber loss</a>
 </li>
                                     
 <li >
-    <a href="/ML/linear_regression/">Linear regression</a>
+    <a href="../linear_regression/">Linear regression</a>
+</li>
+                                    
+<li class="active">
+    <a href="./">Softmax</a>
 </li>
                                     
 <li >
-    <a href="/ML/softmax/">Softmax</a>
-</li>
-                                    
-<li >
-    <a href="/ML/tensorflow_dataset/">tenserflow data</a>
+    <a href="../tensorflow_dataset/">tenserflow data</a>
 </li>
                                 </ul>
                             </li>
@@ -79,7 +79,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="/idea/launcher/">Luncher App</a>
+    <a href="../../idea/launcher/">Luncher App</a>
 </li>
                                 </ul>
                             </li>
@@ -88,7 +88,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="/mkdocs/usage/">HowTo</a>
+    <a href="../../mkdocs/usage/">HowTo</a>
 </li>
                                 </ul>
                             </li>
@@ -100,21 +100,58 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li >
+                                <a rel="next" href="../linear_regression/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../tensorflow_dataset/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#softmax">Softmax</a></li>
+            <li><a href="#goals">Goals</a></li>
+            <li><a href="#idea">Idea</a></li>
+            <li><a href="#code">Code</a></li>
+        <li class="main "><a href="#tag">Tag</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
 
-    <div class="row-fluid">
-      <div id="main-content" class="span12">
-        <h1 id="404-page-not-found" style="text-align: center">404</h1>
-        <p style="text-align: center"><strong>Page not found</strong></p>
-      </div>
-    </div>
+<h1 id="softmax">Softmax</h1>
+<h2 id="goals">Goals</h2>
+<p>Input 값들을 다 합치면 1이 되는 확률값으로 변환해 주고 싶다.</p>
+<p>그 이야기는 어떤 값이던 0 과 1 사이의 값을 리턴하는 함수를 만들고 싶다.</p>
+<p>\( \sigma: \mathbb {R} ^{K}\to (0,1)^{K} \)</p>
+<h2 id="idea">Idea</h2>
+<p>예를들어 input 값이 [1,2,3] 일 경우 결과의  총합이 1이 되게 해줄려면 input을 다 더한값 6 = 1 + 2 + 3으로 모든 인풋값을 나누어 주면 된다.</p>
+<p>\( \sigma([1,2,3]) \to [\frac{1}{6},\frac{2}{6},\frac{3}{6}] \approx [0.16, 0.33, 0.5] \approx 1 \)</p>
+<p>위의 식을 정리하면 아래의 식이 된다.</p>
+<p>\( \sigma(\mathbf{z_{j}}) = {\frac {z_{j}}{\sum_{k=1}^{K}z_{k}}}\)</p>
+<p>위의 함수의 상수 z를 지수로 바꿔주자.  \(z_j \to e^{z_j} \approx 2.71^{z_j}\) </p>
+<p>\( \sigma(\mathbf{z_{j}}) = {\frac{e^{z_{j}}}{\sum_{k=1}^{K}e^{z_{k}}}} \)</p>
+<p>그렇다 위의 식이 softmax 이며 우리의 예제를 계산하면</p>
+<p>\( \sigma([1,2,3]) \to [\frac{2.7}{30.2},\frac{7.3}{30.2},\frac{20.1}{30.2}] \approx [0.09, 0.24, 0.66] \approx 1 \)</p>
+<h2 id="code">Code</h2>
+<pre><code class="py">import numpy as np
+x = [1,2,3]
+def softmax(x): 
+    np.exp(x) / np.sum(np.exp(x))
+</code></pre>
 
-
+<h1 id="tag">Tag</h1>
+<ul>
+<li>softmax</li>
+</ul></div>
         </div>
 
         <footer class="col-md-12">
@@ -122,12 +159,12 @@
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "/",
+            var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="/js/base.js" defer></script>
+        <script src="../../js/base.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-        <script src="/search/main.js" defer></script>
+        <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
     <div class="modal-dialog">
