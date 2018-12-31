@@ -104,12 +104,28 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Idea <b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Etc <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
+  <li class="dropdown-submenu">
+    <a href="#">Books</a>
+    <ul class="dropdown-menu">
+            
 <li >
-    <a href="../../../idea/launcher/">Luncher App</a>
+    <a href="../../../etc/books/2018_12_lovethatdog/">Love that dog</a>
 </li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">Idea</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../etc/idea/launcher/">Luncher App</a>
+</li>
+    </ul>
+  </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -149,7 +165,10 @@
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#check-list-for-learning-algorithm">Check list for learning algorithm</a></li>
         <li class="main "><a href="#problem">Problem</a></li>
-            <li><a href="#insertion-sort">Insertion sort</a></li>
+        <li class="main "><a href="#insertion-sort">Insertion sort</a></li>
+            <li><a href="#idea">Idea</a></li>
+            <li><a href="#pseduocode">Pseduocode</a></li>
+            <li><a href="#argue-that-it-correctly-works">Argue that it correctly works</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -167,8 +186,8 @@
 <li><strong>Output</strong>: The permutation(reordering) \( A = <a_{1}^{\prime},a_{2}^{\prime},...,a_{n}^{\prime}>  \) 
     of the input sequence such that satisfies \( a_{1}^{\prime} \le a_{2}^{\prime} \le ... \le a_{n}^{\prime} \).</li>
 </ul>
-<h3 id="insertion-sort">Insertion sort</h3>
-<h4 id="idea">Idea</h4>
+<h1 id="insertion-sort">Insertion sort</h1>
+<h2 id="idea">Idea</h2>
 <ul>
 <li>Idea: incremental approch. <ul>
 <li>increment sorted array.</li>
@@ -186,26 +205,24 @@
 </ol>
 </li>
 </ul>
-<h4 id="pseduocode">Pseduocode</h4>
+<h2 id="pseduocode">Pseduocode</h2>
 <p><strong>Persue clean and concise</strong> </p>
-<pre><code class="python">for j = 2 to A.length
-    key = A[j]
-    // Insert A[j] into the sorted sequence A[1..j - 1]
-    i = j - 1
-    while i &gt; 0 and A[i] &gt; key
-        A[i + 1] = A[i]
-        i = i - 1
-    A[i + 1] = key
+<pre><code class="python">1 for j = 2 to A.length
+2     key = A[j]
+3     // Insert A[j] into the sorted sequence A[1..j - 1]
+4     i = j - 1
+5     while i &gt; 0 and A[i] &gt; key
+6         A[i + 1] = A[i]
+7         i = i - 1
+8     A[i + 1] = key
 </code></pre>
 
-<blockquote>
 <p>Tip
 - Use "i" as a important loop variable name.
 - Use simple condition first when there is logical concanation.
-- Use left as variable and right to almost constant value when compare two numbers. 
+- Use left as variable and right as almost constant value when compare two numbers. 
 - Make it simple as possible</p>
-</blockquote>
-<h4 id="argue-that-it-correctly-works">Argue that it correctly works</h4></div>
+<h2 id="argue-that-it-correctly-works">Argue that it correctly works</h2></div>
         </div>
 
         <footer class="col-md-12">
