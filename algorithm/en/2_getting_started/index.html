@@ -111,6 +111,10 @@
 <li >
     <a href="../../../android/publish/3_version/">Version your app</a>
 </li>
+            
+<li >
+    <a href="../../../android/publish/4_sign/">Sign your app</a>
+</li>
     </ul>
   </li>
                                 </ul>
@@ -135,6 +139,21 @@
             
 <li >
     <a href="../../../etc/idea/launcher/">Luncher App</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Language <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">Cpp</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../language/cpp/new_cpp/">New c++11 standard</a>
 </li>
     </ul>
   </li>
@@ -204,8 +223,10 @@
         <li class="main "><a href="#problem">Problem</a></li>
         <li class="main "><a href="#insertion-sort">Insertion sort</a></li>
             <li><a href="#idea">Idea</a></li>
-            <li><a href="#pseduocode">Pseduocode</a></li>
+            <li><a href="#pseudocode">Pseudocode</a></li>
             <li><a href="#argue-that-it-is-correctly-works">Argue that it is correctly works</a></li>
+            <li><a href="#pseudocode-conventions">Pseudocode conventions</a></li>
+        <li class="main "><a href="#from">From</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -226,9 +247,9 @@ of the input sequence such that satisfies \( a_{1}^{\prime} \le a_{2}^{\prime} \
 <h1 id="insertion-sort">Insertion sort</h1>
 <h2 id="idea">Idea</h2>
 <ul>
-<li>Idea: incremental approch. <ul>
+<li>Idea: incremental approach. <ul>
 <li>increment sorted array.</li>
-<li>insert current item into the sorted arrary A[1..j - 1]</li>
+<li>insert current item into the sorted array A[1..j - 1]</li>
 </ul>
 </li>
 <li>HowTo: <ol>
@@ -242,8 +263,8 @@ of the input sequence such that satisfies \( a_{1}^{\prime} \le a_{2}^{\prime} \
 </ol>
 </li>
 </ul>
-<h2 id="pseduocode">Pseduocode</h2>
-<p><strong>Persue clean and concise</strong> </p>
+<h2 id="pseudocode">Pseudocode</h2>
+<p><strong>Pursue clean and concise</strong> </p>
 <pre><code class="python">1 for j = 2 to A.length
 2     key = A[j]
 3     // Insert A[j] into the sorted sequence A[1..j - 1]
@@ -256,18 +277,54 @@ of the input sequence such that satisfies \( a_{1}^{\prime} \le a_{2}^{\prime} \
 
 <p>Tip
 - Use "i" as a important loop variable name.
-- Use simple condition first when there is logical concanation.
+- Use simple condition first when there is logical concatenation.
 - Use left as variable and right as almost constant value when compare two numbers. 
 - Make it simple as possible</p>
 <h2 id="argue-that-it-is-correctly-works">Argue that it is correctly works</h2>
-<p>I will use loop invariants
-It keeps from start to terminate
-I'll claim sub-array is always sorted.
-initialization, maintain, termination.
-initialization
-    The sub arrary started with only one element so it's hold
-maintain
-    It insert one item into the sorted arrary at right position which above</p></div>
+<h4 id="guess">Guess</h4>
+<ul>
+<li>I will use loop invariants.</li>
+<li>It keeps from start to terminate.</li>
+<li>I'll claim sub-array is always sorted.</li>
+</ul>
+<h4 id="loop-invariants">loop invariants:</h4>
+<pre><code>The sub-array A[1..j-1] consists of the elements originally in A[1..j-1], but in sorted order.
+</code></pre>
+
+<p>It is similarity to the mathematical induction.
+We say an algorithm has true loop invariant on some properties.</p>
+<p>When the three properties hold, the loop invariant is true.
+0. <strong>Initialization:</strong> It is true prior to the first iteration of the loop.
+0. <strong>Maintenance:</strong> If it is true before an iteration of the loop,it remains true before the next iteration.
+0. <strong>Termination:</strong> When the loop terminates, the invariant gives us a useful property that helps show that the algorithm is correct.</p>
+<h5 id="initialization">Initialization</h5>
+<p>When j = 2, The subarray A[1..j-1] consists of just one element A[1], which is in fact the original element in A[1].
+Moreover, the subarray is sorted(trivially, of course).</p>
+<h5 id="maintenance">Maintenance</h5>
+<p>The body of for loop works by moving A[j-1], A[j-2], A[j-3], and so on by one position to the right until it finds
+the proper position for A<a href="lines 4-7">j</a>, at which point it inserts the value of a<a href="line 8">j</a>.
+The subarray A[1..j] then consists of the elements originally in A[1..j],but it sorted order. Incrementing j for the
+next iteration of the for loop then preserve the loop invariant.</p>
+<h5 id="termination">Termination</h5>
+<p>The condition causing the for loop to terminate is that j &gt; A.length = n. Because each loop iteration increase j by 1,
+we must have j = n + 1 at that time. Substituting n + 1 for j in the wording of loop invariant, we have that the subarray
+A[1..n] consists of the element originally in A[1..n], but in sorted order.</p>
+<h2 id="pseudocode-conventions">Pseudocode conventions</h2>
+<ul>
+<li>We use the keyword <em>to</em> when a for loop increments its loop counter.</li>
+<li>We use the keyword <em>downto</em> when a for loop decrements its loop counter.</li>
+<li>When the loop counter changes by an amount greater then 1, the amount of change follows the optional keyword by.</li>
+<li>We shall not use global variables without explicit indication.</li>
+<li>The notation .. is used to indicate a range of values within an arrary. Thus, A[1..j] indicates the subarray of A consisting of the j elements A[1],A[2],...,A[j].</li>
+<li>We organize compound date into objects, which are composed of attributes.</li>
+<li>We treat a variable represent arrary and object as a point to the date representing  the arrary or object. 
+For all attributes f of an object x, setting y = x causes y.f to equal x.f. Moreover, if we now set x.f = 3, then afterward not only 
+dose x.f equal 3, but y.f equals 3 as well. In other words, x and y point to same object after the assignment y = x.</li>
+</ul>
+<h1 id="from">From</h1>
+<ul>
+<li>https://mitpress.mit.edu/books/introduction-algorithms-third-edition</li>
+</ul></div>
         </div>
 
         <footer class="col-md-12">

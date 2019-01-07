@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
-        <title>Google Play Billing - Leonadro's home</title>
+        <title>Sign your app - Leonadro's home</title>
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../../css/base.css" rel="stylesheet">
@@ -86,12 +86,12 @@
     <a href="#">Googleplay</a>
     <ul class="dropdown-menu">
             
-<li class="active">
-    <a href="./">Google Play Billing</a>
+<li >
+    <a href="../../googleplay/googleplay_billing/">Google Play Billing</a>
 </li>
             
 <li >
-    <a href="../googleplay_billing_library/">Google Play Billing Library</a>
+    <a href="../../googleplay/googleplay_billing_library/">Google Play Billing Library</a>
 </li>
     </ul>
   </li>
@@ -101,19 +101,19 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../../publish/1_publish_overview/">Publish your app</a>
+    <a href="../1_publish_overview/">Publish your app</a>
 </li>
             
 <li >
-    <a href="../../publish/2_prepare_for_release/">Prepare for release</a>
+    <a href="../2_prepare_for_release/">Prepare for release</a>
 </li>
             
 <li >
-    <a href="../../publish/3_version/">Version your app</a>
+    <a href="../3_version/">Version your app</a>
 </li>
             
-<li >
-    <a href="../../publish/4_sign/">Sign your app</a>
+<li class="active">
+    <a href="./">Sign your app</a>
 </li>
     </ul>
   </li>
@@ -202,12 +202,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../../../algorithm/kr/1_introduction/">
+                                <a rel="next" href="../3_version/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../googleplay_billing_library/">
+                                <a rel="prev" href="../../../etc/books/2018_12_lovethatdog/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -219,106 +219,79 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#google-play-billing">Google Play Billing</a></li>
-            <li><a href="#building-blocks">Building Blocks</a></li>
-            <li><a href="#in-app-product-types">In-app product types</a></li>
-            <li><a href="#purchase-tokens-and-order-ids">Purchase tokens and order IDs</a></li>
-            <li><a href="#in-app-product-configuration-options">In-app product configuration options</a></li>
-            <li><a href="#unique-one-time-product-configuration-options">Unique one-time product configuration options.</a></li>
-            <li><a href="#unique-subscription-product-configuration-options">Unique subscription product configuration options.</a></li>
+        <li class="main active"><a href="#sign-your-app">Sign your app</a></li>
+            <li><a href="#certificates-and-keystores">Certificates and keystores</a></li>
+            <li><a href="#sign-your-debug-build">Sign your debug build</a></li>
+            <li><a href="#expire-of-the-debug-certificate">Expire of the debug certificate.</a></li>
+            <li><a href="#manage-your-key">Manage your key</a></li>
+            <li><a href="#manage-your-own-key-and-keystore">Manage your own key and keystore</a></li>
+            <li><a href="#use-app-signing-by-google-play-recommended">Use App Signing by Google Play (recommended)</a></li>
+            <li><a href="#generate-a-key-and-keystore">Generate a key and keystore.</a></li>
+            <li><a href="#configure-gradlebuild">Configure gradle.build</a></li>
+            <li><a href="#sign-your-app-from-command-line">Sign your app from command line</a></li>
+            <li><a href="#sign-your-app-from-command-line_1">Sign your app from command line</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="google-play-billing">Google Play Billing</h1>
-<p>Let you sell the digital content from inside an Android app.</p>
-<h2 id="building-blocks">Building Blocks</h2>
+<h1 id="sign-your-app">Sign your app</h1>
+<h2 id="certificates-and-keystores">Certificates and keystores</h2>
+<p>To help Android ensure that any future updates to your app are authentic and come from the original author.
+It needs a tool for identifying author.
+Android use public/private key pairs.</p>
+<p>A public-key certificate, also known as a digital certificate or an identity certificate is a public key.
+The public-key certificate serve as a "fingerprint" that uniquely associates the APK or app bundle to you and your corresponding private key.</p>
+<p>A keystore is a binary file that contains one or more private keys.</p>
+<h2 id="sign-your-debug-build">Sign your debug build</h2>
+<p>Android Studio automatically signs your app with a debug certificate generated by the Android SDK tools
+in <code>$HOME/.android/debug.keystore</code>.</p>
+<h2 id="expire-of-the-debug-certificate">Expire of the debug certificate.</h2>
+<p>When the certificate expires, you will get a build error. </p>
+<p>To fix this problem, simply delete the <code>debug.keystore</code></p>
+<h2 id="manage-your-key">Manage your key</h2>
+<ul>
+<li>Manage your own key and keystore.</li>
+<li>Use App Signing by Google Play.</li>
+</ul>
+<h2 id="manage-your-own-key-and-keystore">Manage your own key and keystore</h2>
+<p>You are responsible for securing the key and the keystore.
+- A key(App signing key) is a private key.
+- A keystore is a binary file contains keys.</p>
+<p><strong>If you loose access to your key or key is compromised, Google cannot retrieve the app singing key for your</strong></p>
+<h2 id="use-app-signing-by-google-play-recommended">Use App Signing by Google Play (recommended)</h2>
 <ol>
-<li><strong><em>Google Play</em></strong>: <ul>
-<li>An online store where users can download digital products.</li>
-</ul>
-</li>
-<li><strong><em>Google Play Console</em></strong><ul>
-<li>The interface app developers use to publish apps on Google Play.</li>
-</ul>
-</li>
-<li><strong><em>Google API Console</em></strong><ul>
-<li>The console for managing backend APIs, such as Google Play Developer API.</li>
-</ul>
-</li>
-<li><strong><em>Android device</em></strong>    <ul>
-<li>Any device used to run Android apps.</li>
-</ul>
-</li>
-<li><strong><em>Android app</em></strong><ul>
-<li>An application intended to run on Android device.</li>
-</ul>
-</li>
-<li><strong><em>Secure backend server</em></strong><ul>
-<li>A developer provided server used to implement purchase verification or subscription features.</li>
-</ul>
-</li>
-<li><strong><em>The Play Store app</em></strong><ul>
-<li>The app responsible for managing all operations related to the Google Play Billing.</li>
-</ul>
-</li>
-<li><strong><em>Google Play Billing Library</em></strong><ul>
-<li>An API that developers use to implement Google Play Billing within an app.</li>
-</ul>
-</li>
-<li><strong><em>Google Play Developer API</em></strong><ul>
-<li>A REST API used to programmatically perform a number of publishing and app-management tasks.<ul>
-<li>Subscription and In-App purchase API.</li>
-<li>Publishing API.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong><em>Real-time developer notifications</em></strong>
-    Server push notifications that let you monitor state changes.</li>
+<li>You export and encrypt your app signing key using the tool provided by Google Play, and then upload it to Google.</li>
+<li>Then you create a separate upload key and register it with Google.</li>
+<li>When you are ready to publish, you sign your app using the upload key and upload it Google Play.</li>
+<li>Google Play verify your identity and sing your APK(s) with your app signing key for distribution.</li>
 </ol>
-<h2 id="in-app-product-types">In-app product types</h2>
-<ul>
-<li>One-time products<ul>
-<li>The Google Play Console calls them managed products.</li>
-<li>The Google Play Billing library calls them INAPP.</li>
-</ul>
-</li>
-<li>Subscriptions</li>
-</ul>
-<h2 id="purchase-tokens-and-order-ids">Purchase tokens and order IDs</h2>
-<p>Google Play billing tracks products and transactions using purchase tokens and order IDs.
-- A <em>purchase token</em> is a string that represents a buyer's entitlement to a product on Google Play.
-- An <em>order ID</em> is a string that represents a financial transactions on Google Play.</p>
-<p>For one-time products, every purchase creates a new token and a new order ID.</p>
-<p>For subscriptions, an initial purchase creates a purchase token and an order ID.
-For each continuous billing period, the purchase token stays the same and a new order ID is issued.</p>
-<h2 id="in-app-product-configuration-options">In-app product configuration options</h2>
-<p>configuration options:</p>
-<ul>
-<li><em>Title</em> - A short description of the in-app product, such as "loot box."</li>
-<li><em>Description</em> - A longer description of the in-app product.</li>
-<li><em>Product ID</em> - A unique, human readable ID for your product. also called SKUs (Stock keeping unit)</li>
-<li><em>Price / Default Price</em> - The amount user will pay for the app-product.<ul>
-<li>The default price for one=time products reflects the amount the user will be charged for the product.</li>
-<li>The default price for subscription is the price will be charged after they enter a regular billing cycle.</li>
-</ul>
-</li>
-</ul>
-<p>A single app can have multiple in-app products available for purchase, each with different Product ID and price.</p>
-<h2 id="unique-one-time-product-configuration-options">Unique one-time product configuration options.</h2>
-<p>Promo codes are codes that a user uses to get a one-time product free of charge.</p>
-<h2 id="unique-subscription-product-configuration-options">Unique subscription product configuration options.</h2>
-<ol>
-<li><em>Billing period</em>: The frequency at which a user is charged while their subscription is active.<ul>
-<li>weekly, "1, 3, 6 months", annual </li>
-</ul>
-</li>
-<li><em>Free trial period</em>: An amount of time during which a user may access a subscription without being billed.</li>
-<li><em>Introductory price</em>: The price of the subscription over a certain number of initial, "introductory"   billing period.</li>
-<li><em>Grace period</em>: The amount of time a user's subscription will remain active, giving the user additional time to fix their payment issue.</li>
-<li><em>Account hold</em>: The state of a subscription can enter when a user does not update their form of payment during the grace period.</li>
-</ol></div>
+<p>When you lose your upload key, you can revoke your old upload key and generate a new one.</p>
+<h2 id="generate-a-key-and-keystore">Generate a key and keystore.</h2>
+<p>You can generate one using Android Studio
+0. Build &gt; Build &gt; Generate Signed Bundle/APK</p>
+<h2 id="configure-gradlebuild">Configure gradle.build</h2>
+<pre><code>android {
+    signingConfigs {
+        release {
+            storeFile project.KEYSTORE_STORE_FILE
+            storePassword project.KEYSTORE_STORE_PASSWORD
+            keyAlias project.KEYSTORE_KEY_ALIAS
+            keyPassword project.KEYSTORE_KEY_PASSWORD
+        }
+    }
+    buildTypes {
+        release {
+            ...
+            signingConfig signingConfigs.release
+        }
+    }
+</code></pre>
+
+<h2 id="sign-your-app-from-command-line">Sign your app from command line</h2>
+<pre><code>keytool -genkey -v -keystore my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias my-alia
+</code></pre>
+
+<h2 id="sign-your-app-from-command-line_1"><a href="https://developer.android.com/studio/publish/app-signing#signing-manually">Sign your app from command line</a></h2></div>
         </div>
 
         <footer class="col-md-12">

@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
-        <title>Google Play Billing - Leonadro's home</title>
+        <title>New c++11 standard - Leonadro's home</title>
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../../css/base.css" rel="stylesheet">
@@ -78,7 +78,7 @@
   </li>
                                 </ul>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -86,12 +86,12 @@
     <a href="#">Googleplay</a>
     <ul class="dropdown-menu">
             
-<li class="active">
-    <a href="./">Google Play Billing</a>
+<li >
+    <a href="../../../android/googleplay/googleplay_billing/">Google Play Billing</a>
 </li>
             
 <li >
-    <a href="../googleplay_billing_library/">Google Play Billing Library</a>
+    <a href="../../../android/googleplay/googleplay_billing_library/">Google Play Billing Library</a>
 </li>
     </ul>
   </li>
@@ -101,19 +101,19 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../../publish/1_publish_overview/">Publish your app</a>
+    <a href="../../../android/publish/1_publish_overview/">Publish your app</a>
 </li>
             
 <li >
-    <a href="../../publish/2_prepare_for_release/">Prepare for release</a>
+    <a href="../../../android/publish/2_prepare_for_release/">Prepare for release</a>
 </li>
             
 <li >
-    <a href="../../publish/3_version/">Version your app</a>
+    <a href="../../../android/publish/3_version/">Version your app</a>
 </li>
             
 <li >
-    <a href="../../publish/4_sign/">Sign your app</a>
+    <a href="../../../android/publish/4_sign/">Sign your app</a>
 </li>
     </ul>
   </li>
@@ -144,7 +144,7 @@
   </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Language <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -152,8 +152,8 @@
     <a href="#">Cpp</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../../language/cpp/new_cpp/">New c++11 standard</a>
+<li class="active">
+    <a href="./">New c++11 standard</a>
 </li>
     </ul>
   </li>
@@ -202,12 +202,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../../../algorithm/kr/1_introduction/">
+                                <a rel="next" href="../../../etc/idea/launcher/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../googleplay_billing_library/">
+                                <a rel="prev" href="../../../mkdocs/usage/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -219,106 +219,173 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#google-play-billing">Google Play Billing</a></li>
-            <li><a href="#building-blocks">Building Blocks</a></li>
-            <li><a href="#in-app-product-types">In-app product types</a></li>
-            <li><a href="#purchase-tokens-and-order-ids">Purchase tokens and order IDs</a></li>
-            <li><a href="#in-app-product-configuration-options">In-app product configuration options</a></li>
-            <li><a href="#unique-one-time-product-configuration-options">Unique one-time product configuration options.</a></li>
-            <li><a href="#unique-subscription-product-configuration-options">Unique subscription product configuration options.</a></li>
+        <li class="main active"><a href="#new-c11-standard">New c++11 standard</a></li>
+            <li><a href="#new-type">New type</a></li>
+            <li><a href="#uniform-initialization">Uniform initialization</a></li>
+            <li><a href="#declarations">Declarations</a></li>
+            <li><a href="#class-changes">Class Changes</a></li>
+            <li><a href="#template-and-stl-changes">Template and STL Changes</a></li>
+        <li class="main "><a href="#from">From</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="google-play-billing">Google Play Billing</h1>
-<p>Let you sell the digital content from inside an Android app.</p>
-<h2 id="building-blocks">Building Blocks</h2>
-<ol>
-<li><strong><em>Google Play</em></strong>: <ul>
-<li>An online store where users can download digital products.</li>
-</ul>
-</li>
-<li><strong><em>Google Play Console</em></strong><ul>
-<li>The interface app developers use to publish apps on Google Play.</li>
-</ul>
-</li>
-<li><strong><em>Google API Console</em></strong><ul>
-<li>The console for managing backend APIs, such as Google Play Developer API.</li>
-</ul>
-</li>
-<li><strong><em>Android device</em></strong>    <ul>
-<li>Any device used to run Android apps.</li>
-</ul>
-</li>
-<li><strong><em>Android app</em></strong><ul>
-<li>An application intended to run on Android device.</li>
-</ul>
-</li>
-<li><strong><em>Secure backend server</em></strong><ul>
-<li>A developer provided server used to implement purchase verification or subscription features.</li>
-</ul>
-</li>
-<li><strong><em>The Play Store app</em></strong><ul>
-<li>The app responsible for managing all operations related to the Google Play Billing.</li>
-</ul>
-</li>
-<li><strong><em>Google Play Billing Library</em></strong><ul>
-<li>An API that developers use to implement Google Play Billing within an app.</li>
-</ul>
-</li>
-<li><strong><em>Google Play Developer API</em></strong><ul>
-<li>A REST API used to programmatically perform a number of publishing and app-management tasks.<ul>
-<li>Subscription and In-App purchase API.</li>
-<li>Publishing API.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong><em>Real-time developer notifications</em></strong>
-    Server push notifications that let you monitor state changes.</li>
-</ol>
-<h2 id="in-app-product-types">In-app product types</h2>
+<h1 id="new-c11-standard">New c++11 standard</h1>
+<h2 id="new-type">New type</h2>
+<p>c++11 adds 
+- long long 
+- unsingned long long
+- char16_t
+- char32_t</p>
+<h2 id="uniform-initialization">Uniform initialization</h2>
+<p>c++11 extends the applicability of the brace-enclosed list (list initialization)</p>
+<pre><code class="cpp">int x = {5};
+double y {2.7};
+short quar[2] = {1,2}
+int * ar = new int [2] {1,2};
+
+class Test {
+private:
+    int aa;
+    int bb;
+public:
+    Test(int a, int b): aa(a), bb(b) {}
+}
+
+Test t1(1,2);
+Test t2{1,2};
+test t3 = {1,2};
+</code></pre>
+
+<h3 id="stdinitializer_list">std::initializer_list</h3>
+<p>Can be used as a constructor argument.</p>
+<pre><code class="cpp">vector&lt;int&gt; a1(10); // uninitialized vector with 10 elements
+vector&lt;int&gt; a2{10}; // initializer-ist a2 has 1 elements set to 10
+vecotr&lt;int&gt; a3{1,2,3}; // 3 elements set to 1,2,3
+</code></pre>
+
+<p>You can use an initializer_list argument for regular function as well as for constructor</p>
+<pre><code class="cpp">#include &lt;initializer_list&gt;
+double sum(std::initializer_list&lt;double&gt; li);
+int main() 
+{
+    double total = sum({1,2,3})
+}
+
+double sum(std::initializer_list&lt;double&gt; ii)
+{
+    double tot = 0;
+    for (auto p = il.begin(); p != il.end(); p++)
+        tot += *p;
+    return tot;
+}
+</code></pre>
+
+<h2 id="declarations">Declarations</h2>
+<h3 id="auto">auto</h3>
+<p>c++11 strips the keyword auto of its former meaning as a storage class specifier and puts it to use to implement
+automatic type deduction, provided that an explicit initializer is given.</p>
+<pre><code class="cpp">auto a = 1; // a is type int
+auto pta = &amp;a; // pta is type int *
+double b(double, int);
+...
+for(auto p = il.begin(); p != il.end(); p++);
+</code></pre>
+
+<h3 id="decltype">decltype</h3>
+<p>Create a variable of the type indicated by an expression.</p>
+<pre><code class="cpp">// decltype(x) y;
+double x;
+int n;
+decltype(x*n) q; // q same type as x*n, double
+decltype(&amp;x) pd; // pd same as &amp;x, double *
+//useful in template defininitions
+template&lt;typename T, typename U&gt;
+void ef(T t, U u)
+{
+    decltype(T*U) tu;
+}
+</code></pre>
+
+<h3 id="trailing-return-type">Trailing Return type</h3>
+<p>To use combination with decltype</p>
+<pre><code class="cpp">double f1(double int);
+auto f2(double, int) -&gt; double;
+
+template&lt;typename T, typename U&gt;
+auto ef(T t, U u): decltype(T*U)
+{
+    decltype(T*U) tu;
+}
+
+</code></pre>
+
+<h3 id="template-aliases-using">Template Aliases: using =</h3>
+<pre><code class="cpp">typedef double newDouble;
+using newDouble = double;
+template&lt;typename T&gt; using newDoubleArr = std::arrary&lt;T, 12&gt;
+</code></pre>
+
+<h3 id="nullptr">nullptr</h3>
+<p>The null pointer is a pointer guaranteed not to point to valid data. It's same as pt = 0;</p>
+<h3 id="smart-pointers">Smart Pointers</h3>
 <ul>
-<li>One-time products<ul>
-<li>The Google Play Console calls them managed products.</li>
-<li>The Google Play Billing library calls them INAPP.</li>
+<li>unique_ptr</li>
+<li>shared_ptr</li>
+<li>weak_ptr</li>
 </ul>
-</li>
-<li>Subscriptions</li>
-</ul>
-<h2 id="purchase-tokens-and-order-ids">Purchase tokens and order IDs</h2>
-<p>Google Play billing tracks products and transactions using purchase tokens and order IDs.
-- A <em>purchase token</em> is a string that represents a buyer's entitlement to a product on Google Play.
-- An <em>order ID</em> is a string that represents a financial transactions on Google Play.</p>
-<p>For one-time products, every purchase creates a new token and a new order ID.</p>
-<p>For subscriptions, an initial purchase creates a purchase token and an order ID.
-For each continuous billing period, the purchase token stays the same and a new order ID is issued.</p>
-<h2 id="in-app-product-configuration-options">In-app product configuration options</h2>
-<p>configuration options:</p>
-<ul>
-<li><em>Title</em> - A short description of the in-app product, such as "loot box."</li>
-<li><em>Description</em> - A longer description of the in-app product.</li>
-<li><em>Product ID</em> - A unique, human readable ID for your product. also called SKUs (Stock keeping unit)</li>
-<li><em>Price / Default Price</em> - The amount user will pay for the app-product.<ul>
-<li>The default price for one=time products reflects the amount the user will be charged for the product.</li>
-<li>The default price for subscription is the price will be charged after they enter a regular billing cycle.</li>
-</ul>
-</li>
-</ul>
-<p>A single app can have multiple in-app products available for purchase, each with different Product ID and price.</p>
-<h2 id="unique-one-time-product-configuration-options">Unique one-time product configuration options.</h2>
-<p>Promo codes are codes that a user uses to get a one-time product free of charge.</p>
-<h2 id="unique-subscription-product-configuration-options">Unique subscription product configuration options.</h2>
-<ol>
-<li><em>Billing period</em>: The frequency at which a user is charged while their subscription is active.<ul>
-<li>weekly, "1, 3, 6 months", annual </li>
-</ul>
-</li>
-<li><em>Free trial period</em>: An amount of time during which a user may access a subscription without being billed.</li>
-<li><em>Introductory price</em>: The price of the subscription over a certain number of initial, "introductory"   billing period.</li>
-<li><em>Grace period</em>: The amount of time a user's subscription will remain active, giving the user additional time to fix their payment issue.</li>
-<li><em>Account hold</em>: The state of a subscription can enter when a user does not update their form of payment during the grace period.</li>
-</ol></div>
+<h3 id="scoped-enumerations">Scoped Enumerations</h3>
+<p>You can use New1::yes and New2::yes.</p>
+<pre><code>enum Old {yes, no};
+enum class New1 {yes, no};
+enum struct New2 {yes, no};
+</code></pre>
+
+<h2 id="class-changes">Class Changes</h2>
+<h3 id="explicit-conversion-operators">explicit Conversion Operators</h3>
+<p>Introduce the keyword explicit to suppress automatic conversions invoked by one-argument constructor:</p>
+<pre><code class="cpp">class Test
+{
+    Test(int);
+    explicit Test(double);
+}
+
+Test a, b;
+a = 5; // implicit converstion, call Test(int)
+b = 0.5 // not allowed
+b = Test(0.5) // explicit conversion
+</code></pre>
+
+<p>conversion functions can be treated similarly:</p>
+<pre><code class="cpp">class Test
+{
+    operator int() const;
+    explicit operator double() const;
+}
+...
+Test a, b;
+int n = a; // int-to-Test automatic conversion;
+double x= b // not allowrd
+x = double(b) // explicit convesrion, allowd
+</code></pre>
+
+<h3 id="member-in-class-initialization">Member In-Class Initialization</h3>
+<pre><code>class Test
+{
+    int aval = 1;
+    int bval = 2;
+    int cval = 3;
+publc:
+    Test() {}
+    Test(int c): cval(c) {}
+    Test(int a, int b, int c): aval(a), bval(b), cval(c) {}
+}
+</code></pre>
+
+<h2 id="template-and-stl-changes">Template and STL Changes</h2>
+<h3 id="range-based-for-loop">Range-based for Loop</h3>
+<h1 id="from">From</h1>
+<p><a href="https://www.amazon.com/Primer-Plus-6th-Developers-Library/dp/0321776402">C++ Primer Plus (6th Edition)</a></p></div>
         </div>
 
         <footer class="col-md-12">
