@@ -295,11 +295,13 @@ of the input sequence such that satisfies $ a_{1}^{\prime} \le a_{2}^{\prime} \l
 8     A[i + 1] = key
 </code></pre>
 
-<p>Tip
-- Use "i" as a important loop variable name.
-- Use simple condition first when there is logical concatenation.
-- Use left as variable and right as almost constant value when compare two numbers. 
-- Make it simple as possible</p>
+<h4 id="tip">Tip</h4>
+<ul>
+<li>Use "i" as a important loop variable name.</li>
+<li>Use simple condition first when there is logical concatenation.</li>
+<li>Use left as variable and right as almost constant value when compare two numbers. </li>
+<li>Make it simple as possible</li>
+</ul>
 <h2 id="argue-that-it-is-correctly-works">Argue that it is correctly works</h2>
 <h4 id="guess">Guess</h4>
 <ul>
@@ -313,10 +315,12 @@ of the input sequence such that satisfies $ a_{1}^{\prime} \le a_{2}^{\prime} \l
 
 <p>It is similarity to the mathematical induction.
 We say an algorithm has true loop invariant on some properties.</p>
-<p>When the three properties hold, the loop invariant is true.
-0. <strong>Initialization:</strong> It is true prior to the first iteration of the loop.
-0. <strong>Maintenance:</strong> If it is true before an iteration of the loop,it remains true before the next iteration.
-0. <strong>Termination:</strong> When the loop terminates, the invariant gives us a useful property that helps show that the algorithm is correct.</p>
+<p>When the three properties hold, the loop invariant is true.</p>
+<ol>
+<li><strong>Initialization:</strong> It is true prior to the first iteration of the loop.</li>
+<li><strong>Maintenance:</strong> If it is true before an iteration of the loop,it remains true before the next iteration.</li>
+<li><strong>Termination:</strong> When the loop terminates, the invariant gives us a useful property that helps show that the algorithm is correct.</li>
+</ol>
 <h5 id="initialization">Initialization</h5>
 <p>When j = 2, The subarray A[1..j-1] consists of just one element A[1], which is in fact the original element in A[1].
 Moreover, the subarray is sorted(trivially, of course).</p>
