@@ -93,6 +93,10 @@
 <li >
     <a href="../../../android/googleplay/googleplay_billing_library/">Google Play Billing Library</a>
 </li>
+            
+<li >
+    <a href="../../../android/googleplay/overview/">Overview</a>
+</li>
     </ul>
   </li>
                                     
@@ -146,6 +150,10 @@
   <li class="dropdown-submenu">
     <a href="#">Vi</a>
     <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../etc/vi/etc/">Tips</a>
+</li>
             
 <li >
     <a href="../../../etc/vi/multi_lang/">Multi language</a>
@@ -236,6 +244,7 @@
             <li><a href="#pseudocode">Pseudocode</a></li>
             <li><a href="#argue-that-it-is-correctly-works">Argue that it is correctly works</a></li>
             <li><a href="#pseudocode-conventions">Pseudocode conventions</a></li>
+            <li><a href="#exercise">Exercise</a></li>
         <li class="main "><a href="#from">From</a></li>
     </ul>
 </div></div>
@@ -250,9 +259,9 @@
 </ol>
 <h1 id="problem">Problem</h1>
 <ul>
-<li><strong>Input</strong>: A sequence of n elements \(  A = &lt; a_{1}, a_{2}, ... ,a_{n} &gt; \).</li>
-<li><strong>Output</strong>: The permutation(reordering) \( A = &lt; a_{1}^{\prime},a_{2}^{\prime},...,a_{n}^{\prime} &gt;  \) 
-of the input sequence such that satisfies \( a_{1}^{\prime} \le a_{2}^{\prime} \le ... \le a_{n}^{\prime} \).</li>
+<li><strong>Input</strong>: A sequence of n elements $  A = &lt; a_{1}, a_{2}, ... ,a_{n} &gt; $.</li>
+<li><strong>Output</strong>: The permutation(reordering) $ A = &lt; a_{1}^{\prime},a_{2}^{\prime},...,a_{n}^{\prime} &gt;  $ 
+of the input sequence such that satisfies $ a_{1}^{\prime} \le a_{2}^{\prime} \le ... \le a_{n}^{\prime} $.</li>
 </ul>
 <h1 id="insertion-sort">Insertion sort</h1>
 <h2 id="idea">Idea</h2>
@@ -275,7 +284,8 @@ of the input sequence such that satisfies \( a_{1}^{\prime} \le a_{2}^{\prime} \
 </ul>
 <h2 id="pseudocode">Pseudocode</h2>
 <p><strong>Pursue clean and concise</strong> </p>
-<pre><code class="python">1 for j = 2 to A.length
+<pre><code class="python">INSERATION-SORT(A)
+1 for j = 2 to A.length
 2     key = A[j]
 3     // Insert A[j] into the sorted sequence A[1..j - 1]
 4     i = j - 1
@@ -330,7 +340,48 @@ A[1..n] consists of the element originally in A[1..n], but in sorted order.</p>
 <li>We treat a variable represent arrary and object as a point to the date representing  the arrary or object. 
 For all attributes f of an object x, setting y = x causes y.f to equal x.f. Moreover, if we now set x.f = 3, then afterward not only 
 dose x.f equal 3, but y.f equals 3 as well. In other words, x and y point to same object after the assignment y = x.</li>
+<li>We pass parameter to a procedure by value. When object passed, the pointer to the data representing object is copied.</li>
+<li>We allow multiple values to be returned by a single return statement.</li>
+<li>The boolean operators "and" and "or" are short circuiting.</li>
 </ul>
+<h2 id="exercise">Exercise</h2>
+<h4 id="21-1"><em>2.1-1</em></h4>
+<p>Using Figure 2.2 as a model, illustrate the operation of INSERTION-SORT on the Arrary A = &lt;31, 41, 59, 26, 41. 58&gt;</p>
+<h4 id="21-2"><em>2.1-2</em></h4>
+<p>Rewrite the Insertion-sort procedure to sort into nonincreasing instead of nondescreasing.</p>
+<pre><code class="python">INSERATION-SORT(A)
+For j = 2 to A.length
+    key = A[j]
+    i = j - 1
+    while i &gt; 0 and A[i] &lt; Key
+        A[i + 1] = A[i]
+        i = i - 1
+    A[i + 1] = key
+</code></pre>
+
+<h4 id="21-3"><em>2.1-3</em></h4>
+<p>Consider the <strong><em>searching problem</em></strong>: 
+<strong>Input</strong>: A sequence of n numbers $ A = &lt; a_{1}, a_{2},...,a_{n} &gt; $ and a value v.
+<strong>Output</strong>: An index i such that v = A[i] or the special value NIL if v dose not appear in A.</p>
+<p>Write pseudocode for linear search, which scan trough the sequence, looking for v.
+Using a loop invariant, prove that your algorithm is correct.
+Make sure that your loop invariant fulfills the three necessary properties.</p>
+<h5 id="pseudocode_1">pseudocode</h5>
+<pre><code class="python">LINEAR-SEARCH(A, v)
+i = NIL
+key = v
+For j = 1 to A.length
+    if A[j] == key
+        i = j
+</code></pre>
+
+<h5 id="loop-invariants_1">loop invariants</h5>
+<p>i is NIL or 1 &lt;= i &lt;= A.length.
+If A[j] == v then i = j. </p>
+<p><em>Initialization</em>: i is NIL. Before prior iteration.
+<em>Maintenance</em>: When j increase loop invariants hold before iteration and remain true before next iteration.
+<em>Termination</em>: When the loop terminate it give us a solution that is true.</p>
+<p>$ A = &lt; a_{2} &gt;$</p>
 <h1 id="from">From</h1>
 <ul>
 <li>https://mitpress.mit.edu/books/introduction-algorithms-third-edition</li>
@@ -346,6 +397,7 @@ dose x.f equal 3, but y.f equals 3 as well. In other words, x and y point to sam
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
         <script src="../../../js/base.js" defer></script>
+        <script src="../../../js/mathjax_config.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
         <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.js" defer></script>
         <script src="../../../search/main.js" defer></script>

@@ -93,6 +93,10 @@
 <li class="active">
     <a href="./">Google Play Billing Library</a>
 </li>
+            
+<li >
+    <a href="../overview/">Overview</a>
+</li>
     </ul>
   </li>
                                     
@@ -146,6 +150,10 @@
   <li class="dropdown-submenu">
     <a href="#">Vi</a>
     <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../etc/vi/etc/">Tips</a>
+</li>
             
 <li >
     <a href="../../../etc/vi/multi_lang/">Multi language</a>
@@ -217,7 +225,7 @@
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../../publish/1_publish_overview/">
+                                <a rel="prev" href="../overview/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -237,6 +245,7 @@
             <li><a href="#query-for-in-app-product-details">Query for in-app product details</a></li>
             <li><a href="#enable-the-purchase-of-an-in-app-product">Enable the purchase of an in-app product</a></li>
             <li><a href="#verify-a-purchase">Verify a purchase</a></li>
+            <li><a href="#best-practices">Best Practices</a></li>
             <li><a href="#from">From</a></li>
     </ul>
 </div></div>
@@ -343,15 +352,27 @@ representing the user and the product ID for in-app product they purchased.
 The purchase token for subscription stays the same for each billing period.</p>
 <h2 id="verify-a-purchase">Verify a purchase</h2>
 <h3 id="verify-a-purchase-on-a-server">Verify a purchase on a server</h3>
-<p><div class="mermaid">
+<ul>
+<li>Ensure that the device-server handshake is secure.</li>
+<li>Verify order Id is a unique value that you have not previously processed.</li>
+<li>Verify that your app's key has signed the INAPP_PURCHASE_DATA that you process.
+<div class="mermaid">
 sequenceDiagram
 Client -&gt;&gt;+ Google : purchase(appid, skuid)
 Google --&gt;&gt;- Client : purchaseToken, orderId
-Client -&gt;&gt;+ YourServer : verify(purchaseToken, orderId)
+Client -&gt;&gt;+ YourServer : verify(purchaseToken, orderId, account)
     YourServer -&gt;&gt;+ Google : Get purchase(appid, purchaseToken)
     Google --&gt;&gt;- YourServer : Purchase Detail 
 YourServer --&gt;&gt;- Client : verifyed
-</div></p>
+</div></li>
+</ul>
+<h2 id="best-practices">Best Practices</h2>
+<ul>
+<li>Use a real-time service to deliver your content.</li>
+<li>User a remote server to deliver your content.</li>
+<li>Encrypt the content.</li>
+<li>Whenever a user accesses the content, you should verify the user entitlement.</li>
+</ul>
 <h2 id="from">From</h2>
 <p><a href="https://developer.android.com/google/play/billing/billing_library_overview#java">Android Doc</a></p></div>
         </div>
@@ -365,6 +386,7 @@ YourServer --&gt;&gt;- Client : verifyed
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
         <script src="../../../js/base.js" defer></script>
+        <script src="../../../js/mathjax_config.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
         <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.js" defer></script>
         <script src="../../../search/main.js" defer></script>

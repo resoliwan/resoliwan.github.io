@@ -93,6 +93,10 @@
 <li >
     <a href="../../../android/googleplay/googleplay_billing_library/">Google Play Billing Library</a>
 </li>
+            
+<li >
+    <a href="../../../android/googleplay/overview/">Overview</a>
+</li>
     </ul>
   </li>
                                     
@@ -146,6 +150,10 @@
   <li class="dropdown-submenu">
     <a href="#">Vi</a>
     <ul class="dropdown-menu">
+            
+<li >
+    <a href="../etc/">Tips</a>
+</li>
             
 <li class="active">
     <a href="./">Multi language</a>
@@ -212,7 +220,7 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../../idea/launcher/">
+                                <a rel="next" href="../etc/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
@@ -233,7 +241,7 @@
         <li class="main "><a href="#background">BackGround</a></li>
         <li class="main "><a href="#goal">Goal</a></li>
             <li><a href="#_1">커맨드 키보드 변환 툴 설치</a></li>
-            <li><a href="#plguing">Plguing 설치</a></li>
+            <li><a href="#pluging">Pluging 설치</a></li>
             <li><a href="#esc-ctrlc">ESC 대신 Ctrl+c 를 쓰는 유저를 위한 팁</a></li>
     </ul>
 </div></div>
@@ -243,11 +251,11 @@
 <h1 id="background">BackGround</h1>
 <p>vim 에서 한글 문서를 작성하려고 하면 엄청나게 힘들다.
 visual mode, command 등에서 한글로 동작하지 않기 때문이다.
-- mac os
-- vim 8
-- iterm2 </p>
+<em> mac os
+</em> vim 8
+* iterm2 </p>
 <h1 id="goal">Goal</h1>
-<p>인설트 모두를 벋어 날때 자동으로 영문으로 변경되게 해보자.</p>
+<p>인설트 모두를 벗어 날때 자동으로 영문으로 변경되게 해보자.</p>
 <h2 id="_1">커맨드 키보드 변환 툴 설치</h2>
 <p>https://github.com/vovkasm/input-source-switcher</p>
 <pre><code>git clone https://github.com/vovkasm/input-source-switcher.git
@@ -260,9 +268,9 @@ make install
 issw //로 확인
 </code></pre>
 
-<h2 id="plguing">Plguing 설치</h2>
+<h2 id="pluging">Pluging 설치</h2>
 <p>https://github.com/lyokha/vim-xkbswitch
-- 저는 번들을 관리 툴로 사용합니다.</p>
+* 저는 번들을 관리 툴로 사용합니다.</p>
 <pre><code>//.vimrc
 Plugin 'lyokha/vim-xkbswitch'
 :PluginInstall
@@ -272,6 +280,7 @@ let g:XkbSwitchLib = '/usr/local/lib/libInputSourceSwitcher.dylib'
 </code></pre>
 
 <h2 id="esc-ctrlc">ESC 대신 Ctrl+c 를 쓰는 유저를 위한 팁</h2>
+<p>.vimrc 에 아래 설정 추가.</p>
 <pre><code>ino &lt;C-C&gt; &lt;Esc&gt;
 </code></pre></div>
         </div>
@@ -285,6 +294,7 @@ let g:XkbSwitchLib = '/usr/local/lib/libInputSourceSwitcher.dylib'
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
         <script src="../../../js/base.js" defer></script>
+        <script src="../../../js/mathjax_config.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
         <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.js" defer></script>
         <script src="../../../search/main.js" defer></script>

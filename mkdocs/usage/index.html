@@ -93,6 +93,10 @@
 <li >
     <a href="../../android/googleplay/googleplay_billing_library/">Google Play Billing Library</a>
 </li>
+            
+<li >
+    <a href="../../android/googleplay/overview/">Overview</a>
+</li>
     </ul>
   </li>
                                     
@@ -146,6 +150,10 @@
   <li class="dropdown-submenu">
     <a href="#">Vi</a>
     <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../etc/vi/etc/">Tips</a>
+</li>
             
 <li >
     <a href="../../etc/vi/multi_lang/">Multi language</a>
@@ -238,12 +246,36 @@
 
 <h1 id="howto">HowTo</h1>
 <h2 id="add-javascrtip">Add javascrtip</h2>
-<h4 id="mathjaxjs">Mathjax.js</h4>
+<h3 id="mathjaxjs">Mathjax.js</h3>
+<h4 id="enable-mathjaxjs">Enable Mathjax.js</h4>
 <ul>
 <li>add below configuration at mkdocs</li>
 </ul>
 <pre><code>extra_javascript:
     - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML
+</code></pre>
+
+<h4 id="change-math-syntax-from-9292-9292-to">Change math syntax from \\( ... \\) to \$ ... \$</h4>
+<pre><code class="javascript">window.MathJax = {
+    tex2jax: {
+      inlineMath: [[&quot;$&quot;,&quot;$&quot;]],
+      displayMath: [[&quot;$$&quot;, &quot;$$&quot;]]
+    },
+    TeX: {
+        TagSide: &quot;right&quot;,
+        TagIndent: &quot;.8em&quot;,
+        MultLineWidth: &quot;85%&quot;,
+        unicode: {
+            fonts: &quot;STIXGeneral,'Arial Unicode MS'&quot;
+        }
+    },
+    CommonHTML: {
+        scale: 90
+    },
+    showProcessingMessages: false,
+    messageStyle: &quot;none&quot;
+};
+
 </code></pre>
 
 <h2 id="deploy">Deploy</h2>
@@ -266,6 +298,7 @@ open https://resoliwan.github.io
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
         <script src="../../js/base.js" defer></script>
+        <script src="../../js/mathjax_config.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
         <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.js" defer></script>
         <script src="../../search/main.js" defer></script>
