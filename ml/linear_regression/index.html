@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Huber loss - Leonadro's home</title>
+        <title>Linear regression - Leonadro's home</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -187,20 +187,29 @@
   </li>
                                 </ul>
                             </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mkdocs <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../mkdocs/usage/">HowTo</a>
+</li>
+                                </ul>
+                            </li>
                             <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">machineLearing <b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ml <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li >
     <a href="../MNIST/">MNIST</a>
 </li>
                                     
-<li class="active">
-    <a href="./">Huber loss</a>
+<li >
+    <a href="../huber_loss/">Huber loss</a>
 </li>
                                     
-<li >
-    <a href="../linear_regression/">Linear regression</a>
+<li class="active">
+    <a href="./">Linear regression</a>
 </li>
                                     
 <li >
@@ -209,15 +218,6 @@
                                     
 <li >
     <a href="../tensorflow_dataset/">tenserflow data</a>
-</li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mkdocs <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="../../mkdocs/usage/">HowTo</a>
 </li>
                                 </ul>
                             </li>
@@ -230,12 +230,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../MNIST/">
+                                <a rel="next" href="../huber_loss/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../linear_regression/">
+                                <a rel="prev" href="../softmax/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -247,73 +247,140 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#huber-loss">Huber loss</a></li>
+        <li class="main active"><a href="#linear-regression">Linear regression</a></li>
         <li class="main "><a href="#goal">Goal</a></li>
-        <li class="main "><a href="#how-to">How to</a></li>
-            <li><a href="#idea">IDEA</a></li>
-            <li><a href="#huber-loss_1">Huber loss</a></li>
-        <li class="main "><a href="#graph">Graph</a></li>
+        <li class="main "><a href="#data">Data</a></li>
+        <li class="main "><a href="#plan">Plan</a></li>
+        <li class="main "><a href="#model">Model</a></li>
         <li class="main "><a href="#code">Code</a></li>
-        <li class="main "><a href="#tag">Tag</a></li>
+            <li><a href="#use-place-holder">Use Place holder.</a></li>
+            <li><a href="#use-dataset">Use dataset</a></li>
+        <li class="main "><a href="#resource">Resource</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="huber-loss">Huber loss</h1>
+<h1 id="linear-regression">Linear regression</h1>
 <h1 id="goal">Goal</h1>
-<p>Want less sensitive function to the outliers than the square error loss.</p>
-<h1 id="how-to">How to</h1>
+<p>Make linear model to predict y value.</p>
+<h1 id="data">Data</h1>
 <ul>
-<li>Use square function for small value.</li>
-<li>Use absolute function for large value.</li>
+<li>x: birth_rate</li>
+<li>y: life_expectancy</li>
+<li>M: 190</li>
 </ul>
-<h3 id="idea">IDEA</h3>
-<p>\(
-f(a) =
-\begin{cases}
-a^2                     &amp; \text{for }|a| \leq 1, \\
-|a|                     &amp; \text{ otherwise}
-\end{cases}
-\)</p>
-<h3 id="huber-loss_1">Huber loss</h3>
-<p>\(
-L_{\delta}(a) =
-\begin{cases}
-\frac{1}{2}a^2                     &amp; \text{for }|a| \leq \delta, \\
-\delta (|a| - \frac{1}{2} \delta), &amp; \text{ otherwise}
-\end{cases}
-\)</p>
-<h1 id="graph">Graph</h1>
-<p><img alt="img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Huber_loss.svg/720px-Huber_loss.svg.png" />
-- Huber loss is green (\( \delta = 1 \))
-- squared error loss is blue</p>
-<h1 id="code">Code</h1>
-<pre><code class="python">import tensorflow as tf
-import pandas as pd
-import numpy as np
-import math
-
-
-def huber_loss(y, y_hat, delta):
-    diff = math.abs(y - y_hat)
-    if diff &lt; delta:
-        return 0.5 * diff**2
-    else:
-        return delta * diff - 0.5 * delta**2
-
-
-def huber_loss(y, y_hat, delta=1.0):
-    residual = tf.abs(y - y_hat)
-    def square_f(): return 0.5 * tf.square(residual)
-    def abs_f(): return delta * residual - 0.5 * tf.square(delta)
-    return tf.cond(residual &lt; delta, square_f, abs_f)
+<pre><code>Country Birth_rate  Life_expectancy
+Vietnam 1.822   74.828243902
+Vanuatu 3.869   70.819487805
+Tonga   3.911   72.150658537
 </code></pre>
 
-<h1 id="tag">Tag</h1>
+<h1 id="plan">Plan</h1>
 <ul>
-<li>loss function</li>
-<li>ml</li>
-<li>huber loss</li>
+<li>Load data</li>
+<li>define input and target.</li>
+<li>Create model</li>
+<li>define forward model</li>
+<li>define optimize model<ul>
+<li>define loss function.</li>
+</ul>
+</li>
+<li>Train data</li>
+<li>Optimize loss function.</li>
+<li>Measure performance.</li>
+<li>predict data.</li>
+<li>Get measure cost.</li>
+</ul>
+<h1 id="model">Model</h1>
+<ul>
+<li>Linear regression.</li>
+</ul>
+<p>\( f(x) = w * X + b\)</p>
+<p>\( loss = (y - \hat y)^2\)</p>
+<p>\( cost(\theta) = \sum_{i=0}^{M}loss(x^{(i)})\)</p>
+<h1 id="code">Code</h1>
+<h3 id="use-place-holder">Use Place holder.</h3>
+<pre><code class="python">import pandas as pd
+import numpy as np
+import tensorflow as tf
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('./examples/data/birth_life_2010.txt', delimiter='\t')
+df.describe()
+df.shape[0]
+input_label = 'Birthrate'
+target_label = 'Lifeexpectancy'
+
+X = tf.placeholder(tf.float32, name='X')
+y = tf.placeholder(tf.float32, name='y')
+W = tf.get_variable('w', initializer=tf.constant(0.0))
+b = tf.get_variable('b', initializer=tf.constant(0.0))
+init_variables = tf.global_variables_initializer()
+
+y_hat = tf.multiply(W, X) + b
+loss = tf.sqrt((y - y_hat)**2)
+optimizer = tf.train.GradientDescentOptimizer(learning_rate=1e-2).minimize(loss)
+
+with tf.Session() as sess:
+    sess.run(init_variables)
+    writer = tf.summary.FileWriter('./graphs/linear_reg2', sess.graph)
+    for batch in range(100):
+        cost = 0
+        for i in range(df.shape[0]):
+            _, loss_out = sess.run([optimizer, loss], feed_dict={X: df[input_label][i], y: df[target_label][i]})
+            cost += loss_out
+        W_out, b_out = sess.run([W, b])
+        print(W_out, b_out, cost)
+    writer.close()
+
+
+plt.scatter(df[input_label], df[target_label])
+x_min = df[input_label].min()
+x_max = df[input_label].max()
+plt.plot([x_min, x_max], [W_out * x_min + b_out, W_out * x_max + b_out])
+plt.show()
+</code></pre>
+
+<h3 id="use-dataset">Use dataset</h3>
+<pre><code class="python">import pandas as pd
+import numpy as np
+import tensorflow as tf
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('./examples/data/birth_life_2010.txt', delimiter='\t')
+df.describe()
+dataset = tf.data.Dataset.from_tensor_slices((df['Birthrate'], df['Lifeexpectancy']))
+iterator = dataset.make_initializable_iterator()
+X, y = iterator.get_next()
+
+# with tf.Session() as sess:
+#     sess.run(iterator.initializer)
+#     sess.run(iterator.get_next())
+
+W = tf.get_variable('weights', initializer=tf.constant(0.0, dtype=tf.float64))
+b = tf.get_variable('bias', initializer=tf.constant(0.0, dtype=tf.float64))
+y_hat = W * X + b
+loss = tf.square(y - y_hat)
+optimizer = tf.train.GradientDescentOptimizer(learning_rate=1e-3).minimize(loss)
+
+with tf.Session() as sess:
+    sess.run(tf.global_variables_initializer())
+    for epoch in range(100):
+        sess.run(iterator.initializer)
+        cost = 0
+        try:
+            while True:
+                _, out_loss = sess.run([optimizer, loss])
+                cost += out_loss
+        except:
+            pass
+        out_W, out_b = sess.run([W, b])
+        print('epoch %d out_W %f out_b %f cost %f' % (epoch, out_W, out_b, cost))
+</code></pre>
+
+<h1 id="resource">Resource</h1>
+<ul>
+<li><a href="https://gitter.im/stanford-tensorflow-tutorials">stanford-tensorflow-tutorials</a></li>
 </ul></div>
         </div>
 
