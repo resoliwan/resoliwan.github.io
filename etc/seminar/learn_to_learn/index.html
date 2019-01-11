@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
-        <title>Introduction - Leonadro's home</title>
+        <title>How to learn to learn? - Leonadro's home</title>
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../../css/base.css" rel="stylesheet">
@@ -49,7 +49,7 @@
                             <li >
                                 <a href="../../..">README.md</a>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Algorithm <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -57,12 +57,12 @@
     <a href="#">En</a>
     <ul class="dropdown-menu">
             
-<li class="active">
-    <a href="./">Introduction</a>
+<li >
+    <a href="../../../algorithm/en/1_introduction/">Introduction</a>
 </li>
             
 <li >
-    <a href="../2_getting_started/">Check list for learning algorithm</a>
+    <a href="../../../algorithm/en/2_getting_started/">Check list for learning algorithm</a>
 </li>
     </ul>
   </li>
@@ -72,7 +72,7 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../../kr/1_introduction/">들어가기 전에</a>
+    <a href="../../../algorithm/kr/1_introduction/">들어가기 전에</a>
 </li>
     </ul>
   </li>
@@ -123,7 +123,7 @@
   </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Etc <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -132,7 +132,7 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../../../etc/books/2018_12_lovethatdog/">Love that dog</a>
+    <a href="../../books/2018_12_lovethatdog/">Love that dog</a>
 </li>
     </ul>
   </li>
@@ -142,7 +142,7 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../../../etc/idea/launcher/">Luncher App</a>
+    <a href="../../idea/launcher/">Luncher App</a>
 </li>
     </ul>
   </li>
@@ -151,8 +151,8 @@
     <a href="#">Seminar</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../../etc/seminar/learn_to_learn/">How to learn to learn?</a>
+<li class="active">
+    <a href="./">How to learn to learn?</a>
 </li>
     </ul>
   </li>
@@ -162,11 +162,11 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../../../etc/vi/etc/">Tips</a>
+    <a href="../../vi/etc/">Tips</a>
 </li>
             
 <li >
-    <a href="../../../etc/vi/multi_lang/">Multi language</a>
+    <a href="../../vi/multi_lang/">Multi language</a>
 </li>
     </ul>
   </li>
@@ -230,12 +230,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../../..">
+                                <a rel="next" href="../../idea/launcher/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../2_getting_started/">
+                                <a rel="prev" href="../../vi/etc/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -247,38 +247,127 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#introduction">Introduction</a></li>
-        <li class="main "><a href="#1-the-role-of-algorithm-in-computing">1. The Role of Algorithm in Computing.</a></li>
-        <li class="main "><a href="#2-getting-started">2. Getting Started</a></li>
-        <li class="main "><a href="#from">From</a></li>
+        <li class="main active"><a href="#how-to-learn-to-learn">How to learn to learn?</a></li>
+            <li><a href="#_1">이야기 할 것들</a></li>
+            <li><a href="#goal">Goal</a></li>
+        <li class="main "><a href="#_2">학습이란.</a></li>
+            <li><a href="#_3">다음에 알맞은 동사를 고르시오.</a></li>
+            <li><a href="#_4">효율적인 학습이란?</a></li>
+            <li><a href="#_5">효과적인 학습이란.</a></li>
+        <li class="main "><a href="#_6">학습이란?</a></li>
+        <li class="main "><a href="#_7">학습의 정의</a></li>
+        <li class="main "><a href="#_8">학습 모델</a></li>
+        <li class="main "><a href="#_9">예제</a></li>
+            <li><a href="#_10">피드백</a></li>
+            <li><a href="#_11">잘못된 피드백</a></li>
+            <li><a href="#_12">만약 피드백이 늦으면 오면 어떻게 될까?</a></li>
+            <li><a href="#_13">만약 초기값이 없으면 어떻게 될까?</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="introduction">Introduction</h1>
-<h1 id="1-the-role-of-algorithm-in-computing">1. The Role of Algorithm in Computing.</h1>
+<h1 id="how-to-learn-to-learn">How to learn to learn?</h1>
+<h2 id="_1">이야기 할 것들</h2>
 <ul>
-<li>What are algorithm?<ul>
-<li>An algorithm is any well-defined procedure that takes values as input and produces some value as output. like function.</li>
-<li>The statement of problem specifies the desired input and output relationship. The algorithm is procedure for archieving input/output relationship.<ul>
-<li>Ex. Sorting problem</li>
-<li><strong>Input</strong>: A sequence of n elements $  A = &lt; a_{1}, a_{2}, ... ,a_{n} &gt; $.</li>
-<li><strong>Output</strong>: The permutation(reordering) $ A = &lt; a_{1}^{\prime},a_{2}^{\prime},...,a_{n}^{\prime} &gt;  $ 
-of the input sequence such that satisfies $ a_{1}^{\prime} \le a_{2}^{\prime} \le ... \le a_{n}^{\prime} $.</li>
+<li>학습이란?<ul>
+<li>효율적인 학습이란?</li>
+<li>효과적인 학습이란? </li>
 </ul>
 </li>
+<li>학습 모델과 예제</li>
+<li>학습하는 방법</li>
+<li>남은것.</li>
 </ul>
-</li>
-<li>Why is the study algorithms worthwhile?<ul>
-<li>To learn techniques of algorithm design and analysis.</li>
-</ul>
-</li>
-</ul>
-<h1 id="2-getting-started">2. Getting Started</h1>
-<h1 id="from">From</h1>
+<h2 id="goal">Goal</h2>
 <ul>
-<li>https://mitpress.mit.edu/books/introduction-algorithms-third-edition</li>
-</ul></div>
+<li>단위 시간안에 효과적인 학습을 하고 싶다.</li>
+</ul>
+<h1 id="_2">학습이란.</h1>
+<ul>
+<li>경험 또는 훈련을 통해 특정 분야에서 특정 상황이 주어 졌을때 목적 달성을 위한 최적의 방안을 선택하는것 이라고 정의한다.
+이해를 위해 예를 들어보자. 영어를 학습한다고 하자.
+이때의 달성 목적은 영어권 사람들과 유사하게 의사표현을 목적으로 잡을 수 있다.</li>
+</ul>
+<h4 id="_3">다음에 알맞은 동사를 고르시오.</h4>
+<p>I __ a boy.
+0. am
+0. are</p>
+<p>위의 문제를 학습이란 정의에 대입해보자.
+- 특정상황 = 문제 풀이
+- 목적 달성 = 영어권 사람들과 유사하게 의사 표현
+- 선택지 = 1. am, 2. are
+- 최적 방안 = 1.</p>
+<p>최적 방안이 1인 이유는 목적을 달성하기 때문이다.</p>
+<p>위 와 같은 문제가 100 개 있는 영어 시험지를 가정해보자 (문제 1개당 1점)</p>
+<h2 id="_4">효율적인 학습이란?</h2>
+<p>만약 우리의 목적인 유사한 의사표현 == 높은 점수라고 정의하자.
+그렇다면 적은 시간안에 높은 점수를 받는게 효율 적인 학습이라고 할 수 있다.
+(이게 사교육의 폐혜를 불러왔다...)</p>
+<h2 id="_5">효과적인 학습이란.</h2>
+<p>만약 우리의 목적인 유사한 의사표현 == 높은 점수라고 정의하자.
+그렇다면 문제가 변하지 않는다고 가정하면 시험지 정답 번호를 왜우는개 효과적이다.
+하지만 문제가 변한다면 문법을 배우는게 더 빠르다.
+즉 목적에 따라 학습 방법이 변하게 된다.</p>
+<h1 id="_6">학습이란?</h1>
+<p>조금 더 위의 예제를 정확하고 general 하게 정의해 보자.
+아래의 정의는 생물학에서의 인간의 정의 이며 본인과는 절대적으로 무관하다.</p>
+<pre><code>인간은 특정 목적을 달성하기 위한 알고리즘들의 집합이다.
+</code></pre>
+
+<p>위의 가정 대로라면 우리는 인간의 학습 모델을 알고리즘에 유비해서 표현 할 수 있다.
+(물론 모든 유비는 틀린다.)</p>
+<h1 id="_7">학습의 정의</h1>
+<p>학습을 통해 특정 업무의 최적 점수를 달성하는 알고리즘을 우리는 아래와 같이 정의한다.</p>
+<pre><code>A computer program is said 
+to learn from experience E 
+with respect to some class of tasks T 
+and performance measure P 
+if its performance at tasks in T, as measured by P, improves with experience E.
+</code></pre>
+
+<ul>
+<li>E 는 영어 시험 공부 라고 하자.</li>
+<li>T 는 영어 시험 문제를 푸는것 이라고 하자.</li>
+<li>P 는 점수라고 하자.</li>
+</ul>
+<p>인간이 영어 시험 족보를 풀어서 시험에서 좋은 점수를 받는 다고 한다면 위의 정의와 일치한다.</p>
+<h1 id="_8">학습 모델</h1>
+<p>다시 문제로 돌아가 보자.</p>
+<pre><code>I __ a boy.
+1. am
+2. are
+</code></pre>
+
+<p>이 예제에서 우리는 무엇으로 답을 내리는 걸까? 
+주어의 인칭에 따라서 동사가 변화한다 라는 룰로 결정된다.
+이룰은 어떻게 나올까?
+I 가 나온 후 am 이 자주 사용되는가 are 가 자주 사용되는가 라는 문제가 된다.</p>
+<p>영어 문장에서 빈도수를 조사했더니  I 가 사용 되면 am 이 99번 are 가 1번 나온다고 하자.
+우리가 위의 사실을 알고 있다면 문제는 아래와 같이 변경 할 수 있다.
+$P(am | I) = 0.99$
+$P(are | I) = 0.01$
+즉 우리가 학습이라고 말하는 것은 특정 조건이 주어졌을때 가장 가능성이 높은 것을 선택한다 라고 할 수 있다.</p>
+<p>그러면 어떻게 하면 저런걸 하는 모델을 만들 수 있을까? 여러 방법이 있겠지만 최초에 균일하게 확률을 배치한다.
+$P(am | I) = 0.50$
+$P(are | I) = 0.50$
+새로운 문장을 읽을때마다 해당 확률을 $+-1$ 씩 변동 시킨다.
+예를 들어  I am a girl 을 봤다면 확률을 변동 시킨다. 
+$P(am | I) = 0.51$
+$P(are | I) = 0.49$</p>
+<p>그러면 우리는 언젠가 아래의 값을 같게 되고 해당 학습이 완료된 상태라고 할 수 있다.
+$P(am | I) = 0.99$
+$P(are | I) = 0.01$</p>
+<p>위의 모델을 가지고 이제 우리는 가설들을 해당 모델에 비추어 볼것이다.</p>
+<h1 id="_9">예제</h1>
+<h2 id="_10">피드백</h2>
+<p>위의 모델을 문제의 정답을 가지고 모델의 값을 수정한다. 즉 조건에 대한 정답을 아는것이 중요하다.</p>
+<h2 id="_11">잘못된 피드백</h2>
+<p>만약 우리가 I are 를 더 많이 보게 되면 어떻게 될까? 즉 잘못된 답이 된다.  즉 정확한 피드백은 중요하다.</p>
+<h2 id="_12">만약 피드백이 늦으면 오면 어떻게 될까?</h2>
+<p>모델의 최적 값은 전혀 변경되지 않는다. 즉 시간 낭비다.</p>
+<h2 id="_13">만약 초기값이 없으면 어떻게 될까?</h2>
+<p>우리는 모델의 숫자를 가감 시킨다. 만약 모델 자체가 없다면 $\infty$ 에 어떻값을 더해도 잘 변하지 않는다.</p>
+<p>유닛 시간안에 많은 지식을 습득하고 싶다.</p></div>
         </div>
 
         <footer class="col-md-12">

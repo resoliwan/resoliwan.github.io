@@ -148,6 +148,16 @@
   </li>
                                     
   <li class="dropdown-submenu">
+    <a href="#">Seminar</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../etc/seminar/learn_to_learn/">How to learn to learn?</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
     <a href="#">Vi</a>
     <ul class="dropdown-menu">
             
@@ -245,6 +255,8 @@
             <li><a href="#argue-that-it-is-correctly-works">Argue that it is correctly works</a></li>
             <li><a href="#pseudocode-conventions">Pseudocode conventions</a></li>
             <li><a href="#exercise">Exercise</a></li>
+        <li class="main "><a href="#analyzing-algorithms">Analyzing Algorithms</a></li>
+            <li><a href="#resources">Resources</a></li>
         <li class="main "><a href="#from">From</a></li>
     </ul>
 </div></div>
@@ -365,17 +377,16 @@ For j = 2 to A.length
 
 <h4 id="21-3"><em>2.1-3</em></h4>
 <p>Consider the <strong><em>searching problem</em></strong>: 
-<strong>Input</strong>: A sequence of n numbers $ A = &lt; a_{1}, a_{2},...,a_{n} &gt; $ and a value v.
-<strong>Output</strong>: An index i such that v = A[i] or the special value NIL if v dose not appear in A.</p>
+- <strong>Input</strong>: A sequence of n numbers $ A = &lt; a_{1}, a_{2},...,a_{n} &gt; $ and a value v.
+- <strong>Output</strong>: An index i such that v = A[i] or the special value NIL if v dose not appear in A.</p>
 <p>Write pseudocode for linear search, which scan trough the sequence, looking for v.
 Using a loop invariant, prove that your algorithm is correct.
 Make sure that your loop invariant fulfills the three necessary properties.</p>
 <h5 id="pseudocode_1">pseudocode</h5>
 <pre><code class="python">LINEAR-SEARCH(A, v)
 i = NIL
-key = v
 For j = 1 to A.length
-    if A[j] == key
+    if A[j] == v
         i = j
 </code></pre>
 
@@ -385,7 +396,32 @@ If A[j] == v then i = j. </p>
 <p><em>Initialization</em>: i is NIL. Before prior iteration.
 <em>Maintenance</em>: When j increase loop invariants hold before iteration and remain true before next iteration.
 <em>Termination</em>: When the loop terminate it give us a solution that is true.</p>
-<p>$ A = &lt; a_{2} &gt;$</p>
+<h4 id="21-4"><em>2.1-4</em></h4>
+<p>Consider the problem of adding two n-bit binary integers, stored in two n-element arrays A and B. 
+The sum of two integers should be stored in binary form in an (n+1)-element arrary C. 
+State the problem formally and write pseudocode for adding two integers</p>
+<ul>
+<li><strong>Input</strong>: A and B are n-bit binary integers, stored in two n-element arrary A and B. (A,B[i] = 0, 1)</li>
+<li><strong>Output</strong>: C are n+1 bit binary integer, stored in (n+1) element arrary.</li>
+</ul>
+<pre><code class="python">ADD(A, B)
+carry = 0
+For A.length downto 1
+    sum = A[i] + B[i] + carry
+    C[i + 1] = sum % 2
+    carry = sum / 2
+C[1] = carry
+</code></pre>
+
+<p><a href="../ch2_ADD.py">code</a></p>
+<h1 id="analyzing-algorithms">Analyzing Algorithms</h1>
+<p>Predicting the resources that the algorithm required.</p>
+<h4 id="resources">Resources</h4>
+<ul>
+<li>Computational time.</li>
+<li>Memory</li>
+<li>Communication</li>
+</ul>
 <h1 id="from">From</h1>
 <ul>
 <li>https://mitpress.mit.edu/books/introduction-algorithms-third-edition</li>

@@ -148,6 +148,16 @@
   </li>
                                     
   <li class="dropdown-submenu">
+    <a href="#">Seminar</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../etc/seminar/learn_to_learn/">How to learn to learn?</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
     <a href="#">Vi</a>
     <ul class="dropdown-menu">
             
@@ -243,6 +253,8 @@
             <li><a href="#declarations">Declarations</a></li>
             <li><a href="#class-changes">Class Changes</a></li>
             <li><a href="#template-and-stl-changes">Template and STL Changes</a></li>
+            <li><a href="#new-stl-methods">New STL Methods</a></li>
+        <li class="main "><a href="#reference-declaration">Reference declaration</a></li>
         <li class="main "><a href="#from">From</a></li>
     </ul>
 </div></div>
@@ -390,12 +402,12 @@ x = double(b) // explicit convesrion, allowd
 </code></pre>
 
 <h3 id="member-in-class-initialization">Member In-Class Initialization</h3>
-<pre><code>class Test
+<pre><code class="cpp">class Test
 {
     int aval = 1;
     int bval = 2;
     int cval = 3;
-publc:
+public:
     Test() {}
     Test(int c): cval(c) {}
     Test(int a, int b, int c): aval(a), bval(b), cval(c) {}
@@ -404,6 +416,34 @@ publc:
 
 <h2 id="template-and-stl-changes">Template and STL Changes</h2>
 <h3 id="range-based-for-loop">Range-based for Loop</h3>
+<p>Use range-based for loop, such as the STL containers, that have begin() and end() methods identifying range.</p>
+<pre><code class="cpp">double prices[3] =  {1, 2, 3}
+for (auto x: prices)
+  cout &lt;&lt; x &lt;&lt; endl;
+// Modify elements
+for (auto &amp; x: prices)
+  x = x + 1;
+</code></pre>
+
+<h3 id="new-stl-containtes">New STL Containtes</h3>
+<ul>
+<li><em>forward_list</em>: single linked list.</li>
+<li>unorderd_map, set, multimap, multset.</li>
+<li>arrary: Can't change the size but it have the begin() and end.</li>
+</ul>
+<pre><code>std::arrary&lt;int, 3&gt; ar;
+</code></pre>
+
+<h2 id="new-stl-methods">New STL Methods</h2>
+<h3 id="anglebrackets">AngleBrackets</h3>
+<pre><code>std::vector&lt;std::list&lt;int&gt; &gt; // &gt;&gt; not ok befor c++11
+std::vector&lt;std::list&lt;int&gt;&gt; // ok in c++11
+</code></pre>
+
+<h1 id="reference-declaration">Reference declaration</h1>
+<p>Declares a named variable a s a reference, that is, an alias to already-existing object or function.
+- &amp; (attr) declarator: Lvalue reference declarator: the declaration S&amp; D; declares D as an lvalue reference to the type determined by decl-specifier-seq S
+- &amp;&amp; (attr) declarator: Rvalue reference declarator: the declaration S&amp;&amp; D: declares D as an rvalue reference to the type determined  by decl-specifier-seq S.</p>
 <h1 id="from">From</h1>
 <p><a href="https://www.amazon.com/Primer-Plus-6th-Developers-Library/dp/0321776402">C++ Primer Plus (6th Edition)</a></p></div>
         </div>
