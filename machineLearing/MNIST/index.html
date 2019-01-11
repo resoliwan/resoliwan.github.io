@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>tenserflow data - Leonadro's home</title>
+        <title>MNIST - Leonadro's home</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -187,21 +187,12 @@
   </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mkdocs <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="../../mkdocs/usage/">HowTo</a>
-</li>
-                                </ul>
-                            </li>
                             <li class="dropdown active">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ml <b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">machineLearing <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../MNIST/">MNIST</a>
+<li class="active">
+    <a href="./">MNIST</a>
 </li>
                                     
 <li >
@@ -216,8 +207,17 @@
     <a href="../softmax/">Softmax</a>
 </li>
                                     
-<li class="active">
-    <a href="./">tenserflow data</a>
+<li >
+    <a href="../tensorflow_dataset/">tenserflow data</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mkdocs <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../mkdocs/usage/">HowTo</a>
 </li>
                                 </ul>
                             </li>
@@ -230,12 +230,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../softmax/">
+                                <a rel="next" href="../../language/cpp/new_cpp/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li class="disabled">
-                                <a rel="prev" >
+                            <li >
+                                <a rel="prev" href="../huber_loss/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -247,77 +247,60 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#tenserflow-data">tenserflow data</a></li>
+        <li class="main active"><a href="#mnist">MNIST</a></li>
         <li class="main "><a href="#goal">Goal</a></li>
-        <li class="main "><a href="#sample-data">Sample data</a></li>
-        <li class="main "><a href="#tag">Tag</a></li>
+        <li class="main "><a href="#data">Data</a></li>
+        <li class="main "><a href="#plan">Plan</a></li>
+        <li class="main "><a href="#model">Model</a></li>
+            <li><a href="#linear-regression">Linear regression</a></li>
+        <li class="main "><a href="#resource">Resource</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="tenserflow-data">tenserflow data</h1>
+<h1 id="mnist">MNIST</h1>
 <h1 id="goal">Goal</h1>
+<p>Predict category of images.</p>
+<h1 id="data">Data</h1>
 <ul>
-<li>
-<p>Provide data abstraction.</p>
-</li>
-<li>
-<p>tf.Data.Dataset</p>
-</li>
-<li>Represent sequence of elements.</li>
-<li>Creating from source.(tf.Tensor)</li>
-<li>
-<p>Creating from tf.dataset using Transformation.</p>
-</li>
-<li>
-<p>tf.data.Iterator</p>
-</li>
-<li>Provide main way to extract data from Dataset</li>
+<li>X: digit image of 28 * 28 pixels. </li>
+<li>1-d 784 pixel vector.</li>
+<li>y: the value of image (0~9)</li>
 </ul>
-<h1 id="sample-data">Sample data</h1>
-<pre><code>l,d0,d1,d2,d3,d4
-0,1,2,3,4
-1,11,12,13,14
-2,21,22,23,24
-
+<pre><code>label,pixel0,...,pixel783
+1    ,     0,...,0
 </code></pre>
 
-<pre><code>import pandas as pd
-import tensorflow as tf
-import numpy as np
-
-df = pd.read_csv('./data/test.csv')
-df.describe()
-
-dm = df.as_matrix()
-y = dm[:, 0]
-x = dm[:, 1:]
-
-max = np.max(dm[:, 0]) + 1
-onehot_y = np.eye(max)[dm[:, 0]]
-
-dataset = tf.data.Dataset.from_tensor_slices((x, onehot_y))
-iterator = dataset.make_initializable_iterator()
-X, y = iterator.get_next()
-
-with tf.Session() as sess:
-    for e in range(3):
-        sess.run(iterator.initializer)
-        try:
-            while True:
-                X_out, y_out = sess.run([X, y])
-                print('X_out', X_out)
-                print('y_out', y_out)
-        except tf.errors.OutOfRangeError:
-            print('OutOfRangeError')
-            pass
-</code></pre>
-
-<h1 id="tag">Tag</h1>
+<h1 id="plan">Plan</h1>
 <ul>
-<li>tensorflow</li>
-<li>dataset</li>
-<li>iterator</li>
+<li>Load data</li>
+<li>make X to (784, m)</li>
+<li>make y to (10, m) using one hot encoder.</li>
+<li>run session and check feed</li>
+<li>Create model</li>
+<li>define forward model.</li>
+<li>define optimize model.<ul>
+<li>define loss function.</li>
+</ul>
+</li>
+<li>Train data.</li>
+<li>optimize loss function.</li>
+<li>Measure performance</li>
+</ul>
+<h1 id="model">Model</h1>
+<h3 id="linear-regression">Linear regression</h3>
+<h4 id="forward-model">Forward Model</h4>
+<p>\( f(x) = W \cdot X + b \)
+- X: (784, m), W (1, 784), b (1, 1)</p>
+<h4 id="loss">Loss</h4>
+<p>\( H_{q}(p) = \sum_{x} q(x) *\log_{2} \frac{1}{\log p(x)} \)
+- Cross-Entroy: Average length of message from q(x) using code for p(x)</p>
+<h4 id="cost">Cost</h4>
+<p>\( cost(\theta) = \sum_{i=0}^{M}loss(x^{(i)})\)</p>
+<h1 id="resource">Resource</h1>
+<ul>
+<li><a href="http://colah.github.io/posts/2015-09-Visual-Information">Information theory</a></li>
+<li><a href="https://gitter.im/stanford-tensorflow-tutorials">stanford-tensorflow-tutorials</a></li>
 </ul></div>
         </div>
 
