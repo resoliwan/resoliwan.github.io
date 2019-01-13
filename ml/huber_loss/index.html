@@ -79,53 +79,54 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Etc <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
+  <li class="dropdown-submenu">
+    <a href="#">Android</a>
+    <ul class="dropdown-menu">
+            
   <li class="dropdown-submenu">
     <a href="#">Googleplay</a>
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../../android/googleplay/googleplay_billing/">Google Play Billing</a>
+    <a href="../../etc/android/googleplay/googleplay_billing/">Google Play Billing</a>
 </li>
             
 <li >
-    <a href="../../android/googleplay/googleplay_billing_library/">Google Play Billing Library</a>
+    <a href="../../etc/android/googleplay/googleplay_billing_library/">Google Play Billing Library</a>
 </li>
             
 <li >
-    <a href="../../android/googleplay/overview/">Overview</a>
+    <a href="../../etc/android/googleplay/overview/">Overview</a>
 </li>
     </ul>
   </li>
-                                    
+            
   <li class="dropdown-submenu">
     <a href="#">Publish</a>
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../../android/publish/1_publish_overview/">Publish your app</a>
+    <a href="../../etc/android/publish/1_publish_overview/">Publish your app</a>
 </li>
             
 <li >
-    <a href="../../android/publish/2_prepare_for_release/">Prepare for release</a>
+    <a href="../../etc/android/publish/2_prepare_for_release/">Prepare for release</a>
 </li>
             
 <li >
-    <a href="../../android/publish/3_version/">Version your app</a>
+    <a href="../../etc/android/publish/3_version/">Version your app</a>
 </li>
             
 <li >
-    <a href="../../android/publish/4_sign/">Sign your app</a>
+    <a href="../../etc/android/publish/4_sign/">Sign your app</a>
 </li>
     </ul>
   </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Etc <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
+    </ul>
+  </li>
                                     
   <li class="dropdown-submenu">
     <a href="#">Books</a>
@@ -268,24 +269,24 @@
 <li>Use absolute function for large value.</li>
 </ul>
 <h3 id="idea">IDEA</h3>
-<p>\(
+<p>$
 f(a) =
 \begin{cases}
 a^2                     &amp; \text{for }|a| \leq 1, \\
 |a|                     &amp; \text{ otherwise}
 \end{cases}
-\)</p>
+$</p>
 <h3 id="huber-loss_1">Huber loss</h3>
-<p>\(
+<p>$
 L_{\delta}(a) =
 \begin{cases}
 \frac{1}{2}a^2                     &amp; \text{for }|a| \leq \delta, \\
 \delta (|a| - \frac{1}{2} \delta), &amp; \text{ otherwise}
 \end{cases}
-\)</p>
+$</p>
 <h1 id="graph">Graph</h1>
 <p><img alt="img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Huber_loss.svg/720px-Huber_loss.svg.png" />
-- Huber loss is green (\( \delta = 1 \))
+- Huber loss is green ($ \delta = 1 $)
 - squared error loss is blue</p>
 <h1 id="code">Code</h1>
 <pre><code class="python">import tensorflow as tf

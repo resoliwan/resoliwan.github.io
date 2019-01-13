@@ -79,53 +79,54 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Android <b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Etc <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
+  <li class="dropdown-submenu">
+    <a href="#">Android</a>
+    <ul class="dropdown-menu">
+            
   <li class="dropdown-submenu">
     <a href="#">Googleplay</a>
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../../android/googleplay/googleplay_billing/">Google Play Billing</a>
+    <a href="../../etc/android/googleplay/googleplay_billing/">Google Play Billing</a>
 </li>
             
 <li >
-    <a href="../../android/googleplay/googleplay_billing_library/">Google Play Billing Library</a>
+    <a href="../../etc/android/googleplay/googleplay_billing_library/">Google Play Billing Library</a>
 </li>
             
 <li >
-    <a href="../../android/googleplay/overview/">Overview</a>
+    <a href="../../etc/android/googleplay/overview/">Overview</a>
 </li>
     </ul>
   </li>
-                                    
+            
   <li class="dropdown-submenu">
     <a href="#">Publish</a>
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../../android/publish/1_publish_overview/">Publish your app</a>
+    <a href="../../etc/android/publish/1_publish_overview/">Publish your app</a>
 </li>
             
 <li >
-    <a href="../../android/publish/2_prepare_for_release/">Prepare for release</a>
+    <a href="../../etc/android/publish/2_prepare_for_release/">Prepare for release</a>
 </li>
             
 <li >
-    <a href="../../android/publish/3_version/">Version your app</a>
+    <a href="../../etc/android/publish/3_version/">Version your app</a>
 </li>
             
 <li >
-    <a href="../../android/publish/4_sign/">Sign your app</a>
+    <a href="../../etc/android/publish/4_sign/">Sign your app</a>
 </li>
     </ul>
   </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Etc <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
+    </ul>
+  </li>
                                     
   <li class="dropdown-submenu">
     <a href="#">Books</a>
@@ -260,16 +261,16 @@
 <h2 id="goals">Goals</h2>
 <p>Input 값들을 다 합치면 1이 되는 확률값으로 변환해 주고 싶다.</p>
 <p>그 이야기는 어떤 값이던 0 과 1 사이의 값을 리턴하는 함수를 만들고 싶다.</p>
-<p>\( \sigma: \mathbb {R} ^{K}\to (0,1)^{K} \)</p>
+<p>$\sigma: \mathbb {R} ^{K}\to (0,1)^{K} $</p>
 <h2 id="idea">Idea</h2>
 <p>예를들어 input 값이 [1,2,3] 일 경우 결과의  총합이 1이 되게 해줄려면 input을 다 더한값 6 = 1 + 2 + 3으로 모든 인풋값을 나누어 주면 된다.</p>
-<p>\( \sigma([1,2,3]) \to [\frac{1}{6},\frac{2}{6},\frac{3}{6}] \approx [0.16, 0.33, 0.5] \approx 1 \)</p>
+<p>$\sigma([1,2,3]) \to [\frac{1}{6},\frac{2}{6},\frac{3}{6}] \approx [0.16, 0.33, 0.5] \approx 1 $</p>
 <p>위의 식을 정리하면 아래의 식이 된다.</p>
-<p>\( \sigma(\mathbf{z_{j}}) = {\frac {z_{j}}{\sum_{k=1}^{K}z_{k}}}\)</p>
-<p>위의 함수의 상수 z를 지수로 바꿔주자.  \(z_j \to e^{z_j} \approx 2.71^{z_j}\) </p>
-<p>\( \sigma(\mathbf{z_{j}}) = {\frac{e^{z_{j}}}{\sum_{k=1}^{K}e^{z_{k}}}} \)</p>
+<p>$\sigma(\mathbf{z_{j}}) = {\frac {z_{j}}{\sum_{k=1}^{K}z_{k}}}$</p>
+<p>위의 함수의 상수 z를 지수로 바꿔주자.  $z_j \to e^{z_j} \approx 2.71^{z_j}$ </p>
+<p>$\sigma(\mathbf{z_{j}}) = {\frac{e^{z_{j}}}{\sum_{k=1}^{K}e^{z_{k}}}} $</p>
 <p>그렇다 위의 식이 softmax 이며 우리의 예제를 계산하면</p>
-<p>\( \sigma([1,2,3]) \to [\frac{2.7}{30.2},\frac{7.3}{30.2},\frac{20.1}{30.2}] \approx [0.09, 0.24, 0.66] \approx 1 \)</p>
+<p>$\sigma([1,2,3]) \to [\frac{2.7}{30.2},\frac{7.3}{30.2},\frac{20.1}{30.2}] \approx [0.09, 0.24, 0.66] \approx 1 $</p>
 <h2 id="code">Code</h2>
 <pre><code class="py">import numpy as np
 x = [1,2,3]
