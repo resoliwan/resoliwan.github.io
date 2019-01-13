@@ -145,6 +145,10 @@
 <li >
     <a href="../../../etc/idea/launcher/">Luncher App</a>
 </li>
+            
+<li >
+    <a href="../../../etc/idea/memo/">Memo App</a>
+</li>
     </ul>
   </li>
                                     
@@ -258,7 +262,9 @@
             <li><a href="#pseudocode-conventions">Pseudocode conventions</a></li>
             <li><a href="#exercise">Exercise</a></li>
         <li class="main "><a href="#analyzing-algorithms">Analyzing Algorithms</a></li>
-            <li><a href="#resources">Resources</a></li>
+            <li><a href="#measuring-resources">Measuring Resources</a></li>
+            <li><a href="#model-of-implementation">Model of implementation</a></li>
+            <li><a href="#analysis-of-insertion-sort">Analysis of insertion sort</a></li>
         <li class="main "><a href="#from">From</a></li>
     </ul>
 </div></div>
@@ -418,13 +424,52 @@ C[1] = carry
 
 <p><a href="../ch2_ADD.py">code</a></p>
 <h1 id="analyzing-algorithms">Analyzing Algorithms</h1>
-<p>Predicting the resources that the algorithm required.</p>
-<h4 id="resources">Resources</h4>
 <ul>
-<li>Computational time.</li>
-<li>Memory</li>
-<li>Communication</li>
+<li>Predicting the resources that the algorithm required.</li>
+<li>We want to the performance measure of an algorithms to find best solution with machine-independent.</li>
 </ul>
+<h4 id="measuring-resources">Measuring Resources</h4>
+<ul>
+<li><em>Computational time</em></li>
+<li>Memory</li>
+<li>Communication Bandwidth</li>
+</ul>
+<h4 id="model-of-implementation">Model of implementation</h4>
+<ul>
+<li>A generic one processor.</li>
+<li>random-access machine(RAM): instructions are executed one after another, with no <em>concurrent operations.</em></li>
+<li>We assume our RAM is almost identical with real machine. (also computational time of instructions.)</li>
+</ul>
+<h2 id="analysis-of-insertion-sort">Analysis of insertion sort</h2>
+<p>Running time of a program as a function of the size of its input.
+$$ f(\text{size of input}) = \text{Running time}$$
+- input size: depends on the problem being studied. We shall indicate which input size measures is 
+being used with each problem we study.
+- running time: the number of primitive steps or operations executed. It is convenient to define the notion of step so it is as machine-independent as possible.
+    - We shall assume that each execution of the $i$th line takes time $c_{i}$, where $c_{i}$ is a constant. 
+- We let $t_{j}$ denote the number of times the while loop test in line 5 is executed for that value of j.</p>
+<pre><code class="python">INSERATION-SORT(A)                cost         times
+1 for j = 2 to A.length           c1           n
+2     key = A[j]                  c2           n-1
+3     // ...                      0            n-1
+4     i = j - 1                   c4           n-1
+5     while i &gt; 0 and A[i] &gt; key  c5           $\sum_{j=2}^{n} t_{j}$
+6         A[i + 1] = A[i]         c6           $\sum_{j=2}^{n} (t_{j} - 1)$
+7         i = i - 1               c7           $\sum_{j=2}^{n} (t_{j} - 1)$
+8     A[i + 1] = key              c8           n-1
+</code></pre>
+
+<p>The running time of algorithm is the sum of running time for each statement executed;
+$$ T(N) = c_{1}n + c_{2}(n-1) + c_{4}(n-1) + c_{5}\sum_{j=2}^{n} t_{j} + c_{6}\sum_{j=2}^{n} (t_{j} - 1) + c_{7}\sum_{j=2}^{n} (t_{j} - 1) + c_{8}(n-1)$$
+The best occurs if the array is already sorted.
+$$ 
+\begin{align}
+T(N) &amp; = c_{1}n + c_{2}(n-1) + c_{4}(n-1) + c_{5}(n-1) + c_{8}(n-1) \\
+&amp; = (c_{1} + c_{2} + c_{4} + c_{5} + c_{8})n - (c_{2} + c_{4} + c_{5} + c_{8}) \\
+&amp; = an + b
+\end{align}
+$$
+It is thus a liner function of n.</p>
 <h1 id="from">From</h1>
 <ul>
 <li>https://mitpress.mit.edu/books/introduction-algorithms-third-edition</li>
