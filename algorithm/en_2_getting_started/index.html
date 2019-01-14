@@ -250,6 +250,7 @@
             <li><a href="#model-of-implementation">Model of implementation</a></li>
             <li><a href="#analysis-of-insertion-sort">Analysis of insertion sort</a></li>
             <li><a href="#worst-case-and-average-case-analysis">Worst-case and average-case analysis</a></li>
+            <li><a href="#order-of-growth">Order of growth</a></li>
         <li class="main "><a href="#from">From</a></li>
     </ul>
 </div></div>
@@ -407,7 +408,7 @@ For A.length downto 1
 C[1] = carry
 </code></pre>
 
-<p><a href="../ch2_ADD.py">code</a></p>
+<p><a href="https://github.com/resoliwan/resoliwan.github.io/blob/master/algorithm/ch2_ADD.py">code</a></p>
 <h1 id="analyzing-algorithms">Analyzing Algorithms</h1>
 <ul>
 <li>Predicting the resources that the algorithm required.</li>
@@ -431,23 +432,23 @@ $$ f(\text{size of input}) = \text{Running time}$$
 - input size: depends on the problem being studied. We shall indicate which input size measures is 
 being used with each problem we study.
 - running time: the number of primitive steps or operations executed. It is convenient to define the notion of step so it is as machine-independent as possible.
-    - We shall assume that each execution of the $i$th line takes time $c_{i}$, where $c_{i}$ is a constant. 
+- We shall assume that each execution of the $i$th line takes time $c_{i}$, where $c_{i}$ is a constant. 
 - We let $t_{j}$ denote the number of times the while loop test in line 5 is executed for that value of j.</p>
 <pre><code class="python">INSERATION-SORT(A)                cost         times
 1 for j = 2 to A.length           c1           n
 2     key = A[j]                  c2           n-1
 3     // ...                      0            n-1
 4     i = j - 1                   c4           n-1
-5     while i &gt; 0 and A[i] &gt; key  c5           $\sum_{j=2}^{n} t_{j}$
-6         A[i + 1] = A[i]         c6           $\sum_{j=2}^{n} (t_{j} - 1)$
-7         i = i - 1               c7           $\sum_{j=2}^{n} (t_{j} - 1)$
+5     while i &gt; 0 and A[i] &gt; key  c5           \sum_{j=2}^{n} t_{j}
+6         A[i + 1] = A[i]         c6           \sum_{j=2}^{n} (t_{j} - 1)
+7         i = i - 1               c7           \sum_{j=2}^{n} (t_{j} - 1)
 8     A[i + 1] = key              c8           n-1
 </code></pre>
 
 <p>The running time of algorithm is the sum of running time for each statement executed;
 $$ T(N) = c_{1}n + c_{2}(n-1) + c_{4}(n-1) + c_{5}\sum_{j=2}^{n} t_{j} + c_{6}\sum_{j=2}^{n} (t_{j} - 1) + c_{7}\sum_{j=2}^{n} (t_{j} - 1) + c_{8}(n-1)$$
-The best occurs if the array is already sorted.
-$$ 
+The best occurs if the array is already sorted.</p>
+<p>$$ 
 \begin{align}
 T(N) &amp; = c_{1}n + c_{2}(n-1) + c_{4}(n-1) + c_{5}(n-1) + c_{8}(n-1) \\
      &amp; = (c_{1} + c_{2} + c_{4} + c_{5} + c_{8})n - (c_{2} + c_{4} + c_{5} + c_{8}) \\
@@ -482,6 +483,15 @@ T(N) &amp; = c_{1}n + c_{2}(n-1) + c_{4}(n-1) + c_{5}\Biggl( \frac{n(n+1)}{2} - 
 $$
 It is a quadratic function of n $an^{2} + bn + c$</p>
 <h2 id="worst-case-and-average-case-analysis">Worst-case and average-case analysis</h2>
+<p>Worst-case is the longest time for any input of size n.
+- It provide guarantee that the algorithm will never take any longer.
+- The worst case occurs fairly open
+- The "average case" is often roughly as bad as the worst case.</p>
+<h2 id="order-of-growth">Order of growth</h2>
+<p>We use some simplifying abstractions to ease our analysis of the algorithm running time.
+- Ignore the actual costs of each statement.(e.g. $c_{i}$)
+- Ignore the abstract costs of $c_{i}$s (e.g. a, b, c in $an^{2} + bn + c$)
+- Rate of growth or order of growth is considering only the leading term of a formula (e.g. $an^{2}$)</p>
 <h1 id="from">From</h1>
 <ul>
 <li>https://mitpress.mit.edu/books/introduction-algorithms-third-edition</li>
