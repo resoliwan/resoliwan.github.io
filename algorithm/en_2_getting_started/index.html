@@ -251,6 +251,9 @@
             <li><a href="#analysis-of-insertion-sort">Analysis of insertion sort</a></li>
             <li><a href="#worst-case-and-average-case-analysis">Worst-case and average-case analysis</a></li>
             <li><a href="#order-of-growth">Order of growth</a></li>
+            <li><a href="#exercises">Exercises</a></li>
+            <li><a href="#22-1">2.2-1</a></li>
+            <li><a href="#22-2">2.2-2</a></li>
         <li class="main "><a href="#from">From</a></li>
     </ul>
 </div></div>
@@ -316,7 +319,7 @@ of the input sequence such that satisfies $ a_{1}^{\prime} \le a_{2}^{\prime} \l
 <li>It keeps from start to terminate.</li>
 <li>I'll claim sub-array is always sorted.</li>
 </ul>
-<h4 id="loop-invariants">loop invariants:</h4>
+<h4 id="loop-invariant">loop invariant:</h4>
 <pre><code>The sub-array A[1..j-1] consists of the elements originally in A[1..j-1], but in sorted order.
 </code></pre>
 
@@ -329,7 +332,8 @@ We say an algorithm has true loop invariant on some properties.</p>
 <li><strong>Termination:</strong> When the loop terminates, the invariant gives us a useful property that helps show that the algorithm is correct.</li>
 </ol>
 <h5 id="initialization">Initialization</h5>
-<p>When j = 2, The subarray A[1..j-1] consists of just one element A[1], which is in fact the original element in A[1].
+<p>When j = 2, The subarray A[1..j-1] consists of just one element A[1], 
+which is in fact the original element in A[1].
 Moreover, the subarray is sorted(trivially, of course).</p>
 <h5 id="maintenance">Maintenance</h5>
 <p>The body of for loop works by moving A[j-1], A[j-2], A[j-3], and so on by one position to the right until it finds
@@ -385,7 +389,7 @@ For j = 1 to A.length
         i = j
 </code></pre>
 
-<h5 id="loop-invariants_1">loop invariants</h5>
+<h5 id="loop-invariants">loop invariants</h5>
 <p>i is NIL or 1 &lt;= i &lt;= A.length.
 If A[j] == v then i = j. </p>
 <p><em>Initialization</em>: i is NIL. Before prior iteration.
@@ -454,8 +458,8 @@ T(N) &amp; = c_{1}n + c_{2}(n-1) + c_{4}(n-1) + c_{5}(n-1) + c_{8}(n-1) \\
      &amp; = (c_{1} + c_{2} + c_{4} + c_{5} + c_{8})n - (c_{2} + c_{4} + c_{5} + c_{8}) \\
      &amp; = an + b
 \end{align}
-$$
-It is thus a liner function of n.
+$$</p>
+<p>It is thus a liner function of n.
 The worst occur if the array is in reversed order.
 We must compare each element A[j] with each element in the entire sorted 
 subarray $A[1..j-1]$ and so $t_{j}$ for $ j = 2, 3, .., n$
@@ -472,6 +476,7 @@ $$</p>
 <h4 id="apply-to-above-equations">Apply to above equations</h4>
 <p>start from 2 not from 1
 $$ \sum_{j=2}^{n}t_{j} = \sum_{j=2}^{n}j = \frac{n(n+1)}{2} - 1$$
+1 + 2 = 3, (1 - 1) + (2 - 1) = 1, because 1 - 1 = 0 we don't need to subtract 1.
 $$ \sum_{j=2}^{n}(t_{j} - 1) = \sum_{j=2}^{n}(j - 1) = \frac{n(n-1)}{2}$$</p>
 <p>$$
 \begin{align}
@@ -480,8 +485,8 @@ T(N) &amp; = c_{1}n + c_{2}(n-1) + c_{4}(n-1) + c_{5}\Biggl( \frac{n(n+1)}{2} - 
         - (c_{2} + c_{4} + c_{5} + c_{8}) \\
      &amp; = an^{2} + bn + c
 \end{align}
-$$
-It is a quadratic function of n $an^{2} + bn + c$</p>
+$$</p>
+<p>It is a quadratic function of n $an^{2} + bn + c$</p>
 <h2 id="worst-case-and-average-case-analysis">Worst-case and average-case analysis</h2>
 <p>Worst-case is the longest time for any input of size n.
 - It provide guarantee that the algorithm will never take any longer.
@@ -491,7 +496,68 @@ It is a quadratic function of n $an^{2} + bn + c$</p>
 <p>We use some simplifying abstractions to ease our analysis of the algorithm running time.
 - Ignore the actual costs of each statement.(e.g. $c_{i}$)
 - Ignore the abstract costs of $c_{i}$s (e.g. a, b, c in $an^{2} + bn + c$)
-- Rate of growth or order of growth is considering only the leading term of a formula (e.g. $an^{2}$)</p>
+- Rate of growth or order of growth is considering only the leading term of a formula (e.g. $an^{2}$)
+$$\Theta(n^{2}) = \text{theta of n-squred}$$</p>
+<ul>
+<li>We usually consider one algorithm to be more efficient than another if its worst-case learning time has a lower order of growth.</li>
+</ul>
+<h2 id="exercises">Exercises</h2>
+<h2 id="22-1">2.2-1</h2>
+<p>Express the function $n^{3}/1000 - 100n^{2} - 100n + 3$ in terms of $\Theta-notation.$
+$$\Theta(n^{3})$$</p>
+<h2 id="22-2">2.2-2</h2>
+<p>Consider sorting n numbers stored in array A by first finding the smallest element of A and exchanging it with the element in A[i].
+Then find the second smallest element of A, and exchange it with the element in A[2].
+Continue in this manner for the first $n-1$ element of A.</p>
+<h4 id="generalize-problem">Generalize problem.</h4>
+<pre><code>- *Input*: Sequence of n elements $A = &lt; a_{1}, a_{2}, ... , a_{n} &gt;$
+- *Output*: Permutation (ordered) $A = &lt; a_{1}^{\prime},a_{2}^{\prime},...,a_{n}^{\prime} &gt;$ 
+            of the input sequence such that satisfies $ a_{1}^{\prime} \le a_{2}^{\prime} \le ... \le a_{n}^{\prime} $.
+</code></pre>
+<h4 id="write-pseudocode-for-this-algorithm-which-is-known-as-selection-sort">Write pseudocode for this algorithm, which is known as selection sort.</h4>
+<pre><code class="python">SELECTION-SORT(A)
+n = A.length
+For j = 1 to n - 1
+    smallest = j
+    for i = j + 1 to n
+        if A[i] &lt; A[smallest]
+            smallest = i
+    exchange A[j] with A[smallest]
+    # temp = A[j]
+    # A[j] = A[smallest]
+    # A[smallest] = temp
+</code></pre>
+
+<p><a href="http://github.com/resoliwan/resoliwan.github.io/blob/master/code/algorithm/ch2_selection_sort.py">code</a></p>
+<h4 id="what-loop-invariant-dose-this-algorithm-maintain">What loop invariant dose this algorithm maintain?</h4>
+<h6 id="loop-invariant_1">Loop Invariant:</h6>
+<p>The sub-array A[1..j] consists of the elements originally in A[1..j]. But in sorted order.</p>
+<h6 id="initialization_1">Initialization:</h6>
+<ul>
+<li>It is true prior to the first iteration of the loop.</li>
+<li>When j = 1, The subarray A[1..j] consists of just 1 element A[1],
+which is in fact originally element in A[1].
+Moreover the subarray is sorted(trivially of course).</li>
+</ul>
+<h6 id="maintenance_1">maintenance:</h6>
+<ul>
+<li>It is true before an iteration, it remains true before the next iteration.</li>
+<li>Before an iteration A[1..j - 1] is in sorted order. in iteration we insert minimum value to A[j],
+A[1..j] will remains sorted order. Incrementing j for the next iteration of the for loop then preserve the order.</li>
+</ul>
+<h6 id="termination_1">termination:</h6>
+<ul>
+<li>When the loop terminate, the invariant give us a useful property that helps show that the algorithm is correct.
+The condition causing that the loop terminate is that j &gt; A.length = n. Because each loop iteration increase j by 1, 
+we must have j = n + 1 at that time. Substituting n + 1 for j in the wording of loop invariant,
+we have that the sub-array A[1..n] consists of elements originally in A[1..n], but in sorted order. </li>
+</ul>
+<h4 id="why-dose-it-need-to-run-for-only-the-first-n-1-elements-rather-than-for-all-n-elements">Why dose it need to run for only the first n - 1 elements, rather than for all n elements?</h4>
+<p>The algorithm maintains the loop invariant that at the start of each iteration of the outer for loop, 
+the subarray A[1..j-1] consists of the j-1 smallest elements in the array A[1..n], 
+and this subarray is in sorted order. After the first n-1 elements, the subarray A[1..n - 1] 
+contains the smallest n-1 elements, sorted, and therefore element A[n] must be the largest element.</p>
+<h4 id="give-the-best-case-and-worst-case-running-times-of-selection-sort-in-theta-notation">Give the best-case and worst case running times of selection sort in $\Theta-$notation.</h4>
 <h1 id="from">From</h1>
 <ul>
 <li>https://mitpress.mit.edu/books/introduction-algorithms-third-edition</li>

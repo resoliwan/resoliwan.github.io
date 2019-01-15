@@ -243,6 +243,7 @@
             <li><a href="#class-changes">Class Changes</a></li>
             <li><a href="#template-and-stl-changes">Template and STL Changes</a></li>
             <li><a href="#new-stl-methods">New STL Methods</a></li>
+            <li><a href="#the-rvalue-reference">The rvalue reference</a></li>
         <li class="main "><a href="#reference-declaration">Reference declaration</a></li>
         <li class="main "><a href="#from">From</a></li>
     </ul>
@@ -429,6 +430,9 @@ for (auto &amp; x: prices)
 std::vector&lt;std::list&lt;int&gt;&gt; // ok in c++11
 </code></pre>
 
+<h2 id="the-rvalue-reference">The rvalue reference</h2>
+<p>An lvalue is an expression, such as a variable name or a dereferenced pointer, 
+that represents data for which the program can obtain an address.</p>
 <h1 id="reference-declaration">Reference declaration</h1>
 <p>Declares a named variable a s a reference, that is, an alias to already-existing object or function.
 - &amp; (attr) declarator: Lvalue reference declarator: the declaration S&amp; D; declares D as an lvalue reference to the type determined by decl-specifier-seq S
