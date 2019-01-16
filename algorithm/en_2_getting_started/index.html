@@ -542,7 +542,7 @@ Moreover the subarray is sorted(trivially of course).</li>
 <h6 id="maintenance_1">maintenance:</h6>
 <ul>
 <li>It is true before an iteration, it remains true before the next iteration.</li>
-<li>Before an iteration A[1..j - 1] is in sorted order. in iteration we insert minimum value to A[j],
+<li>Before an iteration A[1..j - 1] is in sorted order. In iteration we insert minimum value to A[j],
 A[1..j] will remains sorted order. Incrementing j for the next iteration of the for loop then preserve the order.</li>
 </ul>
 <h6 id="termination_1">termination:</h6>
@@ -553,11 +553,40 @@ we must have j = n + 1 at that time. Substituting n + 1 for j in the wording of 
 we have that the sub-array A[1..n] consists of elements originally in A[1..n], but in sorted order. </li>
 </ul>
 <h4 id="why-dose-it-need-to-run-for-only-the-first-n-1-elements-rather-than-for-all-n-elements">Why dose it need to run for only the first n - 1 elements, rather than for all n elements?</h4>
-<p>The algorithm maintains the loop invariant that at the start of each iteration of the outer for loop, 
-the subarray A[1..j-1] consists of the j-1 smallest elements in the array A[1..n], 
-and this subarray is in sorted order. After the first n-1 elements, the subarray A[1..n - 1] 
-contains the smallest n-1 elements, sorted, and therefore element A[n] must be the largest element.</p>
+<p>The subarray A[1..j-1] consists of the smallest elements 1-n elements, and therefore element A[n] must be the largest element.</p>
 <h4 id="give-the-best-case-and-worst-case-running-times-of-selection-sort-in-theta-notation">Give the best-case and worst case running times of selection sort in $\Theta-$notation.</h4>
+<pre><code class="python">SELECTION-SORT(A)                  | cost | time
+1 n = A.length                     | c1   | 1
+2 For j = 1 to n - 1               | c2   | n
+3   smallest = j                   | c3   | n-1
+4   for i = j + 1 to n             | c4   | \sum_{j=1}^{n} t_{j}
+5       if A[i] &lt; A[smallest]      | c5   | \sum_{j=1}^{n} (t_{j} - 1)
+6           smallest = i           | c6   | \sum_{j=1}^{n} (t_{j} - 1)
+7   exchange A[j] with A[smallest] | c7   | n-1
+8   # temp = A[j] 
+9   # A[j] = A[smallest]
+10  # A[smallest] = temp
+</code></pre>
+
+<h4 id="best-case-worst-case-is-same">Best case &amp; worst case is same</h4>
+<p>$$
+\begin{align}
+ T(n) &amp; = c_{1} + c_{2}n + c_{3}(n-1) 
+    + c_{4}\Biggl( \sum_{j=1}^{n} t_{j} \Biggr) 
+    + c_{5}\Biggl( \sum_{j=1}^{n} (t_{j} - 1) \Biggr)
+    + c_{6}\Biggl( \sum_{j=1}^{n} (t_{j} - 1) \Biggr)
+    + c_{7}(n-1) \\
+      &amp; = c_{1} + c_{2}n + c_{3}(n-1) 
+    + c_{4}\Biggl( \frac{n(n+1)}{2} \Biggr) 
+    + c_{5}\Biggl( \frac{n(n-1)}{2} \Biggr)
+    + c_{6}\Biggl( \frac{n(n-1)}{2} \Biggr)
+    + c_{7}(n-1) \\
+      &amp; = (\frac{c_{4}}{2} + \frac{c_{5}}{2} + \frac{c_{6}}{2})n^{2} + 
+    (c_{2} + c_{3} + \frac{c_{4}}{2} - \frac{c_{5}}{2} - \frac{c_{6}}{2} + c_{7})n 
+    + (c_{1} - c_{3} - c_{7}) \\
+      &amp; \approx \Theta(n^{2})
+\end{align}
+$$</p>
 <h1 id="from">From</h1>
 <ul>
 <li>https://mitpress.mit.edu/books/introduction-algorithms-third-edition</li>

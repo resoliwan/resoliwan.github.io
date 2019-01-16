@@ -244,7 +244,8 @@
             <li><a href="#template-and-stl-changes">Template and STL Changes</a></li>
             <li><a href="#new-stl-methods">New STL Methods</a></li>
             <li><a href="#the-rvalue-reference">The rvalue reference</a></li>
-        <li class="main "><a href="#reference-declaration">Reference declaration</a></li>
+        <li class="main "><a href="#move-semantics-and-the-rvalue-reference">Move Semantics and the Rvalue Reference</a></li>
+            <li><a href="#the-need-for-move-semantics">The Need for Move Semantics</a></li>
         <li class="main "><a href="#from">From</a></li>
     </ul>
 </div></div>
@@ -431,12 +432,41 @@ std::vector&lt;std::list&lt;int&gt;&gt; // ok in c++11
 </code></pre>
 
 <h2 id="the-rvalue-reference">The rvalue reference</h2>
-<p>An lvalue is an expression, such as a variable name or a dereferenced pointer, 
-that represents data for which the program can obtain an address.</p>
-<h1 id="reference-declaration">Reference declaration</h1>
+<h4 id="lvalue">lvalue</h4>
+<p>is an expression, such as a variable name or dereferenced  pointer, 
+that represents data for which the program can obtain an address.
+Originally lvalue was one that could appear on the left side of assignment expression,
+but the advent of the const modifier allowed for constructs that cannot be assigned but which still addressable;</p>
+<h4 id="lvalue-reference">lvalue reference</h4>
+<p>is an identifier that can binds an lvalue.</p>
+<pre><code>int n;              // lvalue
+int * pt = new int; // lvalue
+const int b = 101;  // lvalue
+int &amp; rn = n;       // lvalue reference
+int &amp; rt = *pt;     // lvalue reference
+cont int &amp; rb = b;  // lvalue reference
+</code></pre>
+
+<h4 id="rvalue">rvalue</h4>
+<p>is an values that can appear on the left side of assignment expression 
+but for which cannot apply the address operator.
+literal constants, expression such as x+y and function return values, 
+providing the function dose not a reference</p>
+<h4 id="rvalue-reference">rvalue reference</h4>
+<p>is identifier that can binds an rvalue;</p>
+<pre><code>int x = 10                     // rvalue
+int y = 20                     // rvalue
+int &amp;&amp; r1 = 13;                // rvalue reference
+int &amp;&amp; r2 = x + y;             // rvalue reference. bind the value to which x + y evaluates at that time.
+double &amp;&amp; r3 = std::sqrt(2.0); // revalue reference
+</code></pre>
+
+<h4 id="reference-declaration">Reference declaration</h4>
 <p>Declares a named variable a s a reference, that is, an alias to already-existing object or function.
 - &amp; (attr) declarator: Lvalue reference declarator: the declaration S&amp; D; declares D as an lvalue reference to the type determined by decl-specifier-seq S
 - &amp;&amp; (attr) declarator: Rvalue reference declarator: the declaration S&amp;&amp; D: declares D as an rvalue reference to the type determined  by decl-specifier-seq S.</p>
+<h1 id="move-semantics-and-the-rvalue-reference">Move Semantics and the Rvalue Reference</h1>
+<h2 id="the-need-for-move-semantics">The Need for Move Semantics</h2>
 <h1 id="from">From</h1>
 <p><a href="https://www.amazon.com/Primer-Plus-6th-Developers-Library/dp/0321776402">C++ Primer Plus (6th Edition)</a></p></div>
         </div>
