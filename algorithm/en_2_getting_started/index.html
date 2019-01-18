@@ -162,6 +162,15 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Framework <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../framework/spring_webflux/">Spring WebFlux.</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Language <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -254,6 +263,7 @@
             <li><a href="#exercises">Exercises</a></li>
             <li><a href="#22-1">2.2-1</a></li>
             <li><a href="#22-2">2.2-2</a></li>
+            <li><a href="#22-3">2.2-3</a></li>
         <li class="main "><a href="#from">From</a></li>
     </ul>
 </div></div>
@@ -389,6 +399,7 @@ For j = 1 to A.length
         i = j
 </code></pre>
 
+<p><a href="http://github.com/resoliwan/resoliwan.github.io/blob/master/algorithm/ch2_linear_search.py">code</a></p>
 <h5 id="loop-invariants">loop invariants</h5>
 <p>i is NIL or 1 &lt;= i &lt;= A.length.
 If A[j] == v then i = j. </p>
@@ -587,6 +598,42 @@ we have that the sub-array A[1..n] consists of elements originally in A[1..n], b
       &amp; \approx \Theta(n^{2})
 \end{align}
 $$</p>
+<h2 id="22-3">2.2-3</h2>
+<p>Consider linear search again (see Exercise 2.1-3). 
+How many elements of the input sequence need to be checked on the average,
+assuming that the element begin searched for is equally likely to be any element in the array?</p>
+<pre><code class="python">LINEAR-SEARCH(A, v)
+i = NIL
+For j = 1 to A.length
+    if A[j] == v
+        i = j
+</code></pre>
+
+<p><a href="http://github.com/resoliwan/resoliwan.github.io/blob/master/algorithm/ch2_linear_search.py">code</a></p>
+<h4 id="simplify-problem">simplify problem</h4>
+<p>We have input sequence &lt;1, 2&gt;.
+We assume search for 1,2 as equally likely
+When we search 1, what is the probability it is at A[0]?  $ \frac{1}{2}$
+When we search 1, what is the probability it is at A[1]?  $ \frac{1}{2}$
+How many elements of the input sequence need to be checked on the average?
+$$ E(n) = 1 * 1/2 + 2 * 1/2 = 1/2 + 1 = 1.5$$</p>
+<h4 id="generalize-problem_1">Generalize problem</h4>
+<p>$$
+\begin{align}
+E(n) &amp; = \sum_{k=1}^{n} (k * 1/n) \\
+     &amp; = \frac{1}{n} \sum_{k=1}^{n}k  \\
+     &amp; = \frac{1}{n}\frac{n(n+1)}{2} \\
+     &amp; \approx \Theta(n)
+\end{align}
+$$</p>
+<h4 id="how-about-in-the-worst-case">How about in the worst case?</h4>
+<p>n</p>
+<h4 id="running-times">running times</h4>
+<p>What are the average-case and worst-case running times of linear search in ‚$\Theta$-notation? 
+Justify your answers.
+- When average-case running time is $\Theta(n)$ (refer to Generalize problem).
+- When worst-case same, running time is n, it is $\Theta(n)$
+- Then both case running time in $\Theta$-notation is $\Theta(n)$.</p>
 <h1 id="from">From</h1>
 <ul>
 <li>https://mitpress.mit.edu/books/introduction-algorithms-third-edition</li>

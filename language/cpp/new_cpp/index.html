@@ -161,6 +161,15 @@
   </li>
                                 </ul>
                             </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Framework <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../../../framework/spring_webflux/">Spring WebFlux.</a>
+</li>
+                                </ul>
+                            </li>
                             <li class="dropdown active">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Language <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
@@ -219,7 +228,7 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../../../etc/vi/multi_lang/">
+                                <a rel="next" href="../../../framework/spring_webflux/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
@@ -467,6 +476,57 @@ double &amp;&amp; r3 = std::sqrt(2.0); // revalue reference
 - &amp;&amp; (attr) declarator: Rvalue reference declarator: the declaration S&amp;&amp; D: declares D as an rvalue reference to the type determined  by decl-specifier-seq S.</p>
 <h1 id="move-semantics-and-the-rvalue-reference">Move Semantics and the Rvalue Reference</h1>
 <h2 id="the-need-for-move-semantics">The Need for Move Semantics</h2>
+<p>Let the compiler know the it needs to do a real copy and when it doesn't.
+Compiler modifies code to remove redundant job.</p>
+<h4 id="move-semantic">Move Semantic</h4>
+<pre><code>vector&lt;string&gt; upper(vecter&lt;string&gt;&amp; vs) 
+{
+    vector&lt;string&gt; temp;
+    //code the store all upper case to temp
+    return temp;
+
+}
+vector&lt;string&gt; vstr(100);
+vector&lt;string&gt; vstr_copy1(vstr);        // #1
+vector&lt;string&gt; vstr_copy2(upper(vstr)); // #2
+</code></pre>
+
+<h5 id="1">#1</h5>
+<p>To make copy of vstr, vstr copy constructor will called.</p>
+<h5 id="2">#2</h5>
+<ol>
+<li>create temp object which is upper case version of vstr.</li>
+<li>vstr_copy2 call copy constructor of temp object.</li>
+<li>delete temp object.
+Step 2 is redundant in this case. It's better the compiler transfer ownership of the data to vstr_copy2.</li>
+</ol>
+<h5 id="example">Example</h5>
+<p>When you move a file from one directory to another: The actual file stays where is is on the hard drive, 
+and just the booking is altered.
+Somewhat paradoxically move semantic avoids moving the primary data;it just adjusts booking
+To implement move semantic, 
+we need a way to let the compiler know the it needs to do a real copy and when it doesn't.
+Here's where the rvalue reference comes into play.
+We can define two constructor. One the regular copy constructor. The other, called move constructor, 
+can use an rvalue reference, and it can bind to rvalue arguments, such as return value of upper(vsrt)..
+The copy constructor do the usually deep copy, while the move constructor can just adjust booking.
+A move constructor may alter its argument, and this implies that an rvalue reference parameter should not be const.</p>
+<pre><code>Useless::Useless(Useless&amp;&amp; u): num(u.num) //move constructor
+{
+    ++ct;
+    pt = u.pt;
+    u.pt = nullptr;
+    u.num = 0;
+    showObj();
+    cout &lt;&lt; &quot;move construtor(Useless&amp;&amp; u)&quot; &lt;&lt; endl;
+}
+</code></pre>
+
+<ul>
+<li>Move constructor make new object based on rvalue reference.</li>
+<li>Must pilfering original memory assigned by new, because it'll be called twice if it is not done.
+<a href="https://github.com/resoliwan/cprimary/blob/master/l18/useless.cpp">code</a></li>
+</ul>
 <h1 id="from">From</h1>
 <p><a href="https://www.amazon.com/Primer-Plus-6th-Developers-Library/dp/0321776402">C++ Primer Plus (6th Edition)</a></p></div>
         </div>
