@@ -165,9 +165,33 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Framework <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
+  <li class="dropdown-submenu">
+    <a href="#">React</a>
+    <ul class="dropdown-menu">
+            
 <li >
-    <a href="../../framework/spring_webflux/">Spring WebFlux.</a>
+    <a href="../../framework/react/reactive_introduction/">Introduction to Reactive Programming</a>
 </li>
+            
+<li >
+    <a href="../../framework/react/reactive_stream_introduction/">Reactive streams</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">Spring</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../framework/spring/spring_overview/">Spring overview.</a>
+</li>
+            
+<li >
+    <a href="../../framework/spring/spring_webflux/">Spring WebFlux.</a>
+</li>
+    </ul>
+  </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -264,6 +288,8 @@
             <li><a href="#22-1">2.2-1</a></li>
             <li><a href="#22-2">2.2-2</a></li>
             <li><a href="#22-3">2.2-3</a></li>
+        <li class="main "><a href="#23-designing-algorithms">2.3 Designing algorithms</a></li>
+            <li><a href="#231-the-divide-and-conquer-approach">2.3.1 The divide-and-conquer approach</a></li>
         <li class="main "><a href="#from">From</a></li>
     </ul>
 </div></div>
@@ -521,10 +547,11 @@ $$\Theta(n^{3})$$</p>
 Then find the second smallest element of A, and exchange it with the element in A[2].
 Continue in this manner for the first $n-1$ element of A.</p>
 <h4 id="generalize-problem">Generalize problem.</h4>
-<pre><code>- *Input*: Sequence of n elements $A = &lt; a_{1}, a_{2}, ... , a_{n} &gt;$
-- *Output*: Permutation (ordered) $A = &lt; a_{1}^{\prime},a_{2}^{\prime},...,a_{n}^{\prime} &gt;$ 
-            of the input sequence such that satisfies $ a_{1}^{\prime} \le a_{2}^{\prime} \le ... \le a_{n}^{\prime} $.
-</code></pre>
+<ul>
+<li><em>Input</em>: Sequence of n elements $A = &lt; a_{1}, a_{2}, ... , a_{n} &gt;$</li>
+<li><em>Output</em>: Permutation (ordered) $A = &lt; a_{1}^{\prime},a_{2}^{\prime},...,a_{n}^{\prime} &gt;$ 
+            of the input sequence such that satisfies $ a_{1}^{\prime} \le a_{2}^{\prime} \le ... \le a_{n}^{\prime} $.</li>
+</ul>
 <h4 id="write-pseudocode-for-this-algorithm-which-is-known-as-selection-sort">Write pseudocode for this algorithm, which is known as selection sort.</h4>
 <pre><code class="python">SELECTION-SORT(A)
 n = A.length
@@ -634,6 +661,70 @@ Justify your answers.
 - When average-case running time is $\Theta(n)$ (refer to Generalize problem).
 - When worst-case same, running time is n, it is $\Theta(n)$
 - Then both case running time in $\Theta$-notation is $\Theta(n)$.</p>
+<h5 id="22-4">2.2-4</h5>
+<p>How can we modify almost any algorithm to have a good best-case running time?
+Good best-case only possible some special case of input so it is impossible in general.</p>
+<h1 id="23-designing-algorithms">2.3 Designing algorithms</h1>
+<h2 id="231-the-divide-and-conquer-approach">2.3.1 The divide-and-conquer approach</h2>
+<p>To solve a given problem, they call themselves recursively one or more times to deal with closely related sub-problems.
+These algorithms follows a divide-and-conquer approach: they break down the problem into several subproblems recursively,
+and then combine these solution to create a solution to the original problem.</p>
+<p>The divide-and-conquer paradigm involves three steps at each level of recursion:</p>
+<h4 id="divide">Divide ####</h4>
+<p>the problem into smaller problems that are the smaller instance of the same problem.</p>
+<h4 id="conquer">Conquer ####</h4>
+<p>the subproblems by solving them. If its size small enough, however, just solve the subproblems in a straightforward manner.</p>
+<h5 id="combine">Combine</h5>
+<p>the solution to the subproblems into the solution for a original problem</p>
+<p>The <strong>merge sort</strong> algorithm follows divide-and-conquer approach.</p>
+<h4 id="divide_1">Divide</h4>
+<p>Divide the n-element sequence into two subsequence of n/2-elements each.</p>
+<h4 id="conquer_1">Conquer</h4>
+<p>Sort the subsequences using merge sort. </p>
+<h4 id="combine_1">Combine</h4>
+<p>Merge the two sorted subsequences to produce the sorted answer</p>
+<h3 id="pseudocode_2">Pseudocode</h3>
+<h5 id="parameters">Parameters</h5>
+<ul>
+<li>A is array.</li>
+<li>p,q,r are indices into the array such that $p \leq q \lt r$</li>
+<li>The procedure assumes that the subarray A[p..q] and A[q+1..r] are in sorted order.</li>
+<li>It merges them to form a single sorted subarray that replace the current subarray A[p..r].</li>
+</ul>
+<pre><code class="python">// A[2,3,1,4]
+// p = 1, q = 2, r = 4
+1  MERGE(A, p, q, r)
+2  lenL = q - p + 1
+3  lenR = r - q
+4  for i = 1 to lenL
+5      L[i] = A[p + i - 1]
+6  for j = 1 to lenR
+7      R[j] = A[q + j]
+8  L[lenL + 1] = infin
+9  R[lenR + 1] = infin
+10 i = 1
+11 j = 1
+12 for k = p to r
+13     if L[i] &lt;= R[j]
+14         A[k] = L[i]
+15         i = i + 1
+16     else 
+17         A[k] = R[j]
+18         j = j + 1
+</code></pre>
+
+<h4 id="loop-invariant_2">Loop invariant</h4>
+<p>At the start of each iteration of the for loop of lines 12-18, 
+the subarray A[p..k-1] contains the k-p smallest elements of $L[1..n_{1} + 1]$ and $R[1..n_{2} + 1]$, in sorted order. 
+Moreover L[i] and L[j] are the smallest elements of their arrays that have not been copied back into A.</p>
+<h4 id="initialization_2">Initialization</h4>
+<p>Prior to the first iteration of the loop, we have p = k, so that the subarray A[p..k-1] is empty. This subarray
+contains k - p = 0 elements of L and R. Since j = i = 1, both L[i], R[j] are the smallest elements of their arrays
+that has not been coped back into A.</p>
+<h4 id="maintenance_2">Maintenance</h4>
+<p>To see that each iteration maintains the loop invariant, let us suppose $L[i] \leq R[j]$. The $L[i]$ is the smallest element </p>
+<h4 id="termination_2">Termination</h4>
+<p><a href="http://github.com/resoliwan/resoliwan.github.io/blob/master/algorithm/ch2_merge.py">code</a></p>
 <h1 id="from">From</h1>
 <ul>
 <li>https://mitpress.mit.edu/books/introduction-algorithms-third-edition</li>
