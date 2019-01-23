@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>1.Introduction - Leonadro's home</title>
+        <title>12 Binary Search Trees - Leonadro's home</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -53,12 +53,12 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Algorithm <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../en_12_binary_search_trees/">12 Binary Search Trees</a>
+<li class="active">
+    <a href="./">12 Binary Search Trees</a>
 </li>
                                     
-<li class="active">
-    <a href="./">1.Introduction</a>
+<li >
+    <a href="../en_1_introduction/">1.Introduction</a>
 </li>
                                     
 <li >
@@ -280,12 +280,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../en_12_binary_search_trees/">
+                                <a rel="next" href="../..">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../en_2_getting_started/">
+                                <a rel="prev" href="../en_1_introduction/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -297,36 +297,33 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#1introduction">1.Introduction</a></li>
-        <li class="main "><a href="#1-the-role-of-algorithm-in-computing">1. The Role of Algorithm in Computing.</a></li>
-        <li class="main "><a href="#from">From</a></li>
+        <li class="main active"><a href="#12-binary-search-trees">12 Binary Search Trees</a></li>
+        <li class="main "><a href="#what-is-a-binary-search-tree">What is a binary search tree?</a></li>
+            <li><a href="#binary-search-tree-property">binary-search-tree property:</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="1introduction">1.Introduction</h1>
-<h1 id="1-the-role-of-algorithm-in-computing">1. The Role of Algorithm in Computing.</h1>
-<ul>
-<li>What are algorithm?<ul>
-<li>An algorithm is any well-defined procedure that takes values as input and produces some value as output. like function.</li>
-<li>The statement of problem specifies the desired input and output relationship. The algorithm is procedure for archieving input/output relationship.<ul>
-<li>Ex. Sorting problem</li>
-<li><strong>Input</strong>: A sequence of n elements $  A = &lt; a_{1}, a_{2}, ... ,a_{n} &gt; $.</li>
-<li><strong>Output</strong>: The permutation(reordering) $ A = &lt; a_{1}^{\prime},a_{2}^{\prime},...,a_{n}^{\prime} &gt;  $ 
-of the input sequence such that satisfies $ a_{1}^{\prime} \le a_{2}^{\prime} \le ... \le a_{n}^{\prime} $.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Why is the study algorithms worthwhile?<ul>
-<li>To learn techniques of algorithm design and analysis.</li>
-</ul>
-</li>
-</ul>
-<h1 id="from">From</h1>
-<ul>
-<li>https://mitpress.mit.edu/books/introduction-algorithms-third-edition</li>
-</ul></div>
+<h1 id="12-binary-search-trees">12 Binary Search Trees</h1>
+<p>The search tree data structure supports many dynamic-set operations
+- search
+- minimum
+- maximum
+- predecessor
+- successor
+- insert
+- delete</p>
+<h1 id="what-is-a-binary-search-tree">What is a binary search tree?</h1>
+<p>A tree satisfies below properties
+- Parent has at most two child node.
+- Smaller value then parent be inserted into left sub tree.
+- Bigger value then parent be inserted into right sub tree.</p>
+<p>We can represent such a tree by a linked data structure in which each
+node is an object.
+-  The root node is only node in the tree whose parent p as NIL</p>
+<h4 id="binary-search-tree-property">binary-search-tree property:</h4>
+<p>Let x be a node in a binary search tree. If y is a node in the left subtree of x
+, then $y.key \leq x.key$. If y is a node in the right subtree of x, then $y.key \geq x.key$</p></div>
         </div>
 
         <footer class="col-md-12">
