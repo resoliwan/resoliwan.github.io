@@ -26,5 +26,5 @@ int main(void)
     return 0;
 }
 
-// protoc --cpp_out=./ ./addressbook.proto                                         ✔  10002  15:47:27
+// protoc --cpp_out=./ ./addressbook.proto
 // clang++ -std=c++11 -Wno-c++11-extensions test.cpp addressbook.pb.cc -lprotobuf

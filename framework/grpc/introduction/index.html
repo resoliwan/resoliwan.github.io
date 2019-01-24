@@ -180,6 +180,10 @@
 <li >
     <a href="../protocolbuffer/">Protocol Buffers</a>
 </li>
+            
+<li >
+    <a href="../tutorial_java/">Tutorial java</a>
+</li>
     </ul>
   </li>
                                     
@@ -299,9 +303,9 @@
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#introduction">Introduction</a></li>
         <li class="main "><a href="#components">Components</a></li>
+        <li class="main "><a href="#overview">Overview</a></li>
+        <li class="main "><a href="#define">Define</a></li>
         <li class="main "><a href="#features">Features</a></li>
-        <li class="main "><a href="#protocol-buffers">Protocol Buffers</a></li>
-            <li><a href="#goal">Goal</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -310,21 +314,36 @@
 <p>gRPC (Google Remote Procedure Calls) is an open source remote procedure call.</p>
 <h1 id="components">Components</h1>
 <ul>
-<li>Uses HTTP/2 for transport</li>
-<li>Protocol Buffers as the interface description language</li>
+<li>Uses HTTP/2 for transport.</li>
+<li>Protocol Buffers as the interface description language.</li>
 </ul>
+<h1 id="overview">Overview</h1>
+<p><img alt="gRpc" src="../grpc_overview.png" /></p>
+<h1 id="define">Define</h1>
+<pre><code class="proto">// The greeter service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message HelloReply {
+  string message = 1;
+}
+</code></pre>
+
 <h1 id="features">Features</h1>
 <ul>
 <li>Authentication</li>
 <li>Bidirectional streaming and flow control</li>
 <li>Blocking or nonblocking bindings</li>
 <li>Cancellation and timeout</li>
-</ul>
-<h1 id="protocol-buffers">Protocol Buffers</h1>
-<p>Protocol buffers are method of serializing structured data.</p>
-<h3 id="goal">Goal</h3>
-<p>Simplicity and performance. In particular, it was designed to be smaller 
-and faster than XML.</p></div>
+</ul></div>
         </div>
 
         <footer class="col-md-12">
