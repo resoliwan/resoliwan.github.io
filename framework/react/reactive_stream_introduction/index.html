@@ -334,13 +334,13 @@
 <p>Provider of a number of sequenced elements, 
 publishing them according the demand received from its Subscriber</p>
 <pre><code class="java">public interface Publisher&lt;T&gt; {
-    public void subsribe(Subscriber&lt;? super T&gt; s);
+    public void subscribe(Subscriber&lt;? super T&gt; s);
 }
 </code></pre>
 
 <h4 id="subscriber">Subscriber</h4>
 <pre><code class="java">public interface Subscriber&lt;T&gt; {
-    public void onSubsrive(Subscription s);
+    public void onSubscrive(Subscription s);
     public void onNext(T t);
     public void onError(Throwable t);
     public void onComplete();
@@ -358,7 +358,7 @@ for the purpose of mediating the data exchange between this pair.</p>
 
 <h4 id="processor">Processor</h4>
 <p>A Processor represents a processing stage—which is both a Subscriber and a Publisher and MUST obey the contracts of both.</p>
-<pre><code class="java">public interface Processor&lt;T, R&gt; extends Subsriber&lt;T&gt;, Publisher&lt;R&gt; {
+<pre><code class="java">public interface Processor&lt;T, R&gt; extends Subscriber&lt;T&gt;, Publisher&lt;R&gt; {
 }
 </code></pre>
 

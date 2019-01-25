@@ -304,6 +304,7 @@
         <li class="main active"><a href="#12-binary-search-trees">12 Binary Search Trees</a></li>
         <li class="main "><a href="#what-is-a-binary-search-tree">What is a binary search tree?</a></li>
             <li><a href="#binary-search-tree-property">binary-search-tree property:</a></li>
+            <li><a href="#theorem-121">Theorem 12.1</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -327,7 +328,37 @@ node is an object.
 -  The root node is only node in the tree whose parent p as NIL</p>
 <h4 id="binary-search-tree-property">binary-search-tree property:</h4>
 <p>Let x be a node in a binary search tree. If y is a node in the left subtree of x
-, then $y.key \leq x.key$. If y is a node in the right subtree of x, then $y.key \geq x.key$</p></div>
+, then $y.key \leq x.key$. If y is a node in the right subtree of x, then $y.key \geq x.key$</p>
+<p>The binary-search-tree property allow us to print out all the keys in a binary search tree in sorted order by 
+a simple recursive algorithm.</p>
+<pre><code>  1
+ /  \
+2    3
+</code></pre>
+
+<ul>
+<li>We think in-order is base. </li>
+<li>in order walk prints the root between the left subtree and the right subtree. (1,2,3)</li>
+<li>pre-order walk prints the root before the subtree. (2,1,3)</li>
+<li>post-order walk prints the root after the subtree. (2,3,1)</li>
+</ul>
+<pre><code class="python">INORDER-TREE-WALK(T.root)
+INORDER-TREE-WALK(x)
+if x != NIL
+    IN-ORDER(x.left)
+    print x.key
+    IN-ORDER(x.right)
+</code></pre>
+
+<h4 id="theorem-121">Theorem 12.1</h4>
+<p>If x is the root of an n-node subtree, than the call INORDER-TREE-WALK(X) takes $\Theta(n)$ time.</p>
+<p>Evaluation Rubric
+Logical correctness
+Clarity
+Opening
+Stating the conclusion.
+Reasons.
+Overall valuation.</p></div>
         </div>
 
         <footer class="col-md-12">

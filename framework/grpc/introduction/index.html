@@ -305,7 +305,13 @@
         <li class="main "><a href="#components">Components</a></li>
         <li class="main "><a href="#overview">Overview</a></li>
         <li class="main "><a href="#define">Define</a></li>
+        <li class="main "><a href="#methods">Methods</a></li>
+            <li><a href="#unary-rpc">Unary RPC</a></li>
+            <li><a href="#server-streaming-rpc">Server streaming RPC</a></li>
+            <li><a href="#client-streaming-rpc">Client streaming RPC</a></li>
+            <li><a href="#bidirectional-streaming-rpc">Bidirectional streaming RPC</a></li>
         <li class="main "><a href="#features">Features</a></li>
+        <li class="main "><a href="#link">Link</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -323,7 +329,7 @@
 <pre><code class="proto">// The greeter service definition.
 service Greeter {
   // Sends a greeting
-  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  rpc SayHello (HelloRequest) returns (HelloResponse) {}
 }
 
 // The request message containing the user's name.
@@ -332,17 +338,71 @@ message HelloRequest {
 }
 
 // The response message containing the greetings
-message HelloReply {
+message HelloResponse {
   string message = 1;
 }
 </code></pre>
 
+<h1 id="methods">Methods</h1>
+<h5 id="unary-rpc">Unary RPC</h5>
+<pre><code>rpc SayHello(HelloRequest) return (HelloResponse) {}
+</code></pre>
+
+<div class="mermaid">
+sequenceDiagram
+    client ->>+ stub : sayHello("hi")
+    stub ->> server : metadata
+    opt  if need
+        server -->> stub : metadata
+    end
+    stub ->>+ server : request
+    server -->>- stub : respond, status
+    stub -->>- client : return respond
+</div>
+
+<h5 id="server-streaming-rpc">Server streaming RPC</h5>
+<pre><code>rpc LotsOfReplies(HelloRequest) return (stream HelloResponse) {}
+</code></pre>
+
+<div class="mermaid">
+sequenceDiagram
+    client ->>+ server : request
+    server -->> client : respond 1
+    server -->> client : respond * n
+    server -->>- client : status
+</div>
+
+<h5 id="client-streaming-rpc">Client streaming RPC</h5>
+<pre><code>rpc LotsOfRequest(stream HelloRequest) return (HelloResponse) {}
+</code></pre>
+
+<ul>
+<li>The server sends back a single response, typically but not necessarily after it has received all the client’s requests</li>
+</ul>
+<div class="mermaid">
+sequenceDiagram
+    client ->>+ server : request 1
+    client ->> server : request * n
+    server -->>- client : respond
+</div>
+
+<h5 id="bidirectional-streaming-rpc">Bidirectional streaming RPC</h5>
+<pre><code>rpc BidHello(steam HelloRequest) return (stream HelloResponse) {}
+</code></pre>
+
+<ul>
+<li>The client and server can read and write any order</li>
+</ul>
 <h1 id="features">Features</h1>
 <ul>
 <li>Authentication</li>
 <li>Bidirectional streaming and flow control</li>
 <li>Blocking or nonblocking bindings</li>
 <li>Cancellation and timeout</li>
+</ul>
+<h1 id="link">Link</h1>
+<ul>
+<li><a href="https://www.slideshare.net/VarunTalwar4/grpc-design-and-implementation">gRPC-design-and-implementation</a></li>
 </ul></div>
         </div>
 
