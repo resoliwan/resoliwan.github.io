@@ -54,14 +54,6 @@
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="../../../algorithm/en_12_binary_search_trees/">12 Binary Search Trees</a>
-</li>
-                                    
-<li >
-    <a href="../../../algorithm/en_1_introduction/">1.Introduction</a>
-</li>
-                                    
-<li >
     <a href="../../../algorithm/en_2_getting_started/">2.Getting Started</a>
 </li>
                                 </ul>
@@ -179,10 +171,6 @@
             
 <li >
     <a href="../../../framework/grpc/protocolbuffer/">Protocol Buffers</a>
-</li>
-            
-<li >
-    <a href="../../../framework/grpc/tutorial_java/">Tutorial java</a>
 </li>
     </ul>
   </li>
@@ -313,6 +301,7 @@
             <li><a href="#the-need-for-move-semantics">The Need for Move Semantics</a></li>
             <li><a href="#move-constructor-observation">Move Constructor Observation</a></li>
             <li><a href="#assignment">Assignment</a></li>
+            <li><a href="#forcing-a-move">Forcing a Move</a></li>
         <li class="main "><a href="#from">From</a></li>
     </ul>
 </div></div>
@@ -626,6 +615,11 @@ Useless &amp; Useless::operation=(Useless &amp;&amp; f)  //not a const! because 
 }
 </code></pre>
 
+<h2 id="forcing-a-move">Forcing a Move</h2>
+<ul>
+<li>You can use std::move() function, If you want to use move constructor and move assignment with lvalue</li>
+<li>std::move is same as using the staitc_cast&lt;&gt; operator to case the object to type Type &amp;&amp;.</li>
+</ul>
 <h1 id="from">From</h1>
 <p><a href="https://www.amazon.com/Primer-Plus-6th-Developers-Library/dp/0321776402">C++ Primer Plus (6th Edition)</a></p></div>
         </div>

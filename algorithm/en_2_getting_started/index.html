@@ -53,14 +53,6 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Algorithm <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../en_12_binary_search_trees/">12 Binary Search Trees</a>
-</li>
-                                    
-<li >
-    <a href="../en_1_introduction/">1.Introduction</a>
-</li>
-                                    
 <li class="active">
     <a href="./">2.Getting Started</a>
 </li>
@@ -180,10 +172,6 @@
 <li >
     <a href="../../framework/grpc/protocolbuffer/">Protocol Buffers</a>
 </li>
-            
-<li >
-    <a href="../../framework/grpc/tutorial_java/">Tutorial java</a>
-</li>
     </ul>
   </li>
                                     
@@ -284,7 +272,7 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../en_1_introduction/">
+                                <a rel="next" href="../..">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
@@ -325,6 +313,11 @@
             <li><a href="#general-approach">General approach</a></li>
             <li><a href="#merge-sort-approach">Merge Sort approach</a></li>
             <li><a href="#prove">Prove</a></li>
+            <li><a href="#23-analyzing-divide-and-conquer-algorithms">2.3. Analyzing divide-and-conquer algorithms</a></li>
+        <li class="main "><a href="#exercises_1">Exercises</a></li>
+            <li><a href="#23-1">2.3-1</a></li>
+            <li><a href="#23-2">2.3-2</a></li>
+            <li><a href="#23-3">2.3-3</a></li>
         <li class="main "><a href="#from">From</a></li>
     </ul>
 </div></div>
@@ -720,7 +713,7 @@ and then combine these solution to create a solution to the original problem.</p
 <p>Sort the subsequences using merge sort. </p>
 <h4 id="combine_1">Combine</h4>
 <p>Merge the two sorted subsequences to produce the sorted answer</p>
-<h3 id="pseudocode_2">Pseudocode</h3>
+<h3 id="pseudo-code">Pseudo code</h3>
 <h5 id="parameters">Parameters</h5>
 <ul>
 <li>A is array.</li>
@@ -773,15 +766,95 @@ Then $L[i]$ is the smallest element not yet copied back into A. Because $A[p..k 
 after line 14 copies L[i] into A[k]. Incrementing k and i reestablishes the loop invariant for the next iteration.</p>
 <h4 id="termination_2">Termination</h4>
 <p>At termination, k = r + 1. By the loop invariant, the subarray $A[p..k-1]$, which is $A[p..r]$, contains the $k - p = r - p + 1$ smallest elements</p>
-<pre><code class="python">//MERGE-SORT(A, 1, A.length)
+<pre><code class="python">// A = 5,3, 4,1
+// 
+//      1,3,4,5
+//      /    \
+//   3,5      1,4
+//   / \      / \
+// 3    5     1   4
+//MERGE-SORT(A, 1, A.length)
 MERGE-SORT(A,p,r)
 if p &lt; r
-    q = lower(p + r/2)
+    q = lower((p + r)/2)
     MERGE-SORT(A, p, q)
     MERGE-SORT(A, q + 1, r)
     MERGE(A, p, q, r)
 </code></pre>
 
+<h2 id="23-analyzing-divide-and-conquer-algorithms">2.3. Analyzing divide-and-conquer algorithms</h2>
+<h3 id="recurrence-equation-recurrence">Recurrence equation, recurrence</h3>
+<p>Describe the overall running time on a problem of size n in terms of running time of smaller inputs.
+$$
+T(n) = 
+\begin{cases}
+\Theta(1), &amp; \text{if $n \leq c$,} \\
+aT(n/b) + D(n) + C(n), &amp; \text{otherwise.}
+\end{cases}
+$$</p>
+<h4 id="divide_2">Divide</h4>
+<p>$D(n) = \Theta(n)$</p>
+<h4 id="conquer_2">Conquer</h4>
+<p>$2T(n/2)$</p>
+<h4 id="combine_2">Combine</h4>
+<p>$C(n)=\Theta(n)$
+$$
+T(n) = 
+\begin{cases}
+c, &amp; \text{if $n = 1$,} \\
+2T(n/2) + cn, &amp; \text{$n \gt 1$,}
+\end{cases}
+$$</p>
+<pre><code>T(n)         cn                            cn
+           /    \                      /          \
+        T(n/2) T(n/2)               cn/2          cn/2
+                                  /    \        /      \
+                                T(n/4) T(n/4)  T(n/4)  T(n/4)
+
+A           cn              --&gt; cn
+|       /          \
+|    cn/2          cn/2     --&gt; cn
+lgn  /    \        /      \
+|  ....
+|  |  |  |  ...        |  | 
+V  c  c  c             c  c  --&gt; cn
+   \______________________/
+               n                  
+Level of tree: lg n + 1
+Total = (lg n + 1 ) * cn = lg n * cn + cn 
+</code></pre>
+
+<p>Worst case is $\Theta(n \log n)$</p>
+<h1 id="exercises_1">Exercises</h1>
+<h3 id="23-1">2.3-1</h3>
+<p>Using Figure 2.4 as a model, illustrate the operation of merge sort on the array.
+A = &lt;3, 41, 52, 26, 38, 57, 9, 49&gt;</p>
+<pre><code>3,9,26,38,41,49,51,57
+    /           \
+3,26,41,51  9,38,49,57
+  /   \       /   \
+3,41 26,51  38,57 9,49
+/ \  /  \  /  \  /  \
+3 41 52 26 38 57 9 49
+</code></pre>
+
+<h3 id="23-2">2.3-2</h3>
+<p>Rewrite the MERGE procedure so that is dose not use sentinels, instead stopping once either array L or R
+has had all its elements copied back to A and then copying the remainder of other array back into A.</p>
+<pre><code>MERGE()
+
+</code></pre>
+
+<h3 id="23-3">2.3-3</h3>
+<p>Use mathematical induction to show that when n is an exact power of 2, the solution of the recurrence 
+$$
+T(n) = 
+\begin{cases}
+2, &amp; \text{if $n = 2$,} \\
+2T(n/2) + n, &amp; \text{if $n = 2^{k}$, for $k &gt; 1$}
+\end{cases}
+$$
+is $T(n) = n \log n$</p>
 <h1 id="from">From</h1>
 <ul>
 <li>https://mitpress.mit.edu/books/introduction-algorithms-third-edition</li>

@@ -1,0 +1,56 @@
+# 12 Binary Search Trees
+The search tree data structure supports many dynamic-set operations
+- search
+- minimum
+- maximum
+- predecessor
+- successor
+- insert
+- delete
+
+# What is a binary search tree?
+A tree satisfies below properties
+- Parent has at most two child node.
+- Smaller value then parent be inserted into left sub tree.
+- Bigger value then parent be inserted into right sub tree.
+
+We can represent such a tree by a linked data structure in which each
+node is an object.
+-  The root node is only node in the tree whose parent p as NIL
+
+#### binary-search-tree property: ####
+ Let x be a node in a binary search tree. If y is a node in the left subtree of x
+, then $y.key \leq x.key$. If y is a node in the right subtree of x, then $y.key \geq x.key$
+    
+The binary-search-tree property allow us to print out all the keys in a binary search tree in sorted order by 
+a simple recursive algorithm.
+
+```
+  1
+ /  \
+2    3
+```
+- We think in-order is base. 
+- in order walk prints the root between the left subtree and the right subtree. (1,2,3)
+- pre-order walk prints the root before the subtree. (2,1,3)
+- post-order walk prints the root after the subtree. (2,3,1)
+```python
+INORDER-TREE-WALK(T.root)
+INORDER-TREE-WALK(x)
+if x != NIL
+    IN-ORDER(x.left)
+    print x.key
+    IN-ORDER(x.right)
+```
+
+#### Theorem 12.1 ####
+If x is the root of an n-node subtree, than the call INORDER-TREE-WALK(X) takes $\Theta(n)$ time.
+
+Evaluation Rubric
+Logical correctness
+Clarity
+Opening
+Stating the conclusion.
+Reasons.
+Overall valuation.
+

@@ -1,0 +1,15 @@
+# 1.Introduction
+
+# 1. The Role of Algorithm in Computing.
+- What are algorithm?
+    - An algorithm is any well-defined procedure that takes values as input and produces some value as output. like function.
+    - The statement of problem specifies the desired input and output relationship. The algorithm is procedure for archieving input/output relationship.
+        - Ex. Sorting problem
+        - **Input**: A sequence of n elements $  A = < a_{1}, a_{2}, ... ,a_{n} > $.
+        - **Output**: The permutation(reordering) $ A = < a_{1}^{\prime},a_{2}^{\prime},...,a_{n}^{\prime} >  $ 
+        of the input sequence such that satisfies $ a_{1}^{\prime} \le a_{2}^{\prime} \le ... \le a_{n}^{\prime} $.
+- Why is the study algorithms worthwhile?
+    - To learn techniques of algorithm design and analysis.
+
+# From
+- https://mitpress.mit.edu/books/introduction-algorithms-third-edition
