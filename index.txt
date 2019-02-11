@@ -1,0 +1,18 @@
+# README.md
+I enjoy solving problem at the right time and at the right quality.
+
+I have over 9 years of experience building scalable & highly available back-end systems.
+I have proficiency in MSA, NOSQL, ML.
+
+I define the strategy and implement solution based on current situation.
+I am excited by constantly learning of many things.
+
+## Software Engineer
+- I make common solutions for massive online games.
+- I implement framework from front to back-end.
+- I use machine learning to solve real world problem.
+
+## More
+- [HOME](https://resoliwan.github.io/)
+- [Linkedin Profile](https://www.linkedin.com/in/leonardo-lee-92209ab2)
+- resoliwan@gmail.com
