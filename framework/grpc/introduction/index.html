@@ -303,6 +303,11 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#introduction">Introduction</a></li>
+        <li class="main "><a href="#why">Why</a></li>
+            <li><a href="#_1">서비스 간 통신은 아래와 같은 구조를 같는다.</a></li>
+            <li><a href="#_2">자동화 해보자.</a></li>
+            <li><a href="#grpc">Grpc 란</a></li>
+            <li><a href="#example">Example</a></li>
         <li class="main "><a href="#components">Components</a></li>
         <li class="main "><a href="#overview">Overview</a></li>
         <li class="main "><a href="#define">Define</a></li>
@@ -319,6 +324,26 @@
 
 <h1 id="introduction">Introduction</h1>
 <p>gRPC (Google Remote Procedure Calls) is an open source remote procedure call.</p>
+<h1 id="why">Why</h1>
+<p>MSA를 하다 보면 서비스 간 통신이 자주 일어 나게 된다.</p>
+<h3 id="_1">서비스 간 통신은 아래와 같은 구조를 같는다.</h3>
+<ol>
+<li>통신 명세가 존재 하고 </li>
+<li>해당 명세를 각 언어에 맞는 serialize/ deserialize 코드를 작성한다.</li>
+<li>network 를 사용 해야 하는 경우 특정 프로토콜로 구현한다.</li>
+</ol>
+<h3 id="_2">자동화 해보자.</h3>
+<ol>
+<li>통신 명세 = protobuf.proto</li>
+<li>각언어 코드 = protoc </li>
+<li>network 간 호출 = http2</li>
+</ol>
+<h3 id="grpc">Grpc 란</h3>
+<p>위의 기능을 자동화 한 구현체이다.</p>
+<h3 id="example">Example</h3>
+<ul>
+<li><a href="https://developers.google.com/protocol-buffers/">protobuff</a></li>
+</ul>
 <h1 id="components">Components</h1>
 <ul>
 <li>Uses HTTP/2 for transport.</li>
