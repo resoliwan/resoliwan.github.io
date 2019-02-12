@@ -312,6 +312,16 @@
             <li><a href="#_4">왜 필요 한가?</a></li>
             <li><a href="#_5">해결책</a></li>
         <li class="main "><a href="#_6">정의와 실행</a></li>
+        <li class="main "><a href="#variable">Variable</a></li>
+            <li><a href="#definition">Definition</a></li>
+            <li><a href="#use">Use</a></li>
+            <li><a href="#assign">Assign</a></li>
+            <li><a href="#initialization">Initialization</a></li>
+            <li><a href="#working-with-data">Working with data</a></li>
+            <li><a href="#placeholders-and-feeds">Placeholders and Feeds</a></li>
+        <li class="main "><a href="#_7">예제</a></li>
+            <li><a href="#_8">푸는 방법</a></li>
+            <li><a href="#_9">데이터를 만들어보자.</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -329,9 +339,10 @@
 물을 원하는 방향으로 흐르게 하기 위해서는 일단 길을 파야한다.
 그 길 위에 물을 부으면 이미 파둔 길을 따라 물이 흐른다.
 물이 합쳐지기도 하고 섞이기도 하면서 새로운 물로 변해 마지막에 다다른다.
-
 </code></pre>
 
+<p><object data="./tensorflow_model.svg" type="image/svg+xml" width="600" >
+</object></p>
 <h1 id="_1">무엇으로 구성되어 있는가?</h1>
 <ul>
 <li>텐서플로우는 계산을 한다. </li>
@@ -350,7 +361,8 @@
 - edge 는 다차원 행렬(tensor)에 대응한다.
 - node 는 텐서를 생성 또는 특정 규칙으로 조작한다.(Ops)</p>
 <h1 id="example-of-computational-graph">Example of Computational Graph</h1>
-<p>아래의 계산 그래프 정의 코드는 다음과 같은 단방향 그래프로 만들어 질수 있다.</p>
+<p>아래의 계산 그래프 정의 코드는 다음과 같은 단방향 그래프로 만들어 질수 있다.
+(텐서가 흐르지 않는다)</p>
 <pre><code class="python">red = 1
 blue = 2
 green = red * blue
@@ -391,7 +403,85 @@ print(purple)
 - 그래프를 정의하는 단계(tf.Graph)
     - 물길을 파는 단계
 - 정의된 그래프를 실행하는 단계 (tf.Session)
-    - 파진 물길을 따라 물을 흘리는 단계;</p></div>
+    - 파진 물길을 따라 물을 흘리는 단계;</p>
+<h1 id="variable">Variable</h1>
+<h3 id="definition">Definition</h3>
+<p>전체 런타임 환경에서 공유 가능하고 변경 할 수 있는 영속적 변수 
+- 정의 할때 name, type, shape, and initialization procedure 을 변경 할 수 있다.</p>
+<pre><code class="python">v = tf.get_variable(
+    &quot;name&quot;, 
+    dtype=tf.float32, 
+    shape[2, 2], 
+    initializer=tf.random_normal_initializer(stddev=0.5)
+)
+</code></pre>
+
+<h3 id="use">Use</h3>
+<p>다른 텐서 처럼 사용하면 된다.</p>
+<pre><code>y = tf.matmul(v, tf.constant([[1,2], [3,4]]))
+</code></pre>
+
+<h3 id="assign">Assign</h3>
+<p>변수의 값을 변경 하려면 할당해줘야 하고 다음 업데이트 까지 값을 유지 한다.</p>
+<pre><code>increment_op = v.assign(v + 1) # syntax 1
+increment_op = tf.assign(v, v + 1) #syntax2
+</code></pre>
+
+<h3 id="initialization">Initialization</h3>
+<p>변수 값들은 특정 session 안에서만 유지 되며 변수를 사용하기 위해서는 최초에 1회 초기화 해주어야 한다.</p>
+<pre><code>create graph() # including variables
+init = tf.global_variables_initializer() # 한번에 모든 변수 초기화
+with tf.Session() as session:
+    session.run(init)
+</code></pre>
+
+<h3 id="working-with-data">Working with data</h3>
+<p>데이터를 읽어 그래프에게 주어야 할 경우가 있다.
+만약 데이터가 작다면 우리는 그래프 정의에서 
+데이터를 메모리에 로딩해 상수로 해당 데이터를 정의 할 수 있다.</p>
+<pre><code>d = tf.constant(&lt;some numpy arrary&gt;)
+</code></pre>
+
+<p>데이터가 메모리보다 크다면 에러가 발생 됨으로 추천 하지 않는다. 또한
+그래프 정의를 저장 할때 데이터도 저장 됨으로 위의 방식을 사용하지 말자.</p>
+<h3 id="placeholders-and-feeds">Placeholders and Feeds</h3>
+<p>그렇다면 그래프를 정의 할 때 가 아닌 런타임에 필요 할 때 데이터를 주게 해보자.
+그래프를 만들어야 함으로 어떤 데이터가 들어온다고 정의한 객체(placeholder) 를 정의해서 사용하고
+실제 런타임에 feed_dict 을 사용해서 데이터를 전달하자.</p>
+<pre><code>a = tf.placeholder(tf.float32, [])
+b = tf.constant(1.0)
+c = a + b
+with tf.Session() as session:
+    print(session.run(c, feed_dict={a: 3.0}))
+    print(session.run(c, feed_dict={a: 4.0}))
+</code></pre>
+
+<p>텐서플로우는 플레이스 홀더를 사용 할 경우 session.run 할때 numpy array 로 구성된 dictionary 데이터 구조가 들어온다고 기대한다.
+- 로드, 전처리, 배치, 큐잉등 마음대로 하면된다.(자유도가 높다.)
+- 또한 파일, 스트림등 반복되는 작업은 tf.data 에서 이미 내장된 함수로 제공하고 있다.</p>
+<h1 id="_7">예제</h1>
+<p>간단한 선형 함수를 배우는 예제를 구현해 보자.
+한개의 변수만 있는 회귀 함수를 배운다고 해보자.  $f(x): R \to R$ </p>
+<p>우리는 해당 함수가 선형이라고 가정한다. $y = wx + b$
+그렇다면 우리가 찾는 식은 아래의 식을 만족하는 $\hat w, \hat b$ 를 찾으면 된다.
+$$ 
+\hat w, \hat b = argmin_{w, b}\left(\frac{\sum(y_{i} - wx_{i} + b)^{2}}{N}\right)
+$$
+우리가 사용하는 데이터셋도 선형식 대략적으로 따른다고 가정한다.
+다른 말로 우리는 mean squared error (MSE) 를 만족하는 $\hat w, \hat b$를 찾을 것이다.</p>
+<h3 id="_8">푸는 방법</h3>
+<p>위의 식은 방적식으로 바로 풀거나 경사 하강법(gradient descent)를 사용 할 수 있다.
+일반적으로 복잡한 문제에서 방정식으로 구하기 어려운 경우가 많다.
+우리는 아래의 경사 하강법을 사용할 것이다.
+$$
+w_{t+1} = w_{t} - \alpha \frac{\partial MSA}{\partial w_{t}} \\
+b_{t+1} = b_{t} - \alpha \frac{\partial MSA}{\partial b_{t}}
+$$
+경사하강법이란 로스 펑션(여기서는 MSA)의 미분값을 파라미터에서 지속적으로 적용해서 파라미터가
+수렴 할때까지 반복하는 방법을 말한다.</p>
+<h3 id="_9">데이터를 만들어보자.</h3>
+<p>1차원 데이터를 만들자. 데이터를 만들때 x 값은 range(20) = [0,1,..,19] 를 사용하고
+y 값은 $y = wx + b + \eta $ 여기서 $\eta$ 은 정규분포의에서 mean = 0, std = 1</p></div>
         </div>
 
         <footer class="col-md-12">
