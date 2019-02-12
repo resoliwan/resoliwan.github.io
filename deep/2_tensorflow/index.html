@@ -479,7 +479,19 @@ $$
 수렴 할때까지 반복하는 방법을 말한다.</p>
 <h3 id="_9">데이터를 만들어보자.</h3>
 <p>1차원 데이터를 만들자. 데이터를 만들때 x 값은 range(20) = [0,1,..,19] 를 사용하고
-y 값은 $y = wx + b + \eta $ 여기서 $\eta$ 은 정규분포의에서 mean = 0, std = 1</p></div>
+y 값은 $y = wx + b + \eta $ 여기서 $\eta$ 은 정규분포의에서 mean = 0, std = 1 을 사용해 랜덤하게 더 할 것이다.</p>
+<pre><code class="python">import numpy as np
+import matplotlib.pyplot as plt
+num_samples, w, b = 20, 0.5, 2
+
+xs = np.asarray(range(num_samples))
+ys = np.asarray([x * w + np.random.normal() for x in xs])
+
+plt.plot(xs, ys, 'bo')
+plt.show(False)
+</code></pre>
+
+<p><a href="https://github.com/resoliwan/deepmind_deep_learning2/blob/master/ch2_tensorflow/sample.py">code</a></p></div>
         </div>
 
         <footer class="col-md-12">
