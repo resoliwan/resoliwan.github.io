@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>What is Tensorflow? - Leo's home</title>
+        <title>Deep Learning 2: Introduction to TensorFlow - Leo's home</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -67,7 +67,7 @@
 </li>
                                     
 <li class="active">
-    <a href="./">What is Tensorflow?</a>
+    <a href="./">Deep Learning 2: Introduction to TensorFlow</a>
 </li>
                                 </ul>
                             </li>
@@ -302,7 +302,8 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#what-is-tensorflow">What is Tensorflow?</a></li>
+        <li class="main active"><a href="#deep-learning-2-introduction-to-tensorflow">Deep Learning 2: Introduction to TensorFlow</a></li>
+        <li class="main "><a href="#what-is-tensorflow">What is Tensorflow?</a></li>
         <li class="main "><a href="#_1">무엇으로 구성되어 있는가?</a></li>
             <li><a href="#2">텐서플로우는 2개의 구성 요소를 가진다.</a></li>
             <li><a href="#_2">계산 그래프는 무엇인가?</a></li>
@@ -312,6 +313,7 @@
             <li><a href="#_4">왜 필요 한가?</a></li>
             <li><a href="#_5">해결책</a></li>
         <li class="main "><a href="#_6">정의와 실행</a></li>
+        <li class="main "><a href="#_7">텐서 플로우 언어</a></li>
         <li class="main "><a href="#variable">Variable</a></li>
             <li><a href="#definition">Definition</a></li>
             <li><a href="#use">Use</a></li>
@@ -319,13 +321,27 @@
             <li><a href="#initialization">Initialization</a></li>
             <li><a href="#working-with-data">Working with data</a></li>
             <li><a href="#placeholders-and-feeds">Placeholders and Feeds</a></li>
-        <li class="main "><a href="#_7">예제</a></li>
-            <li><a href="#_8">푸는 방법</a></li>
-            <li><a href="#_9">데이터를 만들어보자.</a></li>
+        <li class="main "><a href="#_8">예제</a></li>
+            <li><a href="#_9">푸는 방법</a></li>
+            <li><a href="#_10">데이터를 만들어보자.</a></li>
+            <li><a href="#automatic-differentiation">Automatic Differentiation</a></li>
+            <li><a href="#gradients">Gradients</a></li>
+            <li><a href="#loss-function">Loss function</a></li>
+            <li><a href="#optimizer">Optimizer</a></li>
+        <li class="main "><a href="#control-logic">Control Logic</a></li>
+            <li><a href="#control-dependencies">Control dependencies</a></li>
+            <li><a href="#conditional-evaluation">Conditional evaluation.</a></li>
+            <li><a href="#while">While</a></li>
+            <li><a href="#dynamic-unrolling">Dynamic Unrolling</a></li>
+            <li><a href="#fibnacci-number">예제 Fibnacci number</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
+<h1 id="deep-learning-2-introduction-to-tensorflow">Deep Learning 2: Introduction to TensorFlow</h1>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=JO0LwmIlWw0&amp;t=2058s">강의</a></li>
+</ul>
 <h1 id="what-is-tensorflow">What is Tensorflow?</h1>
 <ul>
 <li>텐서플로우는 계산을 위한 라이블러리이다.</li>
@@ -361,7 +377,7 @@
 - node 는 텐서를 생성 또는 특정 규칙으로 조작한다.(Ops)</p>
 <h1 id="example-of-computational-graph">Example of Computational Graph</h1>
 <p>아래의 계산 그래프 정의 코드는 다음과 같은 단방향 그래프로 만들어 질수 있다.
-(텐서가 흐르지 않는다)</p>
+(텐서는 런타임에 흐른다.)</p>
 <pre><code class="python">red = 1
 blue = 2
 green = red * blue
@@ -401,7 +417,10 @@ print(purple)
 - 그래프를 정의하는 단계(tf.Graph)
     - 물길을 파는 단계
 - 정의된 그래프를 실행하는 단계 (tf.Session)
-    - 파진 물길을 따라 물을 흘리는 단계;</p>
+    - 파진 물길을 따라 물을 흘리는 단계</p>
+<h1 id="_7">텐서 플로우 언어</h1>
+<p>텐서플로우의 백단은 cpp 로 만들어져 있다. 하지만 텐서플로우는 편의를 위해 python, cpp 등 여러 언어 인터페이스를 제공한다.
+cpp 함수에 사용될 값을 파이썬으로 제공해 준다고 생각하면 기존 파이썬 프로그래밍과 텐서플로우의 이질감을 조금 줄일 수 있다.</p>
 <h1 id="variable">Variable</h1>
 <h3 id="definition">Definition</h3>
 <p>전체 런타임 환경에서 공유 가능하고 변경 할 수 있는 영속적 변수 
@@ -420,7 +439,7 @@ print(purple)
 </code></pre>
 
 <h3 id="assign">Assign</h3>
-<p>변수의 값을 변경 하려면 할당해줘야 하고 다음 업데이트 까지 값을 유지 한다.</p>
+<p>변수의 값을 변경 하려면 할당해줘야 하고 할당된 값은 다음 업데이트 까지 값을 유지 한다.</p>
 <pre><code>increment_op = v.assign(v + 1) # syntax 1
 increment_op = tf.assign(v, v + 1) #syntax2
 </code></pre>
@@ -435,16 +454,16 @@ with tf.Session() as session:
 
 <h3 id="working-with-data">Working with data</h3>
 <p>데이터를 읽어 그래프에게 주어야 할 경우가 있다.
-만약 데이터가 작다면 우리는 그래프 정의에서 
-데이터를 메모리에 로딩해 상수로 해당 데이터를 정의 할 수 있다.</p>
+만약 데이터가 작다면 우리는 그래프 정의시점에 
+데이터를 (메모리에 로딩해) 상수로 정의 할 수 있다.</p>
 <pre><code>d = tf.constant(&lt;some numpy arrary&gt;)
 </code></pre>
 
 <p>데이터가 메모리보다 크다면 에러가 발생 됨으로 추천 하지 않는다. 또한
-그래프 정의를 저장 할때 데이터도 저장 됨으로 위의 방식을 사용하지 말자.</p>
+그래프 정의를 저장 할 때 데이터도 저장 됨으로 위의 방식을 사용하지 말자.</p>
 <h3 id="placeholders-and-feeds">Placeholders and Feeds</h3>
 <p>그렇다면 그래프를 정의 할 때 가 아닌 런타임에 필요 할 때 데이터를 주게 해보자.
-그래프를 만들어야 함으로 어떤 데이터가 들어온다고 정의한 객체(placeholder) 를 정의해서 사용하고
+그래프를 만들어야 함으로 어떤 데이터가 들어온다고 정의한 객체(placeholder) 를 사용하고
 실제 런타임에 feed_dict 을 사용해서 데이터를 전달하자.</p>
 <pre><code>a = tf.placeholder(tf.float32, [])
 b = tf.constant(1.0)
@@ -454,10 +473,10 @@ with tf.Session() as session:
     print(session.run(c, feed_dict={a: 4.0}))
 </code></pre>
 
-<p>텐서플로우는 플레이스 홀더를 사용 할 경우 session.run 할때 numpy array 로 구성된 dictionary 데이터 구조가 들어온다고 기대한다.
+<p>텐서플로우는 플레이스 홀더를 사용 할 경우 session.run 할 때 numpy array 로 구성된 dictionary 데이터 구조가 들어온다고 기대한다.
 - 로드, 전처리, 배치, 큐잉등 마음대로 하면된다.(자유도가 높다.)
 - 또한 파일, 스트림등 반복되는 작업은 tf.data 에서 이미 내장된 함수로 제공하고 있다.</p>
-<h1 id="_7">예제</h1>
+<h1 id="_8">예제</h1>
 <p>간단한 선형 함수를 배우는 예제를 구현해 보자.
 한개의 변수만 있는 회귀 함수를 배운다고 해보자.  $f(x): R \to R$ </p>
 <p>우리는 해당 함수가 선형이라고 가정한다. $y = wx + b$
@@ -465,33 +484,184 @@ with tf.Session() as session:
 $$ 
 \hat w, \hat b = argmin_{w, b}\left(\frac{\sum(y_{i} - wx_{i} + b)^{2}}{N}\right)
 $$
-우리가 사용하는 데이터셋도 선형식 대략적으로 따른다고 가정한다.
+우리가 사용하는 데이터셋도 선형식 으로 수렴 한다고 가정한다.
 다른 말로 우리는 mean squared error (MSE) 를 만족하는 $\hat w, \hat b$를 찾을 것이다.</p>
-<h3 id="_8">푸는 방법</h3>
-<p>위의 식은 방적식으로 바로 풀거나 경사 하강법(gradient descent)를 사용 할 수 있다.
+<h3 id="_9">푸는 방법</h3>
+<p>위의 식은 방정식으로 바로 풀거나 경사 하강법(gradient descent)을 사용 할 수 있다.
+$$
+\begin{align}
+ \hat w = &amp; \frac{\sum_{i}(x_{i} - \bar x)(y_{i} - \bar y)}{\sum_{i}(x_{i} - \bar x)^{2}} \\
+ \hat b = &amp; \bar y - w \bar x \\
+ \bar x = &amp; \frac{\sum_{i}x_{i}}{N} \\ 
+ \bar y = &amp; \frac{\sum_{i}y_{i}}{N} \\ 
+\end{align}
+$$
 일반적으로 복잡한 문제에서 방정식으로 구하기 어려운 경우가 많다.
-우리는 아래의 경사 하강법을 사용할 것이다.
+그러므로 우리는 아래의 경사 하강법을 사용할 것이다.
 $$
 w_{t+1} = w_{t} - \alpha \frac{\partial MSA}{\partial w_{t}} \\
 b_{t+1} = b_{t} - \alpha \frac{\partial MSA}{\partial b_{t}}
 $$
 경사하강법이란 로스 펑션(여기서는 MSA)의 미분값을 파라미터에서 지속적으로 적용해서 파라미터가
 수렴 할때까지 반복하는 방법을 말한다.</p>
-<h3 id="_9">데이터를 만들어보자.</h3>
+<h3 id="_10">데이터를 만들어보자.</h3>
 <p>1차원 데이터를 만들자. 데이터를 만들때 x 값은 range(20) = [0,1,..,19] 를 사용하고
-y 값은 $y = wx + b + \eta $ 여기서 $\eta$ 은 정규분포의에서 mean = 0, std = 1 을 사용해 랜덤하게 더 할 것이다.</p>
-<pre><code class="python">import numpy as np
-import matplotlib.pyplot as plt
-num_samples, w, b = 20, 0.5, 2
-
-xs = np.asarray(range(num_samples))
-ys = np.asarray([x * w + np.random.normal() for x in xs])
-
-plt.plot(xs, ys, 'bo')
-plt.show(False)
+y 값은 $y = wx + b + \eta $ 여기서 $\eta$ 은 정규분포의에서 mean = 0, std = 1 을 사용해 랜덤하게 더 할 것이다.
+<a href="https://github.com/resoliwan/deepmind_deep_learning2/blob/master/ch2_tensorflow/equation.py">code</a></p>
+<h3 id="automatic-differentiation">Automatic Differentiation</h3>
+<p>경사 하강법은 미분을 필요로 하고 composition function 의 경우 chain rule 사용해 미분을 해야한다.
+텐서 플로우는 시스템에서 자동으로 미분식을 제공 해준다. </p>
+<h3 id="gradients">Gradients</h3>
+<p>tf.gradients 함수를 이용해서 경사 하강법을 사용하자.</p>
+<pre><code class="python">grads = tf.gradients(my_tensor, var_list)
 </code></pre>
 
-<p><a href="https://github.com/resoliwan/deepmind_deep_learning2/blob/master/ch2_tensorflow/sample.py">code</a></p></div>
+<ul>
+<li>grads 안에는 len(var_list)의 길이와 같은 텐서가 들어있다. 이 텐서 각각의 var_list 의 변수를 my_tensor 편미분한 식이다.</li>
+<li>만약 var_list 안에 my_tensor 에 의존 하지 않는 변수가 있다면 grads 의 해당 값은 None 이다.</li>
+</ul>
+<h3 id="loss-function">Loss function</h3>
+<pre><code class="python"># ytf 와 model_output 으로 MSA loss function 을 만들어라.
+loss = tf.losses.mean_squared_error(ytf, model_output)
+# 로스 펑션에 대해서 w, b 에 대한 편미분 함수를 만들어라.
+grads = tf.gradients(loss, [model.w, model.b])
+update_w = tf.assign(model.w, model.w - 0.001 * grads[0])
+update_b = tf.assign(model.b, model.b - 0.001 * grads[1])
+update = tf.group(update_w, update_b)
+</code></pre>
+
+<p><a href="https://github.com/resoliwan/deepmind_deep_learning2/blob/master/ch2_tensorflow/gradient.py">code</a>
+<img alt="loss" src="../gradient.svg" /></p>
+<h3 id="optimizer">Optimizer</h3>
+<p>update 관련 작업도 tf.train.Optimizer 로 추상화 되어 있다.
+아래와 같이 사용 하는걸 권장하며 자매품 AdamOptimizer, RMSPropOptimizer 도 있다.</p>
+<pre><code class="python">loss = tf.losses.mean_squared_error(ytf, model_output)
+update = tf.train.GradientDescentOptimizer(learning_rate=0.001).minimize(loss)
+</code></pre>
+
+<p><a href="https://github.com/resoliwan/deepmind_deep_learning2/blob/master/ch2_tensorflow/optimizer.py">code</a></p>
+<h1 id="control-logic">Control Logic</h1>
+<ul>
+<li>tf.control_dependencies: 노드 사이에 의존성을 추가.</li>
+<li>tf.conf: true/false 분기</li>
+<li>tf.case: multi-case 분기</li>
+<li>tf.while_loop: while loop</li>
+</ul>
+<p>이해하기는 어렵지만 RL을 위해서 꼭 필요함.</p>
+<h3 id="control-dependencies">Control dependencies</h3>
+<pre><code class="python">x = tf.get_variable('x', shape=(), initializer=tf.zeros_initializer())
+assign_x = tf.assign(x, 10.0)
+# z = tf.assign(x, 10.0) + 1.0
+z = x + 1.0
+
+with tf.train.MonitoredSession() as sess:
+  print(sess.run(z))
+  # 결과 값은 1.0 and assing_x 는 z 에 의존성이 없음으로 실행 안됨 
+
+with tf.train.MonitoredSession() as sess:
+  print(sess.run([assign_x, z]))
+  # 텐서 플로우는 fetchs 리스트에 인덱스 순서대로 실행하지 않음!
+  # 결과 값은 (10.0, 1.0) 또는 (10.0, 11.0) 이됨 assign_x 와 z 가 레이스 컨디션이 됨.
+
+with tf.control_dependencies([assign_x]):
+  z = x + 1.0
+with tf.train.MonitoredSession() as sess:
+  print(sess.run(z))
+  # z 를 assign_x 에 의존 하도록 설정했기 때문에 z 를 실행하면 assign_x 가 먼저 실행됨. 11.0
+</code></pre>
+
+<p><a href="https://github.com/resoliwan/deepmind_deep_learning2/blob/master/ch2_tensorflow/control1.py">code</a></p>
+<h3 id="conditional-evaluation">Conditional evaluation.</h3>
+<pre><code class="python">v1 = tf.get_variable('v1', shape=(), initializer=tf.zeros_initializer());
+v2 = tf.get_variable('v2', shape=(), initializer=tf.zeros_initializer());
+switch = tf.placeholder(tf.bool)
+
+cond = tf.cond(switch,
+    lambda: tf.assign(v1, 1.0), # true
+    lambda: tf.assign(v2, 2.0)) # false
+
+with tf.train.MonitoredSession() as sess:
+  sess.run(cond, feed_dict={switch: False})
+  print(sess.run([v1, v2])) # [0.0, 2.0]
+
+v3 = tf.get_variable('v3', shape=(), initializer=tf.zeros_initializer());
+v4 = tf.get_variable('v4', shape=(), initializer=tf.zeros_initializer());
+switch = tf.placeholder(tf.bool)
+assign_v3 = tf.assign(v3, 1.0)
+assign_v4 = tf.assign(v4, 1.0)
+
+# 컨디션을 만들기 위해  필요한 의존성은 먼저 실행된다.
+# 즉 assign_v4 와 assign_v4 는 cond 를 만드는대 필요함으로 
+# 해당 op 를 만드는 위의 두개의 할당문이 실행된다.
+cond = tf.cond(switch,
+    lambda: assign_v3,
+    lambda: assign_v4)
+
+with tf.train.MonitoredSession() as sess:
+  sess.run(cond, feed_dict={switch: False})
+  print(sess.run([v3, v4])) # [1.0, 1.0]
+</code></pre>
+
+<p><a href="https://github.com/resoliwan/deepmind_deep_learning2/blob/master/ch2_tensorflow/condition.py">code</a></p>
+<h3 id="while">While</h3>
+<pre><code class="python">k = tf.constant(2)
+matrix = tf.ones([2, 2])
+condition = lambda i, _: i &lt; k
+body = lambda i, m: (i+1, tf.matmul(m, matrix))
+final_i, power = tf.while_loop(
+    cond=condition,
+    body=body,
+    loop_vars=(0, tf.diag([1., 1.]))
+    )
+# loop 1
+# i = 0 =&gt; i = 1
+# m         *   matrix =&gt; m
+# [[1, 0]      [[1, 1]    [[1, 1]
+# [0, 1]]   *   [1, 1]] =&gt;  [1, 1]]
+
+# loop 2
+# i = 1 =&gt; i = 2
+# m         *   matrix =&gt; m
+# [[1, 1]      [[1, 1]    [[2, 2]
+# [1, 1]]   *   [1, 1]] =&gt;  [2, 2]]
+
+# i &lt; 2 break;
+
+with tf.train.MonitoredSession() as sess:
+  print(sess.run([final_i, power])) # [2, [[2, 2], [2, 2]]]
+</code></pre>
+
+<p><a href="https://github.com/resoliwan/deepmind_deep_learning2/blob/master/ch2_tensorflow/loop.py">code</a></p>
+<h3 id="dynamic-unrolling">Dynamic Unrolling</h3>
+<p>딥러닝과 RL 에서 특정 상태에 같은 transformaion 을 해서 누적 시키는 행위는 자주 일어난다.  예를들어</p>
+<ul>
+<li>Time series prediction</li>
+<li>Sequence to sequence models</li>
+<li>Take decisions in partially observable domains</li>
+</ul>
+<p>텐서 플로우에서 ad-hoc 유틸리티 함수를 제공한다.</p>
+<h3 id="fibnacci-number">예제 Fibnacci number</h3>
+<p>위의 누적 예제로 피보나치 수열을 들어보자. 피보나치 수열은 
+$0, 1, 1, 2, 3, 5.. $ 같은 수열을 말한다. 초기값 (0, 1) 을 주면 다음 수부터는 이전 두 수의 합으로 다음 수를 구 할 수 있다.
+즉 이전 두개의 상태값만 기억하면 되는것이다. 
+$$
+F_{0} = 0, F_{1} = 1,  \\
+F_{n} = F_{n-1} + F_{n-2}, \\
+\text{for } n &gt; 1.
+$$</p>
+<pre><code class="python">def fibonacci(state):
+  output = state[0] + state[1]
+  return output, (state[1], output)
+
+state = (0, 1) # (f_{0}, f_{1})
+for item in range(10):
+  output, state = fibonacci(state)
+  #f_n, (f_{n-2}, f_{n-1})
+  print(output)
+# 알고리즘은 위와 같고 텐서 플로우 구현은 아래 코드를 참조하자.
+</code></pre>
+
+<p><a href="https://github.com/resoliwan/deepmind_deep_learning2/blob/master/ch2_tensorflow/fibonacci.py">code</a></p></div>
         </div>
 
         <footer class="col-md-12">
