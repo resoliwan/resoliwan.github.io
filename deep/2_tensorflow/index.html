@@ -371,10 +371,12 @@
 <li>정의된 그래프를 실행 시켜주는 런타임 환경(여러 하드웨어에서 동시적으로 돌릴수 있다.) </li>
 </ul>
 <h3 id="_2">계산 그래프는 무엇인가?</h3>
-<p>계산을 단방향 그래프로 추상화 한것을 의미한다.
-- 그래프는 2가지로 구성되어 있다. 바로 edge 와 node 이다.
-- edge 는 다차원 행렬(tensor)에 대응한다.
-- node 는 텐서를 생성 또는 특정 규칙으로 조작한다.(Ops)</p>
+<p>계산을 단방향 그래프로 추상화 한것을 의미한다.</p>
+<ul>
+<li>그래프는 2가지로 구성되어 있다. 바로 edge 와 node 이다.</li>
+<li>edge 는 다차원 행렬(tensor)에 대응한다.</li>
+<li>node 는 텐서를 생성 또는 특정 규칙으로 조작한다.(Ops)</li>
+</ul>
 <h1 id="example-of-computational-graph">Example of Computational Graph</h1>
 <p>아래의 계산 그래프 정의 코드는 다음과 같은 단방향 그래프로 만들어 질수 있다.
 (텐서는 런타임에 흐른다.)</p>
@@ -506,8 +508,8 @@ $$
 수렴 할때까지 반복하는 방법을 말한다.</p>
 <h3 id="_10">데이터를 만들어보자.</h3>
 <p>1차원 데이터를 만들자. 데이터를 만들때 x 값은 range(20) = [0,1,..,19] 를 사용하고
-y 값은 $y = wx + b + \eta $ 여기서 $\eta$ 은 정규분포의에서 mean = 0, std = 1 을 사용해 랜덤하게 더 할 것이다.
-<a href="https://github.com/resoliwan/deepmind_deep_learning2/blob/master/ch2_tensorflow/equation.py">code</a></p>
+y 값은 $y = wx + b + \eta $ 여기서 $\eta$ 은 정규분포의에서 mean = 0, std = 1 을 사용해 랜덤하게 더 할 것이다.</p>
+<p><a href="https://github.com/resoliwan/deepmind_deep_learning2/blob/master/ch2_tensorflow/equation.py">code</a></p>
 <h3 id="automatic-differentiation">Automatic Differentiation</h3>
 <p>경사 하강법은 미분을 필요로 하고 composition function 의 경우 chain rule 사용해 미분을 해야한다.
 텐서 플로우는 시스템에서 자동으로 미분식을 제공 해준다. </p>
@@ -530,8 +532,8 @@ update_b = tf.assign(model.b, model.b - 0.001 * grads[1])
 update = tf.group(update_w, update_b)
 </code></pre>
 
-<p><a href="https://github.com/resoliwan/deepmind_deep_learning2/blob/master/ch2_tensorflow/gradient.py">code</a>
-<img alt="loss" src="../gradient.svg" /></p>
+<p><a href="https://github.com/resoliwan/deepmind_deep_learning2/blob/master/ch2_tensorflow/gradient.py">code</a></p>
+<p><img alt="loss" src="../gradient.svg" /></p>
 <h3 id="optimizer">Optimizer</h3>
 <p>update 관련 작업도 tf.train.Optimizer 로 추상화 되어 있다.
 아래와 같이 사용 하는걸 권장하며 자매품 AdamOptimizer, RMSPropOptimizer 도 있다.</p>
