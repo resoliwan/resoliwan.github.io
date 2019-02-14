@@ -334,6 +334,7 @@
             <li><a href="#while">While</a></li>
             <li><a href="#dynamic-unrolling">Dynamic Unrolling</a></li>
             <li><a href="#fibnacci-number">예제 Fibnacci number</a></li>
+        <li class="main "><a href="#advanced-features">Advanced Features</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -663,7 +664,26 @@ for item in range(10):
 # 알고리즘은 위와 같고 텐서 플로우 구현은 아래 코드를 참조하자.
 </code></pre>
 
-<p><a href="https://github.com/resoliwan/deepmind_deep_learning2/blob/master/ch2_tensorflow/fibonacci.py">code</a></p></div>
+<p><a href="https://github.com/resoliwan/deepmind_deep_learning2/blob/master/ch2_tensorflow/fibonacci.py">code</a></p>
+<h1 id="advanced-features">Advanced Features</h1>
+<p>텐서 플로우는 위에 설명 말고도 많은 다른 기능들을 제공한다.
+런타임 라이블러는 아래와 같은 기능도 제공한다.</p>
+<ul>
+<li>멀티코어 CPU 에서 멀티 쓰레드 실행을 할 수 있다.</li>
+<li>GPU 에서 계산을 시킬 수도 있다.</li>
+<li>분산 환경에서 여러 머신에 걸쳐 실행 시킬수도 있다.</li>
+</ul>
+<p>Annotate 를 그래프에 명시해주면 위의 기능들을 텐서플로우가 알아서 처리해준다.</p>
+<pre><code class="python">with tf.device(&quot;/cpu:0&quot;):
+    a = tf.assign(..)
+    b = tf.assign(..)
+with tf.device(&quot;/gpu:0&quot;):
+    c = tf.matfmul(a, b)
+with tf.Session() as sess:
+    sess.run(c)
+</code></pre>
+
+<p>할당하지 않아도 gpu 가 가능하면 gpu 에서 실행 한다.</p></div>
         </div>
 
         <footer class="col-md-12">
