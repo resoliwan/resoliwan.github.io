@@ -319,6 +319,13 @@
             <li><a href="#softmax-layer">Softmax layer</a></li>
             <li><a href="#softmax-and-cross-entropy-nll-loss">Softmax and cross-entropy / NLL loss</a></li>
             <li><a href="#rectified-linear-layer">Rectified-linear layer</a></li>
+        <li class="main "><a href="#networks-with-one-hidden-layer">Networks with one hidden layer</a></li>
+            <li><a href="#hidden-layers">Hidden Layers</a></li>
+        <li class="main "><a href="#modern-deep-net">Modern deep net</a></li>
+            <li><a href="#_6">네트워크의 깊이가 끼치는 좋은 영향</a></li>
+            <li><a href="#nn">NN을 표현 하는 여러가지 방식</a></li>
+        <li class="main "><a href="#learning">Learning</a></li>
+        <li class="main "><a href="#linear-algebra-recap-notation">Linear algebra recap / notation</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -398,10 +405,10 @@ $$
 f: R^{n} \to R \\
 y = \sum_{i}^{n}w_{i}x_{i} + b
 $$</p>
-<p>그렇다면 신경 세포는 아래와 같이 행렬간 내적으로 정의 할 수 있다.
+<p>그렇다면 신경 세포는 아래와 같이 행렬과 벡터의 내적으로 정의 할 수 있다.
 $$
 f: R^{n} \to R^{m} \\
-Y = WX + B
+y = Wx + b
 $$</p>
 <h2 id="sigmoid-layer">Sigmoid layer</h2>
 <p>Activation function 중 하나.
@@ -411,12 +418,16 @@ $$\sigma = \frac{1}{1 + e^{-x}}$$</p>
 x 축은 인풋 y 축은 아웃풋</p>
 <p>선형 변환이 아니기 때문에 비선형 함수라고 한다.</p>
 <h2 id="_3">인공 뉴론</h2>
-<p>이제 위의 linear layer 와 activation layer(sigmoid) 를 합치면 인공 뉴론이 된다.</p>
+<p>이제 위의 linear layer 와 activation layer(sigmoid) 를 합치면 인공 뉴론이 된다.
+- 지금은 한개의 x vector 에 대해 feed forwarding 하는 부분만 고려하기 때문에 x, y 는 1차원 벡터이다.</p>
 <p><img alt="3" src="../img/3_nn_liner_3.svg" title="opt title" /></p>
 <p>$$
 y = \sigma \left( \sum_{i}w_{i}x_{i}+b\right) \\
-Y = \sigma (WX + B)
+y = \sigma (Wx + B)
 $$</p>
+<p>input X 를 받아 output Y 로 변형(transformation)하는 함수(인공 뉴론) 은 아래 그림에서 $\to$ 로 표현되었다.
+아래 그림은 1단 레이어를 도식화 한 것이다.</p>
+<p><img alt="single" src="../img/single_layer.svg" title="opt title" /></p>
 <ul>
 <li>위의 뉴론을 구현하고 W 값을 구하면 우리는 binary classification을 할 수 있다.</li>
 <li>아래는 $x_{1}, x_{2}$ 로 구성된 점들을 주고 훈련을 시킨다. 그러면 이후 새로운 $x_{1}, x_{2}$ 을 주면 답을 예측 할 수 있다.</li>
@@ -493,10 +504,150 @@ $$
 $$</li>
 </ul>
 <h2 id="rectified-linear-layer">Rectified-linear layer</h2>
-<p>$$
+<p>최소 0, 아니면 $x_{i}$
+$$
 y = relu(x) \text{, where:} y_{i} = \text{maximum}(0, x_{i})
 $$
-<img alt="relu" src="../img/relu.svg" /></p></div>
+<img alt="relu" src="../img/relu.svg" /></p>
+<h1 id="networks-with-one-hidden-layer">Networks with one hidden layer</h1>
+<ul>
+<li>인풋을 선형으로 분리 불가능 할때 사용.</li>
+<li>Hindden layer nets 은 "universal function approximators" 라고 도 함.</li>
+<li>hidden layer == linear + non-linearity == separte layers == modules</li>
+</ul>
+<h2 id="hidden-layers">Hidden Layers</h2>
+<ul>
+<li>Single hidden layer (linear + non-linear)</li>
+</ul>
+<p><img alt="hidden" src="../img/hidden_layer.svg" title="opt title" /></p>
+<ul>
+<li>Hidden.h 첫번째 선형 변환 식의 아웃풋이다.</li>
+<li>아웃풋이 다른 레이어의 인풋이 된다.</li>
+<li>위와 같이 구성하면 인풋을 다른 방식으로 표현 할 수 있다.<ul>
+<li>우리의 문제가 선형 변환을 통해 생성된 중간 표현형 에서는 심플 해지길 기대 할 수 있다.</li>
+<li>문제를 주어진 인풋에서 바로 푸는게 아니라 연속적인 변형을 통해서 문제가 쉬워지길 기대 할 수 있다.</li>
+<li>예를 들어 input 에서는 선형 불리가 불가능하지만 중간 표현형에서는 선형 분리가 가능 하게 변환</li>
+</ul>
+</li>
+</ul>
+<h3 id="example">Example</h3>
+<p>아래와 같은 인풋 표현을 선형 변환을 통해 히든 레이어에서 다른 표현으로 바꿀수 있다.
+- 인풋 표현형 에서는 선형으로 구분이 불가능
+- 한번의 선형 변환 후 히든레이어의 결과 값에서는 선형 구분이 가능한 표현 형으로 변경됨
+- 중간 표현형에 선형식을 만들어 클래스 구분</p>
+<table>
+<thead>
+<tr>
+<th align="left">Point</th>
+<th align="left">Input space</th>
+<th align="left">Hidden space</th>
+<th align="left">class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">A</td>
+<td align="left">(1, 1)</td>
+<td align="left">(1, 0)</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">B</td>
+<td align="left">(-1, -1)</td>
+<td align="left">(1, 0)</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">C</td>
+<td align="left">(-1, 1)</td>
+<td align="left">(0, 0)</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">D</td>
+<td align="left">(1, -1)</td>
+<td align="left">(1, 1)</td>
+<td align="left">1</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="hidden" src="../img/hidden_intutiion.svg" title="opt title" /></p>
+<h1 id="modern-deep-net">Modern deep net</h1>
+<ul>
+<li>한개의 히든 레이어를 사용해서 히든유닛이 많다면 우리는 universal function approximation 을 할 수 있다.</li>
+<li>네트워크가 깊어 지면 더 강력해지고 효율적이 된다.</li>
+<li>복잡합 함수 맵핑을 여러개의 작은 재표현된 단계로 분리 할 수 있다.<ul>
+<li>edges -&gt; junctions -&gt; parts -&gt; objects -&gt; scences</li>
+</ul>
+</li>
+</ul>
+<h2 id="_6">네트워크의 깊이가 끼치는 좋은 영향</h2>
+<p><a href="https://arxiv.org/pdf/1402.1869.pdf">why adding depth helps doc</a>
+- 여러개의 인풋이 같은 아웃풋에 맵핑된다. 
+- 그렇다면 함수를 재활용 할 수 있을것이다.
+- 넓이가 아니라 깊이를 깊게 한다면 그런 함수들을 많이 재활용 할 수 있을 것이다.</p>
+<p>$$
+f(|x|) = f(|-x|) \\
+f(|x|,|y|) = f(|-x|,|y|) = f(|x|,|-y|) = f(|-x|,|-y|) 
+$$</p>
+<h2 id="nn">NN을 표현 하는 여러가지 방식</h2>
+<p>아래의 식을 여러가지로 표현 할 수 있다.
+$$
+\begin{align}
+    h^{(1)} &amp; = \sigma(W^{(1)}x) \\
+    h^{(2)} &amp; = \text{relu}(W^{(2)}x) \\
+    h^{(3)} &amp; = \sigma(W^{(3)}h^{(1)}) \\
+    y &amp; = (W^{(4)}h^{(3)} + W^{(5)}h^{(2)})
+\end{align}
+$$</p>
+<p><img alt="nn_representaion" src="../img/nn_representations.svg" title="opt title" />
+위의 그래프 방식으로 NN을 표현 하게 되면 
+- 각각을 모듈로 생각하고 레고 처럼 필요한곳에 끼어 넣으면 된다.
+- OOP 로 접근해서 추상화 할 수 있다.
+    - foward_pass() # predict
+    - backward_pass() # learning
+    - compute_gradients() # update parameter
+- 새로운 모듈을 추가 하기 쉽다.</p>
+<h1 id="learning">Learning</h1>
+<ul>
+<li>우리의 데이터와 모델 파라미터에 따라 로스 펑션을 정의하고 <ul>
+<li>해당 로스 함수를 최적화 방법론을 사용하여 loss 를 최소화 하는것.</li>
+</ul>
+</li>
+</ul>
+<h1 id="linear-algebra-recap-notation">Linear algebra recap / notation</h1>
+<ul>
+<li>
+<p>Gradient vector</p>
+<ul>
+<li>Entries -&gt; 특정 scalar function 에 대한 vector arguments들의 편미분 값들.</li>
+<li>한개의 y 값에 대한 x 백터의 편미분 값들
+$$
+y = f(\mathbb{x}) \\
+\mathit{f} : \mathbb{R}^{m} \to \mathbb{R} \\
+\frac{\partial y}{\partial \mathbb{x}} = \nabla^{(x)}y = \left[ \frac{\partial y}{\partial x_{1}},...,\frac{\partial y}{\partial x_{m}} \right]
+$$</li>
+</ul>
+</li>
+<li>
+<p>Jacobina matrix</p>
+<ul>
+<li>Entries -&gt; vector function 에 대한 vector arguments 의 편미분 값들.</li>
+<li>y 벡터 값에 대한 x 백터의 편미분 값.
+$$
+\mathtt{y} = \mathit{f}(\mathbb{x}) \\
+f = \mathbb{R}^{m} \to \mathbb{R}^{n} \\
+\frac{\partial \mathbb{y}}{\partial \mathbb{x}} = \pmb{J}^{(x)}\mathbb{(y)} = 
+\begin{bmatrix}
+\frac{\partial y_{1}}{\partial x_{1}} &amp; \cdots &amp; \frac{\partial y_{1}}{\partial x_{m}} \\
+\vdots                                &amp; \ddots &amp; \vdots                                \\
+\frac{\partial y_{n}}{\partial x_{1}} &amp; \cdots &amp; \frac{\partial y_{n}}{\partial x_{m}}  \\
+\end{bmatrix}
+$$</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://arxiv.org/pdf/1602.07261.pdf">Inception-v4</a></p></div>
         </div>
 
         <footer class="col-md-12">
