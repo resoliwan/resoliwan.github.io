@@ -333,7 +333,7 @@
 <li><a href="https://github.com/resoliwan/ML_Assignment">assignment</a></li>
 </ul>
 <h1 id="overview">Overview.</h1>
-<p><img alt="overview" src="../3_nn_overview.svg" /></p>
+<p><img alt="overview" src="../img/3_nn_overview.svg" /></p>
 <p>NN 은 선형 변환들과 + 비 선형 함수들의 조합 이다.
 - NN의 장점과 유연함은 위의 간단한 모듈들을 대규모로 구성하여 사용 함에 있다.
 - 학습이란? 
@@ -348,7 +348,7 @@
 <li>자율주행차 </li>
 <li>등.</li>
 </ul>
-<p><img alt="nn" src="../3_nn_equation.svg" /></p>
+<p><img alt="nn" src="../img/3_nn_equation.svg" /></p>
 <p>우리가 만들려고 하는 nn 은 위의 식으로 표현 할 수 있다.</p>
 <h3 id="road-map">Road map</h3>
 <ul>
@@ -383,16 +383,16 @@
 </ul>
 <h2 id="linear-layer">Linear layer</h2>
 <p>동의어"fully connecnted" 또는 "dense" layers</p>
-<p><img alt="neuron" src="../neuron.png" title="opt title" /></p>
+<p><img alt="neuron" src="../img/neuron.png" title="opt title" /></p>
 <p>인간의 뇌를 구성하고 있는 신경 세포를 보면 수상돌기를 통해
 여러개의 인풋을 받아 축삭말단을 통해 여러개의 아웃풋을 생성한다.
 - 위의 현상을 모델링 해보자.</p>
 <h3 id="input-ouptput">input ouptput 정의</h3>
 <p>2개의 인풋을 받아 하나의 아웃풋을 생성한다.</p>
-<p><img alt="1" src="../3_nn_liner_1.svg" title="opt title" /></p>
+<p><img alt="1" src="../img/3_nn_liner_1.svg" title="opt title" /></p>
 <p>우리는 $x_{1}$과 $x_{2}$ 를 받아. $y_{1}$ 을 만들려고 한다.
 우리는 아래와 같이 정의 할 것 이다.</p>
-<p><img alt="2" src="../3_nn_liner_2.svg" title="opt title" /></p>
+<p><img alt="2" src="../img/3_nn_liner_2.svg" title="opt title" /></p>
 <p>아웃풋 하나에 대해 아래와 같이 정의 하자.
 $$
 f: R^{n} \to R \\
@@ -407,12 +407,12 @@ $$</p>
 <p>Activation function 중 하나.
 $f: R \to R$ 함수 이며 $-\infty \leq x \leq +\infty$ 를 input  으로 받아 $0 \leq y \leq 1$ 의 값을 리턴한다.
 $$\sigma = \frac{1}{1 + e^{-x}}$$</p>
-<p><img alt="sigmoid" src="../sigmoid.png" title="opt title" />
+<p><img alt="sigmoid" src="../img/sigmoid.svg" />
 x 축은 인풋 y 축은 아웃풋</p>
 <p>선형 변환이 아니기 때문에 비선형 함수라고 한다.</p>
 <h2 id="_3">인공 뉴론</h2>
 <p>이제 위의 linear layer 와 activation layer(sigmoid) 를 합치면 인공 뉴론이 된다.</p>
-<p><img alt="3" src="../3_nn_liner_3.svg" title="opt title" /></p>
+<p><img alt="3" src="../img/3_nn_liner_3.svg" title="opt title" /></p>
 <p>$$
 y = \sigma \left( \sum_{i}w_{i}x_{i}+b\right) \\
 Y = \sigma (WX + B)
@@ -427,7 +427,7 @@ model = train(X, y)  // w를 구함 아래에서 설명함.
 model.predict((5, 5)) // 구해진 w에 위에 정의한 인공 뉴론을 사용해 답을 예측. blue
 </code></pre>
 
-<p><img alt="binary" src="../binary.png" title="opt title" /></p>
+<p><img alt="binary" src="../img/binary.png" title="opt title" /></p>
 <p><a href="http://playground.tensorflow.org/#activation=sigmoid&amp;batchSize=10&amp;dataset=gauss&amp;regDataset=reg-plane&amp;learningRate=0.03&amp;regularizationRate=0&amp;noise=10&amp;networkShape=1,1&amp;seed=0.43716&amp;showTestData=false&amp;discretize=false&amp;percTrainData=50&amp;x=true&amp;y=true&amp;xTimesY=false&amp;xSquared=false&amp;ySquared=false&amp;cosX=false&amp;sinX=false&amp;cosY=false&amp;sinY=false&amp;collectStats=false&amp;problem=classification&amp;initZero=false&amp;hideText=false">Playground.tensorflow</a></p>
 <h2 id="softmax-layer">Softmax layer</h2>
 <p>Multi-classs classificaion 에서 유용함.
@@ -493,7 +493,10 @@ $$
 $$</li>
 </ul>
 <h2 id="rectified-linear-layer">Rectified-linear layer</h2>
-<p>하하하하하</p></div>
+<p>$$
+y = relu(x) \text{, where:} y_{i} = \text{maximum}(0, x_{i})
+$$
+<img alt="relu" src="../img/relu.svg" /></p></div>
         </div>
 
         <footer class="col-md-12">
