@@ -325,7 +325,14 @@
             <li><a href="#_6">네트워크의 깊이가 끼치는 좋은 영향</a></li>
             <li><a href="#nn">NN을 표현 하는 여러가지 방식</a></li>
         <li class="main "><a href="#learning">Learning</a></li>
-        <li class="main "><a href="#linear-algebra-recap-notation">Linear algebra recap / notation</a></li>
+            <li><a href="#linear-algebra-recap-notation">Linear algebra recap / notation</a></li>
+            <li><a href="#_7">경사 하강법을 사용한 최적화</a></li>
+            <li><a href="#chain-rule-backprop-and-automatic-differentiation">Chain rule, backprop and automatic differentiation</a></li>
+            <li><a href="#modular-backprop-with-vector-inputoutputs">Modular backprop with vector input/outputs</a></li>
+            <li><a href="#_9">모듈화</a></li>
+        <li class="main "><a href="#module-zoo">Module Zoo</a></li>
+            <li><a href="#elementwise-ops">Elementwise ops</a></li>
+            <li><a href="#groupwise-ops">Groupwise ops</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -580,10 +587,12 @@ $$
 </li>
 </ul>
 <h2 id="_6">네트워크의 깊이가 끼치는 좋은 영향</h2>
-<p><a href="https://arxiv.org/pdf/1402.1869.pdf">why adding depth helps doc</a>
-- 여러개의 인풋이 같은 아웃풋에 맵핑된다. 
-- 그렇다면 함수를 재활용 할 수 있을것이다.
-- 넓이가 아니라 깊이를 깊게 한다면 그런 함수들을 많이 재활용 할 수 있을 것이다.</p>
+<p><a href="https://arxiv.org/pdf/1402.1869.pdf">why adding depth helps doc</a></p>
+<ul>
+<li>여러개의 인풋이 같은 아웃풋에 맵핑된다. </li>
+<li>그렇다면 함수를 재활용 할 수 있을것이다.</li>
+<li>넓이가 아니라 깊이를 깊게 한다면 그런 함수들을 많이 재활용 할 수 있을 것이다.</li>
+</ul>
 <p><a href="https://arxiv.org/pdf/1602.07261.pdf">Inception-v4</a></p>
 <p>$$
 f(|x|) = f(|-x|) \\
@@ -618,26 +627,24 @@ $$</p>
 </ul>
 </li>
 </ul>
-<h1 id="linear-algebra-recap-notation">Linear algebra recap / notation</h1>
+<h2 id="linear-algebra-recap-notation">Linear algebra recap / notation</h2>
 <ul>
-<li>
-<p>Gradient vector</p>
-<ul>
+<li>Gradient vector<ul>
 <li>Entries -&gt; 특정 scalar function 에 대한 vector arguments들의 편미분 값들.</li>
-<li>한개의 y 값에 대한 x 백터의 편미분 값들
-$$
+<li>한개의 y 값에 대한 x 백터의 편미분 값들</li>
+</ul>
+</li>
+</ul>
+<p>$$
 y = f(\mathbb{x}) \\
 \mathit{f} : \mathbb{R}^{m} \to \mathbb{R} \\
 \frac{\partial y}{\partial \mathbb{x}} = \nabla^{(x)}y = \left[ \frac{\partial y}{\partial x_{1}},...,\frac{\partial y}{\partial x_{m}} \right]
-$$</li>
-</ul>
-</li>
-<li>
-<p>Jacobina matrix</p>
+$$</p>
 <ul>
+<li>Jacobina matrix<ul>
 <li>Entries -&gt; vector function 에 대한 vector arguments 의 편미분 값들.</li>
 <li>y 벡터 값에 대한 x 백터의 편미분 값.</li>
-<li>멀티 classificaion 일 때.
+<li>Multi classificaion 일 때.
 $$
 \mathtt{y} = \mathit{f}(\mathbb{x}) \\
 f = \mathbb{R}^{m} \to \mathbb{R}^{n} \\
@@ -650,6 +657,333 @@ f = \mathbb{R}^{m} \to \mathbb{R}^{n} \\
 $$</li>
 </ul>
 </li>
+</ul>
+<h2 id="_7">경사 하강법을 사용한 최적화</h2>
+<ul>
+<li>한개의 데이터 경사 하강법<ul>
+<li>online gradient descent</li>
+</ul>
+</li>
+</ul>
+<p>$$
+\theta \leftarrow \theta - \eta \nabla^{(\theta)} \mathit{L} ( \theta, \mathbb{x}, y )
+$$</p>
+<ul>
+<li>여러개의 데이터를 사용한 경사 하강법<ul>
+<li>Full/mini batch gradient descent</li>
+</ul>
+</li>
+</ul>
+<p>$$
+\theta \leftarrow \theta - \eta \nabla^{(\theta)} \mathit{L} \left( \theta, \left\{ \mathbb{x}^{(i)}, y^{(i)} \right\}_{i=1}^{m} \right)
+$$</p>
+<h2 id="chain-rule-backprop-and-automatic-differentiation">Chain rule, backprop and automatic differentiation</h2>
+<ul>
+<li>
+<p>연쇄 법칙을 사용한 간단한 미분</p>
+<ul>
+<li>x 가 변하면 g가 조금 변한다. g 가 조금 변하면 f 가 조금 변한다.
+$$
+y = f(g(x));  \\
+\frac{\mathbf{d} y}{\mathbf{d} x} = 
+\frac{\mathbf{d} f}{\mathbf{d} g}
+\frac{\mathbf{d} g}{\mathbf{d} x}
+$$</li>
+</ul>
+</li>
+<li>
+<p>Multivariate: 편미분</p>
+<ul>
+<li>y 의 변화량은 각각의 함수의 변화량을 더한 것과 같다.</li>
+<li>각각의 함수를 미분 할 때 다른 함수들은 상수 취급 한다.
+$$
+y = f(g^{(1)}(x),...,g^{(m)}(x));  \\
+\frac{\partial y}{\partial x} = 
+\sum_{i=1}^{i=m}
+\frac{\partial f}{\partial g^{(i)}}
+\frac{\partial g^{(i)}}{\partial x}
+$$</li>
+</ul>
+</li>
+<li>
+<p>Computer graph</p>
+<ul>
+<li>각각의 path는  따라가며 미분하고, 가능한 모든 path 를 더한다.</li>
+<li>Traverse from Input $\to$ Output == forward moard AD</li>
+<li>Traverse from Output $\to$ Input == reverse mode AD == backprop</li>
+</ul>
+</li>
+<li>텐서 플로우가 자동으로 분기문, 반복문들을 맞게 미분해준다.</li>
+</ul>
+<h3 id="_8">예제</h3>
+<ul>
+<li>y 가 이런 수식일때 </li>
+</ul>
+<p>$$
+y = g(
+e(d(c(b(a(x))))),
+f(j(i(h(x))))
+$$</p>
+<ul>
+<li>그래프 표현</li>
+</ul>
+<p><img alt="graph_backprop" src="../img/3_graph_backprop.svg" title="opt title" /></p>
+<ul>
+<li>아래는 y 에서 부터 그래프를 따라 올라 오면 완성되는 backprop 식</li>
+</ul>
+<p>$$
+\frac{\partial y}{\partial x} = 
+\frac{\partial h}{\partial x}
+\frac{\partial i}{\partial h}
+\frac{\partial j}{\partial i}
+\frac{\partial f}{\partial j}
+\frac{\partial g}{\partial f}
+\frac{\partial y}{\partial g} +
+\frac{\partial a}{\partial x}
+\frac{\partial b}{\partial a}
+\frac{\partial c}{\partial b}
+\frac{\partial d}{\partial c}
+\frac{\partial e}{\partial d}
+\frac{\partial f}{\partial e}
+\frac{\partial g}{\partial f}
+\frac{\partial y}{\partial g}
+$$</p>
+<h3 id="forward-mode-adautomatic-differentiation">Forward mode AD(automatic differentiation)</h3>
+<ul>
+<li>Traverse graph from each input to output.<br />
+$
+\frac{\partial a}{\partial x}, 
+\frac{\partial b}{\partial x}, 
+..., 
+\frac{\partial y}{\partial x}
+$</li>
+<li>각각의 노드들을 input 으로 미분한값</li>
+<li>거의 안씀, x 값이 결과에 얼마나 영향을 주는지 정도.</li>
+</ul>
+<h3 id="backword-mode-ad">Backword mode AD</h3>
+<ul>
+<li>Traverse graph from ouptut to input</li>
+<li>ouput 을 각각의 노드들로 미분한값<br />
+$
+\frac{\partial y}{\partial g}, 
+\frac{\partial y}{\partial f}, 
+..., 
+\frac{\partial y}{\partial x}
+$</li>
+<li>학습에 사용. </li>
+</ul>
+<h2 id="modular-backprop-with-vector-inputoutputs">Modular backprop with vector input/outputs</h2>
+<h3 id="forward-pass">Forward-pass</h3>
+<p>$ \mathbb{y} = f (\mathbb{x}) $
+$$
+\text{Input : } \mathbb{y} \\
+\text{Output : } \mathbb{x} \\
+\mathbb{y} = f (\mathbb{x}) 
+$$</p>
+<pre><code class="python">def forward_pass(x):
+ # input 을 계산해서 ouptput 리턴
+ return y
+</code></pre>
+
+<h3 id="backward-pass">Backward-pass</h3>
+<p>$$
+\text{Input : } \frac{ \partial L }{ \partial \mathbb{y}} \\
+\text{Output : } \frac{ \partial L }{ \partial \mathbb{x} } \\
+\frac{ \partial L }{ \partial x_{i}}  = \sum_{j=1}^{J} \frac{ \partial L }{ \partial y_{j}} \frac{ \partial y_{j} }{ \partial x_{i}} \\
+\frac{ \partial L }{ \partial \mathbb{x}}  = \frac{ \partial L }{ \partial \mathbb{y}} ( J^{\mathbb{(x)}} \mathbb{(y)})
+$$</p>
+<pre><code class="python">def backward_pass(dL_dy):
+    # 로스 함수를 아웃풋 값으로 미분한 값을 받아.
+    # 로스 함수를 인풋값 으로 미분한 값을 리턴.
+    return dL_dx
+</code></pre>
+
+<h3 id="parameter-gradients">Parameter gradients</h3>
+<p>$$
+\text{Input : } \frac{ \partial L }{ \partial \mathbb{y}} \\
+\text{Output : } \frac{ \partial L }{ \partial \theta } \\
+\frac{ \partial L }{ \partial \theta_{i}}  = \sum_{j=1}^{J} \frac{ \partial L }{ \partial y_{j}} \frac{ \partial y_{j} }{ \partial \theta_{i}} \\
+\frac{ \partial L }{ \partial \theta }  = \frac{ \partial L }{ \partial \mathbb{y}} ( J^{(\theta)} \mathbb{(y)})
+$$</p>
+<pre><code class="python">def parameter_gradients(dL_dy):
+    # 로스 함수를 아웃풋 값으로 미분한 값을 받아.
+    # 로스 함수를 세타값 으로 미분한 값을 리턴.
+    return dl_dtheta
+</code></pre>
+
+<h2 id="_9">모듈화</h2>
+<p>각각의 모듈들이 아래의 3개 인터페이스를 구현하면 연결(chaining) 하여 계산 할 수 있다.</p>
+<pre><code>class module:
+    interface forward_pass(x)
+    interface backward_pass(dL_dy)
+    interface parameter_gradients(dL_dy)
+</code></pre>
+
+<p><img alt="module interface" src="../img/3_module_interface.svg" title="opt title" /></p>
+<ul>
+<li>x-ent: cross-entorpy</li>
+<li>학습이란 아래 3개의 API를 반복 호출 하면된다.<ul>
+<li>각 모듈들의 forward_pass 를 연결해서 작동시키고</li>
+<li>각 모듈들의 backward_pass 를 작동 시키고.</li>
+<li>각 모듈들의parameter_gradients 를 작동시키면 학습이 된다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="linear-module">Linear module</h3>
+<ul>
+<li>forward_pass</li>
+</ul>
+<p>$$
+y = Wx + b \\
+y_{n} = \sum_{m} W_{nm} x_{m} + b_{n}
+$$</p>
+<ul>
+<li>jacobian elements<ul>
+<li>x 미분</li>
+<li>b 미분</li>
+<li>$\theta$ 미분</li>
+</ul>
+</li>
+</ul>
+<p>$$
+\frac{ \partial y_{i} }{ \partial x_{j}} = W_{ij} \\
+\frac{ \partial y_{i} }{ \partial b_{j}} = \delta_{ij} \\
+\frac{ \partial y_{i} }{ \partial W_{jk}} = x_{k} \delta_{ij} \\
+$$</p>
+<ul>
+<li>
+<p>backward_pass
+$$
+\frac{ \partial L }{ \partial \mathbb{x}}  = \frac{ \partial L }{ \partial \mathbb{y}} W \\
+\frac{ \partial L }{ \partial x_{j}}  = 
+\sum_{i} \frac{ \partial L }{ \partial y_{i}} \frac{ \partial y_{i} }{ \partial x_{j}} =
+\sum_{i} \frac{ \partial L }{ \partial y_{i}} W_{ij}
+$$</p>
+</li>
+<li>
+<p>param_gradients - $W$
+$$
+\frac{ \partial L }{ \partial W}  = \left( \frac{ \partial L }{ \partial \mathbb{y}} \right)^{T} \mathbb{x}^{T} \\
+\frac{ \partial L }{ \partial W_{jk}}  = 
+\sum_{i} \frac{ \partial L }{ \partial y_{i}} \frac{ \partial y_{i} }{ \partial W_{jk}} =
+\sum_{i} \frac{ \partial L }{ \partial y_{i}} x_{k} \delta_{ij}  =
+\frac{ \partial L }{ \partial y_{j}} x_{k}
+$$</p>
+</li>
+<li>
+<p>param_gradients - $\mathbb{b}$
+$$
+\frac{ \partial L }{ \partial \mathbb{b}}  = \frac{ \partial L }{ \partial \mathbb{y}} 
+$$</p>
+</li>
+</ul>
+<h3 id="relu-module">relu module</h3>
+<ul>
+<li>forward_pass</li>
+</ul>
+<p>$$
+y_{i} = \text{max}(0, x_{i})
+$$</p>
+<ul>
+<li>backward_pass<ul>
+<li>0 보다 크면 그냥 $y_{i}$</li>
+<li>0 보다 작으면 0</li>
+</ul>
+</li>
+</ul>
+<p>$$
+\frac{ \partial L }{ \partial x_{i}}  = (y_{i} &gt; 0)
+$$</p>
+<h3 id="softmax-module">softmax module</h3>
+<ul>
+<li>forward_pass</li>
+</ul>
+<p>$$
+y_{n} = \frac{e^{x_{n}}}{\sum_{m}e^{x_{m}}}
+$$</p>
+<ul>
+<li>
+<p>jacobian elements
+$$
+\frac{ \partial y_{i} }{ \partial x_{j}} = 
+\frac{ \partial }{ \partial x_{j}} \left( \frac{e^{x_{i}}}{\sum_{m}e^{x_{m}}} \right) = 
+\frac{ \delta_{ij} e^{x_{i}} }{ \sum_{m}e^{x_{m}} } - 
+\frac{ e^{x_{i}} e^{x_{j}} }{ (\sum_{m} e^{x_{m}})^{2} } = 
+y_{i} (\delta_{ij} - y_{j})
+$$</p>
+</li>
+<li>
+<p>backward_pass</p>
+</li>
+</ul>
+<p>$$
+\frac{ \partial L }{ \partial \mathbb{x}}  =  s - \sum_{i} s_{i} \text{; where} s_{i} = 
+\frac{ \partial L }{ \partial y_{i}}  y_{i}
+$$</p>
+<h3 id="cross-entropy-loss-module">cross-entropy loss module</h3>
+<ul>
+<li>forward_pass</li>
+</ul>
+<pre><code>y = L = Xent(p, x)
+</code></pre>
+
+<p>$$
+y  = - \sum_{i}^{\text{classes:C}} p_{i}\text{log }x_{i}
+$$</p>
+<ul>
+<li>backward_pass<ul>
+<li>아래의 식에서 $x_{i}$가 너무 작으면 소수점 관련 이슈가 발생 될 수 있다.
+$$
+\frac{ \partial L }{ \partial x_{i}}  =  - \frac{ p_{i}}{ x_{i}}
+$$</li>
+</ul>
+</li>
+</ul>
+<h3 id="cross-entropy-softmax-loss-module">cross-entropy + softmax loss module</h3>
+<ul>
+<li>위의 소수점 이슈 때문에 복합 로스 함수를 사용한다.</li>
+<li>forward_pass</li>
+</ul>
+<pre><code>y = L = XentLogits(p, x)
+</code></pre>
+
+<p>$$
+y  = - \sum_{i}^{\text{classes:C}} p_{i}\text{log } \left( \frac{e^{x_{i}}}{\sum_{m}e^{x_{m}}} \right) 
+$$</p>
+<ul>
+<li>backward_pass</li>
+</ul>
+<p>$$
+\frac{ \partial L }{ \partial \mathbb{x}}   =  \mathbb{y} - \mathbb{p}
+$$</p>
+<h1 id="module-zoo">Module Zoo</h1>
+<h2 id="elementwise-ops">Elementwise ops</h2>
+<h3 id="add">Add</h3>
+<ul>
+<li>forward_pass: $ y  = a + b $</li>
+<li>backward_pass: $ \frac{ \partial L }{ \partial a}  = \frac{ \partial L }{ \partial y} $</li>
+</ul>
+<h3 id="multiply">Multiply</h3>
+<ul>
+<li>forward_pass: $ y  = a \odot b $</li>
+<li>backward_pass: $ \frac{ \partial L }{ \partial a}  = b \odot \frac{ \partial L }{ \partial y} $</li>
+</ul>
+<h2 id="groupwise-ops">Groupwise ops</h2>
+<h3 id="sum">Sum:</h3>
+<ul>
+<li>forward_pass: $ y  = \sum x_{i} $</li>
+<li>backward_pass: $ \frac{ \partial L }{ \partial x}  = \frac{ \partial L }{ \partial y} 1^{T} $</li>
+</ul>
+<h3 id="max">Max:</h3>
+<ul>
+<li>forward_pass: $ y  = max_{i} \{ x_{i} \} $</li>
+<li>backward_pass: $ \frac{ \partial L }{ \partial x}  = \frac{ \partial L }{ \partial y} $ if i was maximal, 0 otherwise</li>
+</ul>
+<h3 id="switchconditional">Switch/Conditional:</h3>
+<ul>
+<li>활성된 branch 를 one-hot vector 인코딩 s 벡터로 표현</li>
+<li>forward_pass: $ y  = \mathbb{s} \odot \mathbb{x} $</li>
+<li>backward_pass: $ \frac{ \partial L }{ \partial \mathbb{x}}  = \frac{ \partial L }{ \partial \mathbb{y}} \odot \mathbb{s}^{T} $ </li>
 </ul></div>
         </div>
 
