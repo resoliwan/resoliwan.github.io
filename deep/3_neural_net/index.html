@@ -337,6 +337,7 @@
         <li class="main "><a href="#module-zoo">Module Zoo</a></li>
             <li><a href="#elementwise-ops">Elementwise ops</a></li>
             <li><a href="#groupwise-ops">Groupwise ops</a></li>
+            <li><a href="#activation-functions">Activation functions</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -417,8 +418,7 @@ $$</p>
 <p>Activation function 중 하나.
 $f: R \to R$ 함수 이며 $-\infty \leq x \leq +\infty$ 를 input  으로 받아 $0 \leq y \leq 1$ 의 값을 리턴한다.
 $$\sigma = \frac{1}{1 + e^{-x}}$$</p>
-<p><img alt="sigmoid" src="../img/sigmoid.svg" />
-x 축은 인풋 y 축은 아웃풋</p>
+<p><img alt="sigmoid" src="../img/3_sigmoid.svg" /></p>
 <p>선형 변환이 아니기 때문에 비선형 함수라고 한다.</p>
 <h2 id="_3">인공 뉴론</h2>
 <p>이제 위의 linear layer 와 activation layer(sigmoid) 를 합치면 인공 뉴론이 된다.
@@ -511,7 +511,7 @@ $$</li>
 $$
 y = relu(x) \text{, where:} y_{i} = \text{maximum}(0, x_{i})
 $$
-<img alt="relu" src="../img/relu.svg" /></p>
+<img alt="relu" src="../img/3_relu.svg" /></p>
 <h1 id="networks-with-one-hidden-layer">Networks with one hidden layer</h1>
 <ul>
 <li>인풋을 선형으로 분리 불가능 할때 사용.</li>
@@ -988,7 +988,14 @@ $$</p>
 <li>활성된 branch 를 one-hot vector 인코딩 s 벡터로 표현</li>
 <li>forward_pass: $ y  = \mathbb{s} \odot \mathbb{x} $</li>
 <li>backward_pass: $ \frac{ \partial L }{ \partial \mathbb{x}}  = \frac{ \partial L }{ \partial \mathbb{y}} \odot \mathbb{s}^{T} $ </li>
-</ul></div>
+</ul>
+<h2 id="activation-functions">Activation functions</h2>
+<h3 id="tanh">tanh</h3>
+<p>sigomoid 를 0.0 으로 내리고 조금 y 축에 가깝게 새운정도.</p>
+<p><img alt="tanh" src="../img/3_tanh.svg" /></p>
+<h3 id="leaky-relu">Leaky relu</h3>
+<p>input 이 음수일때 경사도가 0 이 되는걸 처리 하기 위해</p>
+<p><img alt="Leaky relu" src="../img/3_leaky_relu.svg" /></p></div>
         </div>
 
         <footer class="col-md-12">
