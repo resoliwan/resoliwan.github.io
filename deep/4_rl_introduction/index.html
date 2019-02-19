@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>1. Introduction to Introduction to Machine Learning Based AI - Leo's home</title>
+        <title>Introduction to Reinforcement Learning - Leo's home</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -53,20 +53,24 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Deep <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
+<li >
+    <a href="../1_dl_introduction/">1. Introduction to Introduction to Machine Learning Based AI</a>
+</li>
+                                    
+<li >
+    <a href="../2_dl_tensorflow/">2. Introduction to TensorFlow</a>
+</li>
+                                    
+<li >
+    <a href="../3_dl_1_mnist/">3.1. MNIST</a>
+</li>
+                                    
+<li >
+    <a href="../3_dl_neural_net/">3. Neural Networks Foundations</a>
+</li>
+                                    
 <li class="active">
-    <a href="./">1. Introduction to Introduction to Machine Learning Based AI</a>
-</li>
-                                    
-<li >
-    <a href="../2_tensorflow/">2. Introduction to TensorFlow</a>
-</li>
-                                    
-<li >
-    <a href="../3_neural_net/">3. Neural Networks Foundations</a>
-</li>
-                                    
-<li >
-    <a href="../3_z_1_mnist/">3.1. MNIST</a>
+    <a href="./">Introduction to Reinforcement Learning</a>
 </li>
                                 </ul>
                             </li>
@@ -297,12 +301,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../..">
+                                <a rel="next" href="../3_dl_neural_net/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../2_tensorflow/">
+                                <a rel="prev" href="../../etc/algorithm/en_2_getting_started/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -314,57 +318,269 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#1-introduction-to-introduction-to-machine-learning-based-ai">1. Introduction to Introduction to Machine Learning Based AI</a></li>
-        <li class="main "><a href="#what-is-intelligent">What is intelligent?</a></li>
-        <li class="main "><a href="#_1">게임을 시뮬레이터로 사용 하는 이유</a></li>
-            <li><a href="#_2">현실의 경우</a></li>
-            <li><a href="#_3">게임의 경우</a></li>
-        <li class="main "><a href="#_4">머신러닝 추세</a></li>
+        <li class="main active"><a href="#introduction-to-reinforcement-learning">Introduction to Reinforcement Learning</a></li>
+        <li class="main "><a href="#_1">목차</a></li>
+        <li class="main "><a href="#_2">동기</a></li>
+        <li class="main "><a href="#_3">강화 학습이란 무엇인가?</a></li>
+            <li><a href="#loop">상호작용 loop</a></li>
+            <li><a href="#_4">상호작용을 통해서 결정을 내리는 법을 학습하는 과학</a></li>
+            <li><a href="#_5">강화 학습의 특징</a></li>
+        <li class="main "><a href="#_6">핵심 생각들</a></li>
+            <li><a href="#agent-and-environment">Agent and Environment</a></li>
+            <li><a href="#_7">보상</a></li>
+            <li><a href="#values">Values</a></li>
+            <li><a href="#action">순차적 Action들</a></li>
+            <li><a href="#action-values">Action values</a></li>
+        <li class="main "><a href="#agent">Agent</a></li>
+            <li><a href="#state">State</a></li>
         <li class="main "><a href="#link">Link</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="1-introduction-to-introduction-to-machine-learning-based-ai">1. Introduction to Introduction to Machine Learning Based AI</h1>
-<h1 id="what-is-intelligent">What is intelligent?</h1>
-<p>Intelligent measures an agent's ability to achieve goals in a wide range of environments
-$$
-\pi := \sum_{\mu\in E} 2_{}^{-K(\mu)}V_{\mu}^{\pi}
+<h1 id="introduction-to-reinforcement-learning">Introduction to Reinforcement Learning</h1>
+<h1 id="_1">목차</h1>
+<ul>
+<li>강화 학습은 무엇인가?</li>
+<li>핵심 생각들</li>
+<li>Agent의 구성요소</li>
+<li>강화 학습에 남은 도전들</li>
+</ul>
+<h1 id="_2">동기</h1>
+<ul>
+<li>1.물리적 반복 작업에 대한 자동화 <ul>
+<li>산업혁명 - 생산라인 등</li>
+</ul>
+</li>
+<li>2.정신적 반복 작업에 대한 자동화<ul>
+<li>정보화 혁명 - 계산기 등</li>
+<li>어떻게 하는지 규칙을 정해서 구현 했음.</li>
+</ul>
+</li>
+<li>3.기계가 문제에 대한 해법을 자신이 찾음<ul>
+<li>AI 혁명</li>
+<li>결정을 내리는 방법에 대한 자동 학습이 필요해짐</li>
+</ul>
+</li>
+</ul>
+<h1 id="_3">강화 학습이란 무엇인가?</h1>
+<ul>
+<li>주어진 상황에서 최선이라 생각되는 행동을 학습하는 것.</li>
+<li>상호작용을 통해서 결정을 내리는 법을 학습하는 과학</li>
+<li>환경과 상호 작용 하면서 학습함.</li>
+<li>지도 학습과 다른점<ul>
+<li>동적임 (수동적이지 않음)</li>
+<li>상호작용이 잇따라 일어남 (다음 행동은 이전의 행동에 의존성이 있을 수 있음)</li>
+</ul>
+</li>
+<li>목표 지향적임</li>
+<li>예제 없이 최적 행동 양식을 찾을 수 있음.<ul>
+<li>Learn by try and error.</li>
+</ul>
+</li>
+<li>사고의 틀과 알고리즘 양쪽 다 지칭</li>
+</ul>
+<h3 id="loop">상호작용 loop</h3>
+<p><img alt="agent_loop" src="../img/4_agent_env.svg" title="opt title" /></p>
+<h3 id="_4">상호작용을 통해서 결정을 내리는 법을 학습하는 과학</h3>
+<p>위의 정의를 달성하기 위해 고려해야 하는 것들
+- 시간
+- 행동에 대한 결과(장$\cdot$단기적)
+- 경험의 축적
+- 미래에 대한 예측
+- 불확실 성에 대한 처리</p>
+<h3 id="_5">강화 학습의 특징</h3>
+<p>다른 학습들과 다른 부분
+- 지도 학습이 아님, 보상 신호만 있음
+- 피드백이 지연 될 수 있음(즉각적이지 않아도 됨)
+- 시간이 중요함
+- 이전 결정이 이후 상호 작용에 영향을 줌</p>
+<h1 id="_6">핵심 생각들</h1>
+<ul>
+<li>환경</li>
+<li>보상 신호</li>
+<li>Agent<ul>
+<li>Agent state</li>
+<li>Policy </li>
+<li>Value function </li>
+<li>Model (Optional)</li>
+</ul>
+</li>
+</ul>
+<h3 id="agent-and-environment">Agent and Environment</h3>
+<p><img alt="agent_loop" src="../img/4_agent_env.svg" title="opt title" /></p>
+<p>각각의 단계 t 에
+- Agent 
+    - Observation $O_{t}$ 을 받음(그리고 보상$R_{t}$ 을 받음)
+    - 액션을 $A_{t}$ 행함
+- The environment
+    - 액션 $A_{t}$를 받음
+    - Observation $O_{t+1}$ 을 생성(그리고 보상$R_{t+1}$ 을 생성)</p>
+<pre><code class="python">def agent(time, observation, reward):
+    // 가장 좋은 action 선택
+    return action
+
+def env(time, action):
+    // action에 의해 반응한 환경과 보상을 리턴
+    return (observation, reward)
+
+t = 0
+action, observaion, reward = None, None, None
+while True:
+    t++
+    action = agent(t, observation, reward)
+    observation, reward = evn(t, action)
+</code></pre>
+
+<h2 id="_7">보상</h2>
+<ul>
+<li>보상 $R_{t}$는 scalar 값이다.</li>
+<li>Agent 가 step t 에 얼마나 잘했는지에 대한 피드백 신호</li>
+<li>Agent 의 목표는 누적 보상을 최대값으로 만드는 것이다.
+$$ G_{t} = R_{t+1} + R_{t+2} + R_{t+3} + ... $$</li>
+<li>우리는 위의 누적 보상을 the return 이라고 할 것이다.</li>
+</ul>
+<h4 id="_8">보상 가설</h4>
+<p>어떠한 목표도 누적 보상을 최대화 시키는 방법으로 형식화 할 수 있다.</p>
+<h2 id="values">Values</h2>
+<p>특정 상황 s 에서 누적 보상의 기대값을 value 라고 하자.</p>
+<p>$$ 
+\begin{align}
+\mathtt{v}(s) = &amp; \mathbb{E} [ G_{t} | S_{t}=s ] \\
+     = &amp; \mathbb{E} [ R_{t+1} + R_{t+2} + R_{t+3} + ...  | S_{t}=s ]
+\end{align}
 $$</p>
 <ul>
-<li>$\pi$ Measure of intelligence</li>
-<li>$\sum_{\mu\in E}$ Sum of environment.</li>
-<li>$2_{}^{-K(\mu)}$ Complexity penalty</li>
+<li>이제 agent의 목표는 value를 최대화 하는것이라고 재 정의 할 수 있다.</li>
+<li>Reward 그리고 Value 는 특정 상황에서 특정 action 이 얼마나 적합한지의 정도를 나타낸다(지도 피드백이 필요 없다.)</li>
+<li>retuns 와 values 는 재귀로 정의 될 수 있다.
+$$ G_{t} = R_{t+1} + G_{t+1} $$</li>
+</ul>
+<h2 id="action">순차적 Action들</h2>
+<ul>
+<li>value 값을 최대화 하는 actions 을 고르는걸 목표로 하자.</li>
+<li>이제 agent의 목표는 특정 action들을 선택해서 value를 최대화 하는것이라고 재 정의 할 수 있다.</li>
+<li>actions 는 장기적 결과를 가질 수도 있다.</li>
+<li>보상은 지연 될 수 있다.</li>
+<li>장기적 보상을 위해 즉각적인 보상을 포기하는게 좋을 수 도 있다.<ul>
+<li>헬리콥터 연료 충전(몇시간 후 에 추락 할 수 있으니)</li>
+<li>주식 투자 (장기적으로 이익이 더 올때)</li>
+</ul>
+</li>
+<li>states 로 부터 actions 로의 맵핑을 policy 라고 한다.
+$$ \text{policy} = f: \text{states} \to \text{action} $$</li>
+</ul>
+<h2 id="action-values">Action values</h2>
+<p>value 의 조건식에 action 을 넣을걸 action value 라고한다.</p>
+<p>$$ 
+\begin{align}
+q(s, a) = &amp; \mathbb{E}[ G_{t} | S_{t}=s, A_{t}=a ] \\
+        = &amp; \mathbb{E} [ R_{t+1} + R_{t+2} + R_{t+3} + ...  | S_{t}=s, A_{t}=a ]
+\end{align}
+$$</p>
+<h1 id="agent">Agent</h1>
+<h2 id="state">State</h2>
+<ul>
+<li>Actions는 agent의 state 에 의존성이 있다.</li>
+<li>행위자와 환경은 각각 내부 state를 가질 수 있다.<ul>
+<li>간단한 예제에서는 state 가 한개 일 수 있다.</li>
+<li>보통 상태가 엄청 많다. - 가끔씩 무한대의 경우도 있다.</li>
+</ul>
+</li>
+<li>행위자의 상태와 환경의 상태는 일반적으로 다르다.</li>
+<li>행위자는 환경의 모든 상태를 모를 수 있다.</li>
+</ul>
+<h3 id="environment-state">Environment state</h3>
+<ul>
+<li>환경의 내부 상태</li>
+<li>일반적으로 행위자가 알 수 없다.</li>
+<li>만약 안다고 해도 상관없는 정보를 많이 가지고 있을 수 있다.</li>
+</ul>
+<h3 id="agent-state">Agent state</h3>
+<ul>
+<li>(Observation, action, reward)들의 기록
+$$ H_{t} = O_{0}, A_{0}, R_{1}, O_{1}, ... ,O_{t-1}, A_{t-1}, R_{t}, O_{t} $$</li>
+<li>위의 기록이 행위자의 상태$S_{t}$를 만드는대 사용된다.</li>
+<li>액션은 상태에 의존성이 있다.</li>
+</ul>
+<h3 id="fully-obervable-environments">Fully Obervable Environments</h3>
+<p>행위자가 환경의 전체 상태를 관찰 할 수 있다고 가정 하자.
+- observation = 환경 상태
+- 행위자의 상태가 환경 상태와 같을 수 있다.
+$$S_{t} = O_{t} = \text{environment state}$$
+- 행위자가 Markov decision process 에 있다.</p>
+<h3 id="markov-decision-processes">Markov decision processes</h3>
+<p>MDPs 는 수학적으로 좋은 틀을 제공해준다.</p>
+<h4 id="_9">정의</h4>
+<ul>
 <li>
-<p>$V_{\mu}^{\pi}$ Value achieve</p>
+<p>아래의 조건을 충족하는 결정 과정을 Markov 라고 한다.</p>
+<ul>
+<li>A decision  process is Markov if</li>
+<li>p == probability</li>
+<li>joint probability of r, s given $S_{t}, A_{t}$ is same as given $H_{t}, A_{t}$
+$$ p(r,s| S_{t}, A_{t}) = p(r,s| H_{t}, A_{t})$$</li>
+</ul>
 </li>
 <li>
-<p>지능이란 여러 환경에서 에이전트가 목표들을 달성하는 능력의 총합으로 측정 될 수 있다.</p>
+<p>현재를 주면 미래는 과거로 부터 독립적이다. </p>
+<ul>
+<li>The future is independent of the past given the present
+$$ H_{t} \to S_{t} \to H_{t+1} $$</li>
+</ul>
 </li>
-<li>환경이 복잡할 수록 복잡도 패널티는 커진다.(환경이 복잡 할 수록 여러 step 이 존재 함으로 수렴하기 위해서 어쩔수 없다.)</li>
+<li>해당 속성을 만족하는 state 를 알게 되면 기록을 버려도 된다.</li>
+<li>예를 들어<ul>
+<li>stationary 환경 상태는 Markov 이다.</li>
+<li>기록 $H_{t+1}$는 Markov 이다.</li>
 </ul>
-<h1 id="_1">게임을 시뮬레이터로 사용 하는 이유</h1>
-<h3 id="_2">현실의 경우</h3>
-<p>여러 감각으로 부터 데이터를 읽어 상징화된 기호로 변경하는게 힘들다.</p>
-<h3 id="_3">게임의 경우</h3>
-<ul>
-<li>감각이 단순화 되어 있다.</li>
-<li>무제한 적인 데이터</li>
-<li>실험 편향이 없는것</li>
-<li>동시적 여러 테스팅</li>
-<li>측정 가능한 진행도</li>
+</li>
 </ul>
-<h1 id="_4">머신러닝 추세</h1>
+<h3 id="partially-observable-environments">Partially Observable Environments</h3>
+<p>Agent 가 정보의 일부분만 받는다.
+- 포커카드 게임
+- observation 이 Markov 가 아니다.
+- patially obsevable Markov decision process (POMDP)
+- 환경 상태값은 Markov 이지만 행위자가 이걸 알 수 없다.</p>
+<h3 id="agent-state_1">Agent state</h3>
 <ul>
-<li>예전에는 직접 만들었다면 요새는 각각의 모듈 단위로 필요한 부분을 조합해서 사용한다.</li>
-<li>텐서 플로우등이 자동으로 미분을 해주기 때문에 </li>
-<li>End to End 로 학습 할 수 있다.</li>
+<li>angent state 는 기록에 대한 함수이다.
+$$ \text{agent state} = f: H \to S $$</li>
+<li>
+<p>행위자의 액션은 상태에 의존한다.</p>
+</li>
+<li>
+<p>State update function == f
+$$S_{t+1} = f(S_{t},A_{t},R_{t+1},O_{t+1})$$</p>
+<ul>
+<li>행위자는 t 에 있음 </li>
+<li>$S_t$ 를 사용해 $A_t$ 를 결정하고 실행.</li>
+<li>환경이 $R_{t+1}, O_{t+1}$을 생성.</li>
+<li>행위자는 이제 $t + 1$ 에 있음</li>
+<li>$S_{t+1}$ 을 $f(S_t, A_t, R_{t+1}, O_{t+1})$ 을 사용해 변경</li>
+<li>관습적으로 t 는 행위자가 환경에서 액션을 보내는 시점임</li>
+</ul>
+</li>
+<li>
+<p>행위자의 상태는 환경의 상태보다 훨씬 작다.</p>
+</li>
+</ul>
+<h3 id="example">Example</h3>
+<p>부분관찰이 가능한 환경에서 행위자의 상태를 만들어보자.</p>
+<p><img alt="maze" src="../img/4_maze.svg" title="opt title" /></p>
+<ul>
+<li>행위자는 2번 그림처럼 환경의 일부분을 observation 으로 받는다.</li>
+<li>만약 $S_{t} = O_{t}$를 사용했다면 3번 그림에서 처럼 두개의 다른 observation을 구분 할 방법이 없다.</li>
+<li>즉 행위자의 상태가 Markov 가 아닌 상태가 되었다.</li>
+<li>어떻게 하면 행위자의 상태를 Markov 하게 할 수 있을까?<ul>
+<li>agent 가 기록을 사용해 구분 할 수 있는 상태를 만들면 된다.</li>
+</ul>
+</li>
 </ul>
 <h1 id="link">Link</h1>
 <ul>
-<li><a href="https://www.youtube.com/watch?v=iOh7QUZGyiU&amp;t=1s">출처</a></li>
-<li><a href="https://deepmind.com/blog/open-sourcing-deepmind-lab/">DeepMind lab</a> RL용 1인칭 슈팅 게임(공개되어 있음)</li>
-<li>From Deepmind</li>
+<li><a href="https://www.youtube.com/watch?v=ISk80iLhdfU&amp;index=4&amp;list=PLqYmG7hTraZDNJre23vqCGIVpfZ_K2RZs">출처</a></li>
+<li><a href="https://github.com/ShangtongZhang/reinforcement-learning-an-introduction/tree/master/chapter01">code</a></li>
 </ul></div>
         </div>
 

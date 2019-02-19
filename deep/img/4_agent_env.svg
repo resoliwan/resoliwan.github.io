@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="70.314972mm"
+   height="70.436508mm"
+   viewBox="0 0 70.314972 70.436508"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06"
+   sodipodi:docname="4_agent_env.svg">
+  <defs
+     id="defs2">
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path7390"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#cf0000;fill-opacity:1;fill-rule:evenodd;stroke:#cf0000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect7379"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <symbol
+       id="ToiletsMen">
+      <title
+         id="title1704">Toilets - Men</title>
+      <g
+         style="stroke:none"
+         id="g1710">
+        <circle
+           style="stroke-width:0.26458332"
+           cx="9.5249996"
+           cy="2.3812499"
+           r="1.3229166"
+           id="circle1706" />
+        <path
+           style="stroke-width:0.26458332"
+           inkscape:connector-curvature="0"
+           d="M 6.35,5.8208333 V 9.921875 a 0.5953125,0.5953125 0 0 0 1.190625,0 V 6.0854167 H 7.8052083 V 16.536458 a 0.79375,0.79375 0 0 0 1.5875,0 v -5.953125 h 0.2645834 v 5.953125 a 0.79375015,0.79375015 0 0 0 1.5875003,0 V 6.0854167 h 0.264583 V 9.921875 a 0.5953125,0.5953125 0 0 0 1.190625,0 V 5.8208333 A 1.8520833,1.8520833 0 0 0 10.847917,3.96875 H 8.2020833 A 1.8520833,1.8520833 0 0 0 6.35,5.8208333 Z"
+           id="path1708" />
+      </g>
+    </symbol>
+    <symbol
+       id="blank">
+      <title
+         id="title4378">Blank</title>
+      <rect
+         x="0.26458332"
+         y="0.26458332"
+         width="18.520834"
+         height="18.520834"
+         rx="1.5875"
+         style="fill:none;stroke:#000000;stroke-width:0.52916664"
+         id="rect4380" />
+    </symbol>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-3"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path7390-3"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#0000e7;fill-opacity:1;fill-rule:evenodd;stroke:#0000e7;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect7379-5"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1"
+     inkscape:cx="20.977849"
+     inkscape:cy="149.40717"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1680"
+     inkscape:window-height="1005"
+     inkscape:window-x="0"
+     inkscape:window-y="151"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-41.230041,-81.886377)">
+    <use
+       id="use5571"
+       style="fill:#000000;stroke:#000000"
+       xlink:href="#ToiletsMen"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="translate(42.932722,108.23977)" />
+    <use
+       id="use7355"
+       style="fill:#000000;stroke:#000000"
+       xlink:href="#blank"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="matrix(1.0128244,0,0,1,86.134322,105.79236)" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="47.023319"
+       y="105.48473"
+       id="text7371"><tspan
+         sodipodi:role="line"
+         id="tspan7369"
+         x="47.023319"
+         y="105.48473"
+         style="stroke-width:0.26458332">Agent</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="84.900383"
+       y="103.47657"
+       id="text7375"><tspan
+         sodipodi:role="line"
+         id="tspan7373"
+         x="84.900383"
+         y="103.47657"
+         style="stroke-width:0.26458332">Environment</tspan></text>
+    <path
+       style="fill:none;stroke:#cf0000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
+       d="M 92.921955,96.855408 C 86.418455,92.400957 79.914896,87.946466 73.812324,88.302702 67.709753,88.658937 62.008049,93.826099 56.30603,98.993546"
+       id="path7377"
+       inkscape:connector-curvature="0"
+       inkscape:path-effect="#path-effect7379"
+       inkscape:original-d="M 92.921955,96.855408 C 86.418661,92.400656 79.915102,87.946165 73.411279,83.491936 67.709746,88.658929 62.008044,93.826093 56.30603,98.993546" />
+    <path
+       style="fill:none;stroke:#0000e7;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend-3)"
+       d="m 55.692544,130.71518 c 5.941618,5.18025 11.883279,10.36053 17.985886,10.7161 6.102607,0.35556 12.366307,-4.11379 18.630359,-8.5834"
+       id="path7377-8"
+       inkscape:connector-curvature="0"
+       inkscape:path-effect="#path-effect7379-5"
+       inkscape:original-d="m 55.692544,130.71518 c 5.941372,5.18053 11.883039,10.36081 17.824998,15.54087 6.263508,-4.46919 12.527205,-8.93855 18.791247,-13.40817" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#cf0000;fill-opacity:1;stroke:none;stroke-width:0.26458332;"
+       x="64.822922"
+       y="85.862495"
+       id="text8161"><tspan
+         sodipodi:role="line"
+         id="tspan8159"
+         x="64.822922"
+         y="85.862495"
+         style="stroke-width:0.26458332;fill:#cf0000;fill-opacity:1;">Observation</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#0000e7;fill-opacity:1;stroke:none;stroke-width:0.26458332;"
+       x="70.90834"
+       y="148.56882"
+       id="text8165"><tspan
+         sodipodi:role="line"
+         id="tspan8163"
+         x="70.90834"
+         y="148.56882"
+         style="stroke-width:0.26458332;fill:#0000e7;fill-opacity:1;">Action</tspan></text>
+  </g>
+</svg>
