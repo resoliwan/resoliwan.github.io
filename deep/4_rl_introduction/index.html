@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Introduction to Reinforcement Learning - Leo's home</title>
+        <title>4.rl. Introduction to Reinforcement Learning - Leo's home</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -54,23 +54,23 @@
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="../1_dl_introduction/">1. Introduction to Introduction to Machine Learning Based AI</a>
+    <a href="../1_dl_introduction/">1.dl. Introduction to Introduction to Machine Learning Based AI</a>
 </li>
                                     
 <li >
-    <a href="../2_dl_tensorflow/">2. Introduction to TensorFlow</a>
+    <a href="../2_dl_tensorflow/">2.dl. Introduction to TensorFlow</a>
 </li>
                                     
 <li >
-    <a href="../3_dl_1_mnist/">3.1. MNIST</a>
+    <a href="../3_dl_1_mnist/">3.dl.1. MNIST</a>
 </li>
                                     
 <li >
-    <a href="../3_dl_neural_net/">3. Neural Networks Foundations</a>
+    <a href="../3_dl_neural_net/">3.dl. Neural Networks Foundations</a>
 </li>
                                     
 <li class="active">
-    <a href="./">Introduction to Reinforcement Learning</a>
+    <a href="./">4.rl. Introduction to Reinforcement Learning</a>
 </li>
                                 </ul>
                             </li>
@@ -318,7 +318,7 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#introduction-to-reinforcement-learning">Introduction to Reinforcement Learning</a></li>
+        <li class="main active"><a href="#4rl-introduction-to-reinforcement-learning">4.rl. Introduction to Reinforcement Learning</a></li>
         <li class="main "><a href="#_1">목차</a></li>
         <li class="main "><a href="#_2">동기</a></li>
         <li class="main "><a href="#_3">강화 학습이란 무엇인가?</a></li>
@@ -338,7 +338,7 @@
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="introduction-to-reinforcement-learning">Introduction to Reinforcement Learning</h1>
+<h1 id="4rl-introduction-to-reinforcement-learning">4.rl. Introduction to Reinforcement Learning</h1>
 <h1 id="_1">목차</h1>
 <ul>
 <li>강화 학습은 무엇인가?</li>
@@ -409,13 +409,19 @@
 </ul>
 <h3 id="agent-and-environment">Agent and Environment</h3>
 <p><img alt="agent_loop" src="../img/4_agent_env.svg" title="opt title" /></p>
-<p>각각의 단계 t 에
-- Agent 
-    - Observation $O_{t}$ 을 받음(그리고 보상$R_{t}$ 을 받음)
-    - 액션을 $A_{t}$ 행함
-- The environment
-    - 액션 $A_{t}$를 받음
-    - Observation $O_{t+1}$ 을 생성(그리고 보상$R_{t+1}$ 을 생성)</p>
+<p>각각의 단계 t 에</p>
+<ul>
+<li>Agent <ul>
+<li>Observation $O_{t}$ 을 받음(그리고 보상$R_{t}$ 을 받음)</li>
+<li>액션을 $A_{t}$ 행함</li>
+</ul>
+</li>
+<li>The environment<ul>
+<li>액션 $A_{t}$를 받음</li>
+<li>Observation $O_{t+1}$ 을 생성(그리고 보상$R_{t+1}$ 을 생성)</li>
+</ul>
+</li>
+</ul>
 <pre><code class="python">def agent(time, observation, reward):
     // 가장 좋은 action 선택
     return action

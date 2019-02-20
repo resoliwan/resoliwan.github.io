@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>3. Neural Networks Foundations - Leo's home</title>
+        <title>3.dl. Neural Networks Foundations - Leo's home</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -54,23 +54,23 @@
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="../1_dl_introduction/">1. Introduction to Introduction to Machine Learning Based AI</a>
+    <a href="../1_dl_introduction/">1.dl. Introduction to Introduction to Machine Learning Based AI</a>
 </li>
                                     
 <li >
-    <a href="../2_dl_tensorflow/">2. Introduction to TensorFlow</a>
+    <a href="../2_dl_tensorflow/">2.dl. Introduction to TensorFlow</a>
 </li>
                                     
 <li >
-    <a href="../3_dl_1_mnist/">3.1. MNIST</a>
+    <a href="../3_dl_1_mnist/">3.dl.1. MNIST</a>
 </li>
                                     
 <li class="active">
-    <a href="./">3. Neural Networks Foundations</a>
+    <a href="./">3.dl. Neural Networks Foundations</a>
 </li>
                                     
 <li >
-    <a href="../4_rl_introduction/">Introduction to Reinforcement Learning</a>
+    <a href="../4_rl_introduction/">4.rl. Introduction to Reinforcement Learning</a>
 </li>
                                 </ul>
                             </li>
@@ -318,7 +318,7 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#3-neural-networks-foundations">3. Neural Networks Foundations</a></li>
+        <li class="main active"><a href="#3dl-neural-networks-foundations">3.dl. Neural Networks Foundations</a></li>
         <li class="main "><a href="#overview">Overview.</a></li>
             <li><a href="#_1">사용처</a></li>
             <li><a href="#road-map">Road map</a></li>
@@ -360,7 +360,7 @@
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="3-neural-networks-foundations">3. Neural Networks Foundations</h1>
+<h1 id="3dl-neural-networks-foundations">3.dl. Neural Networks Foundations</h1>
 <h1 id="overview">Overview.</h1>
 <p><img alt="overview" src="../img/3_nn_overview.svg" /></p>
 <p>NN 은 선형 변환들과 + 비 선형 함수들의 조합 이다.
@@ -1037,22 +1037,36 @@ $$</p>
 <li>Try to overfit on a very small subset of data or a very simple version of your task.</li>
 </ul>
 <h2 id="overfitting-regularization_1">Overfitting &amp; regularization</h2>
-<p>트레인 데이터에는 좋은 점수를 받는대 테스트 데이터 에서는 나쁜 점수를 받을 경우.
-- Early stopping
-- Weight decay
-    - weight 가 너무 커지지 않게 조절 하는것
-    - sigmoid/than/softmax 같은 경우 linear region 에 가깝게 머물게 하는것.
-        - 변환이 선형에 가깝게 되게 유도 함으로 함수의 복잡도가 떨어트려 regularization 한다.
-    - relu 에는 별 효과 없음
-- Noise addition $\to$ dropout
-    - 트래인 하는 도중에 noise 를 더해준다.
-        - 피쳐의 특정 값 또는 결합 값들에 지나치게 의존 하는걸 방지
-        - 간단한 방식의 앙상블 방법이라고 볼 수도 있다.
-    - Dropout
-        - Training: 랜덤하게 특정 레이어의 부분들을 0으로 설정.
-        - Testing: 모든 유닛을 사용하나, 일정 부분을 0으로 변하게 하는 정도를 변경 하거나.
-            - 랜덤하게 0 으로 세팅할 부분의 정도를 변환 시켜 여러번 실행 한다.(앙상블)
-        - Batch-norm 때문에 요즘은 많이 사용하지 않음.</p>
+<p>트레인 데이터에는 좋은 점수를 받는대 테스트 데이터 에서는 나쁜 점수를 받을 경우.</p>
+<ul>
+<li>Early stopping</li>
+<li>Weight decay<ul>
+<li>weight 가 너무 커지지 않게 조절 하는것</li>
+<li>sigmoid/than/softmax 같은 경우 linear region 에 가깝게 머물게 하는것.<ul>
+<li>변환이 선형에 가깝게 되게 유도 함으로 함수의 복잡도가 떨어트려 regularization 한다.</li>
+</ul>
+</li>
+<li>relu 에는 별 효과 없음</li>
+</ul>
+</li>
+<li>Noise addition $\to$ dropout<ul>
+<li>트래인 하는 도중에 noise 를 더해준다.<ul>
+<li>피쳐의 특정 값 또는 결합 값들에 지나치게 의존 하는걸 방지</li>
+<li>간단한 방식의 앙상블 방법이라고 볼 수도 있다.</li>
+</ul>
+</li>
+<li>Dropout<ul>
+<li>Training: 랜덤하게 특정 레이어의 부분들을 0으로 설정.</li>
+<li>Testing: 모든 유닛을 사용하나, 일정 부분을 0으로 변하게 하는 정도를 변경 하거나.<ul>
+<li>랜덤하게 0 으로 세팅할 부분의 정도를 변환 시켜 여러번 실행 한다.(앙상블)</li>
+</ul>
+</li>
+<li>Batch-norm 때문에 요즘은 많이 사용하지 않음.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h2 id="the-importance-of-good-initialization">The importance of good initialization</h2>
 <ul>
 <li>최초 초기값은 작아야 한다. 하지만 분포에 따라 얼마나 작아야 하는지는 측정해야 한다.<ul>
@@ -1085,11 +1099,15 @@ $$</p>
 </li>
 </ul>
 <h2 id="hyperparameter-search">Hyperparameter search</h2>
-<p>어떻게 좋은 hyperparameter (learning rates, dropout-fractions, weight-decay, etc) 값을 찾을 것인가.
-- 많은 조합을 특정 데이터에 실험해서 가장 좋은 걸 뽑는게 기본 전략이다.
-    - 하이퍼 파라미터가 많아진다면 다차원의 저주로 인해 탐색해야하는 값들의 조합이 거대해진다.
-    - 랜덤 서치가 그리드 서치보다 좋다.
-- Meta-learning: 좋은 하이퍼파라미터를 찾는 알고리즘도 한창 개발 중.</p>
+<p>어떻게 좋은 hyperparameter (learning rates, dropout-fractions, weight-decay, etc) 값을 찾을 것인가.</p>
+<ul>
+<li>많은 조합을 특정 데이터에 실험해서 가장 좋은 걸 뽑는게 기본 전략이다.<ul>
+<li>하이퍼 파라미터가 많아진다면 다차원의 저주로 인해 탐색해야하는 값들의 조합이 거대해진다.</li>
+<li>랜덤 서치가 그리드 서치보다 좋다.</li>
+</ul>
+</li>
+<li>Meta-learning: 좋은 하이퍼파라미터를 찾는 알고리즘도 한창 개발 중.</li>
+</ul>
 <h2 id="simple-debugging-and-performance-diagnostics">Simple debugging and performance diagnostics</h2>
 <ul>
 <li>죽은 units 들을 체크해라.<ul>
