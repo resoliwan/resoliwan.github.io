@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>3.dl.1. MNIST - Leo's home</title>
+        <title>5.rl. Exploration and Exploitatin - Leo's home</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -61,8 +61,8 @@
     <a href="../2_dl_tensorflow/">2.dl. Introduction to TensorFlow</a>
 </li>
                                     
-<li class="active">
-    <a href="./">3.dl.1. MNIST</a>
+<li >
+    <a href="../3_dl_1_mnist/">3.dl.1. MNIST</a>
 </li>
                                     
 <li >
@@ -73,8 +73,8 @@
     <a href="../4_rl_introduction/">4.rl. Introduction to Reinforcement Learning</a>
 </li>
                                     
-<li >
-    <a href="../5_rl_exploration/">5.rl. Exploration and Exploitatin</a>
+<li class="active">
+    <a href="./">5.rl. Exploration and Exploitatin</a>
 </li>
                                 </ul>
                             </li>
@@ -305,12 +305,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../2_dl_tensorflow/">
+                                <a rel="next" href="../4_rl_introduction/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../3_dl_neural_net/">
+                                <a rel="prev" href="../../etc/algorithm/en_2_getting_started/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -322,83 +322,198 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#3dl1-mnist">3.dl.1. MNIST</a></li>
-        <li class="main "><a href="#goal">Goal</a></li>
-        <li class="main "><a href="#data-set">Data set</a></li>
-        <li class="main "><a href="#subgoal">SubGoal</a></li>
-        <li class="main "><a href="#term">Term</a></li>
-        <li class="main "><a href="#model-1">Model 1</a></li>
-        <li class="main "><a href="#model-2">Model 2</a></li>
-        <li class="main "><a href="#model-3">Model 3</a></li>
+        <li class="main active"><a href="#5rl-exploration-and-exploitatin">5.rl. Exploration and Exploitatin</a></li>
+        <li class="main "><a href="#what-is-rl">What is RL</a></li>
+        <li class="main "><a href="#_1">단순화</a></li>
+            <li><a href="#_2">현실</a></li>
+            <li><a href="#_3">현실의 구성요소</a></li>
+            <li><a href="#_4">단순화</a></li>
+        <li class="main "><a href="#_5">예제</a></li>
+        <li class="main "><a href="#vs">탐색 vs 활용</a></li>
+        <li class="main "><a href="#one-armed-bandit">One-Armed bandit</a></li>
+        <li class="main "><a href="#multi-armed-bandit">Multi-Armed bandit</a></li>
+            <li><a href="#_6">상황</a></li>
+            <li><a href="#_8">수식화</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="3dl1-mnist">3.dl.1. MNIST</h1>
-<h1 id="goal">Goal</h1>
-<p>숫자 이미지를 주었을때 해당 숫자를 리턴하는 함수를 만들어 보자.</p>
-<pre><code>def predict(img):
-    //이미지를 가지고 숫자를 결정
-    return num # (0-9)
-</code></pre>
-
-<h1 id="data-set">Data set</h1>
-<p><a href="https://ko.wikipedia.org/wiki/MNIST_%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4">MNIST</a></p>
-<h1 id="subgoal">SubGoal</h1>
+<h1 id="5rl-exploration-and-exploitatin">5.rl. Exploration and Exploitatin</h1>
+<h1 id="what-is-rl">What is RL</h1>
 <ul>
-<li>함수를 훈련한다.</li>
-<li>훈련하는 그래프를 본다.</li>
-<li>예측한다.</li>
-<li>평가한다.</li>
+<li>결정 하는 것을, 학습 시키는 방법에 대한 과학</li>
+<li>행위자는 정책, 가치 함수 그리고/또는  모델들을 학습 할 수 있다.</li>
+<li>일반적으로 시간과 결과에 대해 고려해야 한다. </li>
+<li>결정은 보상, 행위자의 상태, 환경의 상태에 영향을 준다.</li>
 </ul>
-<h1 id="term">Term</h1>
+<h1 id="_1">단순화</h1>
+<p>행위와 보상의 상관관계를 탐구하기 위해 다른 부분들을 고정 시키자.</p>
+<h3 id="_2">현실</h3>
 <ul>
-<li>epoch: entire dataset is passed through NN only once.</li>
+<li>여러개의 상태가 있고 여러개의 행위가 있다. </li>
+<li>하나의 행위가 다른 상태와 보상에 영향을 준다.</li>
+<li>행위에 대한 미래는 확률적으로 주어지고 해당 확률 분포는 시간에 의해 변한다.</li>
 </ul>
-<h1 id="model-1">Model 1</h1>
+<h3 id="_3">현실의 구성요소</h3>
 <ul>
-<li>x -&gt; softmax(linear) -&gt; y</li>
-<li>$x_{784} \to h_{10} \to y_{10}$</li>
-<li>loss = sum(softmax_cross_entropy_with_logits)</li>
-<li>optimizer = GradientDescentOptimizer</li>
+<li>여러개의 상태</li>
+<li>여러개의 행위</li>
+<li>행위가 미래에 영향을 줌<ul>
+<li>미래 == 보상 + 상태</li>
 </ul>
-<p>$$
-\begin{align}
-\text{input } = &amp; \ x_{m,784} \\
-h_{m,32} = &amp; \ \text{softmax}(x_{m,32} W_{32,10} + b_{10}) \\
-\text{output } = &amp; \ y_{m, 10}
-\end{align}
-$$</p>
-<h1 id="model-2">Model 2</h1>
+</li>
+<li>행위에 대한 미래는 확률적으로 주어짐<ul>
+<li>미래의 확률 분포는 시간에 의해 변동 될 수 있음</li>
+</ul>
+</li>
+<li>상태는 시간에 의해 변경 될 수 있음</li>
+</ul>
+<h3 id="_4">단순화</h3>
 <ul>
-<li>x -&gt; relu(linear) -&gt; softmax(linear) -&gt; y</li>
-<li>$x_{784} \to h_{32}^{(1)} \to h_{10}^{(2)} \to y_{10}$</li>
-<li>loss = sum(softmax_cross_entropy_with_logits)</li>
-<li>optimizer = GradientDescentOptimizer</li>
+<li>한 개의 상태만 생각하자.<ul>
+<li>상태는 한 개. 여러 개의 액션</li>
 </ul>
-<p>$$
-\begin{align}
-\text{input } = &amp; \ x_{m,784} \\
-h_{m,32}^{(1)} = &amp; \ \text{relu}(x_{m,784} W_{784,32}^{(1)} + b_{32}^{(1)}) \\
-h_{m,10}^{(2)} = &amp; \ \text{softmax}(h_{m,32}^{(1)} W_{32,10}^{(2)} + b_{10}^{(2)}) \\
-\text{output } = &amp; \ y_{m, 10}
-\end{align}
+</li>
+<li>과거의 행위가 미래에 영향을 주면 복잡하다.<ul>
+<li>비연속적 구조 ==  과거의 행위가 미래에 영향을 주지 않음.</li>
+</ul>
+</li>
+<li>$A_{t}$를 조건으로 주었을때 $R_{t}$ 의 확률 분포는 고정되어 있음 또한 시간과 독립적임</li>
+</ul>
+<h1 id="_5">예제</h1>
+<p>빨강 버튼과 까망 버튼이 두개 있다.</p>
+<p><img alt="action_reward" src="../img/5_action_reward.svg" title="opt title" /></p>
+<ul>
+<li>첫 번째 시도에서 빨강 버튼을 누르면 돈이 나왔다.</li>
+<li>두 번째 시도에서 까망 버튼을 누르면 아무것도 안나왔다.</li>
+<li>세 번째 시도에서 돈을 받기 위해서는 무엇을 눌러야 할까?</li>
+</ul>
+<h1 id="vs">탐색 vs 활용</h1>
+<p>100 곳의 음식점이 있다 10 곳의 음식점만 가보고 특정한 곳이 최고 라고 할 수 있는가? </p>
+<ul>
+<li>online 결정 문제는 기본적으로 2개의 선택이 있다.<ul>
+<li>탐색: 지식을 증가 시킴</li>
+<li>활용: 성과를 최대화 하기 위해 기존의 지식을 이용</li>
+</ul>
+</li>
+<li>제일 좋은 장기 전략은 단기적 이익을 희생 시켜야 할 수 있다.</li>
+<li>우리는 전체적으로 최적화된 결정들을 찾기 위해 정보를 모아야 한다.</li>
+</ul>
+<h1 id="one-armed-bandit">One-Armed bandit</h1>
+<ul>
+<li>한 개의 레버를 가진 빠징코 기계가 있다.</li>
+<li>레버를 당기면 확률적으로 특정 금액이 나온다.</li>
+<li>미래는 현재에 독립적이다.</li>
+</ul>
+<h1 id="multi-armed-bandit">Multi-Armed bandit</h1>
+<h2 id="_6">상황</h2>
+<ul>
+<li>여러 개의 레버를 가진 빠징코 기계가 있다.</li>
+<li>레버가 10개가 있고 레버를 당길 때 마다 특정 금액이 나온다.</li>
+<li>금액은 특정 레버에 의존적이며 확률적으로 액수가 결정된다.</li>
+</ul>
+<p><img alt="multiarm" src="../img/5_multiarm.png" title="opt title" /></p>
+<h3 id="formalize">형식화(formalize)</h3>
+<ul>
+<li>상태는단 한 개이다.</li>
+<li>여러 액션 셋을 $A$ 라고 하자.<ul>
+<li>행위 == $0..N$ 레버 중 한 개를 당기는 행위</li>
+<li>액션셋 == {"0번 당기기",...,"N 번 당기기"}</li>
+</ul>
+</li>
+<li>각 단계에 행위자는 행위 $A_{t} \in A $를 선택한다. </li>
+<li>환경은 보상 $R_{t}$를 생산한다.</li>
+<li>보상은 $P(r \mid a)$ 이며 고정되어 있다. 하지만 해당 확률 분포를 알지 못한다.</li>
+<li>목적은 특정 시간 동안 누적 보상을 최대화 하는것이다.  $\sum_{i=1}^{t}R_{i}$</li>
+<li>미래(보상)는 현재의 선택과 독립적이다.</li>
+</ul>
+<h3 id="_7">생각 할 것</h3>
+<ul>
+<li>특정 시간 즉 100 회 동안의 누적 보상을 최대화 할려면 몇 회를 탐색에 쓰고 몇 회를 활용에 사용해야 할까?</li>
+<li>지도 학습에서 평가 기준이 테스트 셋인것과는 조금 다르다. 트레이닝 과 테스트 셋이 동시에 이루어 지는 느낌.</li>
+</ul>
+<h2 id="_8">수식화</h2>
+<ul>
+<li>누적 보상을 최대화 하기 위해서는 <ul>
+<li>각 레버의 개별 보상 기대값을 알아야 한다.</li>
+<li>탐색과 활용의 전략을 택해야 한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="action-value-">Action value - 한 개</h3>
+<ul>
+<li>
+<p>한 개의 팔을 가진 빠징코 기계의 개별 보상을 기대값으로 표현해 보자.</p>
+<ul>
+<li>해당 팔을 $a_0$ 이라고 칭하자.</li>
+<li>액션을 행한 후 받는 보상이 정해 지는 함수를 q 라고 정의하자. $q: \text{action} \to \text{reward}$</li>
+<li>아래는 진짜 보상 함수이며 행위자는 알지 못한다 그러므로 추측 해야 한다.
 $$
-<a href="https://github.com/resoliwan/deepmind_deep_learning2/blob/1dd936b52ddde0f342da6d7ab40d04c6ec488a0a/dl/homework1_model1.py#L51">code</a></p>
-<h1 id="model-3">Model 3</h1>
-<ul>
-<li>x -&gt; relu(linear) -&gt; relu(linear) -&gt; softmax(linear) -&gt; y </li>
-<li>$ x_{784} \to h_{32}^{(1)} \to h_{32}^{(2)} \to h_{10}^{(3)} \to y_{10}$</li>
+q(a) = \mathbb{E} [ R_{t} ]
+$$</li>
 </ul>
-<p>$$
-\begin{align}
-\text{input } = &amp; \ x_{m,784} \\
-h_{m,32}^{(1)} = &amp; \ \text{relu}(x_{m,784} W_{784,32}^{(1)} + b_{32}^{(1)}) \\
-h_{m,32}^{(2)} = &amp; \ \text{relu}(x_{m,32} W_{32,32}^{(2)} + b_{32}^{(1)}) \\
-h_{m,10}^{(3)} = &amp; \ \text{softmax}(h_{m,32}^{(2)} W_{32,10}^{(3)} + b_{10}^{(3)}) \\
-\text{output } = &amp; \ y_{m, 10}
-\end{align}
-$$</p></div>
+</li>
+<li>
+<p>우리는 상호작용을 통해 (샘플링) 위의 진짜 보상 함수를 추측 해야 한다.</p>
+<ul>
+<li>평균 값을 사용해 보자.
+$$ Q_{t}(a) = \frac{\sum_{n=1}^{T}R_{n}}{T} $$</li>
+</ul>
+</li>
+</ul>
+<h3 id="action-value-_1">Action value - 여러 개</h3>
+<p>위의 식을 확장해 보자. 
+- 여러 개의 액션 중 한 개를 선택 함으로 조건부 확률식을 세우자.
+    - 진짜 q 함수
+$$
+q(a) = \mathbb{E} [ R_{t} \mid A_{t} = a ]
+$$</p>
+<ul>
+<li>샘플링을 통한 추측</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">action</th>
+<th align="left">totalReward</th>
+<th align="left">당긴 횟수</th>
+<th align="left">평균</th>
+<th align="left">수식</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">0</td>
+<td align="left">8</td>
+<td align="left">2</td>
+<td align="left">4</td>
+<td align="left">$Q_{t}(0) = \frac{8}{2}$</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">10</td>
+<td align="left">1</td>
+<td align="left">10</td>
+<td align="left">$Q_{t}(1) = \frac{10}{1}$</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>$L$ 은 조건이 True 일 경우 1 아니면 0을 리턴 하는 함수 라고 정의 하자.</li>
+<li>그러면 추측 보상 함수는 아래와 같이 정의 할 수 있다.</li>
+</ul>
+<p>$$ Q_{t}(a) = \frac{ \sum_{n=1}^{t}R_{n}L(A_{n}=a) }{ \sum_{n=1}^{t}L(A_{n}=a) }$$</p>
+<h3 id="action-value">점진적 Action value</h3>
+<ul>
+<li>평균 함수는 기존 평균 값에 변화량을 적용해 주는 방식으로 같은 결과를 받을 수 있다.</li>
+</ul>
+<p><img alt="increment" src="../img/5_increment_value.svg" title="opt title" /></p>
+<ul>
+<li>위의 그림은 $Q_{1} = 1$ 이고 $R_{2} = 2$ 일때 <ul>
+<li>기존 평균 대비 변화량을 $R_{2}$, $Q_{1}$ 으로 구할 수 있음을 도식화 했다.</li>
+</ul>
+</li>
+</ul></div>
         </div>
 
         <footer class="col-md-12">

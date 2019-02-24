@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="48.066898mm"
+   height="58.373753mm"
+   viewBox="0 0 48.066898 58.373753"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06"
+   sodipodi:docname="5_action_reward.svg">
+  <defs
+     id="defs2">
+    <symbol
+       id="Cashier">
+      <title
+         id="title976">Cashier</title>
+      <g
+         style="fill:none;stroke-width:6"
+         id="g982">
+        <circle
+           style="stroke-width:1.58749998"
+           cx="9.5249996"
+           cy="9.5249996"
+           r="6.3499999"
+           id="circle978" />
+        <path
+           style="stroke-width:1.58749998"
+           inkscape:connector-curvature="0"
+           d="M 11.90625,7.9375 C 11.90625,6.8791667 10.847917,6.35 9.525,6.35 c -1.3229167,0 -2.38125,0.5291667 -2.38125,1.5875 0,1.0583333 1.0583333,1.4552083 2.38125,1.5875 1.322917,0.1322917 2.645833,0.2645833 2.645833,1.5875 0,1.322917 -1.322916,1.5875 -2.645833,1.5875 -1.3229167,0 -2.38125,-0.79375 -2.38125,-1.852083 M 9.525,4.4979167 V 14.552083"
+           id="path980" />
+      </g>
+    </symbol>
+    <symbol
+       id="Information">
+      <title
+         id="title1432">Information</title>
+      <circle
+         cx="9.5249996"
+         cy="9.5249996"
+         r="6.3499999"
+         style="fill:none;stroke-width:1.58749998"
+         id="circle1434" />
+      <path
+         inkscape:connector-curvature="0"
+         d="M 7.14375,8.4666667 C 7.14375,7.14375 7.4083333,5.55625 9.525,5.55625 c 1.058333,0 2.116667,0.79375 2.116667,1.8520833 0,1.0583334 -0.529167,1.5875 -1.058334,1.8520834 C 10.054167,9.525 9.525,9.7895833 9.525,10.583333 c 0,0.79375 0,1.5875 0,1.5875"
+         style="fill:none;stroke-width:1.58749998"
+         id="path1436" />
+      <rect
+         x="8.7312498"
+         y="12.7"
+         width="1.5875"
+         height="1.5875"
+         style="stroke:none;stroke-width:0.26458332"
+         id="rect1438" />
+    </symbol>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8"
+     inkscape:cx="111.42689"
+     inkscape:cy="89.204685"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:object-nodes="false"
+     inkscape:snap-others="false"
+     inkscape:snap-nodes="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1031"
+     inkscape:window-x="0"
+     inkscape:window-y="1"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-27.639954,-20.263748)">
+    <use
+       id="use5571"
+       style="fill:#000000;stroke:#000000"
+       xlink:href="#Cashier"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="translate(57.438719,25.348513)" />
+    <use
+       id="use5602"
+       style="opacity:0.87000002;fill:#ff0000;stroke:#ff0000"
+       xlink:href="#Information"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="translate(34.887593,25.348513)" />
+    <use
+       id="use5602-3"
+       style="opacity:0.87000002;fill:#000000;stroke:#000000"
+       xlink:href="#Information"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       transform="translate(34.887593,44.814286)" />
+    <circle
+       style="opacity:0.87000002;fill:#000000;stroke:#000000;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+       id="path7477"
+       cx="66.963722"
+       cy="54.339287"
+       r="0.82682288" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="36.864388"
+       y="24.016146"
+       id="text7490"><tspan
+         sodipodi:role="line"
+         id="tspan7488"
+         x="36.864388"
+         y="24.016146"
+         style="stroke-width:0.26458332">Action</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="57.735859"
+       y="24.016146"
+       id="text7494"><tspan
+         sodipodi:role="line"
+         id="tspan7492"
+         x="57.735859"
+         y="24.016146"
+         style="stroke-width:0.26458332">Reward</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="27.187786"
+       y="36.673748"
+       id="text7498"><tspan
+         sodipodi:role="line"
+         id="tspan7496"
+         x="27.187786"
+         y="36.673748"
+         style="stroke-width:0.26458332">1.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="27.278219"
+       y="56.172077"
+       id="text7502"><tspan
+         sodipodi:role="line"
+         id="tspan7500"
+         x="27.278219"
+         y="56.172077"
+         style="stroke-width:0.26458332">2.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="27.270985"
+       y="78.567566"
+       id="text7506"><tspan
+         sodipodi:role="line"
+         id="tspan7504"
+         x="27.270985"
+         y="78.567566"
+         style="stroke-width:0.26458332">3.</tspan></text>
+  </g>
+</svg>
