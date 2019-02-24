@@ -333,6 +333,19 @@
             <li><a href="#action-values">Action values</a></li>
         <li class="main "><a href="#agent">Agent</a></li>
             <li><a href="#state">State</a></li>
+            <li><a href="#policy">Policy</a></li>
+            <li><a href="#value-function">Value function</a></li>
+            <li><a href="#bellman-equation">Bellman equation</a></li>
+            <li><a href="#value-function-approximations">Value Function approximations</a></li>
+        <li class="main "><a href="#modeloptional">Model(optional)</a></li>
+            <li><a href="#maze-example">Maze Example</a></li>
+        <li class="main "><a href="#agent_1">Agent 구분</a></li>
+        <li class="main "><a href="#agent-2">Agent 구분2</a></li>
+        <li class="main "><a href="#learing-and-planning">Learing and Planning</a></li>
+        <li class="main "><a href="#prediction-and-control">Prediction and Control</a></li>
+        <li class="main "><a href="#_10">행위자의 구성 요소를 학습 하는 방법</a></li>
+        <li class="main "><a href="#atari-game">Atari game 의 가정</a></li>
+        <li class="main "><a href="#exploration-and-exploitation">Exploration and Exploitation</a></li>
         <li class="main "><a href="#link">Link</a></li>
     </ul>
 </div></div>
@@ -504,9 +517,9 @@ $$</p>
 </ul>
 <h3 id="agent-state">Agent state</h3>
 <ul>
-<li>(Observation, action, reward)들의 기록
+<li>(Observation, action, reward)들의 역사 
 $$ H_{t} = O_{0}, A_{0}, R_{1}, O_{1}, ... ,O_{t-1}, A_{t-1}, R_{t}, O_{t} $$</li>
-<li>위의 기록이 행위자의 상태$S_{t}$를 만드는대 사용된다.</li>
+<li>위의 역사가 행위자의 상태$S_{t}$를 만드는대 사용된다.</li>
 <li>액션은 상태에 의존성이 있다.</li>
 </ul>
 <h3 id="fully-obervable-environments">Fully Obervable Environments</h3>
@@ -516,7 +529,13 @@ $$ H_{t} = O_{0}, A_{0}, R_{1}, O_{1}, ... ,O_{t-1}, A_{t-1}, R_{t}, O_{t} $$</l
 $$S_{t} = O_{t} = \text{environment state}$$
 - 행위자가 Markov decision process 에 있다.</p>
 <h3 id="markov-decision-processes">Markov decision processes</h3>
-<p>MDPs 는 수학적으로 좋은 틀을 제공해준다.</p>
+<p>MDPs 는 특정 수학적 속성을 의미한다.</p>
+<ul>
+<li>예를 들어 자연수의 속성은 음의 정수가 아닌 정수 이다.<ul>
+<li>우리는 음의 정수가 아닌 정수를 자연수의 속성을 만족한다고 하고 자연수라고 칭하기도 한다.</li>
+</ul>
+</li>
+</ul>
 <h4 id="_9">정의</h4>
 <ul>
 <li>
@@ -535,10 +554,10 @@ $$ p(r,s| S_{t}, A_{t}) = p(r,s| H_{t}, A_{t})$$</li>
 $$ H_{t} \to S_{t} \to H_{t+1} $$</li>
 </ul>
 </li>
-<li>해당 속성을 만족하는 state 를 알게 되면 기록을 버려도 된다.</li>
+<li>해당 속성을 만족하는 state 를 알게 되면 역사를 버려도 된다.</li>
 <li>예를 들어<ul>
 <li>stationary 환경 상태는 Markov 이다.</li>
-<li>기록 $H_{t+1}$는 Markov 이다.</li>
+<li>역사 $H_{t+1}$는 Markov 이다.</li>
 </ul>
 </li>
 </ul>
@@ -550,7 +569,7 @@ $$ H_{t} \to S_{t} \to H_{t+1} $$</li>
 - 환경 상태값은 Markov 이지만 행위자가 이걸 알 수 없다.</p>
 <h3 id="agent-state_1">Agent state</h3>
 <ul>
-<li>angent state 는 기록에 대한 함수이다.
+<li>angent state 는 역사에 대한 함수이다.
 $$ \text{agent state} = f: H \to S $$</li>
 <li>
 <p>행위자의 액션은 상태에 의존한다.</p>
@@ -572,16 +591,233 @@ $$S_{t+1} = f(S_{t},A_{t},R_{t+1},O_{t+1})$$</p>
 </li>
 </ul>
 <h3 id="example">Example</h3>
-<p>부분관찰이 가능한 환경에서 행위자의 상태를 만들어보자.</p>
+<p>부분 관찰이 가능한 환경에서 행위자의 상태를 만들어보자.</p>
 <p><img alt="maze" src="../img/4_maze.svg" title="opt title" /></p>
 <ul>
-<li>행위자는 2번 그림처럼 환경의 일부분을 observation 으로 받는다.</li>
-<li>만약 $S_{t} = O_{t}$를 사용했다면 3번 그림에서 처럼 두개의 다른 observation을 구분 할 방법이 없다.</li>
+<li>행위자는 2번 처럼 환경의 일부분을 observation 으로 받는다.</li>
+<li>만약 $S_{t} = O_{t}$를 사용했다면 3번 처럼 두개의 다른 observation을 구분 할 방법이 없다.</li>
 <li>즉 행위자의 상태가 Markov 가 아닌 상태가 되었다.</li>
 <li>어떻게 하면 행위자의 상태를 Markov 하게 할 수 있을까?<ul>
-<li>agent 가 기록을 사용해 구분 할 수 있는 상태를 만들면 된다.</li>
+<li>행위자가 역사를 사용해 구분 할 수 있는 상태를 만들면 된다.</li>
 </ul>
 </li>
+</ul>
+<h3 id="partially-observable-enviroments">Partially Observable Enviroments</h3>
+<p>부분 관찰 환경에서 행위자는 Markov 속성을 같는 상태를 만들어야 한다.</p>
+<ul>
+<li>행위자의 상태 예제<ul>
+<li>마지막 관찰: $S_{t} = O_{t}$ (위의 미로 예제처럼 만족되지 않을수 있음)</li>
+<li>모든 역사: $S_{t} = H_{t}$ (양이 너무 많을 수 있음)</li>
+<li>순차적으로 변화하는 상태: $S_{t} = f(S_{t-1}, O_{t})$<ul>
+<li>위의 미로에서는 시작점을 기준으로 하는 평면 좌표계를 추가하면 됨</li>
+<li>recurrent nerual network 로 구현 될수 있음</li>
+<li>가끔 메모리 라고도 불림</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>행위자의 상태가 Markov 속성을 만족하게 하기가 쉽지 않은 경우가 많음</li>
+<li>상태는 좋은 police 와 좋은 value 을 예측하기 위한 충분한 정보를 포함 해야함.</li>
+</ul>
+<h2 id="policy">Policy</h2>
+<ul>
+<li>Policy 는 행위자의 행동양식을 정의 한다.</li>
+<li>행위자 상태에서 action 으로 연결되는 함수다. $f: \text{state} \to \text{action}$</li>
+<li>결정론적 정책: $A = \pi(S)$ </li>
+<li>확률적 정책: $ \pi(A|S) = p(A|S) $</li>
+</ul>
+<h2 id="value-function">Value function</h2>
+<ul>
+<li>
+<p>The value function is the expected return condition on state
+$$
+\begin{align}
+    v_{\pi}(s) = &amp; \mathbb{E} [ G_{t} | S_{t} = s, \pi ] \\
+               = &amp; \mathbb{E} [ R_{t+1} + \gamma R_{t+2} + \gamma^{2} R_{t+3} + ... | S_{t} = s, \pi ] 
+\end{align}
+$$</p>
+</li>
+<li>
+<p>The discount factor. $ \gamma \in [0, 1]$</p>
+<ul>
+<li>즉각적인 보상과 장기 보상에 대한 trade-off 를 주는 용도로 사용<ul>
+<li>trade-off: a balance achieved between two desirable but incompatible features</li>
+</ul>
+</li>
+<li>미로 탈출에서 설정 하면 행위자는 할인 되지 않은최대 보상을 받기 위해 빨리 탈출 할려고 시도.</li>
+</ul>
+</li>
+<li>Value 는 정책에 의존한다.</li>
+<li>바람직한 다름 상태를 평가하는대 사용 할 수 있다.</li>
+<li>actions 를 선택하기 위해 사용 할 수 있다.</li>
+</ul>
+<h2 id="bellman-equation">Bellman equation</h2>
+<ul>
+<li>Return 은 재귀적 형식으로 표현 할 수 있다. $G_{t} = R_{t+1} + \gamma G_{t+1}$</li>
+<li>그러므로 다음과 같다.<ul>
+<li>$ a \sim \pi(s) $ action 이 상태 s 일태 policy 에 의해 결정됨을 의미($\pi$ 가 결정론적일 때도 동일)</li>
+</ul>
+</li>
+</ul>
+<p>$$
+\begin{align}
+    v_{\pi}(S_{t+1}) = &amp; \mathbb{E} [ G_{t+1} \mid S_{t+1} = s, \pi ] \\
+\\
+    v_{\pi}(s) = &amp; \mathbb{E} [ G_{t} \mid S_{t} = s, A_{t} \sim \pi(s) ] \\
+               = &amp; \mathbb{E} [ R_{t+1} + \gamma G_{t+1} \mid S_{t} = s, A_{t} \sim \pi(s) ] \\
+               = &amp; \mathbb{E} [ R_{t+1} + \gamma v_{\pi}(S_{t+1}) | S_{t} = s, A_{t} \sim \pi(s) ] \\
+\end{align}
+$$</p>
+<ul>
+<li>위의 함수가 있다면 특정 상황에서의 최적 행동을 아래의 식으로 구 할 수 있다.<ul>
+<li>아래식은 policy 에 의존성이 <span style="color:red"> 없다.</span></li>
+<li>만약 제한 된 상태와 행동이라면 우리는 아래의 방정식을 풀 수 있다.
+$$
+v_{*}(s) = \underset{a}{\operatorname{argmax}} \mathbb{E} [ R_{t+1} + \gamma v_{*}(S_{t+1}) | S_{t} = s, A_{t} = a ] \\
+$$</li>
+</ul>
+</li>
+</ul>
+<h2 id="value-function-approximations">Value Function approximations</h2>
+<ul>
+<li>행위자는 종종 approxmate value 함수를 사용한다.</li>
+<li>이런 함수가 있다면 우리는 최적화는 아니지만 잘 동작하는 행위자를 만들 수 있다.</li>
+</ul>
+<h1 id="modeloptional">Model(optional)</h1>
+<p>모델은 환경이 다음에 무엇을 할 것인가를 예측하는대 사용된다.</p>
+<ul>
+<li>
+<p>다음 환경 상태을 예측 한다.
+$$ P(s, a, s') \approx P(S_{t+1} = s^{\prime} \mid  S_{t} = s, A_{t} = a) $$</p>
+</li>
+<li>
+<p>다음 보상을 예측
+$$ R(s, a) \approx \mathbb{E} [ R_{t} \mid S_{t} = s, A_{t} = a ]$$</p>
+</li>
+</ul>
+<h2 id="maze-example">Maze Example</h2>
+<p>위에서 정의한 개념들을 미로에 적용 시켜보자.</p>
+<p><img alt="Maze2" src="../img/4_maze_policy.svg" title="opt title" /></p>
+<ul>
+<li>그림1. 환경 전체를 보여준다.<ul>
+<li>action: up, down, left, right</li>
+<li>reward: 한 step 마다 -1</li>
+<li>state: agent location</li>
+</ul>
+</li>
+<li>그림2. 화살표는 Policy 를 의미한다.<ul>
+<li>policy: 상태가 주어졌을때의 행동양식 $ f: \text{state} \to \text{action} $</li>
+</ul>
+</li>
+<li>그림3. value 값<ul>
+<li>숫자는 각 상태의 value 값 $ v_{\pi}(s)$ 를 의미</li>
+</ul>
+</li>
+<li>그림4. Model<ul>
+<li>그리드의 격자는 다음 상태로의 부분 전이 모델$P_{ss^{\prime}}^{a}$을 의미</li>
+<li>숫자는 각 상태별 즉각 보상 $R_{ss^{\prime}}^{a}$을 의미</li>
+</ul>
+</li>
+</ul>
+<h1 id="agent_1">Agent 구분</h1>
+<ul>
+<li>Value based<ul>
+<li><span style="color:grey">No policy(implcit)</span>    </li>
+<li>Value function</li>
+</ul>
+</li>
+<li>Policy based<ul>
+<li>Policy</li>
+<li><span style="color:gray">Value function</span></li>
+</ul>
+</li>
+<li>Actor Critic <ul>
+<li>Policy == actior</li>
+<li>Value function == critic</li>
+</ul>
+</li>
+</ul>
+<h1 id="agent-2">Agent 구분2</h1>
+<ul>
+<li>Model Free<ul>
+<li>Policy and/or Value Fuction</li>
+<li><span style="color:gray">No Model</span></li>
+</ul>
+</li>
+<li>Model Based<ul>
+<li>Optionally Policy and/or Value Fuction</li>
+<li>Model</li>
+</ul>
+</li>
+</ul>
+<p><img alt="texonomy" src="../img/4_agent_taxonomy.svg" title="opt title" /></p>
+<h1 id="learing-and-planning">Learing and Planning</h1>
+<p>강화학습에는 크게 두 종류의 문제가 있음</p>
+<ul>
+<li>학습<ul>
+<li>환경을 모르고 시작</li>
+<li>행위자는 환경과 상호 작용 함</li>
+</ul>
+</li>
+<li>계획<ul>
+<li>행동하지 않고 생각만 하는것.</li>
+<li>환경 모델이 주어짐</li>
+<li>행위자는 주어진 모델을 가지고 계획을 생성(상호 작용 없이)</li>
+</ul>
+</li>
+</ul>
+<h1 id="prediction-and-control">Prediction and Control</h1>
+<ul>
+<li>Prediction: Policy 를 주면 미래를 평가함<ul>
+<li>지도학습을 이곳에 사용 할 수 있음.</li>
+</ul>
+</li>
+<li>Control: 미래를 최적화함 (가장 좋은 미래를 찾음)</li>
+<li>아래의 식과 연관되어 있음</li>
+</ul>
+<p>$$
+\pi_{*}(s) = \underset{\pi}{\operatorname{argmax}} v_{\pi}(s) 
+$$</p>
+<h1 id="_10">행위자의 구성 요소를 학습 하는 방법</h1>
+<ul>
+<li>모든 구성요소는 함수임<ul>
+<li>Policy: 
+$$
+\pi: \text{state} \to \text{action}
+$$</li>
+<li>Value function: 
+$$
+ v: \text{state} \to \text{value}
+$$</li>
+<li>Model: 
+$$
+P_{ss^{\prime}}^{a}: \text{state} \to \text{next state}  \\
+R_{ss^{\prime}}^{a}: \text{state} \to \text{reward} 
+$$</li>
+<li>Status updates: 
+$$ 
+f: \text{state, observation} \to \text{new state}
+$$</li>
+</ul>
+</li>
+<li>위의 함수들을 nn 으로 표현 하고 deep learning 방법을 사용해서 최적화 할 수 있음</li>
+<li>우리는 종종 지도학습의 가정인 idd, 와 stationarity 를 무시하는경우가 많기 때문에 주의 해야함.</li>
+</ul>
+<h1 id="atari-game">Atari game 의 가정</h1>
+<ul>
+<li>게임의 규칙을 알지 못한다고 가정.</li>
+<li>게임을 하면서 학습함(상호작용)</li>
+<li>조이스틱을 통해 행동을 하고 픽셀과 점수를 받음.</li>
+<li>환경 == 아타리 게임</li>
+<li>액션 == 조이스틱</li>
+<li>Observation == 필셀</li>
+<li>Reward == 점수</li>
+</ul>
+<h1 id="exploration-and-exploitation">Exploration and Exploitation</h1>
+<ul>
+<li>Exploration: 정보를 더 모으는것</li>
+<li>Exploitation: 알고있는 정보를 활용해 보상을 최대하 하는것.</li>
+<li>두개를 잘 조절하는게 중요.</li>
 </ul>
 <h1 id="link">Link</h1>
 <ul>
