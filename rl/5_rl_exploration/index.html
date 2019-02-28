@@ -348,6 +348,9 @@
             <li><a href="#upper-confidence-bounds">Upper Confidence Bounds</a></li>
             <li><a href="#_10">알고리즘 아이디어</a></li>
             <li><a href="#ucb">UCB</a></li>
+        <li class="main "><a href="#bayesian-bandits">Bayesian Bandits</a></li>
+            <li><a href="#_13">예제</a></li>
+            <li><a href="#bayesian-with-ucb">Bayesian with UCB</a></li>
         <li class="main "><a href="#link">Link</a></li>
     </ul>
 </div></div>
@@ -837,6 +840,45 @@ $$O(\log t) \leq L_{t} \leq O(\log t)$$</p>
     - $\Delta_{a}$ 가 크다고 가정해보자 그렇다면
     - $N_{t}(a)$ 가 적을것이다. 왜냐하면 $U_{t}(a)$애 의해서는 아주 가끔씩 전체 gap을 평가 하기 때문이다.
     - 그렇다면 $\Delta_{a}$ 가 작거나 또는 $N_{t}(a)$ 가 작거나 이다.</p>
+<h1 id="bayesian-bandits">Bayesian Bandits</h1>
+<ul>
+<li>보상의 확률 분포를 파라미터와 액션을 사용해 추측해보자.</li>
+<li>액션의 보상 확률 분포를 조정하는 파라미터들을 $\theta$ 라고 하자.</li>
+<li>우리는 $q(a) = p(R \mid \theta, a)$ 를 알고 싶다.</li>
+<li>과거의 확률을 발견된 증거 쪽으로 조금 변경하는 베이지안 추론을 사용해 보자.
+$$p(R \mid \theta, a) \propto p(R_{t} \mid \theta, a)p_{t-1}(\theta \mid a)$$</li>
+<li>사후 확률은 $p(R \mid \theta, a)$새로운 보상의 확률과 $p(R_{t} \mid \theta, a)$  사전 확률의 $p_{t-1}(\theta \mid a)$ 곱에 비례한다.</li>
+<li>많은 사전 정보를 인코딩 할 수 있게 해준다. $p_{0}(\theta \mid a)$</li>
+</ul>
+<h2 id="_13">예제</h2>
+<ul>
+<li>슬롯머신이 베르누이 분포를 가지고 있다고 하자. 보상은 0 아니면 1이다.</li>
+<li>모든 액션의 이전 분포는 $[0, 1]$ 사이에 균등분포 한다</li>
+<li>베타 분포로 사후 확률분포를 모델링하자$Beta(\alpha_{a}, \beta_{a})$ 최초 $\alpha_{a}=1, \beta_{a}=1$ 로 균등하게 시작한다.</li>
+<li>이후 보상에 따라 파라미터를 변경한다.<ul>
+<li>$\alpha_{a_{t}} \leftarrow \alpha_{a_{t}} + 1 \text{ when } R_{t} = 0$</li>
+<li>$\beta_{a_{t}} \leftarrow \beta_{a_{t}} + 1 \text{ when } R_{t} =  1$</li>
+</ul>
+</li>
+<li>TODO 보상 0에 알파가 +1, 보상 1에  베타 +1 되는 부분이 이상하다 확인 해보자.</li>
+<li>보상이 $R_{1} = 1, R_{2} = 1, R_{3} = 0, R_{4} = 0$ 으로 발생된다면 위의 식에 의해 아래와 같이 베타 분포가 변경된다.</li>
+</ul>
+<p><img alt="beta" src="../img/5_beta.svg" title="opt title" /></p>
+<p><a href="https://github.com/resoliwan/deepmind_deep_learning2/blob/master/ch_5_rl/beta.py">code</a></p>
+<ul>
+<li>최초에 q 가 0 인지 1인지 알지 못한다.</li>
+<li>보상이 1이 두번 연속 나오면서 3)번 그림 q 는 1 일가능성이 높아진다.</li>
+<li>보상이 0이 한번 나오면서 4)번 그림 q 는 1 일가능성이 없다.</li>
+<li>보상이 0이 한번 더 나오면서 5)번 그림 q 는 0.5 일 가능성이 가장 높아진다.</li>
+</ul>
+<h2 id="bayesian-with-ucb">Bayesian with UCB</h2>
+<p><img alt="ucb_bayesian" src="../img/5_ucb_bayesian.svg" title="opt title" /></p>
+<ul>
+<li>액션 함수의 사후 확률 분포를 계산하면 위처럼 표현 할 수 있다.</li>
+<li>사후 확률을 사용해서 UCB 를 사용 할 수 있다.
+$$U_{t}(a) = c\sigma(a)$$</li>
+<li>$Q_{t}(a) + c\sigma(a)$을 최대화 하는 액션을 선택</li>
+</ul>
 <h1 id="link">Link</h1>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=eM6IBYVqXEA&amp;list=PLqYmG7hTraZDNJre23vqCGIVpfZ_K2RZs&amp;index=5">참조</a></li>
