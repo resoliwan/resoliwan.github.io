@@ -68,6 +68,10 @@
 <li >
     <a href="../../dl/3_dl_neural_net/">3. Neural Networks Foundations</a>
 </li>
+                                    
+<li >
+    <a href="../../dl/4_dl_beyond_image/">4. Beyond Image Recognition, Ent-to-End Learning, Embeddings</a>
+</li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -286,6 +290,16 @@
 </li>
     </ul>
   </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">Unity</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../framework/unity/key/">Short Cut</a>
+</li>
+    </ul>
+  </li>
                                 </ul>
                             </li>
                             <li class="dropdown active">
@@ -351,6 +365,9 @@
         <li class="main "><a href="#bayesian-bandits">Bayesian Bandits</a></li>
             <li><a href="#_13">예제</a></li>
             <li><a href="#bayesian-with-ucb">Bayesian with UCB</a></li>
+        <li class="main "><a href="#policy">Policy</a></li>
+            <li><a href="#policy-gradients">Policy gradients</a></li>
+            <li><a href="#gradient-bandits">Gradient bandits</a></li>
         <li class="main "><a href="#link">Link</a></li>
     </ul>
 </div></div>
@@ -878,6 +895,38 @@ $$p(R \mid \theta, a) \propto p(R_{t} \mid \theta, a)p_{t-1}(\theta \mid a)$$</l
 <li>사후 확률을 사용해서 UCB 를 사용 할 수 있다.
 $$U_{t}(a) = c\sigma(a)$$</li>
 <li>$Q_{t}(a) + c\sigma(a)$을 최대화 하는 액션을 선택</li>
+</ul>
+<h1 id="policy">Policy</h1>
+<ul>
+<li>Policy $\pi(a)$ 를 바로 배우는건 어떨까?<ul>
+<li>policy 는 $f: state \to action$ 함수 이다. 하지만 여기서 state 는 한개 이기 때문에 action 만 표현</li>
+</ul>
+</li>
+<li>우리가 정책을 value 함수 없이 학습 할 수 있을까?</li>
+<li>$H_{t}(a)$ 를 preference 라고 정의 하자. $\pi(a): [0, 1] \text{ and } \sum_{a} \pi(a) = 1$
+$$ \pi(a) = \frac{e^{H_{t}(a)}}{ \sum_{b} e^{H_{t}(b)}}$$<ul>
+<li>$\pi(a)$는 확률</li>
+</ul>
+</li>
+<li>선호도는 value 함수와 꼭 연관되지 않아도 된다.</li>
+<li>선호도를 학습 가능한 파라미터로 보자.</li>
+<li>어떻게 선호도를 학습 할 건인가?</li>
+</ul>
+<h2 id="policy-gradients">Policy gradients</h2>
+<ul>
+<li>Idea: 좋은 액션이란 보상의 기대값이 증가하는 것이다.</li>
+<li>기대값의 증가를 경사도 상승으로 생각 할 수 있다.</li>
+<li>슬롯머신에서는 
+$$ \theta = \theta + \alpha \nabla_{\theta}\mathbb{E}[ R_{t} \mid \theta ]$$<ul>
+<li>$\theta$ 는 정책의 파라미터이며 선호도에 영향을 줄것이다.</li>
+<li>$\theta$ 를 변경하면 정책이 변경되고 그러면 보상이 변경된다.</li>
+</ul>
+</li>
+<li>경사도를 구 할 수 있을까? </li>
+</ul>
+<h2 id="gradient-bandits">Gradient bandits</h2>
+<ul>
+<li><a href="http://tutorial.math.lamar.edu/Classes/CalcI/DiffExpLogFcns.aspx">logarithm</a></li>
 </ul>
 <h1 id="link">Link</h1>
 <ul>
