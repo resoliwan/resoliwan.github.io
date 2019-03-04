@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: http://resoliwan.github.io/sitemap.xml
