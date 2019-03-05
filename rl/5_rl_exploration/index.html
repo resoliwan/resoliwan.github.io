@@ -79,7 +79,7 @@
 </li>
                                     
 <li >
-    <a href="../../dl/4_dl_beyond_image/">4. Beyond Image Recognition, Ent-to-End Learning, Embeddings</a>
+    <a href="../../dl/4_dl_beyond_image/">4. Beyond Image Recognition, End-to-End Learning, Embeddings</a>
 </li>
                                 </ul>
                             </li>
@@ -377,7 +377,7 @@
         <li class="main "><a href="#policy">Policy</a></li>
             <li><a href="#policy-gradients">Policy gradients</a></li>
             <li><a href="#gradient-bandits">Gradient bandits</a></li>
-        <li class="main "><a href="#link">Link</a></li>
+        <li class="main "><a href="#reference">Reference</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -908,15 +908,13 @@ $$U_{t}(a) = c\sigma(a)$$</li>
 <h1 id="policy">Policy</h1>
 <ul>
 <li>Policy $\pi(a)$ 를 바로 배우는건 어떨까?<ul>
-<li>policy 는 $f: state \to action$ 함수 이다. 하지만 여기서 state 는 한개 이기 때문에 action 만 표현</li>
+<li>policy 는 $f: state \to action$ 함수 이다. 하지만 여기서 state 는 한 개 이기 때문에 action 만 표현</li>
+<li>$\pi(a)$ 는 해당 액션이 실행될 확률로 정의 할 수 있다.</li>
 </ul>
 </li>
-<li>우리가 정책을 value 함수 없이 학습 할 수 있을까?</li>
+<li>정책을 value 함수 없이 학습 할 수 있을까?</li>
 <li>$H_{t}(a)$ 를 preference 라고 정의 하자. $\pi(a): [0, 1] \text{ and } \sum_{a} \pi(a) = 1$
-$$ \pi(a) = \frac{e^{H_{t}(a)}}{ \sum_{b} e^{H_{t}(b)}}$$<ul>
-<li>$\pi(a)$는 확률</li>
-</ul>
-</li>
+$$ \pi(a) = \frac{e^{H_{t}(a)}}{ \sum_{b} e^{H_{t}(b)}}$$</li>
 <li>선호도는 value 함수와 꼭 연관되지 않아도 된다.</li>
 <li>선호도를 학습 가능한 파라미터로 보자.</li>
 <li>어떻게 선호도를 학습 할 건인가?</li>
@@ -927,19 +925,34 @@ $$ \pi(a) = \frac{e^{H_{t}(a)}}{ \sum_{b} e^{H_{t}(b)}}$$<ul>
 <li>기대값의 증가를 경사도 상승으로 생각 할 수 있다.</li>
 <li>슬롯머신에서는 
 $$ \theta = \theta + \alpha \nabla_{\theta}\mathbb{E}[ R_{t} \mid \theta ]$$<ul>
-<li>$\theta$ 는 정책의 파라미터이며 선호도에 영향을 줄것이다.</li>
+<li>$\theta$ 는 정책의 파라미터이며 선호도에 영향을 준다고 정의하자.</li>
 <li>$\theta$ 를 변경하면 정책이 변경되고 그러면 보상이 변경된다.</li>
 </ul>
 </li>
 <li>경사도를 구 할 수 있을까? </li>
 </ul>
 <h2 id="gradient-bandits">Gradient bandits</h2>
+<p>위의 식을 수학을 사용해 계산 가능한 식으로 재 표현해 보자.</p>
 <ul>
-<li><a href="http://tutorial.math.lamar.edu/Classes/CalcI/DiffExpLogFcns.aspx">logarithm</a></li>
+<li>$\theta$를 주었을때 기대값은 $\theta$ 정책을 사용 할때의 액션 별 보상 기대값과 같다.
+$$\nabla_{\theta} \mathbb{E} [ R_{t} \mid \theta ] = \nabla_{\theta} \sum_{a} \pi_{\theta}(a) \mathbb{E} [ R_{t} \mid A_{t} = a ]$$</li>
+<li>액션별 기대 보상은 $q(a)$
+$$ = \nabla_{\theta} \sum_{a} \pi_{\theta}(a) q(a)$$</li>
+<li>$q(a)$ 는 $\theta$ 와 상관없음으로 정책만 미분하면 된다.
+$$ = \sum_{a} q(a) \nabla_{\theta} \pi_{\theta}(a) $$</li>
+<li>1 을 곱해도 상관없다. $\frac{\pi_{\theta}(a)}{\pi_{\theta}(a)} = 1$
+$$ = \sum_{a} q(a) \frac{\pi_{\theta}(a)}{\pi_{\theta}(a)} \nabla_{\theta} \pi_{\theta}(a) $$</li>
+<li>식을 정리
+$$ = \sum_{a} \pi_{\theta}(a) q(a) \frac{\nabla_{\theta} \pi_{\theta}(a)}{\pi_{\theta}(a)}  $$</li>
+<li>기대값으로 다시 변경 $a \to A_{t}$ 로 변경됨
+$$ = \mathbb{E} \left[ R_{t} \frac{\nabla_{\theta} \pi_{\theta}(A_{t})}{\pi_{\theta}(A_{t})} \right]  $$</li>
+<li><a href="https://math.stackexchange.com/questions/1678205/derivative-of-a-function-divided-by-the-same-function">미분 함수를 원래 함수로 나누면 원래 함수의 로그 미분과 같다.</a>
+$$ = \mathbb{E} \left[ R_{t} \nabla_{\theta} \log \pi_{\theta}(A_{t}) \right]  $$</li>
 </ul>
-<h1 id="link">Link</h1>
+<h1 id="reference">Reference</h1>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=eM6IBYVqXEA&amp;list=PLqYmG7hTraZDNJre23vqCGIVpfZ_K2RZs&amp;index=5">참조</a></li>
+<li><a href="http://tutorial.math.lamar.edu/Classes/CalcI/DiffExpLogFcns.aspx">logarithm</a></li>
 </ul></div>
         </div>
 

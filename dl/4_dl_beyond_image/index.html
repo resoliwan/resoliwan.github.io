@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>4. Beyond Image Recognition, Ent-to-End Learning, Embeddings - Leo's home</title>
+        <title>4. Beyond Image Recognition, End-to-End Learning, Embeddings - Leo's home</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -79,7 +79,7 @@
 </li>
                                     
 <li class="active">
-    <a href="./">4. Beyond Image Recognition, Ent-to-End Learning, Embeddings</a>
+    <a href="./">4. Beyond Image Recognition, End-to-End Learning, Embeddings</a>
 </li>
                                 </ul>
                             </li>
@@ -350,7 +350,7 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#4-beyond-image-recognition-ent-to-end-learning-embeddings">4. Beyond Image Recognition, Ent-to-End Learning, Embeddings</a></li>
+        <li class="main active"><a href="#4-beyond-image-recognition-end-to-end-learning-embeddings">4. Beyond Image Recognition, End-to-End Learning, Embeddings</a></li>
         <li class="main "><a href="#overview">Overview</a></li>
             <li><a href="#end-to-end">End to End 학습이란?</a></li>
         <li class="main "><a href="#beyond-imagenet-classification">Beyond ImageNet Classification</a></li>
@@ -359,11 +359,12 @@
             <li><a href="#object-detection-with-convnet">Object Detection with convNet</a></li>
             <li><a href="#faster-r-cnnregion-cnn-overview">Faster R-CNN(region-CNN): Overview</a></li>
             <li><a href="#semantic-segmentation">Semantic segmentation</a></li>
+        <li class="main "><a href="#reference">Reference</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="4-beyond-image-recognition-ent-to-end-learning-embeddings">4. Beyond Image Recognition, Ent-to-End Learning, Embeddings</h1>
+<h1 id="4-beyond-image-recognition-end-to-end-learning-embeddings">4. Beyond Image Recognition, End-to-End Learning, Embeddings</h1>
 <h1 id="overview">Overview</h1>
 <ul>
 <li>더복잡한 모델과 일을 하는 End to End 학습에 대한 소개<ul>
@@ -492,7 +493,7 @@
 <li>$4*k_{i}$ 는 앵커를 기준으로 박스 꼭지점들의 상대 좌표를 의미한다.</li>
 </ul>
 </li>
-<li>앵커를 기준으로 상대 좌를 사용하기 때문에 이미지 크기에 상관없이 적용 될 수 있다.</li>
+<li>앵커를 기준으로 상대 좌표를 사용하기 때문에 이미지 크기에 상관없이 적용 될 수 있다.</li>
 </ul>
 </li>
 </ul>
@@ -500,7 +501,39 @@
 <ul>
 <li>미리 훈련된 이미지 넷을 정밀하게 최적화 하기 위해 적은 학습 비율을 사용 할 수도 있다.</li>
 </ul>
-<h2 id="semantic-segmentation">Semantic segmentation</h2></div>
+<h2 id="semantic-segmentation">Semantic segmentation</h2>
+<p>아래의 상단 이미지를 주면 하단의 이미지를 만드는 ConvNet 을 만들어보자.</p>
+<p><img alt="segment convnet" src="../img/5_sementation_convnet.png" title="opt title" /></p>
+<ul>
+<li>각각의 픽셀을 클래스별로 라벨을 붙인다.</li>
+<li>자주 사용 되는 방법 해당도 S에 클래스 만큼의 채널을 만든다.<ul>
+<li>$S_{i,j,c}$ - 픽셀 (i, j) 위치가 클래스 c 일 확률</li>
+</ul>
+</li>
+<li>사용된 빌딩 블럭들을 마지막에 재연결해서 정보를 전이 시키는 방법도 많이 사용한다.</li>
+</ul>
+<h3 id="_3">예제</h3>
+<p><img alt="segment fully conv" src="../img/5_segmentation_fully_conv_net.png" title="opt title" /></p>
+<ul>
+<li>선형 레이어가 없는 완전한 ConvNets<ul>
+<li>마지막의 transopose conv 레이어에서 이전의 풀링 레이러를 사용한다.</li>
+<li>미리 훈련된 이미지넷 분류기를 사용</li>
+</ul>
+</li>
+<li>마지마 바로전 레이너는 21개의 채널을 가지고 있다.<ul>
+<li>20개의 클래스 그리고 배경화면</li>
+</ul>
+</li>
+<li>레이어가 중첩 되면서 우리는 위치 관련된 정보를 점점 요약해서 마지막에는 21개의 클래스가 해당 이미지에 존재 가능성을 확률 정보로 남긴다.</li>
+<li>21개의 레이어를 원래의 해상도로 복구 하기 위해서 우리는 마지막에 transoposed conv 를 사용해 역으로 정보를 키운다.</li>
+<li>하지만 잘 동작하지 않는다 왜냐 하면 이미 공간 정보를 잃어버린 상태이기 때문이다.</li>
+</ul>
+<p><img alt="segmnet fully conv2" src="../img/5_sgement_conv_net2.png" title="opt title" /></p>
+<h1 id="reference">Reference</h1>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=OfKnA91zs9I&amp;t=206s">참조</a></li>
+<li><a href="http://vis-www.cs.umass.edu/lfw/">참조 이미지</a></li>
+</ul></div>
         </div>
 
         <footer class="col-md-12">
