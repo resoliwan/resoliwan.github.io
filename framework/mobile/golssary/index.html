@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
-        <title>Protocol Buffers - Leo's home</title>
+        <title>A mobile advertising glossary - Leo's home</title>
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../../css/base.css" rel="stylesheet">
@@ -263,11 +263,11 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../introduction/">Introduction</a>
+    <a href="../../grpc/introduction/">Introduction</a>
 </li>
             
-<li class="active">
-    <a href="./">Protocol Buffers</a>
+<li >
+    <a href="../../grpc/protocolbuffer/">Protocol Buffers</a>
 </li>
     </ul>
   </li>
@@ -286,8 +286,8 @@
     <a href="#">Mobile</a>
     <ul class="dropdown-menu">
             
-<li >
-    <a href="../../mobile/golssary/">A mobile advertising glossary</a>
+<li class="active">
+    <a href="./">A mobile advertising glossary</a>
 </li>
     </ul>
   </li>
@@ -367,12 +367,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../introduction/">
+                                <a rel="next" href="../../http2/introduction/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../../http2/introduction/">
+                                <a rel="prev" href="../../react/reactive_introduction/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -384,54 +384,82 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#protocol-buffers">Protocol Buffers</a></li>
-        <li class="main "><a href="#goal">Goal</a></li>
-        <li class="main "><a href="#components">Components</a></li>
-        <li class="main "><a href="#howto">HowTo</a></li>
-            <li><a href="#example">Example</a></li>
-            <li><a href="#howto_1">HowTo</a></li>
-        <li class="main "><a href="#caution">Caution</a></li>
+        <li class="main active"><a href="#a-mobile-advertising-glossary">A mobile advertising glossary</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="protocol-buffers">Protocol Buffers</h1>
-<p>Protocol buffers are method of serializing structured data.</p>
-<h1 id="goal">Goal</h1>
+<h1 id="a-mobile-advertising-glossary">A mobile advertising glossary</h1>
 <ul>
-<li>Want to use <strong><em>lingua franca</em></strong> in CS.</li>
-<li>Simplicity and performance. In particular, it was designed to be smaller 
-and faster than XML.</li>
-</ul>
-<h1 id="components">Components</h1>
-<ul>
-<li>Interface description language.</li>
-<li><em>IDL compiler</em>: Program that generate source code from the description.</li>
-</ul>
-<h1 id="howto">HowTo</h1>
-<ol>
-<li>Define structure at proto definition file (.proto)</li>
-<li>Compile it with protoc.</li>
-<li>Use generated file. </li>
-</ol>
-<h3 id="example">Example</h3>
-<pre><code>$vi test.proto //define 
-$protoc test.proto //compile to generate code
-$ls
-test.pb.cc //for cpp
-test.pb.h
-</code></pre>
-
-<h3 id="howto_1">HowTo</h3>
-<ul>
-<li><a href="https://developers.google.com/protocol-buffers/docs/cpptutorial">Cpp tutorial</a></li>
-<li><a href="http://github.com/resoliwan/resoliwan.github.io/blob/master/code/framework/addressbook.proto">proto</a></li>
-<li><a href="http://github.com/resoliwan/resoliwan.github.io/blob/master/code/framework/addressbook.pb.h">proto.h</a></li>
-<li><a href="http://github.com/resoliwan/resoliwan.github.io/blob/master/code/framework/test.cpp">code</a></li>
-</ul>
-<h1 id="caution">Caution</h1>
-<ul>
-<li>Prefer use only optional and repeated.</li>
+<li>
+<p>ARPU - Your ‘Average Revenue Per User’ offers a picture of how much you are taking from each player, gathering the figure from your paying and non-paying customers. Not to be confused with ARPPU.</p>
+</li>
+<li>
+<p>ARPPU - As above, but this time the acronym denotes ‘Average Revenue Per Paying User’. An important figure in tracking how much paying users alone contribute to your game’s success, while ignoring those that pay nothing.</p>
+</li>
+<li>
+<p>ARPDAU - A game’s ‘Daily Active User’ rate is highly significant, as it tallies only those playing your game regularly, rather than the total downloads, which may include many who have lapsed from using your game. ARPDAU, then, is you ‘Average Revenue Per Daily Active User’. ‘MAU’ or ‘Monthly Active User’ data is also common.</p>
+</li>
+<li>
+<p>Ad Exchange - An Ad Exchange is a service and marketplace that automates the buying and selling of ads for advertisers and game publishers/developers.</p>
+</li>
+<li>
+<p>Ad Network - An Ad Network is provided by a company that specialises in connecting advertisers to websites that want to host their advertisements. An ad network’s function is to aggregate ad space supply from publishers and match it with advertiser demand.</p>
+</li>
+<li>
+<p>Banner Ad - One of the longest-serving mobile game advertising forms, banner ads place static image ads above or around your game, typically occasionally, but sometimes continuously.</p>
+</li>
+<li>
+<p>CPI - ‘Cost Per Install’ covers the ways you can effectively ‘pay’ for completed downloads of your game, for example through paying another company to reward players of their game with free in-game resources if they download your game.</p>
+</li>
+<li>
+<p>CPA - Very similar to CPI, CPA is the less specific ‘Cost Per Acquisition’ and covers all methods for acquiring users, including those that are not direct ‘pay per install’ schemes, and CPI methods.</p>
+</li>
+<li>
+<p>eCPA - Arguably more important than CPA, ‘effective Cost Per User’ is considerably tough to track. It includes not just direct costs of acquisition, but also indirect costs, such as social media campaigns and PR activity, and also counts users acquired virally, through word-of-mouth, from media coverage and so on. Typically then, eCPA is lower than CPA. eCPA must be lower than the LTV of your players for you to make money.</p>
+</li>
+<li>
+<p>eCPM - Here we are talking ‘effective Cost Per Mille’, which brings a little Latin to the mobile game advertising glossary. With ‘mille’ meaning ‘thousand’, eCPM details the effective cost of the advertising revenue generated by every 1,000 impressions.</p>
+</li>
+<li>
+<p>DSP - A DSP is a “Demand Side Platform”, meaning a tool that automates ad buying across a number of networks and exchanges, while providing data and other assistance in targeting and optimizing ads.</p>
+</li>
+<li>
+<p>Engagement - At its most simple, engagement is about how captivated a player is by your game: how into it they are. As a technical term, engagement is connected to how frequently a player returns to your game, and for how long. The more engaged the better, because highly engaged players are more likely to pay or view more ads.</p>
+</li>
+<li>
+<p>Full-Screen Ad - ‘Full-Screen Ad’ typically refers to static image ads that cover the whole game screen, appearing at set breaks in gameplay. This more traditional method can be deemed particularly obtrusive by the player.</p>
+</li>
+<li>
+<p>IAP - ‘In-App Purchases’ are items bought in-game with real money, or with in-game currency that can itself be purchased with real money, as well as earned through gameplay.</p>
+</li>
+<li>
+<p>LTV - ‘Life Time Value’ is the amount an average player will spend over their entire time with a game. This figure is very directly linked to your retention, because the longer a player stays, the more money they put into your game, be it through IAP or viewing ads.</p>
+</li>
+<li>
+<p>Picture Ad - A broad term, ‘Picture Ad’ details non-video or static mobile game ads, such as banner ads and full-screen ads.</p>
+</li>
+<li>
+<p>Premium - Games paid for entirely upfront, as with traditional boxed games and many early mobile games. Premium still has its place in the modern mobile landscape, and premium games can still generate aftersales revenue through downloadable content expansions – distinct from IAP – such as new level packs. Premium is a very rigid model, but does still court higher credibility with some player demographics.</p>
+</li>
+<li>
+<p>Retention - Whether you use ads, IAP, or any method where the player pays or generates revenue after they have started your game (rather than paying upfront), retention is perhaps the most important factor. Retaining players means keeping them coming back and engaging with your game. Retained plays make your game money, whereas leaving players do not.</p>
+</li>
+<li>
+<p>RTB - RTB stands for ‘Real Time Bidding’, and concerns the practice of buying and selling ads live, on a per-impression basis. Many platforms and services support and host RTB.</p>
+</li>
+<li>
+<p>SSP - A ‘Supply-Side Platform’ or ‘Sell-Side Platform’ is a technology platform that enables web publishers to manage their advertising space inventory, fill it with ads, and receive revenue.</p>
+</li>
+<li>
+<p>User Acquisition - Broadly speaking, user acquisition covers the many methods for gaining players. Often its use refers to the likes of CPI schemes, but advertising and marketing your game is also an act of user acquisition. Some would even include designing a game to be popular as an act carried out in pursuit of user acquisition.</p>
+</li>
+<li>
+<p>Video Ad (Interstitial) - A video ad that interrupts gameplay at a predetermined break. These videos are often skippable, and can be deemed more intrusive than their rewarded cousins.</p>
+</li>
+<li>
+<p>Video Ad (Rewarded) - Video ads in games that are rewarded grant the player access to in-game items and content in return for watching an ad. They can most readily be integrated into a game’s design and gameplay mechanics, for example through being fused with GUI and flowed into the core loop of a given title’s gameplay.</p>
+</li>
 </ul></div>
         </div>
 
