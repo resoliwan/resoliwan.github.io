@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
-        <title>컨테이너 - Leo's home</title>
+        <title>Overview - Leo's home</title>
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../../css/base.css" rel="stylesheet">
@@ -236,6 +236,30 @@
 <li >
     <a href="../../../etc/simpleai/private/">심플AI 개인정보 처리방침</a>
 </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Kingofcal</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../etc/simpleai/kingofcal/1_intro/">1 intro</a>
+</li>
+            
+<li >
+    <a href="../../../etc/simpleai/kingofcal/1_intro_raw/">버전3</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">Speaking</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../etc/speaking/toolbox/">대화의 기술</a>
+</li>
     </ul>
   </li>
                                     
@@ -291,7 +315,19 @@
 </li>
             
 <li class="active">
-    <a href="./">컨테이너</a>
+    <a href="./">Overview</a>
+</li>
+            
+<li >
+    <a href="../2_k8s/">서비스 소개</a>
+</li>
+            
+<li >
+    <a href="../3_master_node/">마스터, 노드</a>
+</li>
+            
+<li >
+    <a href="../4_objects/">k8s 오브젝트들</a>
 </li>
     </ul>
   </li>
@@ -386,7 +422,7 @@
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../../mobile/golssary/">
+                                <a rel="prev" href="../2_k8s/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -398,7 +434,8 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#_1">컨테이너</a></li>
+        <li class="main active"><a href="#overview">Overview</a></li>
+        <li class="main "><a href="#_1">컨테이너</a></li>
             <li><a href="#_2">컨테이너?</a></li>
             <li><a href="#_3">히스토리</a></li>
             <li><a href="#_4">장점</a></li>
@@ -406,12 +443,26 @@
             <li><a href="#_6">상세 개념들</a></li>
         <li class="main "><a href="#_8">다커 연습</a></li>
             <li><a href="#_9">개괄</a></li>
-            <li><a href="#docker-install">Docker install</a></li>
+            <li><a href="#_10">인스톨</a></li>
+            <li><a href="#_11">패키징</a></li>
+            <li><a href="#_12">컨테이너 로컬 실행</a></li>
+            <li><a href="#_13">이미지를 레지스트리에 배포.</a></li>
+            <li><a href="#_14">이미지를 레지스트리에서 가져옴.</a></li>
         <li class="main "><a href="#link">Link</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
+<h1 id="overview">Overview</h1>
+<ul>
+<li>컨테이너 소개.</li>
+<li>쿠버네티스 소개.<ul>
+<li>클러스터, 노드, 폿 소개.</li>
+<li>배포 및 롤링업데이트 소개.</li>
+</ul>
+</li>
+<li>연속적 배포 소개.</li>
+</ul>
 <h1 id="_1">컨테이너</h1>
 <h3 id="_2">컨테이너?</h3>
 <p>인류는 여러가지 물건을 효율적으로 옮기기 위해 컨테이너 라는 유닛을 만들었다.
@@ -422,15 +473,15 @@
 <li>앱을 뛰우는대 크게 4개의 의존성이 있었다. 의존성을 줄여보자.</li>
 <li>예전에는 특정 물리 서버에 서버를 뛰었다.</li>
 </ul>
-<p><img alt="History1" src="../img/1553589094-25331.png" /></p>
+<p><img alt="History1" src="../img/1553589094-25331.png" />(1)</p>
 <ul>
 <li>하드웨어를 추상화 하면서 남은 윗부분은 VM 이라고 불렀다.</li>
 </ul>
-<p><img alt="History2" src="../img/1553589658-9679.png" /></p>
+<p><img alt="History2" src="../img/1553589658-9679.png" />(2)</p>
 <ul>
 <li>커널을 추상화 하면서 남은 윗부분을 컨테이너라고 부르자.</li>
 </ul>
-<p><img alt="Now" src="../img/1553589785-5266.png" /></p>
+<p><img alt="Now" src="../img/1553589785-5266.png" />(3)</p>
 <h3 id="_4">장점</h3>
 <ul>
 <li>동일한 코드가 환경에 영향을 받지않고 어디서든 동작한다.<ul>
@@ -479,15 +530,52 @@
 <li>이미지를 레지스트리에 배포.</li>
 <li>이미지를 레지스트리에서 가져옴.</li>
 </ul>
-<h3 id="docker-install">Docker install</h3>
+<h3 id="_10">인스톨</h3>
 <ul>
 <li><a href="https://www.docker.com/get-started">install</a></li>
-<li>OS에 따라 선택 후 실행 </li>
+<li>OS별로 다운 후 실행 </li>
 </ul>
-<p><img alt="install" src="../img/1553670266-17616.png" /></p>
+<h3 id="_11">패키징</h3>
+<ul>
+<li>Docker</li>
+</ul>
+<pre><code># 베이스 이미지.
+FROM python:2.7-slim
+
+# 컨테이너 시작 패스
+WORKDIR /app
+
+# 로컬 데이터를 이미지로 복사. (패키징)
+COPY . /app
+
+# 컨테이너 시작시 실행될 명령어
+CMD [&quot;python&quot;, &quot;app.py&quot;]
+</code></pre>
+
+<ul>
+<li>Command<ul>
+<li>위의 파일을 아래 명령어로 빌드하게 되면 빌드된 이미지는 로컬 레지스트리에 적제됨</li>
+</ul>
+</li>
+</ul>
+<pre><code>docker build --tag=helloapp .
+</code></pre>
+
+<h3 id="_12">컨테이너 로컬 실행</h3>
+<pre><code>docker run helloapp
+</code></pre>
+
+<h3 id="_13">이미지를 레지스트리에 배포.</h3>
+<pre><code>docker push username/repository:tag
+</code></pre>
+
+<h3 id="_14">이미지를 레지스트리에서 가져옴.</h3>
+<pre><code>docker pull username/repository:tag
+</code></pre>
+
 <h1 id="link">Link</h1>
 <ul>
-<li>모든 이미지는 <a href="https://www.coursera.org/learn/google-kubernetes-engine">google kubernetes engine</a>에서 발췌 했습니다.</li>
+<li>1,2,3 이미지는 <a href="https://www.coursera.org/learn/google-kubernetes-engine">google kubernetes engine</a>에서 발췌 했습니다.</li>
 </ul></div>
         </div>
 
