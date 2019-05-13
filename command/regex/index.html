@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>3.1 MNIST - Leo's home</title>
+        <title>정규 표현식이란? - Leo's home</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -58,41 +58,41 @@
                             <li >
                                 <a href="../..">README.md</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Command <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
-<li >
-    <a href="../../command/regex/">정규 표현식이란?</a>
+<li class="active">
+    <a href="./">정규 표현식이란?</a>
 </li>
                                     
 <li >
-    <a href="../../command/sed/">Sed</a>
+    <a href="../sed/">Sed</a>
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dl <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="../1_dl_introduction/">1. Introduction to Introduction to Machine Learning Based AI</a>
+    <a href="../../dl/1_dl_introduction/">1. Introduction to Introduction to Machine Learning Based AI</a>
 </li>
                                     
 <li >
-    <a href="../2_dl_tensorflow/">2. Introduction to TensorFlow</a>
-</li>
-                                    
-<li class="active">
-    <a href="./">3.1 MNIST</a>
+    <a href="../../dl/2_dl_tensorflow/">2. Introduction to TensorFlow</a>
 </li>
                                     
 <li >
-    <a href="../3_dl_neural_net/">3. Neural Networks Foundations</a>
+    <a href="../../dl/3_dl_1_mnist/">3.1 MNIST</a>
 </li>
                                     
 <li >
-    <a href="../4_dl_beyond_image/">4. Beyond Image Recognition, End-to-End Learning, Embeddings</a>
+    <a href="../../dl/3_dl_neural_net/">3. Neural Networks Foundations</a>
+</li>
+                                    
+<li >
+    <a href="../../dl/4_dl_beyond_image/">4. Beyond Image Recognition, End-to-End Learning, Embeddings</a>
 </li>
                                 </ul>
                             </li>
@@ -458,12 +458,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../2_dl_tensorflow/">
+                                <a rel="next" href="../..">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../3_dl_neural_net/">
+                                <a rel="prev" href="../sed/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -475,83 +475,512 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#31-mnist">3.1 MNIST</a></li>
-        <li class="main "><a href="#goal">Goal</a></li>
-        <li class="main "><a href="#data-set">Data set</a></li>
-        <li class="main "><a href="#subgoal">SubGoal</a></li>
-        <li class="main "><a href="#term">Term</a></li>
-        <li class="main "><a href="#model-1">Model 1</a></li>
-        <li class="main "><a href="#model-2">Model 2</a></li>
-        <li class="main "><a href="#model-3">Model 3</a></li>
+        <li class="main active"><a href="#_1">정규 표현식이란?</a></li>
+        <li class="main "><a href="#_2">정규 표현식의 구조</a></li>
+            <li><a href="#anchors">Anchors '^'</a></li>
+            <li><a href="#character-sets">Character Sets '#'</a></li>
+            <li><a href="#modifiers">Modifiers '*'</a></li>
+        <li class="main "><a href="#_3">앵커 ^, $</a></li>
+        <li class="main "><a href="#_4">캐릭터셋</a></li>
+            <li><a href="#_5">'.' 모든 문자를 의미</a></li>
+            <li><a href="#_6">문자열의 범위로 표현 [...]</a></li>
+            <li><a href="#exception">'^' 을 사용해서 exception 을 표현</a></li>
+        <li class="main "><a href="#modifier">Modifier</a></li>
+            <li><a href="#_7">* 을 사용한 문자의 반복</a></li>
+            <li><a href="#_8">\ 백 슬래시</a></li>
+            <li><a href="#_9">특정한 숫자 만큼의 반복</a></li>
+        <li class="main "><a href="#_11">확장 정규 표현식</a></li>
+            <li><a href="#_12">다른점</a></li>
+        <li class="main "><a href="#posix-characeter-set">POSIX characeter set</a></li>
+        <li class="main "><a href="#perl-extenstions">Perl Extenstions</a></li>
+        <li class="main "><a href="#link">Link</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="31-mnist">3.1 MNIST</h1>
-<h1 id="goal">Goal</h1>
-<p>숫자 이미지를 주었을때 해당 숫자를 리턴하는 함수를 만들어 보자.</p>
-<pre><code>def predict(img):
-    //이미지를 가지고 숫자를 결정
-    return num # (0-9)
+<h1 id="_1">정규 표현식이란?</h1>
+<p>정규란 문법을 의미한다.
+정규 표현식이란 특정 문자 집합의 패턴을 기술 하는 표현식을 의미한다.</p>
+<p>특정 패턴을 포함한 라인들을 찾고 싶을때 사용한다. 
+정규 표현식은 한 라인에서의 패턴 검색에 최적화 되어 있다. 여러 라인에 걸친 패턴 찾기는 적용되지 않는다.</p>
+<p>쉘은 메타 데이터 문자를 프로그램에 넘겨주기 전에 확장한다. 이걸 막기 위해서는 
+정규 표현식에서 특수 문자들을 감싸 주어야 한다.</p>
+<h1 id="_2">정규 표현식의 구조</h1>
+<p>3개의 중요한 부분으로 구성되어 있다.</p>
+<pre><code>'^#*'
 </code></pre>
 
-<h1 id="data-set">Data set</h1>
-<p><a href="https://ko.wikipedia.org/wiki/MNIST_%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4">MNIST</a></p>
-<h1 id="subgoal">SubGoal</h1>
+<h3 id="anchors">Anchors '^'</h3>
+<p>라인안에서 패턴의 위치를 기술하는대 사용.</p>
+<h3 id="character-sets">Character Sets '#'</h3>
+<p>한 위치에서 한개또는 여러개에 매칭되는 문자들</p>
+<h3 id="modifiers">Modifiers '*'</h3>
+<p>문자셋이 몇번 반복되는지 기술.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Utility</th>
+<th align="left">Regular  Expression  Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">vi</td>
+<td align="left">Basic</td>
+</tr>
+<tr>
+<td align="left">sed</td>
+<td align="left">Basic</td>
+</tr>
+<tr>
+<td align="left">grep</td>
+<td align="left">Basic</td>
+</tr>
+<tr>
+<td align="left">csplit</td>
+<td align="left">Basic</td>
+</tr>
+<tr>
+<td align="left">dbx</td>
+<td align="left">Basic</td>
+</tr>
+<tr>
+<td align="left">dbxtool</td>
+<td align="left">Basic</td>
+</tr>
+<tr>
+<td align="left">more</td>
+<td align="left">Basic</td>
+</tr>
+<tr>
+<td align="left">ed</td>
+<td align="left">Basic</td>
+</tr>
+<tr>
+<td align="left">expr</td>
+<td align="left">Basic</td>
+</tr>
+<tr>
+<td align="left">lex</td>
+<td align="left">Basic</td>
+</tr>
+<tr>
+<td align="left">pg</td>
+<td align="left">Basic</td>
+</tr>
+<tr>
+<td align="left">nl</td>
+<td align="left">Basic</td>
+</tr>
+<tr>
+<td align="left">rdist</td>
+<td align="left">Basic</td>
+</tr>
+<tr>
+<td align="left">awk</td>
+<td align="left">Extended</td>
+</tr>
+<tr>
+<td align="left">nawk</td>
+<td align="left">Extended</td>
+</tr>
+<tr>
+<td align="left">egrep</td>
+<td align="left">Extended</td>
+</tr>
+<tr>
+<td align="left">EMACS</td>
+<td align="left">EMACS Regular  Expressions</td>
+</tr>
+<tr>
+<td align="left">PERL</td>
+<td align="left">PERL Regular  Expressions</td>
+</tr>
+</tbody>
+</table>
+<h1 id="_3">앵커 ^, $</h1>
+<p>라인의 시작과 끝을 기술하기 위해사용. 
+그외 위치에서 사용되면 그냥 문자열로 아무 의미가 없음</p>
+<table>
+<thead>
+<tr>
+<th align="left">Pattern</th>
+<th align="left">Matches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">^A</td>
+<td align="left">"A" at the beginning of a line</td>
+</tr>
+<tr>
+<td align="left">A$</td>
+<td align="left">"A" at the end of a line</td>
+</tr>
+<tr>
+<td align="left">A^</td>
+<td align="left">"A^" anywhere on a line</td>
+</tr>
+<tr>
+<td align="left">$A</td>
+<td align="left">"$A" anywhere on a line</td>
+</tr>
+<tr>
+<td align="left">^^</td>
+<td align="left">"^" at the beginning of a line</td>
+</tr>
+<tr>
+<td align="left">$$</td>
+<td align="left">"$" at the end of a line$$</td>
+</tr>
+</tbody>
+</table>
+<h1 id="_4">캐릭터셋</h1>
+<h3 id="_5">'.' 모든 문자를 의미</h3>
+<p>한글자만 있는 라인 매칭</p>
+<pre><code>^.$
+</code></pre>
+
+<h3 id="_6">문자열의 범위로 표현 [...]</h3>
 <ul>
-<li>함수를 훈련한다.</li>
-<li>훈련하는 그래프를 본다.</li>
-<li>예측한다.</li>
-<li>평가한다.</li>
+<li>숫자 표현</li>
 </ul>
-<h1 id="term">Term</h1>
+<pre><code>^[0123456789]$
+</code></pre>
+
 <ul>
-<li>epoch: entire dataset is passed through NN only once.</li>
+<li>하이픈을 사용하여 짧게 표현 가능</li>
 </ul>
-<h1 id="model-1">Model 1</h1>
+<pre><code>^[0-9]$
+</code></pre>
+
 <ul>
-<li>x -&gt; softmax(linear) -&gt; y</li>
-<li>$x_{784} \to h_{10} \to y_{10}$</li>
-<li>loss = sum(softmax_cross_entropy_with_logits)</li>
-<li>optimizer = GradientDescentOptimizer</li>
+<li>문자열이 붙어 있으면 그 문자 중 아무거나</li>
 </ul>
-<p>$$
-\begin{align}
-\text{input } = &amp; \ x_{m,784} \\
-h_{m,32} = &amp; \ \text{softmax}(x_{m,32} W_{32,10} + b_{10}) \\
-\text{output } = &amp; \ y_{m, 10}
-\end{align}
-$$</p>
-<h1 id="model-2">Model 2</h1>
+<pre><code>^[aeiou]$
+</code></pre>
+
 <ul>
-<li>x -&gt; relu(linear) -&gt; softmax(linear) -&gt; y</li>
-<li>$x_{784} \to h_{32}^{(1)} \to h_{10}^{(2)} \to y_{10}$</li>
-<li>loss = sum(softmax_cross_entropy_with_logits)</li>
-<li>optimizer = GradientDescentOptimizer</li>
+<li>하이픈과 문자열 붙음을 응용</li>
 </ul>
-<p>$$
-\begin{align}
-\text{input } = &amp; \ x_{m,784} \\
-h_{m,32}^{(1)} = &amp; \ \text{relu}(x_{m,784} W_{784,32}^{(1)} + b_{32}^{(1)}) \\
-h_{m,10}^{(2)} = &amp; \ \text{softmax}(h_{m,32}^{(1)} W_{32,10}^{(2)} + b_{10}^{(2)}) \\
-\text{output } = &amp; \ y_{m, 10}
-\end{align}
-$$
-<a href="https://github.com/resoliwan/deepmind_deep_learning2/blob/1dd936b52ddde0f342da6d7ab40d04c6ec488a0a/dl/homework1_model1.py#L51">code</a></p>
-<h1 id="model-3">Model 3</h1>
+<pre><code>[A-Za-z0-9_]
+</code></pre>
+
+<h3 id="exception">'^' 을 사용해서 exception 을 표현</h3>
+<p>바로 앞에 "[" 문자가 없다면  "-", "]" 은 특수 의미를 가지지 않음</p>
+<table>
+<thead>
+<tr>
+<th align="left">Regular Expression</th>
+<th align="left">Matches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">[]</td>
+<td align="left">The characters "[]"</td>
+</tr>
+<tr>
+<td align="left">[0]</td>
+<td align="left">The character "0"</td>
+</tr>
+<tr>
+<td align="left">[0-9]</td>
+<td align="left">Any number</td>
+</tr>
+<tr>
+<td align="left">[^0-9]</td>
+<td align="left">Any character other than a number</td>
+</tr>
+<tr>
+<td align="left">[-0-9]</td>
+<td align="left">Any number or a "-"</td>
+</tr>
+<tr>
+<td align="left">[0-9-]</td>
+<td align="left">Any number or a "-"</td>
+</tr>
+<tr>
+<td align="left">[^-0-9]</td>
+<td align="left">Any character except a number or a "-"</td>
+</tr>
+<tr>
+<td align="left">[]0-9]</td>
+<td align="left">Any number or a "]"</td>
+</tr>
+<tr>
+<td align="left">[0-9]]</td>
+<td align="left">Any number followed by a "]"</td>
+</tr>
+<tr>
+<td align="left">[0-9-z]</td>
+<td align="left">Any number, or any character between "9" and "z".</td>
+</tr>
+<tr>
+<td align="left">[0-9-a]]</td>
+<td align="left">Any number, or a "-", a "a", or a "]"</td>
+</tr>
+</tbody>
+</table>
+<h1 id="modifier">Modifier</h1>
+<h3 id="_7">* 을 사용한 문자의 반복</h3>
 <ul>
-<li>x -&gt; relu(linear) -&gt; relu(linear) -&gt; softmax(linear) -&gt; y </li>
-<li>$ x_{784} \to h_{32}^{(1)} \to h_{32}^{(2)} \to h_{10}^{(3)} \to y_{10}$</li>
+<li>은 0개 또는 여러개가 반복된다는걸 의미
+0개가 의미 없다고 생각 할 수 있지만 만약 라인 앞에 스페이스가 있거나 없을 경우 유용한다.
+<code>" *"</code> 또한 1개 이상의 숫자를 지정하고 싶다면 <code>"[0-9][0-9]*"</code> 로 표현 할 수 있다.</li>
 </ul>
-<p>$$
-\begin{align}
-\text{input } = &amp; \ x_{m,784} \\
-h_{m,32}^{(1)} = &amp; \ \text{relu}(x_{m,784} W_{784,32}^{(1)} + b_{32}^{(1)}) \\
-h_{m,32}^{(2)} = &amp; \ \text{relu}(x_{m,32} W_{32,32}^{(2)} + b_{32}^{(1)}) \\
-h_{m,10}^{(3)} = &amp; \ \text{softmax}(h_{m,32}^{(2)} W_{32,10}^{(3)} + b_{10}^{(3)}) \\
-\text{output } = &amp; \ y_{m, 10}
-\end{align}
-$$</p></div>
+<h3 id="_8">\ 백 슬래시</h3>
+<p>보통 백슬래시는 문자의 특별한 의미를 없애는대 사용된다. * , . 캐릭터를 매칭하고 싶다면  *, . 이렇게 하면된다.
+하지만 감싸는 기호들 "&lt;", "&gt;", "{", "}", "(", ")",  또는 숫자 앞에 사용된다면 특별한 의미를 on 하는대 사용된다.
+백슬래시에 두개의 의미가 있는 이유는 감싸는 기호들의 기능이 나중에 추가 되었기 때문이고 이전 코볼 코드들을 유지 하기
+위해서 이다. 그냥 백슬래시가 진화했다라고 생각하자.</p>
+<h3 id="_9">특정한 숫자 만큼의 반복</h3>
+<ul>
+<li>4~8 사이의 소문자의 반복</li>
+</ul>
+<pre><code>echo &quot;abc efgx&quot; &gt; old
+sed 's/[a-z]\{4,8\}//' old
+</code></pre>
+
+<ul>
+<li>0~255 까지 사용가능 </li>
+<li>뒤에 숫자를 스킵하면 255까지</li>
+<li>뒤에 컴마와 숫자를 동시 스킵하면 앞 숫자와 캐릭터 반복이 일치해야함</li>
+<li>Modifer 들은 <code>*, \{1,5\}</code> 들은 반드시 캐릭터 뒤에 따라와야지만 특별한 의미를 가짐</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Regular Expression</th>
+<th align="left">Matches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">_</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">*</td>
+<td align="left">Any line with an asterisk</td>
+</tr>
+<tr>
+<td align="left">*</td>
+<td align="left">Any line with an asterisk</td>
+</tr>
+<tr>
+<td align="left">\</td>
+<td align="left">Any line with a backslash</td>
+</tr>
+<tr>
+<td align="left">^*</td>
+<td align="left">Any line starting with an asterisk</td>
+</tr>
+<tr>
+<td align="left">^A*</td>
+<td align="left">Any line</td>
+</tr>
+<tr>
+<td align="left">^A*</td>
+<td align="left">Any line starting with an "A*"</td>
+</tr>
+<tr>
+<td align="left">^AA*</td>
+<td align="left">Any line if it starts with one "A"</td>
+</tr>
+<tr>
+<td align="left">^AA*B</td>
+<td align="left">Any line with one or more "A"'s followed by a "B"</td>
+</tr>
+<tr>
+<td align="left">^A{4,8}B</td>
+<td align="left">Any line starting with 4, 5, 6, 7 or 8 "A"'s followed by a "B"</td>
+</tr>
+<tr>
+<td align="left">^A{4,}B</td>
+<td align="left">Any line starting with 4 or more "A"'s followed by a "B"</td>
+</tr>
+<tr>
+<td align="left">^A{4}B</td>
+<td align="left">Any line starting with "AAAAB"</td>
+</tr>
+<tr>
+<td align="left">{4,8}</td>
+<td align="left">Any line with "{4,8}"</td>
+</tr>
+<tr>
+<td align="left">A{4,8}</td>
+<td align="left">Any line with "A{4,8}"</td>
+</tr>
+</tbody>
+</table>
+<h4 id="62">\&lt; > 을 사용해 단어 찾기</h4>
+<p>the 라는 단어를 찾는건 쉽지않다 왜냐하면 other 도 매칭되기 때문이다.
+이때 \&lt;[tT]he> 로 단어를 감싸면 the 만 검색된다. t 앞에는 뉴라인 또는 (문자, 숫자, <em>)가 아닌 것만 허용된다.
+e 뒤에는(문자, 숫자, </em>)가 아닌 것만 허용된다.</p>
+<h4 id="40-41-1">(, ) 그리고 \1 을 사용한 패턴기억</h4>
+<p>(문자)에 검색된 결과를 패턴 검색에 중복 사용 할수있다.
+- 중복 단어 검색</p>
+<pre><code>\([a-Z][a-Z]*\) \1
+</code></pre>
+
+<h4 id="_10">주의점</h4>
+<ul>
+<li>\&lt;, > 은 vi 만 지원한다.</li>
+<li>A.*B 를 할 경우 가장 긴 패턴에 매칭시킨다. 즉 "AABBAABBAAB" 전체가 매칭횐다.</li>
+</ul>
+<h1 id="_11">확장 정규 표현식</h1>
+<p>egrep 또는 awk 의 경우 확장 정규 표현식을 지원한다.
+확장 정규 표현식은 정규 표현식의 일부 기호들만 같은 의미이고 일부 기호들을 다른 의미로 사용한다.
+예를들어 Send 또는 From 으로 시작하는 라인을 찾으라고 한다면 기존 정규식으로는 불가능 하지만 확장 정규 표현식에서는 가능하다.
+각각 잘하는 패턴 매칭이 있고 상황에 따라 정규식 또는 확장 정규식을 사용하면 된다.</p>
+<h3 id="_12">다른점</h3>
+<ul>
+<li>확장 정규식에서 감싸는 기호들은 다른 의미를 가진다.<ul>
+<li>"\&lt;", ">" 아무 의미가 없다.</li>
+<li>"{", "}" 몇번 반복되는지를 의미한다. (범위가 아니라)</li>
+<li>"(", ")" 아무 의미가 없다. "(..|..)"  을 or 로 사용한다.</li>
+<li>"\digit" 기억하는 기능이 없음으로 참조도 필요 없다.</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Regular Expression</th>
+<th align="left">Class</th>
+<th align="left">Type</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">.</td>
+<td align="left">all</td>
+<td align="left">Character Set</td>
+<td align="left">A single character (except newline)</td>
+</tr>
+<tr>
+<td align="left">^</td>
+<td align="left">all</td>
+<td align="left">Anchor</td>
+<td align="left">Beginning of line</td>
+</tr>
+<tr>
+<td align="left">$</td>
+<td align="left">all</td>
+<td align="left">Anchor</td>
+<td align="left">End of line</td>
+</tr>
+<tr>
+<td align="left">[...]</td>
+<td align="left">all</td>
+<td align="left">Character Set</td>
+<td align="left">Range of characters</td>
+</tr>
+<tr>
+<td align="left">*</td>
+<td align="left">all</td>
+<td align="left">Modifier</td>
+<td align="left">zero or more duplicates</td>
+</tr>
+<tr>
+<td align="left">\&lt;</td>
+<td align="left">Basic</td>
+<td align="left">Anchor</td>
+<td align="left">Beginning of word</td>
+</tr>
+<tr>
+<td align="left">></td>
+<td align="left">Basic</td>
+<td align="left">Anchor</td>
+<td align="left">End of word</td>
+</tr>
+<tr>
+<td align="left">(..)</td>
+<td align="left">Basic</td>
+<td align="left">Backreference</td>
+<td align="left">Remembers pattern</td>
+</tr>
+<tr>
+<td align="left">\1..\9</td>
+<td align="left">Basic</td>
+<td align="left">Reference</td>
+<td align="left">Recalls pattern</td>
+</tr>
+<tr>
+<td align="left">+</td>
+<td align="left">Extended</td>
+<td align="left">Modifier</td>
+<td align="left">One or more duplicates</td>
+</tr>
+<tr>
+<td align="left">?</td>
+<td align="left">Extended</td>
+<td align="left">Modifier</td>
+<td align="left">Zero or one duplicate</td>
+</tr>
+<tr>
+<td align="left">{M,N}</td>
+<td align="left">Extended</td>
+<td align="left">Modifier</td>
+<td align="left">M to N Duplicates</td>
+</tr>
+<tr>
+<td align="left">(...|...)</td>
+<td align="left">Extended</td>
+<td align="left">Anchor</td>
+<td align="left">Shows alteration</td>
+</tr>
+</tbody>
+</table>
+<h1 id="posix-characeter-set">POSIX characeter set</h1>
+<p>Character Group | Meaning
+[:alnum:]       | Alphanumeric
+[:cntrl:]       | Control Character
+[:lower:]       | Lower case character
+[:space:]       | Whitespace
+[:alpha:]       | Alphabetic
+[:digit:]       | Digit
+[:print:]       | Printable character
+[:upper:]       | Upper Case Character
+[:blank:]       | whitespace, tabs, etc.
+[:graph:]       | Printable and visible characters
+[:punct:]       | Punctuation
+[:xdigit:]      | Extended Digit</p>
+<h1 id="perl-extenstions">Perl Extenstions</h1>
+<p>Class |          Type | Meaning
+\t    | Character Set | tab
+\n    | Character Set | newline
+\r    | Character Set | return
+\f    | Character Set | form
+\a    | Character Set | alarm
+\e    | Character Set | escape
+\033  | Character Set | octal
+\x1B  | Character Set | hex
+\c[   | Character Set | control
+\l    | Character Set | lowercase
+\u    | Character Set | uppercase
+\L    | Character Set | lowercase
+\U    | Character Set | uppercase
+\E    | Character Set | end
+\Q    | Character Set | quote
+\w    | Character Set | Match a "word" character
+\W    | Character Set | Match a non-word character
+\s    | Character Set | Match a whitespace character
+\S    | Character Set | Match a non-whitespace character
+\d    | Character Set | Match a digit character
+\D    | Character Set | Match a non-digit character
+\b    |        Anchor | Match a word boundary
+\B    |        Anchor | Match a non-(word boundary)
+\A    |        Anchor | Match only at beginning of string
+\Z    |        Anchor | Match only at EOS, or before newline
+\z    |        Anchor | Match only at end of string
+\G    |        Anchor | Match only where previous m//g</p>
+<h1 id="link">Link</h1>
+<ul>
+<li><a href="http://www.grymoire.com/Unix/Regular.html">참조</a></li>
+</ul></div>
         </div>
 
         <footer class="col-md-12">
