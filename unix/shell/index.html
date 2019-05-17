@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>4. Beyond Image Recognition, End-to-End Learning, Embeddings - Leo's home</title>
+        <title>Bourne Shell - Leo's home</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -67,28 +67,28 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dl <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="../1_dl_introduction/">1. Introduction to Introduction to Machine Learning Based AI</a>
+    <a href="../../dl/1_dl_introduction/">1. Introduction to Introduction to Machine Learning Based AI</a>
 </li>
                                     
 <li >
-    <a href="../2_dl_tensorflow/">2. Introduction to TensorFlow</a>
+    <a href="../../dl/2_dl_tensorflow/">2. Introduction to TensorFlow</a>
 </li>
                                     
 <li >
-    <a href="../3_dl_1_mnist/">3.1 MNIST</a>
+    <a href="../../dl/3_dl_1_mnist/">3.1 MNIST</a>
 </li>
                                     
 <li >
-    <a href="../3_dl_neural_net/">3. Neural Networks Foundations</a>
+    <a href="../../dl/3_dl_neural_net/">3. Neural Networks Foundations</a>
 </li>
                                     
-<li class="active">
-    <a href="./">4. Beyond Image Recognition, End-to-End Learning, Embeddings</a>
+<li >
+    <a href="../../dl/4_dl_beyond_image/">4. Beyond Image Recognition, End-to-End Learning, Embeddings</a>
 </li>
                                 </ul>
                             </li>
@@ -445,20 +445,20 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Unix <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="../../unix/regex/">정규 표현식이란?</a>
+    <a href="../regex/">정규 표현식이란?</a>
 </li>
                                     
 <li >
-    <a href="../../unix/sed/">Sed</a>
+    <a href="../sed/">Sed</a>
 </li>
                                     
-<li >
-    <a href="../../unix/shell/">Bourne Shell</a>
+<li class="active">
+    <a href="./">Bourne Shell</a>
 </li>
                                 </ul>
                             </li>
@@ -471,12 +471,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../3_dl_neural_net/">
+                                <a rel="next" href="../sed/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li >
-                                <a rel="prev" href="../../etc/algorithm/en_2_getting_started/">
+                            <li class="disabled">
+                                <a rel="prev" >
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -488,190 +488,439 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#4-beyond-image-recognition-end-to-end-learning-embeddings">4. Beyond Image Recognition, End-to-End Learning, Embeddings</a></li>
-        <li class="main "><a href="#overview">Overview</a></li>
-            <li><a href="#end-to-end">End to End 학습이란?</a></li>
-        <li class="main "><a href="#beyond-imagenet-classification">Beyond ImageNet Classification</a></li>
-            <li><a href="#pretraining">Pretraining</a></li>
-            <li><a href="#_1">이미지넷 예제</a></li>
-            <li><a href="#object-detection-with-convnet">Object Detection with convNet</a></li>
-            <li><a href="#faster-r-cnnregion-cnn-overview">Faster R-CNN(region-CNN): Overview</a></li>
-            <li><a href="#semantic-segmentation">Semantic segmentation</a></li>
-        <li class="main "><a href="#reference">Reference</a></li>
+        <li class="main active"><a href="#bourne-shell">Bourne Shell</a></li>
+        <li class="main "><a href="#_1">쉘이란 무엇인가?</a></li>
+            <li><a href="#unix">Unix 란?</a></li>
+            <li><a href="#_2">중요 컨셉</a></li>
+            <li><a href="#first-class-citizen">first class citizen</a></li>
+            <li><a href="#_3">특징</a></li>
+            <li><a href="#_4">쉘</a></li>
+            <li><a href="#unix_1">Unix 철학</a></li>
+        <li class="main "><a href="#_5">자신이 사용하는 쉘 확인</a></li>
+            <li><a href="#sh">sh 사용하기</a></li>
+        <li class="main "><a href="#_6">쉘 기초</a></li>
+            <li><a href="#_7">메타 문자 처리</a></li>
+            <li><a href="#_10">실행 명령어 찾기</a></li>
+        <li class="main "><a href="#_12">인용 부호</a></li>
+            <li><a href="#_13">옵션</a></li>
+            <li><a href="#_14">인용부호 토글</a></li>
+            <li><a href="#escape">메타 문자 escape</a></li>
+        <li class="main "><a href="#_15">내재된 인용 부호</a></li>
+            <li><a href="#_16">겹따움표 내재</a></li>
+            <li><a href="#_17">백슬래시 내재</a></li>
+            <li><a href="#_18">홑따옴표 내재</a></li>
+            <li><a href="#_19">정리</a></li>
+            <li><a href="#_20">강한 또는 약한 감싸기</a></li>
+            <li><a href="#_21">$ 문자.</a></li>
+            <li><a href="#_22">` 백쿼트 문자.</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="4-beyond-image-recognition-end-to-end-learning-embeddings">4. Beyond Image Recognition, End-to-End Learning, Embeddings</h1>
-<h1 id="overview">Overview</h1>
+<h1 id="bourne-shell">Bourne Shell</h1>
+<p>아래의 내용은 sh 에서만 정확이 작동한다.</p>
+<h1 id="_1">쉘이란 무엇인가?</h1>
+<p>OS와 상호작용하기 위한 유저 인터페이스 프로그램.
+OS 커널의 가장 외부 레이어 임으로 Shell 이라고 명명되었다.</p>
+<h3 id="unix">Unix 란?</h3>
+<p>Operating System 이란 파일과 프로그램들의 집합이다.</p>
+<h3 id="_2">중요 컨셉</h3>
 <ul>
-<li>더복잡한 모델과 일을 하는 End to End 학습에 대한 소개<ul>
-<li>분류를 넘어서:  탐지, 조각화</li>
-<li>End to End case study: 공간 변화 네트워크</li>
+<li>유저는 쉘을 통해 시스템과 상호작용을 할 수 있음</li>
+<li>순차적인 조작들은 해당 조작들을 파일에 기록 할 수 있음</li>
+<li>쉘은 완전한 프로그래밍 언어임, 변수, 분기문, 다들 프로그램을 실행 시키는것등의 모든 기능이 있음
+? 쉘이 언어인가 쉘 스크립트가 언어인가?</li>
+<li>쉘은 다른 모든 unix 프로그램들과 같은 권한(기능)을 가진 프로그램을 unix 에서 first-class citizen 으로 프로그램을 쉽게 만들수 있게 함.</li>
 </ul>
-</li>
-<li>라벨 없이 배우기<ul>
-<li>embedding</li>
-<li>manifolds</li>
-</ul>
-</li>
-<li>조합하기 - RL + sequence learing + auxiliary losses<ul>
-<li>미로 찾기를 풀기위해</li>
-</ul>
-</li>
-</ul>
-<h2 id="end-to-end">End to End 학습이란?</h2>
+<h3 id="first-class-citizen">first class citizen</h3>
+<p>프로그램 디자인에서 특정 프로그래밍 언어의 first class citizen 이란.
+다른 엔터티들에게 일반적으로 가능한 오퍼레이션이 가능한 엔터티를 의미한다.</p>
+<h3 id="_3">특징</h3>
+<p>쉘은 많은 부분을 한개의 명령어가 아닌 쉘에서 직접 처리 할려고 한다.
+예를 들어 파일 이름으로 확장되는 문자 * 를 고려해 보자.</p>
+<h4 id="dos">Dos</h4>
+<p>dos 의 경우 모든 파일을 의미 하는 * 의 경우 각각의 명령어가 * 를 파싱해 파일로 확장하는 책임을 진다.
+새로운 명령어를 만들면 * 을 처리하는걸 해당 명령어가 해야 한다.</p>
 <ul>
-<li>input 과 output 만을 명시하고 input 에서 output 으로의 맵핑을 최적화 문제로 바꾸어 학습하는것.</li>
-<li>역사<ul>
-<li>2010: 소리를 문자로: Audio $\to$ Deep Net $\to$ Text</li>
-<li>2012: 사진을 라벨로: Pixels $\to$ Deep Net $\to$ Labels</li>
-<li>2014: 기계번역: Text $\to$ Deep Net $\to$ Text</li>
-<li>2018: 로봇: Sensors $\to$ Deep Net $\to$ Action</li>
+<li>RENAME <em>.OLD </em>.NEW</li>
+<li>COPY, MORE...</li>
 </ul>
-</li>
-</ul>
-<h1 id="beyond-imagenet-classification">Beyond ImageNet Classification</h1>
-<h2 id="pretraining">Pretraining</h2>
+<h3 id="_4">쉘</h3>
 <ul>
-<li>많은 데이터로 큰 모델을 학습 시키는데에는 많은 시간이 필요하다.<ul>
-<li>ImageNet ConvNets 같은 경우는 많은 GPU 로 몇주를 학습 시켜야 한다.</li>
-</ul>
+<li>
+<p>을 확장해서 파일 명으로 바꾸는 부분은 쉘의 책임이다.  프로그램들은 확장된 파일 명을 받는다.
+만약 DIR 이라는 명령어를 만들고 싶다면 아래와 같이 하면된다.</p>
 </li>
-<li>이미 다양한 데이터로 미리 학습된 네트워크는 다른 작업들에도 유용 할 것이다.<ul>
-<li>비슷한 클래스들.</li>
-<li>비슷한 도메인들.</li>
-</ul>
-</li>
-<li>이미 학습된 모델을 사용해보자.<ul>
-<li>이미 학습된 모델을 가져온다.</li>
-<li>다른 네트워크에 연결한다.</li>
-<li>다른 부분을 학습 시킨다.</li>
-<li>이식된 미리 학습된 네트워크의 파라미터들은 고정 하거나 느리게 변경한다.</li>
-</ul>
+<li>
+<p>DIR</p>
 </li>
 </ul>
-<h2 id="_1">이미지넷 예제</h2>
+<pre><code>#!/bin/sh
+ls $*
+</code></pre>
+
+<h3 id="unix_1">Unix 철학</h3>
+<p>Unix 철학에서 프로그램의 최종 인터페이스를 쉘언어로 하는 걸 추천한다.
+일단 쉘로 특정 기능을 만든다. 그리고 필요하다면 특정 부분을 다른 언어로 대체 한다.</p>
+<h1 id="_5">자신이 사용하는 쉘 확인</h1>
+<pre><code>echo $SHELL
+</code></pre>
+
+<h3 id="sh">sh 사용하기</h3>
+<p>Borune 쉘은 각각의 라인을 실행 시킨다. 
+만약 파일 끝 심볼이 오면 종료 되고 원래 쉘로 리턴한다. (ctrl+d)</p>
+<pre><code>$ sh
+</code></pre>
+
+<h1 id="_6">쉘 기초</h1>
+<p>쉘은 아래와 같이 동작한다.
+0. 라인을 읽은다.
+    - 파일, 스크립트, 유저로 부터.
+0. 매타 문자 처리 
+    - 변수 값 치환
+    - 파일 이름 확장.
+0. 실행 가능한 이름을 찾는다?(the name of executable is found)
+0. 인자들이 프로그램에 넘어간다.
+0. 파일의 rediection을 설정한다.
+0. 프로그램이 실행된다.</p>
+<h2 id="_7">메타 문자 처리</h2>
+<h3 id="varaible-evaluation">변수값 치환(Varaible evaluation)</h3>
+<p>"$"로 시작되는 변수명의 값구하기</p>
+<h3 id="_8">파일이름 확장</h3>
+<p>패턴을 받아 매칭되는 파일 이름들을 리턴한다.</p>
+<pre><code>echo  테스트 문자.
+</code></pre>
+
 <ul>
-<li>훈련된 이미지넷 분류 모델을 가져와서</li>
-<li>마지막 레이어만 변경 한다.<ul>
-<li>ouputs = 새로운 데이터의 클래스들</li>
-</ul>
-</li>
-<li>마지막 레이어를 훈련 시킨다.</li>
-<li>예제<ul>
-<li>Imagenet 데이터 $\to$ Covnet $\to$ $\mathbb{R}^{1000}$</li>
-<li>신규 데이터셋 $\to$ Covnet(위에 모델) $\to$ $\mathbb{R}^{24}$<ul>
-<li>클래스가 24개</li>
+<li>파일 확장 특수 문자 처리<ul>
+<li>"?": 1개 문자</li>
+<li>"*": 0개 또는 여러 문자.</li>
+<li>"[": 특정 문자 범위<ul>
+<li>"-" 은 범위를 의미</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>신규데이터의 이미지가 적을 수록 잘 동작한다.</li>
 </ul>
-<p><img alt="image_recognition" src="../img/4_image_recognition_tasks.png" title="opt title" /></p>
+<table>
+<thead>
+<tr>
+<th align="left">Pattern</th>
+<th align="left">Matches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">*</td>
+<td align="left">Every file in the current directory</td>
+</tr>
+<tr>
+<td align="left">?</td>
+<td align="left">Files consisting of one character</td>
+</tr>
+<tr>
+<td align="left">??</td>
+<td align="left">Files consisting of two characters</td>
+</tr>
+<tr>
+<td align="left">??*</td>
+<td align="left">Files consisting of two or more characters</td>
+</tr>
+<tr>
+<td align="left">[abcdefg]</td>
+<td align="left">Files consisting of a single letter from a to g.</td>
+</tr>
+<tr>
+<td align="left">[gfedcba]</td>
+<td align="left">Same as above</td>
+</tr>
+<tr>
+<td align="left">[a-g]</td>
+<td align="left">Same as above</td>
+</tr>
+<tr>
+<td align="left">[a-cd-g]</td>
+<td align="left">Same as above</td>
+</tr>
+<tr>
+<td align="left">[a-zA-Z0-9]</td>
+<td align="left">Files that consist of a single letter or number</td>
+</tr>
+<tr>
+<td align="left">[!a-zA-Z0-9]</td>
+<td align="left">Files that consist of a single character not a letter or number</td>
+</tr>
+<tr>
+<td align="left">[a-zA-Z]*</td>
+<td align="left">Files that start with a letter</td>
+</tr>
+<tr>
+<td align="left">?[a-zA-Z]*</td>
+<td align="left">Files whose second character matches a letter.</td>
+</tr>
+<tr>
+<td align="left">*[0-9]</td>
+<td align="left">Files that end with a number</td>
+</tr>
+<tr>
+<td align="left">?[0-9]</td>
+<td align="left">Two character filename that end with a number</td>
+</tr>
+<tr>
+<td align="left">*.[0-9]</td>
+<td align="left">Files that end with a dot and a number</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_9">유닉스 관습</h4>
+<p>문자 "."은 특별한 의미를 가지지 않는다.</p>
 <ul>
-<li>a) 해당 이미지에 어떤 클래스들이 있는지 모두 적어라.</li>
-<li>b) 어디에 어떤 오브젝트가 있고 해당 오브젝트의 범위들을 사각형으로 표시해라.</li>
-<li>c) 오브젝트를 픽셀 단위로 분류 해라.<ul>
-<li>양</li>
+<li>"."으로 시작되는 파일은 일반적으로 리스트로 나열되지 않는다.(ls 등)</li>
+<li>모든 디렉토리에 존재하는 히든 파일 2개<ul>
+<li>"." 현재 디렉토리를 의미</li>
+<li>".." 부모 디렉토리를 의미</li>
 </ul>
 </li>
-<li>d) 오브젝트를 인스턴스 단위로 분류해라.<ul>
-<li>양1, 양2, ...</li>
+<li>"/" 는 디렉토리 패스를 구분하는 특수한 의미를 같는다. <ul>
+<li>그러므로 "/" 는 파일이름안에 사용할수 없다.</li>
+<li>그러므로 파일 확장은 "/" 문자열 이상 확장하지 않는다.</li>
 </ul>
 </li>
+<li>
+<p>쉘은 파일 확장의 결과를 알파벳 순으로 정렬해서 돌려준다.</p>
+</li>
+<li>
+<p>원본디텍로리</p>
+</li>
 </ul>
-<h2 id="object-detection-with-convnet">Object Detection with convNet</h2>
+<pre><code>ls -al
+.
+..
+.hidden
+a.sh
+b.sh
+sub/c.sh
+sub/.hidden
+</code></pre>
+
 <ul>
-<li>그림 b) 어디에 어떤 오브젝트가 있고 해당 오브젝트의 범위들을 사각형으로 표시해라.</li>
-<li>슬라이딩 윈도우를 사용해 모든 영역에 객체가 있는지 확인 하는것.<ul>
-<li>너무 느릴수 있다. 하지만 최적화 가능</li>
-<li>같은 객체가 여러 번 탐지 될 수 있다.</li>
+<li>" * " 을 할 경우 관습상 "." 으로 시작하는 파일을 나열하지 않음</li>
 </ul>
-</li>
-<li>사각틀을 예측 방법<ul>
-<li>사각틀의 꼭지점을 회귀 문제로 푸는것</li>
-<li>몇개의 객체가 한 개의 이미지에 존재 할 지 몰라서 문제</li>
-</ul>
-</li>
-<li>사각틀 제안법<ul>
-<li>모듈을 두개로 분리해 처리</li>
-<li>사각틀의 위치를 제안하는 모듈</li>
-<li>제안된 모듈안의 이미지를 분류하는 모듈</li>
-</ul>
-</li>
-</ul>
-<h2 id="faster-r-cnnregion-cnn-overview">Faster R-CNN(region-CNN): Overview</h2>
-<p><img alt="faster_r_cnn" src="../img/5_faster_r_cnn.png" title="opt title" /></p>
+<pre><code>echo *
+a.sh
+b.sh
+</code></pre>
+
 <ul>
-<li>제안들을 사용해서 객체 탐색</li>
-<li>미리 훈련된 이미지 넷을 사용</li>
-<li>제안 단계<ul>
-<li>지역 제안 하위 망를 사용해서 객체의 위치를 제안 받음</li>
+<li>".*" 을 할 경우 "."으로 시작하는 히든파일 나열</li>
 </ul>
-</li>
-<li>최종 단계<ul>
-<li>제안된 사각틀 안에 어떤 객체가 있는지 확인</li>
-<li>이미지 확인 후 사각틀 자체도 조정 가능</li>
-</ul>
-</li>
-</ul>
-<h3 id="region-proposal-network">Region proposal network</h3>
-<p><img alt="region" src="../img/5_r_cnn_region_detail.png" title="opt title" /></p>
+<pre><code>echo .*
+.hidden
+</code></pre>
+
 <ul>
-<li>기본적으로 큰 범위의 슬라이딩 윈도우를 사용한다.</li>
-<li>해당 윈도우의 가운대 점을 anchor 라고 한다.</li>
-<li>여러 개의 (k = 9) 박스모양을 테스트한다.</li>
-<li>이미지의 특정 윈도우를 집어 넣으면 해당 윈도우의 anchor 를 기준으로 <ul>
-<li>여러 개의 k 박스 모양을 테스트 한후 </li>
-<li>6*k 의 결과  행렬을 리턴한다.</li>
-<li>각 $k_{i}$ 앵커 박스에 대해서 <ul>
-<li>$2*k_{i}$ 는 점수로 해당 k 앵커 박스에 오브젝트가 존재하는 확률로 정의한다.</li>
-<li>$4*k_{i}$ 는 앵커를 기준으로 박스 꼭지점들의 상대 좌표를 의미한다.</li>
+<li>"a-b*" 를 할 경우 a-b 로 시작되는 모든 파일명을 리턴</li>
 </ul>
-</li>
-<li>앵커를 기준으로 상대 좌표를 사용하기 때문에 이미지 크기에 상관없이 적용 될 수 있다.</li>
-</ul>
-</li>
-</ul>
-<h3 id="_2">훈련시</h3>
+<pre><code>a-b-c.sh
+a-b-e.sh
+
+echo a-b*
+a-b-c.sh  a-b-e.sh
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">Pattern</th>
+<th align="left">Matches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">*</td>
+<td align="left">All non-invisible files</td>
+</tr>
+<tr>
+<td align="left">abc/*</td>
+<td align="left">All non-invisible files in directory abc</td>
+</tr>
+<tr>
+<td align="left">abc/.*</td>
+<td align="left">All invisible files in directory abc</td>
+</tr>
+<tr>
+<td align="left"><em>/</em></td>
+<td align="left">All non-invisible files in all subdirectories below</td>
+</tr>
+<tr>
+<td align="left"><em>/.</em></td>
+<td align="left">All invisible files in all subdirectories below</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_10">실행 명령어 찾기</h2>
+<p>쉘이 명령 라인을 확장한 다음에, 라인을 단어들로 분리한다. 그리고 첫번째 단어를 명령어 이름으로 가정한다.
+디렉토리가 명시적으로 기술되지 않았다면,이름을 찾을때 까지 PATH 변수의 디렉토리들을 검색한다.</p>
+<h3 id="_11">" * " 확장</h3>
 <ul>
-<li>미리 훈련된 이미지 넷을 정밀하게 최적화 하기 위해 적은 학습 비율을 사용 할 수도 있다.</li>
+<li>은 유효한 유닉스 커맨드다.</li>
 </ul>
-<h2 id="semantic-segmentation">Semantic segmentation</h2>
-<p>아래의 상단 이미지를 주면 하단의 이미지를 만드는 ConvNet 을 만들어보자.</p>
-<p><img alt="segment convnet" src="../img/5_sementation_convnet.png" title="opt title" /></p>
+<pre><code>0.sh
+!# /bin/sh
+echo Hey!
+</code></pre>
+
+<p><code>0.sh</code> 가 있는 디렉토리에서 "*" 을 칠 경우 0.sh 로 확장 되고 첫번째 단어를 명령어로 생각하고 실행시킨다.
+? 하지만 에러가 발생한다. Why?</p>
+<pre><code>sh-3.2$ *
+sh: 0.sh: command not found
+</code></pre>
+
+<h1 id="_12">인용 부호</h1>
+<p>쉘이 이해 할 수 있는 특수 문자들을 메타 문자들 이라고 부른다.
+쉘에서 인용 부호안의 문자들은 특수한 의미를 가지지 않는다.</p>
+<p>"$" 문자는 메타 문자 이며 쉘에게 다음 단어는 변수임을 알려준다. 
+만약 일반 캐릭터로 하고 싶다면 인용부호로 감싸면 된다.</p>
+<h3 id="_13">옵션</h3>
+<pre><code>rm -i file1 file2
+</code></pre>
+
+<ol>
+<li>쉘은 라인을 4개의 단어로 분리한다.</li>
+<li>첫 번째는 명령어 또는 실행 시킬 프로그램이라고 가정</li>
+<li>뒤 3 단어는 인자로 프로그램으로 넘어간다.</li>
+<li>-i 도 파일과 같은 인자일 뿐이다. 쉘은 차이를 알지 못한다. </li>
+<li>프로그램에서 -i 를 옵션으로 다룰 뿐이다. - 는 유닉스에서 옵션을 나타내는 관습이다.</li>
+</ol>
+<h3 id="_14">인용부호 토글</h3>
+<p>유닉스에서 파일이름에 " " 를 사용 할 수 있다. 예를 들어 파일 "file1 file2"이 있다고 하자.
+<code>rm 'file1 file2'</code> 로 쓸수 있다. 
+유닉스에서 인용부호는 토글이라고 생각하면 된다.  처음 인용 부호를 사용하면
+인용 상태(On Quoated state)를 온하게 되고 이 후 부분의 문자열의 모든 문자를 일반 문자로 인식한다. 
+두 번째 사용하면 인용 상태를 off (Off Quoated state)하게 되고 이후 문자열에서 메타 문자를 인식한다.</p>
+<p>아래는 전부 동일한 의미이다.</p>
+<pre><code>rm 'file1 file2'
+rm file1' 'file2
+rm f'ile1 file'2
+</code></pre>
+
+<h3 id="escape">메타 문자 escape</h3>
+<p>3가지 방법이 있다.
+- 인용문자 사용
+    - '': 강함
+    - "": '' 과 같은 의미지만하지만 약함
+- \ 사용 하면 바로 다음 문자만 escape</p>
+<h1 id="_15">내재된 인용 부호</h1>
+<p>인용마크 안에 존재하는 인용마크의 관계에 대해 생각해보자.
+단 내재 인용 마크는 늘 일관적이지 않다.</p>
+<h3 id="_16">겹따움표 내재</h3>
+<pre><code>
+echo '&quot;'
+
+echo &quot;\&quot;&quot;
+
+echo \&quot;
+
+</code></pre>
+
+<h3 id="_17">백슬래시 내재</h3>
+<pre><code>
+echo '\'
+
+echo &quot;\\&quot;
+
+echo \\
+</code></pre>
+
+<h3 id="_18">홑따옴표 내재</h3>
+<pre><code>
+#error echo '\'' === echo '
+
+echo &quot;'&quot;
+
+echo \'
+
+</code></pre>
+
+<h3 id="_19">정리</h3>
+<table>
+<thead>
+<tr>
+<th align="left">순번</th>
+<th align="left">Escape 문자</th>
+<th align="left">내재   <code>"</code></th>
+<th align="left">내재 <code>\</code></th>
+<th align="left">내재 <code>'</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">1</td>
+<td align="left"><code>'</code></td>
+<td align="left"><code>'"'</code></td>
+<td align="left"><code>'\'</code></td>
+<td align="left"><code>error '\'' === echo '</code></td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left"><code>"</code></td>
+<td align="left"><code>"\""</code></td>
+<td align="left"><code>"\\"</code></td>
+<td align="left"><code>"\'"</code></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left"><code>\</code></td>
+<td align="left"><code>\"</code></td>
+<td align="left"><code>\\</code></td>
+<td align="left"><code>\'</code></td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li>각각의 픽셀을 클래스별로 라벨을 붙인다.</li>
-<li>자주 사용 되는 방법 해당도 S에 클래스 만큼의 채널을 만든다.<ul>
-<li>$S_{i,j,c}$ - 픽셀 (i, j) 위치가 클래스 c 일 확률</li>
+<li>겹따옴표와 홑따옴표는 다르게 동작한다. </li>
+<li>두 번째 줄 겹따옴표로 감싼 상태에서 escape 문자 
+<code>\</code>를 여전이 메타 문자로 인식 함으로 약한 인용부호라고 불린다.</li>
+</ul>
+<h3 id="_20">강한 또는 약한 감싸기</h3>
+<ul>
+<li>홑따옴표는 강해서,  감싸진 모든 문자열을 보통 문자로 처리한다.</li>
+<li>겹따움표는 약해서, 감싸진 부분에서도 몇몇 문자를 메타 문자로 인식한다.<ul>
+<li><code>\</code> escpae 문자. </li>
+<li><code>$</code> 달러 문자.</li>
+<li>` 백쿼트 문자.</li>
 </ul>
 </li>
-<li>사용된 빌딩 블럭들을 마지막에 재연결해서 정보를 전이 시키는 방법도 많이 사용한다.</li>
 </ul>
-<h3 id="_3">예제</h3>
-<p><img alt="segment fully conv" src="../img/5_segmentation_fully_conv_net.png" title="opt title" /></p>
+<h3 id="_21"><code>$</code> 문자.</h3>
 <ul>
-<li>선형 레이어가 없는 완전한 ConvNets<ul>
-<li>마지막의 transopose conv 레이어에서 이전의 풀링 레이러를 사용한다.</li>
-<li>미리 훈련된 이미지넷 분류기를 사용</li>
+<li>$로 시작하면 변수이다.</li>
+<li>홑따옴표에서는 문자열이 나온다.</li>
+<li>겹따옴표에서는 변수의 값이 나온다.</li>
 </ul>
-</li>
-<li>마지마 바로전 레이너는 21개의 채널을 가지고 있다.<ul>
-<li>20개의 클래스 그리고 배경화면</li>
-</ul>
-</li>
-<li>레이어가 중첩 되면서 우리는 위치 관련된 정보를 점점 요약해서 마지막에는 21개의 클래스가 해당 이미지에 존재 가능성을 확률 정보로 남긴다.</li>
-<li>21개의 레이어를 원래의 해상도로 복구 하기 위해서 우리는 마지막에 transoposed conv 를 사용해 역으로 정보를 키운다.</li>
-<li>하지만 잘 동작하지 않는다 왜냐 하면 이미 공간 정보를 잃어버린 상태이기 때문이다.</li>
-</ul>
-<p><img alt="segmnet fully conv2" src="../img/5_sgement_conv_net2.png" title="opt title" /></p>
-<h1 id="reference">Reference</h1>
+<pre><code>echo '$HOME'
+&gt;$HOME
+echo '\$HOME'
+&gt;\$HOME
+echo &quot;$HOME&quot;
+&gt;/Users/younlee
+echo &quot;\$HOME&quot;
+&gt;$HOME
+</code></pre>
+
+<h3 id="_22">` 백쿼트 문자.</h3>
 <ul>
-<li><a href="https://www.youtube.com/watch?v=OfKnA91zs9I&amp;t=206s">참조</a></li>
-<li><a href="http://vis-www.cs.umass.edu/lfw/">참조 이미지</a></li>
-</ul></div>
+<li>명령어(command) 를 실행 시켜 결과 값으로 치환한다.</li>
+</ul>
+<pre><code>echo 'The current dircetory is `pwd`'
+&gt; The current dircetory is `pwd`
+echo 'The current dircetory is \`pwd\`'
+&gt; The current dircetory is \`pwd\`
+echo &quot; current dircetory is `pwd`&quot;
+&gt; current dircetory is /Users/younlee/Dropbox/home
+echo &quot; current dircetory is \`pwd\`&quot;
+&gt; current dircetory is `pwd`
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
