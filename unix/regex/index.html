@@ -948,51 +948,214 @@ e 뒤에는(문자, 숫자, </em>)가 아닌 것만 허용된다.</p>
 </tbody>
 </table>
 <h1 id="posix-characeter-set">POSIX characeter set</h1>
-<p>Character Group | Meaning
-[:alnum:]       | Alphanumeric
-[:cntrl:]       | Control Character
-[:lower:]       | Lower case character
-[:space:]       | Whitespace
-[:alpha:]       | Alphabetic
-[:digit:]       | Digit
-[:print:]       | Printable character
-[:upper:]       | Upper Case Character
-[:blank:]       | whitespace, tabs, etc.
-[:graph:]       | Printable and visible characters
-[:punct:]       | Punctuation
-[:xdigit:]      | Extended Digit</p>
+<table>
+<thead>
+<tr>
+<th align="left">Character Group</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">[:alnum:]</td>
+<td align="left">Alphanumeric</td>
+</tr>
+<tr>
+<td align="left">[:cntrl:]</td>
+<td align="left">Control Character</td>
+</tr>
+<tr>
+<td align="left">[:lower:]</td>
+<td align="left">Lower case character</td>
+</tr>
+<tr>
+<td align="left">[:space:]</td>
+<td align="left">Whitespace</td>
+</tr>
+<tr>
+<td align="left">[:alpha:]</td>
+<td align="left">Alphabetic</td>
+</tr>
+<tr>
+<td align="left">[:digit:]</td>
+<td align="left">Digit</td>
+</tr>
+<tr>
+<td align="left">[:print:]</td>
+<td align="left">Printable character</td>
+</tr>
+<tr>
+<td align="left">[:upper:]</td>
+<td align="left">Upper Case Character</td>
+</tr>
+<tr>
+<td align="left">[:blank:]</td>
+<td align="left">whitespace, tabs, etc.</td>
+</tr>
+<tr>
+<td align="left">[:graph:]</td>
+<td align="left">Printable and visible characters</td>
+</tr>
+<tr>
+<td align="left">[:punct:]</td>
+<td align="left">Punctuation</td>
+</tr>
+<tr>
+<td align="left">[:xdigit:]</td>
+<td align="left">Extended Digit</td>
+</tr>
+</tbody>
+</table>
 <h1 id="perl-extenstions">Perl Extenstions</h1>
-<p>Class |          Type | Meaning
-\t    | Character Set | tab
-\n    | Character Set | newline
-\r    | Character Set | return
-\f    | Character Set | form
-\a    | Character Set | alarm
-\e    | Character Set | escape
-\033  | Character Set | octal
-\x1B  | Character Set | hex
-\c[   | Character Set | control
-\l    | Character Set | lowercase
-\u    | Character Set | uppercase
-\L    | Character Set | lowercase
-\U    | Character Set | uppercase
-\E    | Character Set | end
-\Q    | Character Set | quote
-\w    | Character Set | Match a "word" character
-\W    | Character Set | Match a non-word character
-\s    | Character Set | Match a whitespace character
-\S    | Character Set | Match a non-whitespace character
-\d    | Character Set | Match a digit character
-\D    | Character Set | Match a non-digit character
-\b    |        Anchor | Match a word boundary
-\B    |        Anchor | Match a non-(word boundary)
-\A    |        Anchor | Match only at beginning of string
-\Z    |        Anchor | Match only at EOS, or before newline
-\z    |        Anchor | Match only at end of string
-\G    |        Anchor | Match only where previous m//g</p>
+<table>
+<thead>
+<tr>
+<th align="left">Class</th>
+<th align="left">Type</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">\t</td>
+<td align="left">Character Set</td>
+<td align="left">tab</td>
+</tr>
+<tr>
+<td align="left">\n</td>
+<td align="left">Character Set</td>
+<td align="left">newline</td>
+</tr>
+<tr>
+<td align="left">\r</td>
+<td align="left">Character Set</td>
+<td align="left">return</td>
+</tr>
+<tr>
+<td align="left">\f</td>
+<td align="left">Character Set</td>
+<td align="left">form</td>
+</tr>
+<tr>
+<td align="left">\a</td>
+<td align="left">Character Set</td>
+<td align="left">alarm</td>
+</tr>
+<tr>
+<td align="left">\e</td>
+<td align="left">Character Set</td>
+<td align="left">escape</td>
+</tr>
+<tr>
+<td align="left">\033</td>
+<td align="left">Character Set</td>
+<td align="left">octal</td>
+</tr>
+<tr>
+<td align="left">\x1B</td>
+<td align="left">Character Set</td>
+<td align="left">hex</td>
+</tr>
+<tr>
+<td align="left">\c[</td>
+<td align="left">Character Set</td>
+<td align="left">control</td>
+</tr>
+<tr>
+<td align="left">\l</td>
+<td align="left">Character Set</td>
+<td align="left">lowercase</td>
+</tr>
+<tr>
+<td align="left">\u</td>
+<td align="left">Character Set</td>
+<td align="left">uppercase</td>
+</tr>
+<tr>
+<td align="left">\L</td>
+<td align="left">Character Set</td>
+<td align="left">lowercase</td>
+</tr>
+<tr>
+<td align="left">\U</td>
+<td align="left">Character Set</td>
+<td align="left">uppercase</td>
+</tr>
+<tr>
+<td align="left">\E</td>
+<td align="left">Character Set</td>
+<td align="left">end</td>
+</tr>
+<tr>
+<td align="left">\Q</td>
+<td align="left">Character Set</td>
+<td align="left">quote</td>
+</tr>
+<tr>
+<td align="left">\w</td>
+<td align="left">Character Set</td>
+<td align="left">Match a "word" character</td>
+</tr>
+<tr>
+<td align="left">\W</td>
+<td align="left">Character Set</td>
+<td align="left">Match a non-word character</td>
+</tr>
+<tr>
+<td align="left">\s</td>
+<td align="left">Character Set</td>
+<td align="left">Match a whitespace character</td>
+</tr>
+<tr>
+<td align="left">\S</td>
+<td align="left">Character Set</td>
+<td align="left">Match a non-whitespace character</td>
+</tr>
+<tr>
+<td align="left">\d</td>
+<td align="left">Character Set</td>
+<td align="left">Match a digit character</td>
+</tr>
+<tr>
+<td align="left">\D</td>
+<td align="left">Character Set</td>
+<td align="left">Match a non-digit character</td>
+</tr>
+<tr>
+<td align="left">\b</td>
+<td align="left">Anchor</td>
+<td align="left">Match a word boundary</td>
+</tr>
+<tr>
+<td align="left">\B</td>
+<td align="left">Anchor</td>
+<td align="left">Match a non-(word boundary)</td>
+</tr>
+<tr>
+<td align="left">\A</td>
+<td align="left">Anchor</td>
+<td align="left">Match only at beginning of string</td>
+</tr>
+<tr>
+<td align="left">\Z</td>
+<td align="left">Anchor</td>
+<td align="left">Match only at EOS, or before newline</td>
+</tr>
+<tr>
+<td align="left">\z</td>
+<td align="left">Anchor</td>
+<td align="left">Match only at end of string</td>
+</tr>
+<tr>
+<td align="left">\G</td>
+<td align="left">Anchor</td>
+<td align="left">Match only where previous m//g</td>
+</tr>
+</tbody>
+</table>
 <h1 id="link">Link</h1>
 <ul>
-<li><a href="http://www.grymoire.com/Unix/Regular.html">참조</a></li>
+<li><a href="http://www.grymoire.com/Unix/Regular.html">원본</a></li>
 </ul></div>
         </div>
 
