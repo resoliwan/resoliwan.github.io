@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Bourne Shell 2 - Leo's home</title>
+        <title>Bourne Shell 2 - Logic's home</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -48,7 +48,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../..">Leo's home</a>
+                    <a class="navbar-brand" href="../..">Logic's home</a>
                 </div>
 
                 <!-- Expanded navigation -->
@@ -63,7 +63,11 @@
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="../../agile/scrum/">스크럼을 사용한 애자일 소프트웨어 개발 방법론1</a>
+    <a href="../../agile/scrum_1/">스크럼을 사용한 애자일 소프트웨어 개발 방법론1</a>
+</li>
+                                    
+<li >
+    <a href="../../agile/scrum_2/">2. 스크럼 준비</a>
 </li>
                                 </ul>
                             </li>
@@ -500,6 +504,8 @@
             <li><a href="#0-script-name">0 - script name</a></li>
             <li><a href="#-">$* - 모든 위치 파라미터.</a></li>
             <li><a href="#-space">$@ - space 를 포함한 모든 파라미터</a></li>
+            <li><a href="#-_1">$# - 스크립트에 넘어온 인자의 수량</a></li>
+            <li><a href="#-id">$$ - 현재 프로세스 ID</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -604,7 +610,45 @@ chmod +x moveto.sh
 
 </code></pre>
 
-<h3 id="-space"><code>$@</code> - space 를 포함한 모든 파라미터</h3></div>
+<h3 id="-space"><code>$@</code> - space 를 포함한 모든 파라미터</h3>
+<p><code>$*, $@</code>는 기본적으로 같다.</p>
+<p>다른점은 쉘스크립트안에서 <code>$*, $@</code> 를 사용해 모든 파라미터를 다른 명령어로 넘길때 스페이스로 인자를 분리하냐의 
+여부가 다르나. 이 다른점은 사용 할 경우가 거의 없을거 같다.
+- <a href="http://www.grymoire.com/Unix/Sh.html#uh-42">윈본</a></p>
+<h3 id="-_1"><code>$#</code> - 스크립트에 넘어온 인자의 수량</h3>
+<pre><code>vi numberofargs.sh
+
+#!/bin/bash
+echo $#
+shfit $# #remove all args
+echo $*
+
+chmod +x numberofargs.sh
+./numberofargs.sh 1 2 '3 a'
+&gt; 3
+&gt;
+</code></pre>
+
+<h3 id="-id"><code>$$</code> - 현재 프로세스 ID</h3>
+<p>유니크한 임시 파일을 만드릭 위해 현재프로세스ID 로 많이 사용</p>
+<ul>
+<li>유니크 파일을 만들고 지운다.</li>
+</ul>
+<pre><code># vi uniq.sh
+#!/bin/bash
+filename=/tmp/$0.$$
+cat &quot;$@&quot; | wc -w &gt; $filename
+echo args word count is `cat $filename`
+rm $filename
+
+$echo '1 2 3' &gt; a.txt
+$chmod +x uniq.sh
+$./uniq.sh a.txt
+</code></pre>
+
+<ul>
+<li>프로세스가 죽을때 자식 프로세스를 죽이고 나간다.</li>
+</ul></div>
         </div>
 
         <footer class="col-md-12">
