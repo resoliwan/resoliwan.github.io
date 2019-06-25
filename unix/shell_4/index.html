@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>플로우 컨트롤 Bourne Shell 4 - Logic's home</title>
+        <title>쉘 플로우 컨트롤 - Logic's home</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -194,6 +194,16 @@
             
 <li >
     <a href="../../etc/language/cpp/new_cpp/">New c++11 standard</a>
+</li>
+    </ul>
+  </li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">Javascript</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../etc/language/javascript/chain/">메서드 체인잉</a>
 </li>
     </ul>
   </li>
@@ -466,19 +476,23 @@
 </li>
                                     
 <li >
-    <a href="../shell_1/">Bourne Shell 1</a>
+    <a href="../shell_1/">쉘이란 무엇인가?</a>
 </li>
                                     
 <li >
-    <a href="../shell_2/">Bourne Shell 2</a>
+    <a href="../shell_2/">쉘의 변수들</a>
 </li>
                                     
 <li >
-    <a href="../shell_3/">플래그들 Bourne Shell 3</a>
+    <a href="../shell_3/">쉘의 옵션들</a>
 </li>
                                     
 <li class="active">
-    <a href="./">플로우 컨트롤 Bourne Shell 4</a>
+    <a href="./">쉘 플로우 컨트롤</a>
+</li>
+                                    
+<li >
+    <a href="../shell_5/">Shell 5</a>
 </li>
                                 </ul>
                             </li>
@@ -495,8 +509,8 @@
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li class="disabled">
-                                <a rel="prev" >
+                            <li >
+                                <a rel="prev" href="../shell_5/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -508,78 +522,246 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#bourne-shell-4">플로우 컨트롤 Bourne Shell 4</a></li>
-            <li><a href="#_1">출처</a></li>
-            <li><a href="#x-echo-flag">X - echo flag</a></li>
-            <li><a href="#v-verbose-flag">V - verbose flag</a></li>
-            <li><a href="#u-unset">U - unset 변수 에러</a></li>
-            <li><a href="#n-non-execute-flag">N - 문법 체크만함 (non -execute flag)</a></li>
-            <li><a href="#e-exit-flag">E exit flag</a></li>
-            <li><a href="#t-test-one-command-flag">T test one command flag</a></li>
-            <li><a href="#a-env-export">A 모든 변수 마크해서 env 로 export 하기</a></li>
-            <li><a href="#-">$- 옵션들 변수</a></li>
+        <li class="main active"><a href="#_1">쉘 플로우 컨트롤</a></li>
+            <li><a href="#exit-status">exit status</a></li>
+            <li><a href="#and-or">and 그리고 or</a></li>
+            <li><a href="#_2">리스트 만들기</a></li>
+            <li><a href="#_3">우선순위</a></li>
+            <li><a href="#if">간단한 if 문 흉내</a></li>
+            <li><a href="#_4">(), {} 의 차이점</a></li>
+            <li><a href="#_5">플로우 컨트롤 커맨드</a></li>
+            <li><a href="#_6">복합 커맨드</a></li>
+            <li><a href="#_7">라인의 맨앞에 와야 하는 커맨드들</a></li>
+            <li><a href="#if-command">if command</a></li>
+            <li><a href="#while-true">While - true 일때까지 루프</a></li>
+            <li><a href="#until-loop-until-true">Until - loop until true</a></li>
+            <li><a href="#_8">본쉘 플로우 변경 문법</a></li>
+            <li><a href="#for-">For - 변수를 변경 할 수 있을때까지 반복</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="bourne-shell-4">플로우 컨트롤 Bourne Shell 4</h1>
-<h3 id="_1">출처</h3>
+<h1 id="_1">쉘 플로우 컨트롤</h1>
 <ul>
 <li><a href="http://www.grymoire.com">원본</a> 아래 내용은 개인용으로 정리한 내용 입니다.</li>
 </ul>
-<h3 id="x-echo-flag">X - echo flag</h3>
-<p>디버그 하기 위해 x 플래그를 설정해 주면 명령어 실행전에 값을 보여준다.</p>
-<pre><code>vi testx.sh
+<h3 id="exit-status">exit status</h3>
+<p>쉘 명령어는 종료시 0~255 까지의 exit status 를 돌려 줄 수 있다.
+불린 값으로 형변환시 0 은 true 이고 다른 모든 값은 false 로 변환된다.
+만약 리턴값을 명시적으로 돌려주지 않으면 마지막에 실행된 커맨드의 리턴값을 반환한다.
+또한 해당 값을 프로세스간의 정보 전달 수단으로 사용 할 수 있다.</p>
+<h3 id="and-or">and 그리고 or</h3>
+<p>유닉스는 true, false 라는 커맨드를 가지고 있다.
+and(<code>&amp;&amp;</code>) 는 앞의 명령어 결과가 true 일 경우 다음 명령어를 실행한다.
+or(<code>||</code>) 은 앞의 명령어 결과가 false 일 경우 다음 명령어를 실행한다.</p>
+<pre><code>true &amp;&amp; echo &quot;Printed&quot;
+false &amp;&amp; echo &quot;Not printed&quot;
 
-#!/bin/bash
-a=$1
-echo a is $a
+true || ehco &quot;Not printed&quot;
+false || echo &quot;Printed&quot;
+</code></pre>
 
-/bin/bash -x testx.sh
+<h3 id="_2">리스트 만들기</h3>
+<p>쉘은 파이프 라인을 리스트로 만드는 5개의 캐릭터를 가지고 있다.
+- 첫번째는 줄바꿈 문자이다.
+- <code>;</code>은 앞의 결과를 뒤의 인풋으로 받지 않을 경우 사용한다. <code>cmd1 ; cmd2 ; cmd3 ;</code>
+- <code>&amp;</code>은 detached 모드로 실행하며 실행, 종료 순서가 순차적이지 않다. <code>cmd1 &amp; cmd2 &amp; cmd3 &amp;</code>
+- <code>&amp;&amp;</code> 앞에 두개가 성공해야 cmd3 가 실행된다.  <code>cmd1 &amp;&amp; cmd2 &amp;&amp; cmd3</code>
+- <code>||</code> 앞의 두개가 실패해야 cmd3 가 실행된다. <code>cmd1 || cmd2 || cmd3</code></p>
+<h3 id="_3">우선순위</h3>
+<table>
+<thead>
+<tr>
+<th align="left">기호</th>
+<th align="left">실행 순서</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>|</code></td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left"><code>&amp;&amp;</code>, <code>||</code></td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left"><code>;</code>, <code>&amp;</code></td>
+<td align="left">2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="if">간단한 if 문 흉내</h3>
+<pre><code>cmd1 &amp;&amp; {cmd2; exit 0; } || cmd3
+</code></pre>
+
+<h3 id="_4"><code>()</code>, <code>{}</code> 의 차이점</h3>
+<p>만약 명령어의 실행 순서를 바꾸고 싶다면 위의 괄호들을 사용 할 수 있다.
+- 문법적 차이점
+    - <code>{}</code> 의 경우 양쪽에 스페이스를 주어야한다.
+    - <code>{}</code>의 경우 안의 명령어 끝에 <code>;</code>을 줘야 한다.</p>
+<pre><code>(echo a); echo b
+{ echo a; }; echo b
 </code></pre>
 
 <ul>
-<li>자주 사용할거면 맨위에 줘도 된다.</li>
+<li><code>()</code> 은 새로운 프로세스를 실행 시킨다.<ul>
+<li>현재 프로세스에 영향을 안주고 싶을떄 유용하다.(현재 디텍토리 변경등)</li>
 </ul>
-<pre><code>#!/bin/bash -x
+</li>
+</ul>
+<pre><code>a=OLD
+(a=NEW1); echo $a
+{ a=NEW2 }; echo $a
+</code></pre>
+
+<h3 id="_5">플로우 컨트롤 커맨드</h3>
+<p>쉘에서 명령어는 총 3가지 방법으로 묶일수 있다.
+- 단순 커맨드: 스페이즈로 분리된 워드 집합
+- 파이프라인: 여러개의 단순 커맨드가 <code>|</code> 로 연결될 형태
+- 리스트: 여러개의 파이프라인이 <code>&amp;</code>, <code>;</code>, <code>&amp;&amp;</code>, <code>||</code> 로 구분되어 있고 <code>;</code>, <code>&amp;</code>, new line 캐릭터 으로 끝나는 것.</p>
+<h3 id="_6">복합 커맨드</h3>
+<p>복한 커맨는 아래 7개의 형태가 있다.</p>
+<pre><code class="shell">## 1
+if list then 
+    list 
+fi
+
+## 2
+if list then 
+    list 
+else 
+    list 
+fi
+
+## 3
+if list then 
+    list 
+elif list then 
+    list 
+elif list then 
+    list 
+fi
+
+## 4
+if list then 
+    list 
+elif list then 
+    list 
+else 
+    list 
+fi
+
+## 5
+if list then 
+    list 
+elif list then 
+    list 
+elif list else 
+    list 
+fi
+
+## 6
+while list do list done
+
+## 7
+until list do list done
+</code></pre>
+
+<h3 id="_7">라인의 맨앞에 와야 하는 커맨드들</h3>
+<p>본쉘에서는 특이한 컨샙이있다.  아래의 단어들은 꼭 라인의 첫 번째 단어여야 한다.</p>
+<pre><code>if
+then
+else
+elif
+fi
+case
+for
+while
+until
+do
+done
+{
+}
+</code></pre>
+
+<p>하지만 <code>;</code>, <code>&amp;</code> 을 쓰면 라인을 변경하니 이 다음에 적어도 된다.
+- list 를 <code>;</code>, <code>&amp;</code>, new line 캐릭터 으로 끝나는 것으로 정의 했음으로 아래의 표현식은 늘 허용된다.
+- <code>if list then list fi</code></p>
+<pre><code>if true
+then
+echo 'it was true'
+fi
+
+if true; then echo 'it was true'; fi
+</code></pre>
+
+<h3 id="if-command">if command</h3>
+<p>if/then 은 커맨드 리스트를 실행한 exit 상태를 테스트해서 특정 리스트를 실행하는 형태를 만든다.</p>
+<p>if 문이 아니라 if 명령어 이다. 
+명령어 처리 방식으로 if 문을 구현 했다라고 생각하면 이해가 쉽다.</p>
+<p>if 명령어는 다음에 나오는 list 가 true 일 경우 then 뒤의 list 를 실행시킨다.
+false 일경우 else 뒤의 list 를 실행시킨다. 
+if/then, else 의 경우 반드시 뒤에 리스트가 표기됨이 문법임으로 없을 경우 아무것도 안하는 명령어<code>:</code>를 넣어
+문법을 만족 시켜준다.</p>
+<pre><code>if list; then :; else
+    list
+fi
 </code></pre>
 
 <ul>
-<li>스크립트의 특정 부분말 줄수도 있다.</li>
+<li><code>if [];</code> <code>[</code> 은 test 명령어의 별명이다.</li>
+<li><code>if [[...]];</code> <code>[[</code> 은 test extend  키워드의 별명이다.<ul>
+<li>키워드: 한개의 명령어를 구성하는 subunit </li>
 </ul>
-<pre><code>set -x # turn on
-set +x # turn off
+</li>
+</ul>
+<h3 id="while-true">While - true 일때까지 루프</h3>
+<p>특정 조건이 true 일때까지 반복실행</p>
+<pre><code>while mytest
+do
+    echo mytest is still true
+done
 </code></pre>
 
-<h3 id="v-verbose-flag">V - verbose flag</h3>
-<p>위와 동일하다 실행하지 않고 명령어 자체를 보여준다.</p>
-<h3 id="u-unset">U - unset 변수 에러</h3>
-<p>-u 를 주면 unset 변수들에 대해 에러를 준다.</p>
-<h3 id="n-non-execute-flag">N - 문법 체크만함 (non -execute flag)</h3>
-<p>실행 안하고 문법체크만 합니다.</p>
-<h3 id="e-exit-flag">E exit flag</h3>
-<p>에러가 발생될 경우 다음 라인을 실행하지 않음</p>
 <ul>
-<li>에러를 무시하거나 아니면 특정 부분만 에러를 신경쓰게도 가능</li>
+<li>표준인풋에서 읽어서 파일의 끝이면 while 종료</li>
 </ul>
-<pre><code>set -e
-...
-set +e
+<pre><code>echo &quot;Type Ctrl+D(EOF) when done&quot;
+while read a
+do
+echo $a
+done
 </code></pre>
 
-<h3 id="t-test-one-command-flag">T test one command flag</h3>
-<p>딱 한 줄만 더 실행하고 아웃. 특정 스크립트가 존재하는지를 체크할때 사용 가능</p>
-<h3 id="a-env-export">A 모든 변수 마크해서 env 로 export 하기</h3>
-<p>스크립트가 너무 커서 여러개로 분리할때 유용하다.</p>
-<pre><code>set -a
+<h3 id="until-loop-until-true">Until - loop until true</h3>
+<p>특정 조건이 true 가 아닐때까지 반복 실행</p>
+<pre><code class="a">until testa
+do
+echo not yet
+done
 </code></pre>
 
-<h3 id="-"><code>$-</code> 옵션들 변수</h3>
-<p>위의 set 된 옵션들을 가지고 있는 변수. 프린트 하거나 다른 쉘 스크립트에
-해당 변수를 연속해서 던져 줄수 있음</p>
-<pre><code>#!/bin/bash
-echo $-
-sh -$- test arg1 arg2
+<h3 id="_8">본쉘 플로우 변경 문법</h3>
+<pre><code>for name do list done
+for name in word ... do list done
+case word in easc
+case word in pattern ) list;; easc
+case word in pattern | pattern ) list;; easc
+</code></pre>
+
+<h3 id="for-">For - 변수를 변경 할 수 있을때까지 반복</h3>
+<pre><code>for i in 1 2 3
+do 
+echo $i
+done
+</code></pre>
+
+<pre><code>ns=(1 2 3)
+for i in $ns
+do
+echo $i 
+done
 </code></pre></div>
         </div>
 
