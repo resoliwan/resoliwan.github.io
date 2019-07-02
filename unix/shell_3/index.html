@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>쉘의 옵션들 - Logic's home</title>
+        <title>3. 쉘의 옵션 - Logic's home</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -63,7 +63,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="../../agile/scrum_1/">스크럼을 사용한 애자일 소프트웨어 개발 방법론1</a>
+    <a href="../../agile/scrum_1/">1. 스크럼을 사용한 애자일 소프트웨어 개발 방법론</a>
 </li>
                                     
 <li >
@@ -72,6 +72,10 @@
                                     
 <li >
     <a href="../../agile/scrum_3/">3. 스크럼 실천</a>
+</li>
+                                    
+<li >
+    <a href="../../agile/scrum_4/">4. 스크럼 적용</a>
 </li>
                                 </ul>
                             </li>
@@ -468,7 +472,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="../regex/">정규 표현식이란?</a>
+    <a href="../regex/">정규 표현식</a>
 </li>
                                     
 <li >
@@ -476,23 +480,19 @@
 </li>
                                     
 <li >
-    <a href="../shell_1/">쉘이란 무엇인가?</a>
+    <a href="../shell_1/">1. 쉘 정의</a>
 </li>
                                     
 <li >
-    <a href="../shell_2/">쉘의 변수들</a>
+    <a href="../shell_2/">2. 쉘의 변수</a>
 </li>
                                     
 <li class="active">
-    <a href="./">쉘의 옵션들</a>
+    <a href="./">3. 쉘의 옵션</a>
 </li>
                                     
 <li >
-    <a href="../shell_4/">쉘 플로우 컨트롤</a>
-</li>
-                                    
-<li >
-    <a href="../shell_5/">Shell 5</a>
+    <a href="../shell_4/">4. 쉘 문법</a>
 </li>
                                 </ul>
                             </li>
@@ -522,7 +522,7 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#_1">쉘의 옵션들</a></li>
+        <li class="main active"><a href="#3">3. 쉘의 옵션</a></li>
             <li><a href="#x-echo-flag">X - echo flag</a></li>
             <li><a href="#v-verbose-flag">V - verbose flag</a></li>
             <li><a href="#u-unset">U - unset 변수 에러</a></li>
@@ -535,10 +535,7 @@
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="_1">쉘의 옵션들</h1>
-<ul>
-<li><a href="http://www.grymoire.com">원본</a> 아래 내용은 개인용으로 정리한 내용 입니다.</li>
-</ul>
+<h1 id="3">3. 쉘의 옵션</h1>
 <h3 id="x-echo-flag">X - echo flag</h3>
 <p>디버그 하기 위해 x 플래그를 설정해 주면 명령어 실행전에 값을 보여준다.</p>
 <pre><code>vi testx.sh
@@ -592,7 +589,11 @@ set +e
 <pre><code>#!/bin/bash
 echo $-
 sh -$- test arg1 arg2
-</code></pre></div>
+</code></pre>
+
+<ul>
+<li><a href="http://www.grymoire.com">원본</a> 아래 내용은 개인용으로 정리한 내용 입니다.</li>
+</ul></div>
         </div>
 
         <footer class="col-md-12">

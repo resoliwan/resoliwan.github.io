@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>쉘의 변수들 - Logic's home</title>
+        <title>2. 쉘의 변수 - Logic's home</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -63,7 +63,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="../../agile/scrum_1/">스크럼을 사용한 애자일 소프트웨어 개발 방법론1</a>
+    <a href="../../agile/scrum_1/">1. 스크럼을 사용한 애자일 소프트웨어 개발 방법론</a>
 </li>
                                     
 <li >
@@ -72,6 +72,10 @@
                                     
 <li >
     <a href="../../agile/scrum_3/">3. 스크럼 실천</a>
+</li>
+                                    
+<li >
+    <a href="../../agile/scrum_4/">4. 스크럼 적용</a>
 </li>
                                 </ul>
                             </li>
@@ -468,7 +472,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="../regex/">정규 표현식이란?</a>
+    <a href="../regex/">정규 표현식</a>
 </li>
                                     
 <li >
@@ -476,23 +480,19 @@
 </li>
                                     
 <li >
-    <a href="../shell_1/">쉘이란 무엇인가?</a>
+    <a href="../shell_1/">1. 쉘 정의</a>
 </li>
                                     
 <li class="active">
-    <a href="./">쉘의 변수들</a>
+    <a href="./">2. 쉘의 변수</a>
 </li>
                                     
 <li >
-    <a href="../shell_3/">쉘의 옵션들</a>
+    <a href="../shell_3/">3. 쉘의 옵션</a>
 </li>
                                     
 <li >
-    <a href="../shell_4/">쉘 플로우 컨트롤</a>
-</li>
-                                    
-<li >
-    <a href="../shell_5/">Shell 5</a>
+    <a href="../shell_4/">4. 쉘 문법</a>
 </li>
                                 </ul>
                             </li>
@@ -522,31 +522,30 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#_1">쉘의 변수들</a></li>
+        <li class="main active"><a href="#2">2. 쉘의 변수</a></li>
         <li class="main "><a href="#1-29">파라미터 인자. $1, $2,..,$9</a></li>
-            <li><a href="#_2">파일 이름을 변경하는 스크립트 작성</a></li>
+            <li><a href="#_1">파일 이름을 변경하는 스크립트 작성</a></li>
             <li><a href="#9">인자가 9개를 넘어갈때</a></li>
             <li><a href="#0-script-name">0 - script name</a></li>
             <li><a href="#-">$* - 모든 위치 파라미터.</a></li>
             <li><a href="#-space">$@ - space 를 포함한 모든 파라미터</a></li>
             <li><a href="#-_1">$# - 스크립트에 넘어온 인자의 수량</a></li>
             <li><a href="#-id">$$ - 현재 프로세스 ID</a></li>
-            <li><a href="#_3">시그널</a></li>
+            <li><a href="#_2">시그널</a></li>
             <li><a href="#-process-id">$! - 백그라운드 잡 process ID</a></li>
-            <li><a href="#_4">$? 에러 값 리턴</a></li>
+            <li><a href="#_3">$? 에러 값 리턴</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="_1">쉘의 변수들</h1>
-<p>특수 변수들
-- <a href="http://www.grymoire.com">원본</a> 아래 내용은 개인용으로 정리한 내용 입니다.</p>
+<h1 id="2">2. 쉘의 변수</h1>
+<p>특수 변수들</p>
 <h1 id="1-29">파라미터 인자. $1, $2,..,$9</h1>
 <p>쉘에서 가장 중요한 컨셉은 쉘스크립트에 인자를 넘기는 것이다.
 <code>$</code> 로 시작하면 변수를 의미한다. 그 후 숫자가 오면 인자의 순서를 의미한다.
 예를 들어 <code>$1</code>은 첫번째 인자. <code>$2</code>는 두번째 인자를 의미한다.
 $0은 특수 인자이다. </p>
-<h3 id="_2">파일 이름을 변경하는 스크립트 작성</h3>
+<h3 id="_1">파일 이름을 변경하는 스크립트 작성</h3>
 <p>rename a b 라는 스크립트를 작성해보자.</p>
 <ul>
 <li>초안</li>
@@ -694,7 +693,7 @@ cleanup()
 
 </code></pre>
 
-<h3 id="_3">시그널</h3>
+<h3 id="_2">시그널</h3>
 <table>
 <thead>
 <tr>
@@ -789,7 +788,7 @@ chmod +x background.sh
 <ul>
 <li>Wait 명령어에 인자가 없으면 스크립트에서 실행된 모든 프로세스가 죽을때까지 대기한다.</li>
 </ul>
-<h3 id="_4"><code>$?</code> 에러 값 리턴</h3>
+<h3 id="_3"><code>$?</code> 에러 값 리턴</h3>
 <p>마지막으로 실행된 스크립트의 에러 값을 리턴한다.</p>
 <pre><code>vi error.sh
 
@@ -801,7 +800,11 @@ vi error_report.sh
 #!/bin/bash
 ./error.sh
 echo $?
-</code></pre></div>
+</code></pre>
+
+<ul>
+<li><a href="http://www.grymoire.com">원본</a> 아래 내용은 개인용으로 정리한 내용 입니다.</li>
+</ul></div>
         </div>
 
         <footer class="col-md-12">

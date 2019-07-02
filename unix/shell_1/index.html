@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>쉘이란 무엇인가? - Logic's home</title>
+        <title>1. 쉘 정의 - Logic's home</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -63,7 +63,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="../../agile/scrum_1/">스크럼을 사용한 애자일 소프트웨어 개발 방법론1</a>
+    <a href="../../agile/scrum_1/">1. 스크럼을 사용한 애자일 소프트웨어 개발 방법론</a>
 </li>
                                     
 <li >
@@ -72,6 +72,10 @@
                                     
 <li >
     <a href="../../agile/scrum_3/">3. 스크럼 실천</a>
+</li>
+                                    
+<li >
+    <a href="../../agile/scrum_4/">4. 스크럼 적용</a>
 </li>
                                 </ul>
                             </li>
@@ -468,7 +472,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="../regex/">정규 표현식이란?</a>
+    <a href="../regex/">정규 표현식</a>
 </li>
                                     
 <li >
@@ -476,23 +480,19 @@
 </li>
                                     
 <li class="active">
-    <a href="./">쉘이란 무엇인가?</a>
+    <a href="./">1. 쉘 정의</a>
 </li>
                                     
 <li >
-    <a href="../shell_2/">쉘의 변수들</a>
+    <a href="../shell_2/">2. 쉘의 변수</a>
 </li>
                                     
 <li >
-    <a href="../shell_3/">쉘의 옵션들</a>
+    <a href="../shell_3/">3. 쉘의 옵션</a>
 </li>
                                     
 <li >
-    <a href="../shell_4/">쉘 플로우 컨트롤</a>
-</li>
-                                    
-<li >
-    <a href="../shell_5/">Shell 5</a>
+    <a href="../shell_4/">4. 쉘 문법</a>
 </li>
                                 </ul>
                             </li>
@@ -522,62 +522,59 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#_1">쉘이란 무엇인가?</a></li>
-        <li class="main "><a href="#_2">쉘이란 무엇인가?</a></li>
+        <li class="main active"><a href="#1">1. 쉘 정의</a></li>
+        <li class="main "><a href="#_1">쉘이란 무엇인가?</a></li>
             <li><a href="#unix">Unix 란?</a></li>
-            <li><a href="#_3">중요 컨셉</a></li>
+            <li><a href="#_2">중요 컨셉</a></li>
             <li><a href="#first-class-citizen">first class citizen</a></li>
-            <li><a href="#_4">특징</a></li>
-            <li><a href="#_5">쉘</a></li>
+            <li><a href="#_3">특징</a></li>
+            <li><a href="#_4">쉘</a></li>
             <li><a href="#unix_1">Unix 철학</a></li>
-        <li class="main "><a href="#_6">자신이 사용하는 쉘 확인</a></li>
+        <li class="main "><a href="#_5">자신이 사용하는 쉘 확인</a></li>
             <li><a href="#sh">sh 사용하기</a></li>
-        <li class="main "><a href="#_7">쉘 기초</a></li>
-            <li><a href="#_8">메타 문자 처리</a></li>
-            <li><a href="#_11">실행 명령어 찾기</a></li>
-        <li class="main "><a href="#_13">인용 부호</a></li>
-            <li><a href="#_14">옵션</a></li>
-            <li><a href="#_15">인용부호 토글</a></li>
+        <li class="main "><a href="#_6">쉘 기초</a></li>
+            <li><a href="#_7">메타 문자 처리</a></li>
+            <li><a href="#_10">실행 명령어 찾기</a></li>
+        <li class="main "><a href="#_12">인용 부호</a></li>
+            <li><a href="#_13">옵션</a></li>
+            <li><a href="#_14">인용부호 토글</a></li>
             <li><a href="#escape">메타 문자 escape</a></li>
-        <li class="main "><a href="#_16">내재된 인용 부호</a></li>
-            <li><a href="#_17">겹따움표 내재</a></li>
-            <li><a href="#_18">백슬래시 내재</a></li>
-            <li><a href="#_19">홑따옴표 내재</a></li>
-            <li><a href="#_20">정리</a></li>
-            <li><a href="#_21">강한 또는 약한 감싸기</a></li>
-            <li><a href="#_22">$ 문자.</a></li>
-            <li><a href="#_23">` 백쿼트 문자.</a></li>
-            <li><a href="#_24">여러줄에서 사용 가능한 인용문자.</a></li>
-            <li><a href="#_25">인용문자안의 인용문자.</a></li>
-            <li><a href="#_26">스트링 안에 변수 넣기</a></li>
-            <li><a href="#_27">변수</a></li>
-            <li><a href="#_28">경고</a></li>
+        <li class="main "><a href="#_15">내재된 인용 부호</a></li>
+            <li><a href="#_16">겹따움표 내재</a></li>
+            <li><a href="#_17">백슬래시 내재</a></li>
+            <li><a href="#_18">홑따옴표 내재</a></li>
+            <li><a href="#_19">정리</a></li>
+            <li><a href="#_20">강한 또는 약한 감싸기</a></li>
+            <li><a href="#_21">$ 문자.</a></li>
+            <li><a href="#_22">` 백쿼트 문자.</a></li>
+            <li><a href="#_23">여러줄에서 사용 가능한 인용문자.</a></li>
+            <li><a href="#_24">인용문자안의 인용문자.</a></li>
+            <li><a href="#_25">스트링 안에 변수 넣기</a></li>
+            <li><a href="#_26">변수</a></li>
+            <li><a href="#_27">경고</a></li>
             <li><a href="#set">set 명령어</a></li>
-            <li><a href="#_29">환경 변수</a></li>
+            <li><a href="#_28">환경 변수</a></li>
             <li><a href="#export">export 명령어</a></li>
-        <li class="main "><a href="#_30">특별한 환경 변수들.</a></li>
+        <li class="main "><a href="#_29">특별한 환경 변수들.</a></li>
             <li><a href="#path-">PATH - 탐색 경로</a></li>
             <li><a href="#home-">HOME - 홈 디렉토리</a></li>
             <li><a href="#cdpath-cd-search-path">CDPATH - cd search path</a></li>
             <li><a href="#ifs-internal-field-seperator">IFS - Internal Field Seperator</a></li>
-        <li class="main "><a href="#_31">변수 변환 예제</a></li>
-            <li><a href="#_32">인용문자를 통한 풀이</a></li>
-            <li><a href="#_33">중괄호를 사용하여 풀기</a></li>
+        <li class="main "><a href="#_30">변수 변환 예제</a></li>
+            <li><a href="#_31">인용문자를 통한 풀이</a></li>
+            <li><a href="#_32">중괄호를 사용하여 풀기</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="_1">쉘이란 무엇인가?</h1>
+<h1 id="1">1. 쉘 정의</h1>
 <p>아래의 내용은 sh 에서만 정확이 작동한다.</p>
-<ul>
-<li><a href="http://www.grymoire.com">원본</a> 아래 내용은 개인용으로 정리한 내용 입니다.</li>
-</ul>
-<h1 id="_2">쉘이란 무엇인가?</h1>
+<h1 id="_1">쉘이란 무엇인가?</h1>
 <p>OS와 상호작용하기 위한 유저 인터페이스 프로그램.
 OS 커널의 가장 외부 레이어 임으로 Shell 이라고 명명되었다.</p>
 <h3 id="unix">Unix 란?</h3>
 <p>Operating System 이란 파일과 프로그램들의 집합이다.</p>
-<h3 id="_3">중요 컨셉</h3>
+<h3 id="_2">중요 컨셉</h3>
 <ul>
 <li>쉘은 프로그래밍이 가능한 커맨드 라인 인터프리터이다.</li>
 <li>유저는 쉘을 통해 시스템과 상호작용을 할 수 있음</li>
@@ -589,7 +586,7 @@ first-class citizen 으로 프로그램을 쉽게 만들수 있게 함.</li>
 <h3 id="first-class-citizen">first class citizen</h3>
 <p>프로그램 디자인에서 특정 프로그래밍 언어의 first class citizen 이란.
 다른 엔터티들에게 일반적으로 가능한 오퍼레이션이 가능한 엔터티를 의미한다.</p>
-<h3 id="_4">특징</h3>
+<h3 id="_3">특징</h3>
 <p>쉘은 많은 부분을 한개의 명령어가 아닌 쉘에서 직접 처리 할려고 한다.
 예를 들어 파일 이름으로 확장되는 문자 * 를 고려해 보자.</p>
 <h4 id="dos">Dos</h4>
@@ -599,7 +596,7 @@ first-class citizen 으로 프로그램을 쉽게 만들수 있게 함.</li>
 <li>RENAME <em>.OLD </em>.NEW</li>
 <li>COPY, MORE...</li>
 </ul>
-<h3 id="_5">쉘</h3>
+<h3 id="_4">쉘</h3>
 <ul>
 <li>
 <p>을 확장해서 파일 명으로 바꾸는 부분은 쉘의 책임이다.  프로그램들은 확장된 파일 명을 받는다.
@@ -616,7 +613,7 @@ ls $*
 <h3 id="unix_1">Unix 철학</h3>
 <p>Unix 철학에서 프로그램의 최종 인터페이스를 쉘언어로 하는 걸 추천한다.
 일단 쉘로 특정 기능을 만든다. 그리고 필요하다면 특정 부분을 다른 언어로 대체 한다.</p>
-<h1 id="_6">자신이 사용하는 쉘 확인</h1>
+<h1 id="_5">자신이 사용하는 쉘 확인</h1>
 <pre><code>echo $SHELL
 </code></pre>
 
@@ -626,7 +623,7 @@ ls $*
 <pre><code>$ sh
 </code></pre>
 
-<h1 id="_7">쉘 기초</h1>
+<h1 id="_6">쉘 기초</h1>
 <p>쉘은 아래와 같이 동작한다.
 0. 라인을 읽은다.
     - 파일, 스크립트, 유저로 부터.
@@ -637,10 +634,10 @@ ls $*
 0. 인자들이 프로그램에 넘어간다.
 0. 파일의 rediection을 설정한다.
 0. 프로그램이 실행된다.</p>
-<h2 id="_8">메타 문자 처리</h2>
+<h2 id="_7">메타 문자 처리</h2>
 <h3 id="varaible-evaluation">변수값 치환(Varaible evaluation)</h3>
 <p>"$"로 시작되는 변수명의 값구하기</p>
-<h3 id="_9">파일이름 확장</h3>
+<h3 id="_8">파일이름 확장</h3>
 <p>패턴을 받아 매칭되는 파일 이름들을 리턴한다.</p>
 <pre><code>echo  테스트 문자.
 </code></pre>
@@ -726,7 +723,7 @@ ls $*
 </tr>
 </tbody>
 </table>
-<h4 id="_10">유닉스 관습</h4>
+<h4 id="_9">유닉스 관습</h4>
 <p>문자 "."은 메타 문자가 아니지만 관습적으로 의미를 같는다.</p>
 <ul>
 <li>"."으로 시작되는 파일은 일반적으로 리스트로 나열되지 않는다.(ls 등)</li>
@@ -812,10 +809,10 @@ a-b-c.sh  a-b-e.sh
 </tr>
 </tbody>
 </table>
-<h2 id="_11">실행 명령어 찾기</h2>
+<h2 id="_10">실행 명령어 찾기</h2>
 <p>쉘이 명령 라인을 확장한 다음에, 라인을 단어들로 분리한다. 그리고 첫번째 단어를 명령어 이름으로 가정한다.
 디렉토리가 명시적으로 기술되지 않았다면,이름을 찾을때 까지 PATH 변수의 디렉토리들을 검색한다.</p>
-<h3 id="_12">" * " 확장</h3>
+<h3 id="_11">" * " 확장</h3>
 <ul>
 <li>은 유효한 유닉스 커맨드다.</li>
 </ul>
@@ -830,12 +827,12 @@ echo Hey!
 sh: 0.sh: command not found
 </code></pre>
 
-<h1 id="_13">인용 부호</h1>
+<h1 id="_12">인용 부호</h1>
 <p>쉘이 이해 할 수 있는 특수 문자들을 메타 문자들 이라고 부른다.
 기본적으로는 쉘에서 인용 부호안의 문자들은 특수한 의미를 가지지 않는다.</p>
 <p>"$" 문자는 메타 문자 이며 쉘에게 다음 단어는 변수임을 알려준다. 
 만약 일반 캐릭터로 하고 싶다면 인용부호로 감싸면 된다.</p>
-<h3 id="_14">옵션</h3>
+<h3 id="_13">옵션</h3>
 <pre><code>rm -i file1 file2
 </code></pre>
 
@@ -846,7 +843,7 @@ sh: 0.sh: command not found
 <li>-i 도 파일과 같은 인자일 뿐이다. 쉘은 차이를 알지 못한다. </li>
 <li>프로그램에서 -i 를 옵션으로 다룰 뿐이다. - 는 유닉스에서 옵션을 나타내는 관습이다.</li>
 </ol>
-<h3 id="_15">인용부호 토글</h3>
+<h3 id="_14">인용부호 토글</h3>
 <p>유닉스에서 파일이름에 " " 를 사용 할 수 있다. 예를 들어 파일 "file1 file2"이 있다고 하자.
 <code>rm 'file1 file2'</code> 로 쓸수 있다. 
 유닉스에서 인용부호는 토글이라고 생각하면 된다.  처음 인용 부호를 사용하면
@@ -864,10 +861,10 @@ rm f'ile1 file'2
     - '': 강함 (모든 메타 문자의 특수 의미를 없앰)
     - "": '' 과 같은 의미지만하지만 약함 (일부 메타 문자는 여전이 특수 의미가 있음)
 - \ 사용 하면 바로 다음 문자만 escape</p>
-<h1 id="_16">내재된 인용 부호</h1>
+<h1 id="_15">내재된 인용 부호</h1>
 <p>인용마크 안에 존재하는 인용마크의 관계에 대해 생각해보자.
 단 내재 인용 마크는 늘 일관적이지 않다.</p>
-<h3 id="_17">겹따움표 내재</h3>
+<h3 id="_16">겹따움표 내재</h3>
 <pre><code>echo '&quot;'
 &gt; &quot;
 echo &quot;\&quot;&quot;
@@ -876,7 +873,7 @@ echo \&quot;
 &gt; &quot;
 </code></pre>
 
-<h3 id="_18">백슬래시 내재</h3>
+<h3 id="_17">백슬래시 내재</h3>
 <pre><code>echo '\'
 &gt; \
 echo &quot;\\&quot;
@@ -885,7 +882,7 @@ echo \\
 &gt; \
 </code></pre>
 
-<h3 id="_19">홑따옴표 내재</h3>
+<h3 id="_18">홑따옴표 내재</h3>
 <pre><code>#error echo '\'' === echo '
 echo &quot;'&quot;
 &gt; '
@@ -893,7 +890,7 @@ echo \'
 &gt; '
 </code></pre>
 
-<h3 id="_20">정리</h3>
+<h3 id="_19">정리</h3>
 <table>
 <thead>
 <tr>
@@ -933,7 +930,7 @@ echo \'
 <li>두 번째 줄 겹따옴표로 감싼 상태에서 escape 문자 
 <code>\</code>를 여전이 메타 문자로 인식 함으로 겹따움표를 약한 인용부호라고 불린다.</li>
 </ul>
-<h3 id="_21">강한 또는 약한 감싸기</h3>
+<h3 id="_20">강한 또는 약한 감싸기</h3>
 <ul>
 <li>홑따옴표는 강해서,  감싸진 모든 문자열을 보통 문자로 처리한다.</li>
 <li>겹따움표는 약해서, 감싸진 부분에서도 몇몇 문자를 메타 문자로 인식한다.<ul>
@@ -943,7 +940,7 @@ echo \'
 </ul>
 </li>
 </ul>
-<h3 id="_22"><code>$</code> 문자.</h3>
+<h3 id="_21"><code>$</code> 문자.</h3>
 <ul>
 <li>$로 시작하면 변수이다.</li>
 <li>홑따옴표에서는 문자열이 나온다.</li>
@@ -959,7 +956,7 @@ echo &quot;\$HOME&quot;
 &gt;$HOME
 </code></pre>
 
-<h3 id="_23">` 백쿼트 문자.</h3>
+<h3 id="_22">` 백쿼트 문자.</h3>
 <ul>
 <li>명령어(command) 를 실행 시켜 결과 값으로 치환한다.</li>
 </ul>
@@ -973,7 +970,7 @@ echo &quot; current dircetory is \`pwd\`&quot;
 &gt; current dircetory is `pwd`
 </code></pre>
 
-<h3 id="_24">여러줄에서 사용 가능한 인용문자.</h3>
+<h3 id="_23">여러줄에서 사용 가능한 인용문자.</h3>
 <p>C 쉘에서 인용문자가 끝나지 않으면 라인과 끝난다고 가정한다.
 본쉘에서는 인용문자를 닫을때까지 인용상태로 들어간다.</p>
 <pre><code>echo 'a
@@ -983,7 +980,7 @@ quote&gt; '
 </code></pre>
 
 <p>? !는 무슨 의미를 같는가?</p>
-<h3 id="_25">인용문자안의 인용문자.</h3>
+<h3 id="_24">인용문자안의 인용문자.</h3>
 <ul>
 <li>보통 언어에서 스트링을 시작하는 메타 문자가 있고(일반적으로 인용문자) 해당 문자 안에서 특수 문자를 사용 하려면
 escape 문자를 사용한다.</li>
@@ -1001,7 +998,7 @@ escape 문자를 사용한다.</li>
 &gt; &quot;a'b
 </code></pre>
 
-<h3 id="_26">스트링 안에 변수 넣기</h3>
+<h3 id="_25">스트링 안에 변수 넣기</h3>
 <ul>
 <li>여러 라인의 sed 또는 awk 스크립트를 사용할때 아래처럼 하면 편하다.</li>
 </ul>
@@ -1011,7 +1008,7 @@ echo 'My home dircetory is '$HOME', and my account is '$USER
 &gt; My home dircetory is /Users/younlee, and my account is younlee
 </code></pre>
 
-<h3 id="_27">변수</h3>
+<h3 id="_26">변수</h3>
 <ul>
 <li>간단한 문법사용</li>
 </ul>
@@ -1039,7 +1036,7 @@ echo 'My home dircetory is '$HOME', and my account is '$USER
 a =date # command a를 실행할려고 함
 </code></pre>
 
-<h3 id="_28">경고</h3>
+<h3 id="_27">경고</h3>
 <p>명령어들을 한 라인에 적고 싶을때는<code>;</code> 을 꼭 사용하자. 스페이스로 구분하면 각각의 쉘마다 다르게 작동한다.</p>
 <pre><code>a=one; echo $a # 좋음
 a=two echo $a # 라인으로 읽은다음 메타 문자 확작을 먼저 하기 때문에 one 이 출력됨 a 에 값도 할당안됨 왜지?
@@ -1054,7 +1051,7 @@ a=three echo $a &gt;$a # 쉘마다 다른결과
 &gt; ANDROID_NDK_HOME=/Users/younlee/Library/Android/sdk/ndk-bundle
 </code></pre>
 
-<h3 id="_29">환경 변수</h3>
+<h3 id="_28">환경 변수</h3>
 <p>유닉스는 환경 변수를 사용해 자식 프로세스에게 정보를 전달 할 수 있다.
 로그인 하면 미리 정의된 환경 변수가 주어 진다. start up script 에 필요한 변수를 더 추가 할 수 있다.
 유저가 프로그램을 실행 한다는것은 자신이 로그인하면서 받은 프로세스의 자식으로 새로운 프로세스를 만드는것이기 때문에
@@ -1107,7 +1104,7 @@ $echo $test
 &gt;2
 </code></pre>
 
-<h1 id="_30">특별한 환경 변수들.</h1>
+<h1 id="_29">특별한 환경 변수들.</h1>
 <p>각 OS  마다 다른 종류의 특별한 환경 변수들을 가지고 있음</p>
 <h3 id="path-">PATH - 탐색 경로</h3>
 <p>명령어를 포함하고 있는 디렉토리들을 나열함.
@@ -1153,7 +1150,7 @@ sh-3.2$ a='
 &lt;'
 </code></pre>
 
-<h1 id="_31">변수 변환 예제</h1>
+<h1 id="_30">변수 변환 예제</h1>
 <ul>
 <li>변수 X 가 있다. X 값에 .old  를 더해 보자.</li>
 </ul>
@@ -1175,7 +1172,7 @@ x=account
 mv $x $x_old
 </code></pre>
 
-<h2 id="_32">인용문자를 통한 풀이</h2>
+<h2 id="_31">인용문자를 통한 풀이</h2>
 <ul>
 <li>변수 X 가 있다. X 값에 _old  를 더해 보자.</li>
 </ul>
@@ -1189,7 +1186,7 @@ echo $x&quot;&quot;_old
 echo &quot;$x&quot;_old
 </code></pre>
 
-<h2 id="_33">중괄호를 사용하여 풀기</h2>
+<h2 id="_32">중괄호를 사용하여 풀기</h2>
 <ul>
 <li>Bracket, 괄호<ul>
 <li><code>[]</code> Square bracket or simple bracket, 대괄호</li>
@@ -1203,7 +1200,7 @@ echo &quot;$x&quot;_old
 <pre><code>${x}run
 </code></pre>
 
-<h3 id="_34">중괄호 특수 기능</h3>
+<h3 id="_33">중괄호 특수 기능</h3>
 <p>변수뒤에 기호와 값을 주어 정의가 안되어 있을 경우의 행동을 지정 가능.</p>
 <table>
 <thead>
@@ -1321,7 +1318,11 @@ echo a=${a-1}, b=${b-2}, c=${c-3}
 &gt;a=1, b=, c=Z
 echo a=${a:-1}, b=${b:-2}, c=${c:-3}
 &gt;a=1, b=2, c=Z
-</code></pre></div>
+</code></pre>
+
+<ul>
+<li><a href="http://www.grymoire.com">원본</a> 아래 내용은 개인용으로 정리한 내용 입니다.</li>
+</ul></div>
         </div>
 
         <footer class="col-md-12">
