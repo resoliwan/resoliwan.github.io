@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../../../img/favicon.ico">
-        <title>1. Package, variables and functions. - Logic's home</title>
+        <title>2. Flow control statement - Logic's home</title>
         <link href="../../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../../../css/base.css" rel="stylesheet">
@@ -206,8 +206,12 @@
     <a href="#">Golang</a>
     <ul class="dropdown-menu">
             
+<li >
+    <a href="../1_tuto/">1. Package, variables and functions.</a>
+</li>
+            
 <li class="active">
-    <a href="./">1. Package, variables and functions.</a>
+    <a href="./">2. Flow control statement</a>
 </li>
     </ul>
   </li>
@@ -535,7 +539,7 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../../cpp/new_cpp/">
+                                <a rel="next" href="../1_tuto/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
@@ -552,193 +556,186 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#1-package-variables-and-functions">1. Package, variables and functions.</a></li>
-            <li><a href="#what-is">What is</a></li>
-            <li><a href="#what-is-not">What is not</a></li>
-        <li class="main "><a href="#basisc">Basisc</a></li>
-            <li><a href="#package">Package</a></li>
-            <li><a href="#import">Import</a></li>
-            <li><a href="#exported-names">Exported names</a></li>
-            <li><a href="#functions-input">Functions - input</a></li>
-            <li><a href="#functions-output">Functions - output</a></li>
-            <li><a href="#named-return-values">Named return values</a></li>
-            <li><a href="#variabls">Variabls</a></li>
-            <li><a href="#_1">짧은 변수 선언</a></li>
-            <li><a href="#_2">기본 타입</a></li>
-            <li><a href="#_3">기본값</a></li>
-            <li><a href="#_4">타입변환</a></li>
-            <li><a href="#_5">타입 추측</a></li>
-            <li><a href="#_6">상수</a></li>
-            <li><a href="#_7">숫자 상수</a></li>
+        <li class="main active"><a href="#2-flow-control-statement">2. Flow control statement</a></li>
+        <li class="main "><a href="#for">For</a></li>
+        <li class="main "><a href="#for-is-gos-while">For is Go's while</a></li>
+        <li class="main "><a href="#forever">Forever</a></li>
+        <li class="main "><a href="#if">If</a></li>
+        <li class="main "><a href="#if-with-short-statement">If with short statement</a></li>
+        <li class="main "><a href="#if-and-else">If and else</a></li>
+        <li class="main "><a href="#switch">Switch</a></li>
+        <li class="main "><a href="#switch-evaluation-order">Switch evaluation order</a></li>
+        <li class="main "><a href="#switch-with-nocondition">Switch with nocondition</a></li>
+        <li class="main "><a href="#defer">Defer</a></li>
+        <li class="main "><a href="#stacking-defer">Stacking defer</a></li>
+        <li class="main "><a href="#defer-panic-recover-detail">defer, panic, recover detail</a></li>
+            <li><a href="#defer_1">defer</a></li>
+            <li><a href="#panic">panic</a></li>
+            <li><a href="#recover">recover</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="1-package-variables-and-functions">1. Package, variables and functions.</h1>
-<h3 id="what-is">What is</h3>
+<h1 id="2-flow-control-statement">2. Flow control statement</h1>
+<h1 id="for">For</h1>
 <ul>
-<li>Statically typed</li>
-<li>Compiled language</li>
-<li>Concurrency mechanisms</li>
+<li>the init statement: 첫 번째 반복 전 실행</li>
+<li>the condition statement: 모든 반복 전 실행</li>
+<li>the post statement: 모든 반복 후 실행</li>
+<li>for statement 에 () 사용 안 한다. 단 {} 은 필수</li>
 </ul>
-<h3 id="what-is-not">What is not</h3>
-<ul>
-<li>Object oriented</li>
-</ul>
-<h1 id="basisc">Basisc</h1>
-<h3 id="package">Package</h3>
-<ul>
-<li>관습적으로 import path의 마지막 element을 패키지 명으로 한다.</li>
-</ul>
-<pre><code>package &quot;math/rand&quot;
-
-rand.Intn(10)
-</code></pre>
-
-<ul>
-<li>example path = math/rand</li>
-</ul>
-<pre><code>$ls /go/1.13.4/libexec/src/math/rand
-  example_test.go
-  exp.go
-  gen_cooked.go
-  normal.go
-  race_test.go
-  rand.go
-  rand_test.go
-  regress_test.go
-  rng.go
-  zipf.go
-$cat rand.go
-package rand
-...
-$cat exp.go
-package rand
-...
-</code></pre>
-
-<h3 id="import">Import</h3>
-<ul>
-<li>코드 그룹을 임포트한다.</li>
-</ul>
-<pre><code>import &quot;fmt&quot;
-import (
-    &quot;fmt&quot;
-    &quot;math&quot;
-)
-</code></pre>
-
-<h3 id="exported-names">Exported names</h3>
-<ul>
-<li>만약 대문자로 이름이 시작하면 이름이 패키지 외부로 노출된다.</li>
-</ul>
-<pre><code>
-const (
-    Pi  = 3.14.. 노출됨.
-    pi  = 노출안됨.
-)
-</code></pre>
-
-<h3 id="functions-input">Functions - input</h3>
-<ul>
-<li>input zero or more argument</li>
-</ul>
-<pre><code>func add(x int, y int) int {
-    return x + y
+<pre><code>for i := 0; i &lt; 10: i++ {
+    sum += i
 }
 </code></pre>
 
-<h3 id="functions-output">Functions - output</h3>
+<h1 id="for-is-gos-while">For is Go's while</h1>
 <ul>
-<li>2개 이상의 output 리턴가능</li>
+<li>false가 될 때까지 실행.</li>
 </ul>
-<pre><code>func swap(x, y string) (string, string) {
-    return  (x, y)
+<pre><code>for sum &lt; 1000 {
+    sum += sum
 }
 </code></pre>
 
-<h3 id="named-return-values">Named return values</h3>
-<ul>
-<li>리턴값에 이름을 줄 수 있음.</li>
-</ul>
-<pre><code>func split(sum int) (x, y int) {
-    x = sum
-    y = sum / 2
-    return
+<h1 id="forever">Forever</h1>
+<pre><code>for {
+
 }
 </code></pre>
 
-<h3 id="variabls">Variabls</h3>
-<pre><code>var a, b bool = true, false
-</code></pre>
-
-<h3 id="_1">짧은 변수 선언</h3>
+<h1 id="if">If</h1>
 <ul>
-<li>함수 안에서만 사용가능</li>
+<li>for와 동일 하게 () 필요 없다. {} 필수 </li>
 </ul>
-<pre><code>func main() {
-    // var a = 1
-    a := 1
+<pre><code>if x &lt; 0 {
     ...
 }
 </code></pre>
 
-<h3 id="_2">기본 타입</h3>
+<h1 id="if-with-short-statement">If with short statement</h1>
 <ul>
-<li>특별한 이유가 없는 이상 int 사용 권장 (32 컴터에서 32, 64에서 64)</li>
+<li>짧은 문장을 if 문에 사용 가능</li>
+<li>변수의 scope 는 if 블록 안에서만 유효.</li>
 </ul>
-<pre><code>bool
-
-string
-
-int  int8  int16  int32  int64
-uint uint8 uint16 uint32 uint64 uintptr
-
-byte // alias for uint8
-
-rune // alias for int32
-     // represents a Unicode code point
-
-float32 float64
-
-complex64 complex128
+<pre><code>if v := get(); v &lt; lim {
+    ...
+}
 </code></pre>
 
-<h3 id="_3">기본값</h3>
-<ul>
-<li>명시적으로 값이 선언되어 있지 않으면 기본값이 초기값으로 자동 할당됨.</li>
-<li>숫자값 = 0</li>
-<li>booltype = false</li>
-<li>string = ""</li>
-</ul>
-<h3 id="_4">타입변환</h3>
-<ul>
-<li>묵시적 타입 변환 없음. 명시적으로 해야함.</li>
-</ul>
-<pre><code>var i int = 42
-var f float64 = float64(i)
+<h1 id="if-and-else">If and else</h1>
+<pre><code>if v &lt; lim {
+
+} else {
+
+}
 </code></pre>
 
-<h3 id="_5">타입 추측</h3>
+<h1 id="switch">Switch</h1>
 <ul>
-<li>:=, var 를 할때 타입 선언이 없으면 할당된 값으로 추측.</li>
+<li>if else 의 축약형 표현.</li>
+<li>매치 되는 첫 번째 문을 실행 시킴</li>
+<li>브레이크 문이 없어도 된다. 한 개 실행 후 swich block 을 빠져 나간다.</li>
+<li>스위치의 케이스 값이 상수나 int가 아니어도 가능.</li>
 </ul>
-<pre><code>i := 42           // int
-f := 3.142        // float64
-g := 0.867 + 0.5i // complex128
+<pre><code>switch os := runtime.GOOS; os {
+    case &quot;darwin&quot;:
+        ...
+    default:
+        ...
+}
 </code></pre>
 
-<h3 id="_6">상수</h3>
+<h1 id="switch-evaluation-order">Switch evaluation order</h1>
 <ul>
-<li>:= 로 선언 될 수 없음</li>
+<li>위에서 아래로 실행 된다.</li>
+<li>아래의 예제에서 i == 0 이라면 f() 호출 안 된다.</li>
 </ul>
-<pre><code>const Pi = 3.14
+<pre><code>switch i {
+    case 0:
+    case f():
+}
 </code></pre>
 
-<h3 id="_7">숫자 상수</h3>
+<h1 id="switch-with-nocondition">Switch with nocondition</h1>
 <ul>
-<li>숫자 상수는 매우 높은 정확도를 가지고 있음</li>
-<li>상수에 타입이 없으면 사용하는 곳에 맞춰 자동 형변환을 해줌.</li>
+<li>switch true 와 동일 하다.</li>
+</ul>
+<pre><code>switch {
+    case t.Hour &lt; 12:
+        ...
+    default:
+        ...
+}
+</code></pre>
+
+<h1 id="defer">Defer</h1>
+<ul>
+<li>감싸고 있는 함수가 리턴 될 때까지 실행이 지연된다.</li>
+<li>defer 함수에 들어가는 인자는 바로 평가 된다. 하지만 defer된 함수는 감싼 함수가 리턴 될 때 실행</li>
+</ul>
+<pre><code>func world() string {
+    fmt.Println(&quot;world() called&quot;)
+    return &quot;world&quot;
+}
+func main() {
+    defer fmt.Println(world())
+
+    fmt.Println(&quot;hello&quot;)
+}
+
+// world() called
+// hello
+// world
+</code></pre>
+
+<h1 id="stacking-defer">Stacking defer</h1>
+<ul>
+<li>디퍼 함수는 스택처럼 작동 last in first out</li>
+</ul>
+<pre><code>func main() {
+    fmt.Println(&quot;counting&quot;)
+    // for i := 0; i &lt; 3; i++ {
+    //  defer fmt.Println(i)
+    // } // 아래와 동일
+    defer fmt.Println(0)
+    defer fmt.Println(1)
+    defer fmt.Println(2)
+    fmt.Println(&quot;done&quot;)
+}
+// counting
+// done
+// 2
+// 1
+// 0
+</code></pre>
+
+<h1 id="defer-panic-recover-detail">defer, panic, recover detail</h1>
+<ul>
+<li>https://blog.golang.org/defer-panic-and-recover</li>
+</ul>
+<h3 id="defer_1">defer</h3>
+<ul>
+<li>디퍼문은 디퍼된 함수를 리스트에 집어 넣는 느낌으로 작동.</li>
+<li>감싼 함수가 리턴 되면 리스트를 실행.</li>
+<li>클린업 action 이 필요 한 경우 사용.</li>
+<li>3개 규칙<ul>
+<li>디퍼 문장이 평가 될때 아규먼트값을 결정.</li>
+<li>디퍼 함수는 후입선출 방식으로 실행.</li>
+<li>디퍼 함수는 감싼 함수의 아웃 이름 변수를 변경 할 수 있다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="panic">panic</h3>
+<ul>
+<li>함수 실행을 멈추고 panicking 현상으로 들어감. 디퍼된 함수를 실행 시키고, </li>
+<li>스택을 따라 가면 계속 panicking 현상을 발생 시킨다.</li>
+<li>goroutin 끝에 닿으면 리턴.</li>
+</ul>
+<h3 id="recover">recover</h3>
+<ul>
+<li>panicking 을 멈추고 다시 컨트롤을 가져 온다, defer 함수 안에서만 유효.</li>
+<li>일반 함수에서는 언제나 nil을 리턴 한다. 아무런 영향이 없다.</li>
 </ul></div>
         </div>
 
