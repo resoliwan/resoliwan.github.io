@@ -67,21 +67,6 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Datascience <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-  <li class="dropdown-submenu">
-    <a href="#" class="dropdown-item">House price</a>
-    <ul class="dropdown-menu">
-            
-<li>
-    <a href="../../datascience/house_price/house_price/" class="dropdown-item">[2020-07-07 Tue]</a>
-</li>
-    </ul>
-  </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dl <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -274,6 +259,26 @@
             
 <li>
     <a href="../../etc/ml/tensorflow_dataset/" class="dropdown-item">tenserflow data</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Permutation</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../etc/permutation/rule_of_sum_and_product/" class="dropdown-item">사건의 경우의 수</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Probability</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../etc/probability/probability/" class="dropdown-item">확률</a>
 </li>
     </ul>
   </li>
@@ -497,6 +502,20 @@
 <li>
     <a href="../entropy/" class="dropdown-item">Entropy</a>
 </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Gan</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../gan/bce_loss_in_gan/" class="dropdown-item">BCE Loss in GAN</a>
+</li>
+            
+<li>
+    <a href="../gan/earth_movers_distance/" class="dropdown-item">Earth Mover's distance</a>
+</li>
+    </ul>
+  </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -640,7 +659,8 @@ D_{KL}(P||Q) = \sum_{x=X}P(x)log(\frac{P(x)}{Q(x)})
 $$</p>
 <p>P 가 실제 데이터 확률분포, Q가 모델 확률분포라고 해보자.
 그러면 위의 식은 P 분포를 Q에 최적화된 코딩 스킴을 사용했을 때 생기는 차이 라고 볼수 있다.
-차이가 없으면 0이다. 차이가 크면 클수록 좋지 않다.</p>
+차이가 없으면 0이다. 차이가 크면 클수록 좋지 않다.
+P(x)/Q(x) 를 하게 되면 Q를 기준으로 P와의 차이가 비율로 나오게 됨으로 Q기준의 차이를 구할 수 있다.</p>
 <p>예를 들어 내가 P(X) 를 모방할려고 하는데 현재 모델이 Q(X) 라면 얼마 만큼의 확률 분포에 차이가 있는가? </p>
 <p><img alt="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence" src="../img/tmp.png" /></p>
 <p>위의 위키를 보면 두 확률분포의 차이를 특정 값으로 준다. 그러면 최적화 방법론을 사용해 차이를 줄일 수 있다.</p></div>

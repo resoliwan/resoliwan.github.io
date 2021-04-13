@@ -67,21 +67,6 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Datascience <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-  <li class="dropdown-submenu">
-    <a href="#" class="dropdown-item">House price</a>
-    <ul class="dropdown-menu">
-            
-<li>
-    <a href="../../datascience/house_price/house_price/" class="dropdown-item">[2020-07-07 Tue]</a>
-</li>
-    </ul>
-  </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dl <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -274,6 +259,26 @@
             
 <li>
     <a href="../../etc/ml/tensorflow_dataset/" class="dropdown-item">tenserflow data</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Permutation</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../etc/permutation/rule_of_sum_and_product/" class="dropdown-item">사건의 경우의 수</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Probability</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../etc/probability/probability/" class="dropdown-item">확률</a>
 </li>
     </ul>
   </li>
@@ -497,6 +502,20 @@
 <li>
     <a href="./" class="dropdown-item active">Entropy</a>
 </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Gan</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../gan/bce_loss_in_gan/" class="dropdown-item">BCE Loss in GAN</a>
+</li>
+            
+<li>
+    <a href="../gan/earth_movers_distance/" class="dropdown-item">Earth Mover's distance</a>
+</li>
+    </ul>
+  </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -571,7 +590,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../../rl/deep/4_rl_introduction/" class="nav-link">
+                                <a rel="next" href="../gan/bce_loss_in_gan/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -623,7 +642,9 @@
 수신자의 가장큰 문제는 특정 채널을 통해 전달된 시그널을 가지고 정보의 원천이 어떤 데이터를 생산했는지를 맞추는 일이다.
 이때 정보를 효과적으로 전달하는 방법에 대해 고민했다. 그 때 (정보 이론)엔트로피의 개념이 탄생했다.</p>
 <h1 id="_2">뜻?</h1>
-<p>쉐논은 특정 랜덤변수를 코드화 할 때 가장 작게 압축할 수 있는 수학적 기준을 엔트로피라고 정의했다. 수학적정의는 $$H(X)$$ 이다.</p>
+<p>쉐논은 특정 랜덤변수를 코드화 할 때 가장 작게 압축할 수 있는 수학적 기준을 엔트로피라고 정의했다. 
+수학적정의는 아래와 같다.</p>
+<p>$$ H(x) = \sum_{n=0}^{4}p(x_{i}) (-1* log_{2}(x_{i})) $$</p>
 <h1 id="_3">예제</h1>
 <p>양면을 가진 코인 던지기의 다음 시행 결과는?  H,T 라고 하면
 두 개의 결과를 표기해야 함으로 0, 1 을 표기 할 수 있는 1비트가 필요함.</p>
@@ -725,7 +746,7 @@ $$ 1/2 * 2 + 1/4 * 2 + 1/8 * 2 + 1/8 * 2 = 1 + 0.5 + 0.5 = 2 bit $$
 <p>이걸 공식화 해보자
 확률이 높으면 적은 길이의 값에 맵핑하고 낮으면 큰값에 맵핑한다.
 비트로 표현 해야 할 경우 -1 * log2 를 사용하면 위와 같은 값이 나온다! (확률값이기 때문에 정의역은 0~1이다.)</p>
-<p>$$ H(x) = \sum_{n=0}^{4}p(x_{i}) (-1* log_{2}(x_{i}))$$</p>
+<p>$$ H(x) = \sum_{n=0}^{4}p(x_{i}) (-1* log_{2}(x_{i})) $$</p>
 <p>$$ 1/2 * -log_{2}(1/2)  + 1/4 * -log_{2}(1/4) + 1/8 * -log_{2}(1/8)  + 1/8 * -log_{2}(1/8) $$ 
 $$ = 1/2 * 1  + 1/4 * 2.0 + 1/8 * 3.0 + 1/8 * 3.0 = 1/2 + 1/2 + 3/4 = 1 + 0.75 = 1.75 $$ </p>
 <p>쉐논은 특정 랜덤변수를 코드화 할 때 가장 작게 압축할 수 있는 수학적 기준을 엔트로피라고 정의했다. 수학적정의는 $$H(X)$$ 이다.</p></div>

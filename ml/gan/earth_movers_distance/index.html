@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
-        <title>[2020-07-07 Tue] - Logic's home</title>
+        <title>Earth Mover's distance - Logic's home</title>
         <link href="../../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../../css/base.css" rel="stylesheet">
@@ -64,21 +64,6 @@
 <li>
     <a href="../../../agile/scrum_4/" class="dropdown-item">4. 스크럼 적용</a>
 </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown active">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Datascience <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-  <li class="dropdown-submenu">
-    <a href="#" class="dropdown-item">House price</a>
-    <ul class="dropdown-menu">
-            
-<li>
-    <a href="./" class="dropdown-item active">[2020-07-07 Tue]</a>
-</li>
-    </ul>
-  </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -274,6 +259,26 @@
             
 <li>
     <a href="../../../etc/ml/tensorflow_dataset/" class="dropdown-item">tenserflow data</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Permutation</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../../etc/permutation/rule_of_sum_and_product/" class="dropdown-item">사건의 경우의 수</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Probability</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../../etc/probability/probability/" class="dropdown-item">확률</a>
 </li>
     </ul>
   </li>
@@ -486,17 +491,31 @@
   </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Ml <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../../ml/cross_entropy/" class="dropdown-item">Cross entropy</a>
+    <a href="../../cross_entropy/" class="dropdown-item">Cross entropy</a>
 </li>
                                     
 <li>
-    <a href="../../../ml/entropy/" class="dropdown-item">Entropy</a>
+    <a href="../../entropy/" class="dropdown-item">Entropy</a>
 </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Gan</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../bce_loss_in_gan/" class="dropdown-item">BCE Loss in GAN</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item active">Earth Mover's distance</a>
+</li>
+    </ul>
+  </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -566,12 +585,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../../../agile/scrum_4/" class="nav-link">
+                                <a rel="prev" href="../bce_loss_in_gan/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../../../dl/1_dl_introduction/" class="nav-link">
+                                <a rel="next" href="../../../rl/deep/4_rl_introduction/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -593,32 +612,13 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#2020-07-07-tue" class="nav-link">[2020-07-07 Tue]</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#goals" class="nav-link">Goals</a>
+            <li class="nav-item" data-level="1"><a href="#earth-movers-distance" class="nav-link">Earth Mover's distance</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#problems" class="nav-link">Problems</a>
+            
+            <li class="nav-item" data-level="1"><a href="#what" class="nav-link">What?</a>
               <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#diagnosis" class="nav-link">Diagnosis</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#design" class="nav-link">Design</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#doit" class="nav-link">DoIt</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#feedback" class="nav-link">Feedback</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
         </ul>
@@ -626,22 +626,11 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="2020-07-07-tue">[2020-07-07 Tue]</h1>
-<h2 id="goals">Goals</h2>
-<ul>
-<li>집 값 예측</li>
-<li>데이터를 사용해 집값을 예측해보자.</li>
-</ul>
-<h3 id="expected-output">expected output</h3>
-<h2 id="problems">Problems</h2>
-<h2 id="diagnosis">Diagnosis</h2>
-<h2 id="design">Design</h2>
-<h2 id="doit">DoIt</h2>
-<h2 id="feedback">Feedback</h2>
-<ul>
-<li>estimate time:</li>
-<li>spend time: </li>
-</ul></div>
+<h1 id="earth-movers-distance">Earth Mover's distance</h1>
+<h1 id="what">What?</h1>
+<p>두 개의 확률분포가 얼마나 다른지 측정하는데 사용.
+두 개가 같아지기 위에 얼마나 변화시켜 하는지로 측정
+얼마의 거리와 얼마의 량을 움직여햐 하는지로 측정</p></div>
             </div>
         </div>
 
