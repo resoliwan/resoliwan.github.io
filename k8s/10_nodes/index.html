@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Master-Node 통신 - Logic's home</title>
+        <title>Node - Logic's home</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -500,6 +500,14 @@
 </li>
                                     
 <li>
+    <a href="./" class="dropdown-item active">Node</a>
+</li>
+                                    
+<li>
+    <a href="../11_master_node_communication/" class="dropdown-item">Master-Node 통신</a>
+</li>
+                                    
+<li>
     <a href="../1_container/" class="dropdown-item">Overview</a>
 </li>
                                     
@@ -533,14 +541,6 @@
                                     
 <li>
     <a href="../9_managements/" class="dropdown-item">k8s 객체 관리</a>
-</li>
-                                    
-<li>
-    <a href="../_10_nodes/" class="dropdown-item">Node</a>
-</li>
-                                    
-<li>
-    <a href="./" class="dropdown-item active">Master-Node 통신</a>
 </li>
                                 </ul>
                             </li>
@@ -611,12 +611,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../_10_nodes/" class="nav-link">
+                                <a rel="prev" href="../0_introduction/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../../rl/deep/4_rl_introduction/" class="nav-link">
+                                <a rel="next" href="../11_master_node_communication/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -638,12 +638,22 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#master-node" class="nav-link">Master-Node 통신</a>
+            <li class="nav-item" data-level="1"><a href="#node" class="nav-link">Node</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#cluster-to-master" class="nav-link">cluster to master</a>
+            <li class="nav-item" data-level="1"><a href="#node_1" class="nav-link">Node 상태</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#managment" class="nav-link">Managment</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#node-controller" class="nav-link">Node Controller</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -652,9 +662,86 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="master-node">Master-Node 통신</h1>
-<p>마스터(api server) 와 k8s 클러스터의 대화 통로.</p>
-<h1 id="cluster-to-master">cluster to master</h1></div>
+<h1 id="node">Node</h1>
+<p>k8s 클러스터의 기본 구성 요소.</p>
+<ul>
+<li>VM 또는 물리 머신이다.</li>
+<li>팟을 뛰우는 역활을 한다.</li>
+<li>마스터 노드의 요청에 따라 팟을 실행 해야 함으로 여러 서비스가 탑재 된다.<ul>
+<li>컨테이너 런타임 서비스</li>
+<li>kubelet </li>
+<li>kube-proxy</li>
+</ul>
+</li>
+</ul>
+<h1 id="node_1">Node 상태</h1>
+<p>노드는 크게 4개의 상태를 가진다.
+- Addresses
+- Condition 
+- Capacity
+- Info</p>
+<h3 id="addreses">Addreses</h3>
+<ul>
+<li>HostName: 노드 이름</li>
+<li>ExternalIP: 클러스터 외부에서 접근 가능하도록 노드에 할당된 IP</li>
+<li>InternalIP: 클러스터 내부에서의 IP</li>
+</ul>
+<h3 id="conditions">Conditions</h3>
+<p>실행 중인 노드의 상태를 의미</p>
+<table>
+<thead>
+<tr>
+<th align="left">상태</th>
+<th align="left">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">OutofDisk</td>
+<td align="left">새로운 팟을 위해 할당할 수 있는 디스크 여유 공간이 없으면 True</td>
+</tr>
+<tr>
+<td align="left">Ready</td>
+<td align="left">Ture: 건강함, False: 문제 있음, Unknown: 정보를 받지 못함 (기본 40초 간격 체크)</td>
+</tr>
+<tr>
+<td align="left">MemoryPressure</td>
+<td align="left">True: 노드 메모리 부족</td>
+</tr>
+<tr>
+<td align="left">PIDPressure</td>
+<td align="left">True: 노트에 프로시스가 너무 많으면.</td>
+</tr>
+<tr>
+<td align="left">DiskPressure</td>
+<td align="left">Ture: 노드의 디스크 사이즈 부족시.</td>
+</tr>
+<tr>
+<td align="left">NetworkUnavailable</td>
+<td align="left">True: 노드의 네트워크가 비정상 설정일떄.</td>
+</tr>
+</tbody>
+</table>
+<p>네트워크 파티셔닝이 일어나면 마스터는 5분후에 기존 팟을 지우고 새로운 팟을 
+뛰우라고 스케쥴링함 단 파티셔닝된 노드는 지우는 명령을 받지 못해 양쪽에 같은 팟이
+뜰 수 있음.</p>
+<p>1.5 버전 이후에 Terminating, Unknown을 강제로 지울수 없음 node 가 살아나던가 아예 노드를 클러스터에서
+삭제하고 손으로 해당 팟들을 제거 해야함.</p>
+<p>1.12 버전 이후로 컨디션이 아리나 taints를 사용하는 컨디션 변종을 사용 할 수 있음(기본은 컨디션)</p>
+<h3 id="capacity">Capacity</h3>
+<p>노드에 할당된 자원 정. CPU, memory, max number of pods</p>
+<h3 id="info">Info</h3>
+<p>일반정인 정보들, kernal version, k8s versions(kubelet, kube-proxy), docker version, os name.</p>
+<h1 id="managment">Managment</h1>
+<p>node의 경우 k8s 에 의해 만들어지지 않고 외부에서 주어진다.
+k8s에서 노드 생성은메타 데이터를 만들어 노드에 맵핑 시키는 작업을 한다.</p>
+<h1 id="node-controller">Node Controller</h1>
+<p>k8s 마스터의 구성요소 중 하나이며 노드를 관리하는 역활을 한다.
+- CIDR 블럭을 노드에 할당
+- 클라우드에서 제공해주는 노드 목록을 가지고 있다. 노드가 이상하면 프로바이더에게 질의해서 사용 불가능 하면 목록에서 제거한다.
+- 노드 건강 체크.</p>
+<h3 id="self-registration-of-nodes">Self-Registration of Nodes.</h3>
+<p>일반적으로 노드가 자기 자신을 클러스터에 등록하는 패턴을 추천</p></div>
             </div>
         </div>
 
