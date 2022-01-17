@@ -500,14 +500,6 @@
 </li>
                                     
 <li>
-    <a href="../10_nodes/" class="dropdown-item">Node</a>
-</li>
-                                    
-<li>
-    <a href="../11_master_node_communication/" class="dropdown-item">Master-Node 통신</a>
-</li>
-                                    
-<li>
     <a href="../1_container/" class="dropdown-item">Overview</a>
 </li>
                                     
@@ -540,7 +532,15 @@
 </li>
                                     
 <li>
-    <a href="../9_managements/" class="dropdown-item">k8s 객체 관리</a>
+    <a href="../90_managements/" class="dropdown-item">k8s 객체 관리</a>
+</li>
+                                    
+<li>
+    <a href="../91_master_node_communication/" class="dropdown-item">Master-Node 통신</a>
+</li>
+                                    
+<li>
+    <a href="../92_nodes/" class="dropdown-item">Node</a>
 </li>
                                 </ul>
                             </li>
@@ -703,7 +703,7 @@
 <h2 id="_3">클러스터란?</h2>
 <p>클러스터는 컴퓨터의 집합을 의미한다.
 여기서 노드는 한개의 컴퓨터 라고 가정하자.
-그러면 위의 클러스터는 여러개의 노드와 한개의 마스터로 이루어졌다고 가정 할 수 있다. </p>
+그러면 위의 클러스터는 여러개의 노드와 한개의 마스터로 이루어졌다고 가정 할 수 있다.</p>
 <p><img alt="Image" src="../img/1553834519-14293.png" />(2)</p>
 <h2 id="_4">서비스 제공</h2>
 <p>유저가 특정 API를 호출했다고 가정해보자.
@@ -711,24 +711,24 @@
 마스터가 해당 요청을 특정노드에서 처리하게 명령한다.</p>
 <p><img alt="Image" src="../img/1553834766-22811.png" />(3)</p>
 <h2 id="_5">실제</h2>
-<p>클러스터는 부하 분산과 장애 극복을 위해 여러 마스터와 여러 노드로 이루어 진다. 
+<p>클러스터는 부하 분산과 장애 극복을 위해 여러 마스터와 여러 노드로 이루어 진다.
 <img alt="Image" src="../img/1553834832-6343.png" /> (5)</p>
 <h2 id="_6">결론</h2>
 <p>위의 서비스를 배포, 유지, 스케일링 하는 방법이 필요하다.</p>
 <h1 id="_7">쿠버네티스</h1>
-<p>그리스어로 한곳의 장이라는 의미를 가진다. </p>
+<p>그리스어로 배의 조타수라는 의미를 가진다.</p>
 <h2 id="_8">역활</h2>
 <ul>
 <li>배포</li>
 <li>유지</li>
-<li>스케일링 </li>
+<li>스케일링</li>
 </ul>
 <h2 id="_9">핵심 구성요소</h2>
 <h3 id="node">Node</h3>
 <ul>
 <li>컴퓨터또는 VM이라고 생각 할 수 있음.</li>
 <li>노드는 OS, 하드디스크, 네트워크 인터페이스를 가지고 있음.</li>
-<li>노드 안에는 여러개의 pod 이 존재 </li>
+<li>노드 안에는 여러개의 pod 이 존재</li>
 </ul>
 <p><img alt="Image" src="../img/1553835356-25499.png" />(5)</p>
 <h3 id="pods">Pods</h3>
@@ -736,7 +736,7 @@
 <li>논리적 호스트의 느낌</li>
 <li>네트워크와 저장소를 공유함.</li>
 <li>여러개의 컨테이너를 실행 시킬 수 있음</li>
-<li>스케줄의 기본 단위 </li>
+<li>스케줄의 기본 단위</li>
 </ul>
 <p><img alt="Image" src="../img/1553835157-32362.png" />(4)</p>
 <h3 id="service">Service</h3>
